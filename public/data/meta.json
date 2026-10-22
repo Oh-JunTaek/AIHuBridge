@@ -1,0 +1,17 @@
+{
+  "fetchedAt": "2026-10-22T14:02:40.275Z",
+  "total": 40,
+  "counts": {
+    "openai": 8,
+    "huggingface": 8,
+    "github": 8,
+    "techcrunch": 8,
+    "arxiv": 8,
+    "koreagnews": 8
+  },
+  "summaryTiers": {
+    "llm": 0,
+    "rule": 40,
+    "excerpt": 0
+  }
+}
