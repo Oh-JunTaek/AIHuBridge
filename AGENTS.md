@@ -2,7 +2,7 @@
 
 > **규칙 (절대 위반 금지)**
 > 1. `c:\Users\wns53\Documents\GitHub\open` 폴더 **안에서만** 작업. 형제 저장소(EU/ondiai/Private) 절대 건드리지 말 것.
-> 2. **배포/푸시 금지.** `npm run dev` + `npm run selfcheck` 로 검증.
+> 2. **배포/푸시 금지 단 사용자 요청이 있을 경우 진행.** `npm run dev` + `npm run selfcheck` 로 검증.
 > 3. 외부 서비스 계정·키 금지. 뉴스 수집은 RSS, 요약은 로컬 LLM(opt-in) 또는 규칙 기반.
 > 4. 한국어로 코딩: 파일명은 영어, **문자열·UI·주석은 한국어**.
 
