@@ -7,8 +7,10 @@ import { ClockIcon, TrendIcon } from '../components/icons';
 import { useUser } from '../lib/user';
 import { Badge } from '../components/Badge';
 import { computeBadges } from '../lib/certs';
+import { TodayBrief } from '../components/TodayBrief';
 import { TodayConcept } from '../components/ConceptCard';
 import { NewsCard } from '../components/NewsCard';
+import { nextSteps } from '../data/path';
 
 export default function Home() {
   const [items, setItems] = useState<NewsItem[]>([]);
@@ -19,6 +21,12 @@ export default function Home() {
     loadNews().then((all) => setItems(filterNews(all, { limit: 6 })));
     setLoading(false);
   }, []);
+
+  // Lv.{n} 다음 레벨업: 미완료 항목 중 난이도 ≤ 현재+1티어
+  const nextUp = nextSteps({
+    level: state.level,
+    completedCourseIds: state.completedCourseIds,
+  });
 
   const handleRead = (_id?: string) => {
     // lastActive 갱신용 (추후 읽음 기록으로 확장)
@@ -68,6 +76,9 @@ export default function Home() {
         </Link>
       </header>
 
+      {/* 오늘의 AI 한 줄 브리핑 (휴식/스몰 브리핑 공간) */}
+      <TodayBrief items={items} />
+
       {/* 오늘의 개념 1개 + 스트릭 */}
       <section className="mb-8 flex items-center gap-4">
         <span className="text-2xl">
@@ -77,6 +88,39 @@ export default function Home() {
           🔥 {state.streak}일 연속 학습 · Lv.{state.level} (XP {state.xp})
         </span>
       </section>
+
+      {/* 다음 레벨업 추천 (입문자 성장 동기 유도) */}
+      {nextUp.length > 0 && (
+        <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+          <header className="mb-2 flex items-center gap-2">
+            <span className="text-xl">🧭</span>
+            <h3 className="text-sm font-semibold text-slate-800">
+              Lv.{state.level} 다음 레벨업 추천
+            </h3>
+          </header>
+          <ul className="grid gap-2">
+            {nextUp.map((it) => (
+              <li
+                key={it.id}
+                className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2"
+              >
+                <div className="flex flex-col">
+                  <span className="font-medium text-slate-800">{it.label}</span>
+                  <span className="text-xs text-slate-500">
+                    {it.category} · {it.estMin}분
+                  </span>
+                </div>
+                <Link
+                  to="/path"
+                  className="text-xs text-blue-600 hover:underline"
+                >
+                  학습 하러 가기 →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <TodayConcept />
 

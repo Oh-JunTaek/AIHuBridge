@@ -47,6 +47,28 @@ export const categoryOrder: PCategory[] = [
 // 학습 경로 목록 필터 상태 (null = 전체)
 export type PathFilter = { level: Level | null; category: PCategory | null };
 
+// ── 레벨/난이도 헬퍼 (Home '다음 레벨업 추천'용) ──
+export const levelNumber: Record<Level, number> = { 초급: 1, 중급: 2, 고급: 3 };
+export function levelForNumber(n: number): Level {
+  if (n >= 3) return '고급';
+  if (n >= 2) return '중급';
+  return '초급';
+}
+/** 현재 레벨 기준으로, 미완료이면서 난이도 ≤ (현재+1티어)인 학습 항목 추천 (최대 2개) */
+export function nextSteps(state: {
+  level: number;
+  completedCourseIds: string[];
+}): StageItem[] {
+  const nextNum = levelNumber[levelForNumber(state.level + 1)];
+  return stages
+    .flatMap((s) => s.items)
+    .filter(
+      (it) => levelNumber[it.level] <= nextNum && !state.completedCourseIds.includes(it.id),
+    )
+    .sort((a, b) => levelNumber[a.level] - levelNumber[b.level])
+    .slice(0, 2);
+}
+
 export const stages: Stage[] = [
   {
     id: 'understand',
