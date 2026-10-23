@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { glossary } from '../data/glossary';
 import { randomEntry } from '../lib/quiz';
 import { SparkleIcon } from './icons';
+import { useT } from '../lib/i18n';
 import type { GlossaryEntry } from '../types';
 
 /** 매일 새로운 용어 1개 → "오늘의 개념" 카드 */
 export function TodayConcept() {
+  const t = useT();
   const [entry, setEntry] = useState<GlossaryEntry | null>(null);
 
   useEffect(() => {
@@ -19,19 +21,19 @@ export function TodayConcept() {
   if (!entry) return null;
 
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+    <section className="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-5 shadow-xs">
       <header className="mb-2 flex items-center gap-2">
         <SparkleIcon className="h-5 w-5 text-amber-400" />
-        <h2 className="text-sm font-semibold text-slate-800">오늘의 AI 개념</h2>
+        <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-200">{t('home.concept')}</h2>
       </header>
       <p className="text-xl font-bold text-slate-900">{entry.term}</p>
-      <p className="mt-2 text-sm text-slate-700">{entry.definition}</p>
+      <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{entry.definition}</p>
       {entry.example && (
-        <p className="mt-1 text-xs text-slate-500">예) {entry.example}</p>
+        <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t('ui.example')} {entry.example}</p>
       )}
       {entry.related && (
-        <p className="mt-2 text-xs text-slate-500">
-          관련: {entry.related.join(', ')}
+        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+          {t('ui.related')} {entry.related.join(', ')}
         </p>
       )}
       <button
@@ -41,7 +43,7 @@ export function TodayConcept() {
           setEntry(next);
         }}
       >
-        ↻ 다른 용어 보기
+        {t('ui.more')}
       </button>
     </section>
   );

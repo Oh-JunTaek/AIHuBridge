@@ -2,9 +2,11 @@ import { useState } from 'react';
 import type { Question } from '../lib/quiz';
 import { useUser } from '../lib/user';
 import { CheckIcon, XIcon, SparkleIcon } from './icons';
+import { useT } from '../lib/i18n';
 
 export function QuizView({ question }: { question: Question }) {
   const { state, mutate } = useUser();
+  const t = useT();
   const [picked, setPicked] = useState<number | null>(null);
   const ok = picked !== null && picked === question.answerIndex;
 
@@ -24,14 +26,14 @@ export function QuizView({ question }: { question: Question }) {
   };
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
+    <div className="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-6 shadow-xs">
       <header className="mb-3 flex items-center gap-2">
         <SparkleIcon className="h-5 w-5 text-violet-500" />
-        <h2 className="text-sm font-semibold text-slate-800">용어 맞추기</h2>
+        <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-200">{t('quiz.qTitle')}</h2>
       </header>
 
-      <p className="text-sm text-slate-700">다음은 어떤 용어에 대한 설명인가요?</p>
-      <blockquote className="mt-2 rounded-lg bg-slate-50 p-3 text-sm italic text-slate-800">
+      <p className="text-sm text-slate-700 dark:text-slate-300">{t('quiz.prompt')}</p>
+      <blockquote className="mt-2 rounded-lg bg-slate-50 dark:bg-slate-800 p-3 text-sm italic text-slate-800 dark:text-slate-200">
         “{question.definition}”
       </blockquote>
 
@@ -65,14 +67,14 @@ export function QuizView({ question }: { question: Question }) {
           {ok ? <CheckIcon className="h-5 w-5 text-emerald-600" /> : <XIcon className="h-5 w-5 text-rose-600" />}
           <span>
             {ok
-              ? '정답! 🎉'
-              : `틀렸어요. 정답은 “${question.term}”예요.`}
+              ? t('quiz.correct')
+              : t('quiz.wrong', question.term)}
           </span>
         </div>
       )}
 
       {question.example && picked !== null && (
-        <p className="mt-2 text-xs text-slate-500">예) {question.example}</p>
+        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{t('quiz.example')} {question.example}</p>
       )}
     </div>
   );

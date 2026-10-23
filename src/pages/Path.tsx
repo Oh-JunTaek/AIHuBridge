@@ -4,9 +4,11 @@ import { stages, levelOrder, categoryOrder } from '../data/path';
 import type { Level, PCategory, PathFilter } from '../data/path';
 import { StageCard } from '../components/StageCard';
 import { useUser } from '../lib/user';
+import { useT } from '../lib/i18n';
 
 export default function Path() {
   const { state } = useUser();
+  const t = useT();
   const [filter, setFilter] = useState<PathFilter>({ level: null, category: null });
 
   const applyLevel = (l: Level | null) => setFilter((f) => ({ ...f, level: l }));
@@ -34,16 +36,13 @@ export default function Path() {
     <div className="mx-auto max-w-4xl px-4 py-6">
       <header className="mb-6 flex items-baseline justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">학습 경로</h1>
+          <h1 className="text-2xl font-bold text-slate-800">{t('path.title')}</h1>
           <p className="mt-1 text-sm text-slate-500">
-            비전공자를 위한 4단계 루트 — 완료하면 뱃지가 생겨요
+            {t('path.sub')}
           </p>
         </div>
-        <Link
-          to="/certs"
-          className="text-xs font-medium text-slate-500 hover:text-blue-600"
-        >
-          뱃지 보러 가기 →
+        <Link to="/certs" className="text-xs font-medium text-slate-500 hover:text-blue-600">
+          {t('path.toCerts')} →
         </Link>
       </header>
 
@@ -54,20 +53,20 @@ export default function Path() {
         />
       </div>
       <p className="mb-6 text-sm text-slate-600">
-        {done}/{total} 항목 완료 ({pct}%)
+        {t('path.progress', done, total, pct)}
       </p>
 
       {/* ── 분류 필터: 난이도 / 분야 ── */}
       <div className="mb-5 flex flex-wrap items-center gap-4 gap-y-2 border-b border-slate-200 pb-3 text-xs">
         <div className="flex items-center gap-1.5">
-          <span className="text-slate-500">난이도:</span>
+          <span className="text-slate-500">{t('path.filterLevel')}</span>
           <button
             onClick={() => applyLevel(null)}
             className={`rounded px-2 py-0.5 ${
               filter.level ? 'bg-slate-100 text-slate-600' : 'bg-blue-600 text-white'
             }`}
           >
-            전체
+            {t('path.filterAll')}
           </button>
           {levelOrder.map((lv) => (
             <button
@@ -77,19 +76,19 @@ export default function Path() {
                 filter.level === lv ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'
               }`}
             >
-              {lv}
+              {t('level.' + lv)}
             </button>
           ))}
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-slate-500">분야:</span>
+          <span className="text-slate-500">{t('path.filterCategory')}</span>
           <button
             onClick={() => applyCategory(null)}
             className={`rounded px-2 py-0.5 ${
               filter.category ? 'bg-slate-100 text-slate-600' : 'bg-blue-600 text-white'
             }`}
           >
-            전체
+            {t('path.filterAll')}
           </button>
           {categoryOrder.map((c) => (
             <button
@@ -99,7 +98,7 @@ export default function Path() {
                 filter.category === c ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'
               }`}
             >
-              {c}
+              {t('pathCategory.' + c)}
             </button>
           ))}
         </div>
@@ -108,7 +107,7 @@ export default function Path() {
             onClick={() => setFilter({ level: null, category: null })}
             className="rounded px-2 py-0.5 text-slate-500 underline"
           >
-            필터 초기화
+            {t('path.filterReset')}
           </button>
         ) : null}
       </div>

@@ -1,3 +1,5 @@
+import type { Lang, Theme } from './lib/i18n';
+
 export type Category =
   | '업계/제품'
   | '연구/논문'
@@ -65,6 +67,10 @@ export interface UserState {
   quizHistory: QuizAttempt[];
   level: number;
   xp: number;
+  /** UI 선호: 언어 (ko/en) */
+  lang: Lang;
+  /** UI 선호: 다크모드 (light/dark/system) */
+  theme: Theme;
 }
 
 export interface QuizAttempt {

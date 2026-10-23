@@ -79,6 +79,22 @@ export const XIcon: Icon = (p) => (
   </svg>
 );
 
+export const SettingsIcon: Icon = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
+    <circle cx={12} cy={12} r={3} />
+    <path d="M12 1v5m0 12v5M4.22 4.22l3.54 3.54m8.48 8.48 3.54 3.54M1 12h5m13 0h5" />
+  </svg>
+);
+
+export const DevIcon: Icon = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
+    <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
+    <path d="M8 4V2h8v2" />
+    <circle cx={10} cy={10} r={1} fill="currentColor" />
+    <path d="M14 10h0" />
+  </svg>
+);
+
 export const ExternalLinkIcon: Icon = (p) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />

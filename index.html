@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Compass — 너만의 AI 학습·소식 데스크탑</title>
     <meta name="description" content="AI 최신 소식, 무료 학습 경로, 인증 뱃지까지. 비전공자도 쉽게 따라오는 개인용 AI 러닝 패드" />
+    <!-- 🌙 언어/다크모드 초기값: React 마운트 전 깜빡임 방지 -->
+    <script>
+      (function () {
+        try {
+          const u = JSON.parse(localStorage.getItem('ai-compass/user') || '{}');
+          const lang = u.lang || 'ko';
+          const theme = u.theme || 'system';
+          document.documentElement.lang = lang;
+          const isDark =
+            theme === 'dark' ||
+            (theme === 'system' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', isDark);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="app"></div>

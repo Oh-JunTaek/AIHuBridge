@@ -3,6 +3,7 @@ import { useUser } from '../lib/user';
 import { getCert } from '../lib/certs';
 import { glossary } from '../data/glossary';
 import { CheckIcon, ClockIcon, ExternalLinkIcon } from './icons';
+import { useT } from '../lib/i18n';
 
 const levelColor: Record<Level, string> = {
   초급: 'bg-emerald-100 text-emerald-700',
@@ -20,6 +21,7 @@ const categoryColor: Record<PCategory, string> = {
 
 export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter }) {
   const { state, mutate } = useUser();
+  const t = useT();
   const completed = state.completedCourseIds;
 
   function toggle(id: string) {
@@ -30,12 +32,12 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+    <div className="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-5 shadow-xs">
       <header className="mb-4 flex items-center gap-3">
         <span className="text-2xl">{stage.icon}</span>
         <div>
-          <h2 className="font-semibold text-slate-800">{stage.title}</h2>
-          <p className="text-sm text-slate-500">{stage.subtitle}</p>
+          <h2 className="font-semibold text-slate-800 dark:text-slate-200">{t('pathStage.' + stage.id + '.title')}</h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t('pathStage.' + stage.id + '.sub')}</p>
         </div>
       </header>
 
@@ -58,22 +60,22 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
           return (
             <li
               key={it.id}
-              className="flex items-center justify-between rounded-lg border border-slate-200 p-2.5"
+              className="flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-700 p-2.5"
             >
               <div className="flex flex-col">
-                <span className="font-medium text-slate-800">{it.label}</span>
+                <span className="font-medium text-slate-800 dark:text-slate-200">{it.label}</span>
                 <div className="mt-1 flex flex-wrap items-center gap-1.5">
                   <span
                     className={`inline-block rounded px-1.5 py-0.5 text-xs font-medium ${levelColor[it.level]}`}
                     title="난이도"
                   >
-                    {it.level}
+                    {t('level.' + it.level)}
                   </span>
                   <span
                     className={`inline-block rounded px-1.5 py-0.5 text-xs font-medium ${categoryColor[it.category]}`}
                     title="분야"
                   >
-                    {it.category}
+                    {t('pathCategory.' + it.category)}
                   </span>
                   {showRef && (
                     <span className="line-clamp-1 text-xs text-slate-500">
@@ -84,7 +86,7 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
               </div>
               <div className="flex items-center gap-1.5 text-xs text-slate-500">
                 <span className="flex items-center gap-1">
-                  <ClockIcon className="h-3 w-3" /> {it.estMin}분
+                  <ClockIcon className="h-3 w-3" /> {it.estMin}{t('ui.min')}
                 </span>
                 {cert?.url ? (
                   <a

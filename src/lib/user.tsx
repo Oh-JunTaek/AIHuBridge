@@ -10,6 +10,8 @@ const empty: UserState = {
   quizHistory: [],
   level: 1,
   xp: 0,
+  lang: 'ko',
+  theme: 'system',
 };
 
 function load(): UserState {
@@ -59,6 +61,21 @@ export function UserProvider({ children }: { children: ReactNode }) {
       return merged;
     });
   }, []);
+
+  // 🌙 언어 + 다크모드 ⇄ <html> 싱크 (런타임 즉시 반영)
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const root = document.documentElement;
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const apply = () => {
+      const actual = state.theme === 'system' ? (mql.matches ? 'dark' : 'light') : state.theme;
+      root.classList.toggle('dark', actual === 'dark');
+      root.lang = state.lang ?? 'ko';
+    };
+    apply();
+    mql.addEventListener('change', apply);
+    return () => mql.removeEventListener('change', apply);
+  }, [state.theme, state.lang]);
 
   return <Ctx.Provider value={{ state, set, mutate }}>{children}</Ctx.Provider>;
 }

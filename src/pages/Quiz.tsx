@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { todaysQuestion, quickQuiz } from '../lib/quiz';
 import { QuizView } from '../components/QuizView';
 import { useUser } from '../lib/user';
+import { useT } from '../lib/i18n';
 
 export default function Quiz() {
   const { state } = useUser();
+  const t = useT();
   const [mode, setMode] = useState<'daily' | 'practice'>('daily');
   const [list, setList] = useState<ReturnType<typeof quickQuiz>>([]);
   const [idx, setIdx] = useState(0);
@@ -31,9 +33,9 @@ export default function Quiz() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
       <header className="mb-6 flex items-baseline justify-between">
-        <h1 className="text-2xl font-bold text-slate-800">퀴즈</h1>
+        <h1 className="text-2xl font-bold text-slate-800">{t('quiz.title')}</h1>
         <span className="text-sm text-slate-500">
-          정답률 {total ? Math.round((passed / total) * 100) : 0}% ({passed}/{total})
+          {t('quiz.rate', total ? Math.round((passed / total) * 100) : 0, passed, total)}
         </span>
       </header>
 
@@ -44,7 +46,7 @@ export default function Quiz() {
             mode === 'daily' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'
           }`}
         >
-          📅 오늘의 문제
+          {t('quiz.daily')}
         </button>
         <button
           onClick={startPractice}
@@ -52,7 +54,7 @@ export default function Quiz() {
             mode === 'practice' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'
           }`}
         >
-          🎯 연습 8문제
+          {t('quiz.practice')}
         </button>
       </nav>
 
@@ -64,14 +66,14 @@ export default function Quiz() {
             onClick={next}
             className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800"
           >
-            다음 문제
+            {t('quiz.next')}
           </button>
         </div>
       )}
 
       {mode === 'daily' && list.length === 0 && (
         <p className="mt-4 text-sm text-slate-500">
-          내일도 새 문제가 등장해요. (날짜에 따라 문항이 달라집니다)
+          {t('quiz.empty')}
         </p>
       )}
     </div>

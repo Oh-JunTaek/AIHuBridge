@@ -9,7 +9,9 @@ import Path from './pages/Path';
 import Certs from './pages/Certs';
 import Quiz from './pages/Quiz';
 import Dev from './pages/Dev';
+import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
+import { UserProvider } from './lib/user';
 
 const router = createBrowserRouter([
   {
@@ -23,12 +25,16 @@ const router = createBrowserRouter([
       { path: 'certs', element: <Certs /> },
       { path: 'quiz', element: <Quiz /> },
       { path: 'dev', element: <Dev /> },
+      { path: 'settings', element: <Settings /> },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('app')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>,
 );
+
