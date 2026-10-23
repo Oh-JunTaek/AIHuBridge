@@ -2,7 +2,7 @@ import type { Stage, Level, PCategory, PathFilter } from '../data/path';
 import { useUser } from '../lib/user';
 import { getCert } from '../lib/certs';
 import { glossary } from '../data/glossary';
-import { CheckIcon, ClockIcon } from './icons';
+import { CheckIcon, ClockIcon, ExternalLinkIcon } from './icons';
 
 const levelColor: Record<Level, string> = {
   초급: 'bg-emerald-100 text-emerald-700',
@@ -48,10 +48,13 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
           if (hidden) return null;
 
           const done = completed.includes(it.id);
+          const cert = it.kind === 'concept' ? undefined : getCert(it.refId);
           const refLabel =
             it.kind === 'concept'
               ? glossary.find((g) => g.term === it.refId)?.definition
-              : getCert(it.refId)?.name;
+              : cert?.name;
+          // 동일한 텍스트(예: "Hugging Face LLM Course") 중복 표시 억제
+          const showRef = !!refLabel && refLabel !== it.label;
           return (
             <li
               key={it.id}
@@ -72,17 +75,28 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                   >
                     {it.category}
                   </span>
-                  {refLabel && (
+                  {showRef && (
                     <span className="line-clamp-1 text-xs text-slate-500">
                       {refLabel}
                     </span>
                   )}
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-500">
+              <div className="flex items-center gap-1.5 text-xs text-slate-500">
                 <span className="flex items-center gap-1">
                   <ClockIcon className="h-3 w-3" /> {it.estMin}분
                 </span>
+                {cert?.url ? (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded p-1 text-slate-500 hover:bg-slate-100 hover:text-blue-600"
+                    title="공식 페이지 열기"
+                  >
+                    <ExternalLinkIcon className="h-4 w-4" />
+                  </a>
+                ) : null}
                 <button
                   className={`rounded p-1 ${
                     done
