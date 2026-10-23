@@ -28,7 +28,7 @@ export default function Certs() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
       <header className="mb-6 flex items-baseline justify-between">
-        <h1 className="text-2xl font-bold text-slate-800">{t('certs.title')}</h1>
+        <h1 className="text-2xl font-bold text-stone-800">{t('certs.title')}</h1>
         <Link to="/path" className="text-xs underline">
           {t('certs.back')}
         </Link>
@@ -41,8 +41,8 @@ export default function Certs() {
             onClick={() => setTab(tb.id)}
             className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 font-medium ${
               tab === tb.id
-                ? 'bg-blue-600 text-white'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                ? 'bg-amber-600 text-white'
+                : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
             }`}
           >
             <span>{tb.emoji} {t('certs.tab.' + tb.id)}</span>
@@ -50,7 +50,7 @@ export default function Certs() {
         ))}
       </nav>
 
-      <p className="mb-4 text-xs text-slate-500">{t('certs.note')}</p>
+      <p className="mb-4 text-xs text-stone-500">{t('certs.note')}</p>
 
       <div className="grid gap-4 sm:grid-cols-2">
         {groups[tab].map((c) => (
@@ -63,7 +63,7 @@ export default function Certs() {
         ))}
       </div>
 
-      <p className="mt-6 text-center text-xs text-slate-400">{t('certs.footer')}</p>
+      <p className="mt-6 text-center text-xs text-stone-400">{t('certs.footer')}</p>
     </div>
   );
 }

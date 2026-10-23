@@ -28,8 +28,8 @@ export default function Research() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
       <header className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-800">{t('research.title')}</h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <h1 className="text-2xl font-bold text-stone-800">{t('research.title')}</h1>
+        <p className="mt-1 text-sm text-stone-500">
           {t('research.sub', items.length)}
         </p>
       </header>
@@ -41,8 +41,8 @@ export default function Research() {
             onClick={() => setActive(c)}
             className={`rounded-full px-3 py-1 font-medium ${
               active === c
-                ? 'bg-blue-600 text-white'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                ? 'bg-amber-600 text-white'
+                : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
             }`}
           >
             {c === '전체' ? t('path.filterAll') : t('category.' + c)}
@@ -50,9 +50,9 @@ export default function Research() {
         ))}
       </nav>
 
-      {loading && <p className="text-sm text-slate-500">{t('home.loading')}</p>}
+      {loading && <p className="text-sm text-stone-500">{t('home.loading')}</p>}
       {!loading && shown.length === 0 && (
-        <p className="text-sm text-slate-500">{t('research.empty')}</p>
+        <p className="text-sm text-stone-500">{t('research.empty')}</p>
       )}
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">

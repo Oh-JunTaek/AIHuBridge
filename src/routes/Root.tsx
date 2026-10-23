@@ -27,9 +27,9 @@ export default function Root() {
   const t = useT();
   return (
     <div
-      className="min-h-screen bg-slate-50 text-slate-700 dark:bg-slate-900 dark:text-slate-200 flex flex-col transition-colors"
+      className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors"
     >
-      <header className="sticky top-0 z-20 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-700">
+      <header className="sticky top-0 z-20 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur border-b border-stone-200 dark:border-stone-700">
         <div className="mx-auto max-w-4xl px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2 font-semibold text-lg">
             <CompassIcon />
@@ -44,8 +44,8 @@ export default function Root() {
                 className={({ isActive }) =>
                   `flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium whitespace-nowrap ${
                     isActive
-                      ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300'
-                      : 'text-slate-500 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-700/60'
+                      ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200'
+                      : 'text-stone-500 dark:text-stone-400 hover:bg-stone-200/60 dark:hover:bg-stone-700/60'
                   }`
                 }
               >
@@ -61,7 +61,7 @@ export default function Root() {
         <Outlet />
       </main>
 
-      <footer className="mt-16 border-t border-slate-200 dark:border-slate-700 py-6 text-center text-xs text-slate-400 dark:text-slate-500">
+      <footer className="mt-16 border-t border-stone-200 dark:border-stone-700 py-6 text-center text-xs text-stone-400 dark:text-stone-500">
         <span>© {nav.siteName} — {t('footer.copy')}</span>
       </footer>
     </div>

@@ -49,12 +49,12 @@ export const config = {
     },
   ] as const,
 
-  /** 카테고리별 컬러 (Tailwind 기본) */
+  /** 카테고리별 컬러 (따뜻한 우드톤) */
   categoryColor: {
     '업계/제품': 'bg-amber-100 text-amber-800',
-    '연구/논문': 'bg-indigo-100 text-indigo-800',
+    '연구/논문': 'bg-cyan-100 text-cyan-800',
     '정책/규제': 'bg-emerald-100 text-emerald-800',
-    '오픈소스': 'bg-cyan-100 text-cyan-800',
+    '오픈소스': 'bg-teal-100 text-teal-800',
     '언론': 'bg-rose-100 text-rose-800',
     '블로그/개인': 'bg-purple-100 text-purple-800',
   },

@@ -33,8 +33,8 @@ export default function Quiz() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
       <header className="mb-6 flex items-baseline justify-between">
-        <h1 className="text-2xl font-bold text-slate-800">{t('quiz.title')}</h1>
-        <span className="text-sm text-slate-500">
+        <h1 className="text-2xl font-bold text-stone-800">{t('quiz.title')}</h1>
+        <span className="text-sm text-stone-500">
           {t('quiz.rate', total ? Math.round((passed / total) * 100) : 0, passed, total)}
         </span>
       </header>
@@ -43,7 +43,7 @@ export default function Quiz() {
         <button
           onClick={() => setMode('daily')}
           className={`rounded-full px-4 py-1.5 font-medium ${
-            mode === 'daily' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'
+            mode === 'daily' ? 'bg-amber-600 text-white' : 'bg-stone-100 text-stone-600'
           }`}
         >
           {t('quiz.daily')}
@@ -51,7 +51,7 @@ export default function Quiz() {
         <button
           onClick={startPractice}
           className={`rounded-full px-4 py-1.5 font-medium ${
-            mode === 'practice' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'
+            mode === 'practice' ? 'bg-amber-600 text-white' : 'bg-stone-100 text-stone-600'
           }`}
         >
           {t('quiz.practice')}
@@ -64,7 +64,7 @@ export default function Quiz() {
         <div className="mt-4 text-center">
           <button
             onClick={next}
-            className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800"
+            className="rounded-lg bg-stone-900 px-4 py-2 text-sm font-medium text-white hover:bg-stone-800"
           >
             {t('quiz.next')}
           </button>
@@ -72,7 +72,7 @@ export default function Quiz() {
       )}
 
       {mode === 'daily' && list.length === 0 && (
-        <p className="mt-4 text-sm text-slate-500">
+        <p className="mt-4 text-sm text-stone-500">
           {t('quiz.empty')}
         </p>
       )}

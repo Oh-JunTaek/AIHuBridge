@@ -10,11 +10,11 @@ export default function Settings() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
-      <h1 className="text-2xl font-bold text-slate-800">{t('settings.title')}</h1>
-      <p className="mt-1 text-sm text-slate-500">{t('settings.themeHint')}</p>
+      <h1 className="text-2xl font-bold text-stone-800">{t('settings.title')}</h1>
+      <p className="mt-1 text-sm text-stone-500">{t('settings.themeHint')}</p>
 
       <section className="mt-8">
-        <h2 className="mb-3 text-sm font-semibold text-slate-600">{t('settings.theme')}</h2>
+        <h2 className="mb-3 text-sm font-semibold text-stone-600">{t('settings.theme')}</h2>
         <div className="flex flex-wrap gap-2">
           {THEMES.map((th) => (
             <button
@@ -22,8 +22,8 @@ export default function Settings() {
               onClick={() => pickTheme(th)}
               className={`rounded-full px-4 py-1.5 text-sm font-medium ${
                 state.theme === th
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  ? 'bg-amber-600 text-white'
+                  : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
               }`}
             >
               {t('settings.' + th)}
@@ -33,7 +33,7 @@ export default function Settings() {
       </section>
 
       <section className="mt-6">
-        <h2 className="mb-3 text-sm font-semibold text-slate-600">{t('settings.language')}</h2>
+        <h2 className="mb-3 text-sm font-semibold text-stone-600">{t('settings.language')}</h2>
         <div className="flex flex-wrap gap-2">
           {LANGUAGES.map((lg) => (
             <button
@@ -41,20 +41,20 @@ export default function Settings() {
               onClick={() => pickLang(lg.value)}
               className={`rounded-full px-4 py-1.5 text-sm font-medium ${
                 state.lang === lg.value
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  ? 'bg-amber-600 text-white'
+                  : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
               }`}
             >
               {lg.label[state.lang ?? 'ko']}
             </button>
           ))}
         </div>
-        <p className="mt-2 text-xs text-slate-400">
+        <p className="mt-2 text-xs text-stone-400">
           {t('settings.saved')} · {state.lang === 'ko' ? '한국어' : 'English'}
         </p>
       </section>
 
-      <p className="mt-8 text-xs text-slate-400">
+      <p className="mt-8 text-xs text-stone-400">
         설정은 브라우저(localStorage)에 저장됩니다. 다른 브라우저에서는 초기화됩니다.
       </p>
     </div>

@@ -11,11 +11,11 @@ const levelColor: Record<Level, string> = {
   고급: 'bg-rose-100 text-rose-700',
 };
 const categoryColor: Record<PCategory, string> = {
-  '개론/개념': 'bg-slate-100 text-slate-600',
+  '개론/개념': 'bg-stone-100 text-stone-600',
   언어모델: 'bg-indigo-100 text-indigo-700',
   '프롬프트·도구': 'bg-cyan-100 text-cyan-700',
   '에이전트·앱': 'bg-purple-100 text-purple-700',
-  '클라우드·MLOps': 'bg-blue-100 text-blue-700',
+  '클라우드·MLOps': 'bg-amber-100 text-amber-700',
   '비즈니스·전략': 'bg-orange-100 text-orange-700',
 };
 
@@ -32,12 +32,12 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-5 shadow-xs">
+    <div className="rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-5 shadow-xs">
       <header className="mb-4 flex items-center gap-3">
         <span className="text-2xl">{stage.icon}</span>
         <div>
-          <h2 className="font-semibold text-slate-800 dark:text-slate-200">{t('pathStage.' + stage.id + '.title')}</h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400">{t('pathStage.' + stage.id + '.sub')}</p>
+          <h2 className="font-semibold text-stone-800 dark:text-stone-200">{t('pathStage.' + stage.id + '.title')}</h2>
+          <p className="text-sm text-stone-500 dark:text-stone-400">{t('pathStage.' + stage.id + '.sub')}</p>
         </div>
       </header>
 
@@ -60,10 +60,10 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
           return (
             <li
               key={it.id}
-              className="flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-700 p-2.5"
+              className="flex items-center justify-between rounded-lg border border-stone-200 dark:border-stone-700 p-2.5"
             >
               <div className="flex flex-col">
-                <span className="font-medium text-slate-800 dark:text-slate-200">{it.label}</span>
+                <span className="font-medium text-stone-800 dark:text-stone-200">{it.label}</span>
                 <div className="mt-1 flex flex-wrap items-center gap-1.5">
                   <span
                     className={`inline-block rounded px-1.5 py-0.5 text-xs font-medium ${levelColor[it.level]}`}
@@ -78,13 +78,13 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                     {t('pathCategory.' + it.category)}
                   </span>
                   {showRef && (
-                    <span className="line-clamp-1 text-xs text-slate-500">
+                    <span className="line-clamp-1 text-xs text-stone-500">
                       {refLabel}
                     </span>
                   )}
                 </div>
               </div>
-              <div className="flex items-center gap-1.5 text-xs text-slate-500">
+              <div className="flex items-center gap-1.5 text-xs text-stone-500">
                 <span className="flex items-center gap-1">
                   <ClockIcon className="h-3 w-3" /> {it.estMin}{t('ui.min')}
                 </span>
@@ -93,7 +93,7 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                     href={cert.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded p-1 text-slate-500 hover:bg-slate-100 hover:text-blue-600"
+                    className="rounded p-1 text-stone-500 hover:bg-stone-100 hover:text-amber-600"
                     title="공식 페이지 열기"
                   >
                     <ExternalLinkIcon className="h-4 w-4" />
@@ -103,7 +103,7 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                   className={`rounded p-1 ${
                     done
                       ? 'bg-emerald-100 text-emerald-600'
-                      : 'bg-slate-100 text-slate-500'
+                      : 'bg-stone-100 text-stone-500'
                   }`}
                   onClick={() => toggle(it.id)}
                   title="완료 체크"
