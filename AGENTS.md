@@ -1,4 +1,4 @@
-# AGENTS.md — AI Compass 개발 가이드
+# AGENTS.md — AI HuBridge 개발 가이드
 
 > **규칙 (절대 위반 금지)**
 > 1. `C:\Users\wns53\Documents\GitHub\AIHuBridge` 폴더 **안에서만** 작업. 형제 저장소(EU/ondiai/Private) 절대 건드리지 말 것.
