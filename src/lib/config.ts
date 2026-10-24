@@ -1,8 +1,8 @@
-// ── AI Compass 루트 설정 ─────────────────────────────────
+// ── AI 허브릿지 루트 설정 ─────────────────────────────────
 // ※ open/ 폴더 안에서만 동작. 외부 저장소 참조 없음.
 
 export const config = {
-  siteName: 'AI Compass',
+  siteName: 'AI 허브릿지',
   tagline: '뉴스, 학습, 인증 — 너만의 AI 데스크탑',
   newsSources: [
     {
@@ -60,7 +60,7 @@ export const config = {
   },
 
   /** 로컬 저장 키 */
-  storageKey: 'ai-compass/user',
+  storageKey: 'aiHuBridge/user',
 } as const;
 
 export type NewsSource = (typeof config.newsSources)[number];
