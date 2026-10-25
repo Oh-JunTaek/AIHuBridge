@@ -38,4 +38,5 @@
 - 개발 서버: npm run dev 실행 및 브라우저 표시 확인.
 - 브라우저: 한국어+한국 Google 뉴스 8건 → NVIDIA 검색 1건 → 없는 검색어 0건 → 조건 초기화 40건. 라이트 컬러 로고와 다크 단색 로고에 흰 배경 사각형이 없음을 확인했다.
 - 시각 증거: artifacts/news-dark-preview.png.
-- 워크플로 트리거·예약·권한은 변경하지 않았다. 운영 반영은 커밋의 Pages 배포 성공 여부로 별도 확인한다.
+- 워크플로 트리거·예약·권한은 변경하지 않았다.
+- 코드 커밋 8cfafae의 [Pages 배포 40195085462](https://github.com/Oh-JunTaek/AIHuBridge/actions/runs/40195085462) success 확인. 공개 HTML의 새 빌드(index-CSDSFdwc.js), 뉴스 메타 40건·success·2026-10-25T12:46:22.674Z 일치를 확인했다. 운영 사이트의 다크모드 로고·뉴스 필터도 브라우저에서 확인하고 위 시각 증거를 저장했다.
