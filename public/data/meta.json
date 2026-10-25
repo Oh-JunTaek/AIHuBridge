@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-25T12:46:22.674Z",
+  "fetchedAt": "2026-10-25T14:10:07.409Z",
   "total": 40,
   "status": "success",
   "sourceResults": [
@@ -8,42 +8,42 @@
       "status": "success",
       "count": 8,
       "rejected": 0,
-      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+      "lastSuccessAt": "2026-10-25T14:10:07.409Z"
     },
     {
       "id": "huggingface",
       "status": "success",
       "count": 8,
       "rejected": 0,
-      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+      "lastSuccessAt": "2026-10-25T14:10:07.409Z"
     },
     {
       "id": "github",
       "status": "success",
       "count": 8,
       "rejected": 0,
-      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+      "lastSuccessAt": "2026-10-25T14:10:07.409Z"
     },
     {
       "id": "techcrunch",
       "status": "success",
       "count": 8,
       "rejected": 0,
-      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+      "lastSuccessAt": "2026-10-25T14:10:07.409Z"
     },
     {
       "id": "arxiv",
       "status": "success",
       "count": 0,
       "rejected": 0,
-      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+      "lastSuccessAt": "2026-10-25T14:10:07.409Z"
     },
     {
       "id": "koreagnews",
       "status": "success",
       "count": 8,
       "rejected": 0,
-      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+      "lastSuccessAt": "2026-10-25T14:10:07.409Z"
     }
   ],
   "unavailableSources": [],
