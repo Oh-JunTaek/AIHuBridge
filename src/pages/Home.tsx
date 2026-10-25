@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { NewsItem } from '../types';
 import { loadNews, filterNews } from '../lib/news';
-import { ClockIcon, TrendIcon } from '../components/icons';
+import { ClockIcon } from '../components/icons';
 import { useUser } from '../lib/user';
 import { useT } from '../lib/i18n';
-import { Badge } from '../components/Badge';
-import { computeBadges } from '../lib/certs';
 import { TodayBrief } from '../components/TodayBrief';
 import { TodayConcept } from '../components/ConceptCard';
 import { NewsCard } from '../components/NewsCard';
@@ -79,17 +77,9 @@ export default function Home() {
       {/* 오늘의 AI 한 줄 브리핑 (휴식/스몰 브리핑 공간) */}
       <TodayBrief items={items} />
 
-      {/* 오늘의 개념 1개 + 스트릭 */}
-      <section className="mb-8 flex items-center gap-4">
-        <span className="text-2xl">
-          <TrendIcon className="h-5 w-5" />
-        </span>
-        <span className="text-sm text-stone-600">
-          {t('home.streak', state.streak, state.level, state.xp)}
-        </span>
-      </section>
+      {/* 오늘의 개념 1개 — 진척도 표시 일시 비활성화 (개인화 미제공) */}
 
-      {/* 다음 레벨업 추천 (입문자 성장 동기 유도) */}
+      {/* 다음 레벨업 추천 — 개인화 미제공 시 비활성화
       {nextUp.length > 0 && (
         <section className="mt-6 rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-5 shadow-xs">
           <header className="mb-2 flex items-center gap-2">
@@ -121,6 +111,7 @@ export default function Home() {
           </ul>
         </section>
       )}
+      */}
 
       <TodayConcept />
 
@@ -155,7 +146,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 내 뱃지 */}
+      {/* 내 뱃지 — 개인화 미제공 시 비활성화
       <section className="mt-10">
         <h2 className="mb-3 text-sm font-semibold text-stone-600">{t('home.badges')}</h2>
         <div className="flex flex-wrap gap-3">
@@ -169,6 +160,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      */}
     </div>
   );
 }
