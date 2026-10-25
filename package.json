@@ -19,7 +19,7 @@
     "postbuild": "node scripts/postbuild.mjs",
     "preview": "vite preview",
     "lint": "tsc --noEmit",
-    "refresh": "node scripts/fetch-news.mjs",
+    "refresh": "node scripts/fetch-news.mjs && node scripts/fetch-calendar.mjs",
     "selfcheck": "node scripts/selfcheck.mjs"
   },
   "devDependencies": {

@@ -1,12 +1,12 @@
 {
-  "fetchedAt": "2026-10-24T00:22:51.742Z",
+  "fetchedAt": "2026-10-25T04:19:48.064Z",
   "total": 40,
   "counts": {
     "openai": 8,
     "huggingface": 8,
     "github": 8,
     "techcrunch": 8,
-    "arxiv": 8,
+    "arxiv": 0,
     "koreagnews": 8
   },
   "summaryTiers": {

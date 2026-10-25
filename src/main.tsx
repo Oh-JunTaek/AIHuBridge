@@ -8,7 +8,7 @@ import Research from './pages/Research';
 import Path from './pages/Path';
 import Certs from './pages/Certs';
 import Quiz from './pages/Quiz';
-import Dev from './pages/Dev';
+import Calendar from './pages/Calendar';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 import { UserProvider } from './lib/user';
@@ -27,8 +27,8 @@ const router = createBrowserRouter(
         { path: 'research', element: <Research /> },
         { path: 'path', element: <Path /> },
         { path: 'certs', element: <Certs /> },
+        { path: 'calendar', element: <Calendar /> },
         { path: 'quiz', element: <Quiz /> },
-        { path: 'dev', element: <Dev /> },
         { path: 'settings', element: <Settings /> },
         { path: 'terms', element: <Terms /> },
         { path: 'privacy', element: <Privacy /> },
