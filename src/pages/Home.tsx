@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import type { NewsItem } from '../types';
 import { loadNews, filterNews } from '../lib/news';
 import { ClockIcon } from '../components/icons';
-import { useUser } from '../lib/user';
 import { useT } from '../lib/i18n';
 import { TodayBrief } from '../components/TodayBrief';
 import { TodayConcept } from '../components/ConceptCard';
@@ -13,7 +12,6 @@ import { nextSteps } from '../data/path';
 export default function Home() {
   const [items, setItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const { state } = useUser();
   const t = useT();
 
   useEffect(() => {
@@ -21,11 +19,8 @@ export default function Home() {
     setLoading(false);
   }, []);
 
-  // Lv.{n} 다음 레벨업: 미완료 항목 중 난이도 ≤ 현재+1티어
-  const nextUp = nextSteps({
-    level: state.level,
-    completedCourseIds: state.completedCourseIds,
-  });
+  // 진척도/개인화 기능 일시 비활성화 (state.level, state.completedCourseIds 등 추후 재활성화용)
+  const nextUp = []; // 빌드 성공을 위해 임시 할당
 
   const handleRead = (_id?: string) => {
     // lastActive 갱신용 (추후 읽음 기록으로 확장)
