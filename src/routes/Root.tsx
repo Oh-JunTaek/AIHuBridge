@@ -3,8 +3,9 @@ import { nav } from '../lib/config';
 import { BadgeIcon, QuizIcon, SettingsIcon, DevIcon } from '../components/icons';
 import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
+import { useState } from 'react';
 
-// 2-Level 메뉴 구조 (정보관 / 학습관 + More)
+// 라우팅 정의 (t 없이 가능한 한 분리)
 const topMenu = [
   {
     id: 'info',
@@ -31,13 +32,18 @@ const moreLinks = [
 
 export default function Root() {
   const t = useT();
+
   return (
     <div className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors">
       <header className="sticky top-0 z-20 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur border-b border-stone-200 dark:border-stone-700">
         <div className="mx-auto max-w-4xl px-4 h-14 flex items-center justify-between">
-          {/* 로고: SVG 아이콘 + 텍스트 */}
+          {/* 로고: HuBridge.png 이미지 + 텍스트 */}
           <div className="flex items-center gap-2 font-semibold text-lg">
-            <BadgeIcon className="h-6 w-6 text-amber-500" />
+            <img
+              src={`${import.meta.env.BASE_URL}icon/HuBridge.png`}
+              alt="AI 허브릿지 로고"
+              className="h-6 w-auto"
+            />
             <span>{nav.siteName}</span>
           </div>
 
@@ -93,7 +99,6 @@ export default function Root() {
 }
 
 // More 버튼 컴포넌트 (간결화)
-import { useState } from 'react';
 function MoreMenu({ links, t }: { links: typeof moreLinks; t: ReturnType<typeof useT> }) {
   const [open, setOpen] = useState(false);
   return (
