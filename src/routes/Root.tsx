@@ -1,5 +1,4 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import { nav } from '../lib/config';
 import { BadgeIcon, QuizIcon, SettingsIcon, DevIcon } from '../components/icons';
 import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
