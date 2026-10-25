@@ -5,7 +5,7 @@
  * - D-day 계산 (마감일 기준)
  * - 필터링: status, type, isOnline, region, category
  */
-import { create } from 'zustand';
+import { create, type StateCreator } from 'zustand';
 import type { CalendarEvent } from '../types';
 
 const CALENDAR_URL = `${import.meta.env.BASE_URL}data/calendar.json`;
@@ -29,7 +29,7 @@ interface FilterOpts {
   search?: string;
 }
 
-export const useCalendarStore = create<CalendarState>((set, get: () => CalendarState) => ({
+export const useCalendarStore = create<CalendarState>((set: (state: Partial<CalendarState>) => void, get) => ({
   events: [],
   status: 'idle',
   loadEvents: async () => {
