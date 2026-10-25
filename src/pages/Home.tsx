@@ -7,7 +7,6 @@ import { useT } from '../lib/i18n';
 import { TodayBrief } from '../components/TodayBrief';
 import { TodayConcept } from '../components/ConceptCard';
 import { NewsCard } from '../components/NewsCard';
-import { nextSteps } from '../data/path';
 
 export default function Home() {
   const [items, setItems] = useState<NewsItem[]>([]);
@@ -19,8 +18,7 @@ export default function Home() {
     setLoading(false);
   }, []);
 
-  // 진척도/개인화 기능 일시 비활성화 (state.level, state.completedCourseIds 등 추후 재활성화용)
-  const nextUp = []; // 빌드 성공을 위해 임시 할당
+  // 진척도/개인화 기능 일시 비활성화 (개인화 미제공 → 재활성화 시 state + nextSteps 재연결)
 
   const handleRead = (_id?: string) => {
     // lastActive 갱신용 (추후 읽음 기록으로 확장)
