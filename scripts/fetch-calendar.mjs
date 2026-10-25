@@ -20,26 +20,31 @@ mkdirSync(outDir, { recursive: true });
  */
 
 // ── 정의된 수집 출처 ──────────────────────────────────────────
-const SOURCES = [
-  // 정부 / 공공기관
-  {
-    id: 'kdt',
-    name: 'K-Digital 트레이닝',
-    url: 'https://www.kdt.re.kr/kdt/board.do?menuId=AI',
-    type: 'training',
-    category: 'ai-core',
-    lang: 'ko',
-  },
-  // 기업
-  {
-    id: 'naver-ai',
-    name: '네이버 AI 블로그',
-    url: 'https://abn-ai.blog.naver.com/NaverPostList.naver',
-    type: 'seminar',
-    category: 'ai-applied',
-    lang: 'ko',
-  },
-];
+const CATEGORY_SOURCES = {
+  government: [
+    { id: 'ai-edu-center', name: 'AI 교육진흥센터', url: 'https://aiedu.go.kr/rss.do', type: 'training', category: 'ai-core', lang: 'ko', region: '전국' },
+  ],
+  corporate: [
+    { id: 'naver-ai', name: '네이버 AI', url: 'https://news.blog.naver.com/NaverPostList.naver', type: 'seminar', category: 'ai-applied', lang: 'ko', region: '경기' },
+    { id: 'kakao-ai', name: '카카오 AI', url: 'https://tech.kakao.com/blog/feed/', type: 'workshop', category: 'ai-applied', lang: 'ko', region: '서울' },
+  ],
+  bootcamp: [
+    { id: 'fastcampus', name: '패스트캠퍼스', url: 'https://www.fastcampus.co.kr/feed', type: 'bootcamp', category: 'ai-applied', lang: 'ko', region: '전국' },
+  ],
+  webinar: [
+    { id: 'aws-ai', name: 'AWS Genius', url: 'https://aws.amazon.com/blogs/ai/feed/', type: 'webinar', category: 'ai-applied', lang: 'en', region: '전국' },
+  ],
+  hackathon: [
+    { id: 'devpost-ai', name: 'Devpost AI', url: 'https://devpost.com/hackathons.json', type: 'hackathon', category: 'general', lang: 'en', region: '전국' },
+  ],
+  competition: [
+    { id: 'ai-challenge', name: 'AI 충전소', url: 'https://aichallenge.or.kr/feed', type: 'competition', category: 'ai-core', lang: 'ko', region: '전국' },
+  ],
+  community: [
+    { id: 'ai-society', name: 'AI학회', url: 'https://aidea.or.kr/feed', type: 'seminar', category: 'ai-core', lang: 'ko', region: '서울' },
+  ],
+};
+
 
 /**
  * 날짜 문자열 → ISO 문자열
@@ -109,20 +114,34 @@ const SAMPLE_EVENTS = [
 ];
 
 async function main() {
-  const all = [];
+  let events = [];
+  let sourceInfo = {};
 
-  // ── 실제 출처 수집 시도 (RSS 스크래핑 등장 시 추가) ──────────
-  // TODO: rss-parser 도입 시, 각 출처에서 item → CalendarEvent 변환
-  //       현재 샘플 데이터 기반이므로 SOURCES 목록을 메타에 남깁니다.
+  // ── 실제 출처 수집 시도 ─────────────────────────────────────
+  const { all, collectedFrom } = await fetchFromSources();
+  if (all.length > 0) {
+    events = all;
+    sourceInfo = { collected: collectedFrom };
+  }
 
   // ── fallback: 샘플 데이터 사용 ───────────────────────────────
-  const events = SAMPLE_EVENTS;
+  if (events.length === 0) {
+    events = SAMPLE_EVENTS;
+    sourceInfo = { note: '샘플 데이터 기반 (실제 RSS 수집 실패)' };
+  }
+
+  // 마감일 기준 정렬 (오름차순)
+  events.sort((a, b) => {
+    const ta = a.applicationEnd ? new Date(a.applicationEnd).getTime() : Infinity;
+    const tb = b.applicationEnd ? new Date(b.applicationEnd).getTime() : Infinity;
+    return ta - tb;
+  });
 
   const meta = {
     fetchedAt: new Date().toISOString(),
     total: events.length,
-    sources: SOURCES.map((s) => s.id),
-    note: '샘플 데이터 기반. 실제 RSS 수집 시 이 파일을 교체합니다.',
+    categories: Object.keys(CATEGORY_SOURCES),
+    ...sourceInfo,
   };
 
   writeFileSync(resolve(outDir, 'calendar.json'), JSON.stringify(events, null, 2), 'utf8');

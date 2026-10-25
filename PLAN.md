@@ -66,7 +66,7 @@
 - [ ] 기사 하단에 연관 AI 용어와 무료 학습 자료, 공식 문서, 추천 강의 링크 표시.
 - [ ] 초기에는 태그 매칭·난이도 규칙 기반 추천. 관련 콘텐츠가 없으면 억지 추천하지 않음.
 
-### F-006: AI 용어 사전 확장 (P1)
+### F-006: AI 용어 사전 확장 (개발 취소-기능삭제)
 
 - [ ] 기존 용어 데이터 중복 없이 정비; 간단 정의·상세 해설·활용 사례·관련 기술·출처·관련 강의 제공.
 - [ ] LLM, RAG, Transformer, Token, Embedding, Fine-tuning, LoRA, Quantization, MCP, Tool/Function Calling, AI Agent, Multimodal, On-device AI 등 우선.
