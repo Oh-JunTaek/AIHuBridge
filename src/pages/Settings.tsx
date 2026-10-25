@@ -45,7 +45,8 @@ export default function Settings() {
                   : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
               }`}
             >
-              {lg.label[state.lang ?? 'ko']}
+              {/* 버튼 라벨: 언어 코드 기반 ('ko' → '한국어', 'en' → 'English') */}
+              {lg.label[lg.value]}
             </button>
           ))}
         </div>
