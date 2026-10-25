@@ -29,7 +29,7 @@ interface FilterOpts {
   search?: string;
 }
 
-export const useCalendarStore = create<CalendarState>((set, get) => ({
+export const useCalendarStore = create<CalendarState>((set, get: () => CalendarState) => ({
   events: [],
   status: 'idle',
   loadEvents: async () => {
@@ -62,7 +62,7 @@ export const useCalendarStore = create<CalendarState>((set, get) => ({
 
   filter: (opts: FilterOpts = {}) => {
     const { events } = get();
-    return events.filter((e) => {
+    return events.filter((e: CalendarEvent) => {
       if (opts.status && !opts.status.includes(e.status)) return false;
       if (opts.type && !opts.type.includes(e.type)) return false;
       if (opts.isOnline !== undefined && e.isOnline !== opts.isOnline) return false;
