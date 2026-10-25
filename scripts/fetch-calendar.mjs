@@ -2,8 +2,10 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import Parser from 'rss-parser';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const parser = new Parser({ headers: { 'user-agent': 'ai-hub-bridge/0.1' }, timeout: 20_000 });
 const root = resolve(__dirname, '..');
 const outDir = resolve(root, 'public/data');
 mkdirSync(outDir, { recursive: true });

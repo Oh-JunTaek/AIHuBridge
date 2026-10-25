@@ -1,6 +1,6 @@
 {
-  "fetchedAt": "2026-10-25T05:27:43.775Z",
-  "total": 2,
+  "fetchedAt": "2026-10-25T05:28:16.705Z",
+  "total": 14,
   "categories": [
     "government",
     "corporate",
@@ -10,5 +10,21 @@
     "competition",
     "community"
   ],
-  "note": "샘플 데이터 기반 (실제 RSS 수집 실패)"
+  "collected": [
+    {
+      "category": "corporate",
+      "id": "kakao-ai",
+      "count": 5
+    },
+    {
+      "category": "webinar",
+      "id": "aws-ai",
+      "count": 5
+    },
+    {
+      "category": "competition",
+      "id": "ai-challenge",
+      "count": 4
+    }
+  ]
 }
