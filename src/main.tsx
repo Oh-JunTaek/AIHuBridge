@@ -13,6 +13,9 @@ import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 import { UserProvider } from './lib/user';
 
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+
 const router = createBrowserRouter(
   [
     {
@@ -27,6 +30,8 @@ const router = createBrowserRouter(
         { path: 'quiz', element: <Quiz /> },
         { path: 'dev', element: <Dev /> },
         { path: 'settings', element: <Settings /> },
+        { path: 'terms', element: <Terms /> },
+        { path: 'privacy', element: <Privacy /> },
       ],
     },
   ],

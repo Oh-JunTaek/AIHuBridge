@@ -90,8 +90,14 @@ export default function Root() {
         <Outlet />
       </main>
 
-      <footer className="mt-16 border-t border-stone-200 dark:border-stone-700 py-6 text-center text-xs text-stone-400 dark:text-stone-500">
-        <span>© {nav.siteName} — {t('footer.copy')}</span>
+      <footer className="mt-16 border-t border-stone-200 dark:border-stone-700 py-4 text-center text-xs text-stone-400 dark:text-stone-500">
+        <p className="mb-1">
+          © {new Date().getFullYear()} AI 허브릿지. Developed by <strong className="text-amber-600">EunmaStudio</strong>.
+        </p>
+        <div className="flex justify-center gap-3 mt-1">
+          <NavLink to="terms" className="hover:text-amber-600">이용약관</NavLink>
+          <NavLink to="privacy" className="hover:text-amber-600">개인정보 처리방침</NavLink>
+        </div>
       </footer>
     </div>
   );
