@@ -1,11 +1,9 @@
 import { useUser } from './user';
 
-export type Lang = 'ko' | 'en';
+export type Lang = 'ko';  // 한국어 전용 (영어 지원 제거)
 
-export const LANGUAGES: { value: Lang; label: { ko: string; en: string } }[] = [
-  { value: 'ko', label: { ko: '한국어', en: 'Korean' } },
-  { value: 'en', label: { ko: '영어', en: 'English' } },
-];
+// 언어 고정 (한국어 전용)
+export const LANG = { value: 'ko' as Lang, label: '한국어' } as const;
 
 export const THEMES = ['light', 'dark', 'system'] as const;
 export type Theme = (typeof THEMES)[number];

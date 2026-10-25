@@ -1,12 +1,11 @@
 import { useUser } from '../lib/user';
-import { useT, THEMES, LANGUAGES, type Lang, type Theme } from '../lib/i18n';
+import { useT, THEMES, type Theme } from '../lib/i18n';
 
 export default function Settings() {
   const { state, mutate } = useUser();
   const t = useT();
 
   const pickTheme = (theme: Theme) => mutate({ theme });
-  const pickLang = (lang: Lang) => mutate({ lang });
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
@@ -32,28 +31,10 @@ export default function Settings() {
         </div>
       </section>
 
-      <section className="mt-6">
-        <h2 className="mb-3 text-sm font-semibold text-stone-600">{t('settings.language')}</h2>
-        <div className="flex flex-wrap gap-2">
-          {LANGUAGES.map((lg) => (
-            <button
-              key={lg.value}
-              onClick={() => pickLang(lg.value)}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium ${
-                state.lang === lg.value
-                  ? 'bg-amber-600 text-white'
-                  : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
-              }`}
-            >
-              {/* 버튼 라벨: 언어 코드 기반 ('ko' → '한국어', 'en' → 'English') */}
-              {lg.label[lg.value]}
-            </button>
-          ))}
-        </div>
-        <p className="mt-2 text-xs text-stone-400">
-          {t('settings.saved')} · {state.lang === 'ko' ? '한국어' : 'English'}
-        </p>
-      </section>
+      {/* 언어 설정 제거 (한국어 전용) */}
+      <p className="mt-4 text-sm text-stone-600 dark:text-stone-400">
+        🌐 현재 언어: 한국어 (Language setting is not available.)
+      </p>
 
       <p className="mt-8 text-xs text-stone-400">
         설정은 브라우저(localStorage)에 저장됩니다. 다른 브라우저에서는 초기화됩니다.
