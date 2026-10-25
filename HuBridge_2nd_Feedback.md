@@ -1,5 +1,7 @@
 # HuBridge 2차 피드백 및 긴급 복구 지침
 
+> **이력 문서 · 현재 작업 지시가 아닙니다.** 당시 분석·검증 결과를 보존합니다. 현재 범위는 [AGENTS.md](./AGENTS.md)·[PLAN.md](./PLAN.md), 현재 자동화는 [AUTOMATION.md](./AUTOMATION.md)를 따릅니다. 과거 기능·데이터·배포 구성을 이 문서만 보고 복구하지 마세요.
+
 - 작성 기준: 2026-10-25
 - 대상 저장소: `Oh-JunTaek/AIHuBridge`
 - 배포 URL: https://oh-juntaek.github.io/AIHuBridge/
