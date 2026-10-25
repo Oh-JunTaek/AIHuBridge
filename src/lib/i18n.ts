@@ -1,4 +1,3 @@
-import { useUser } from './user';
 
 export type Lang = 'ko';  // 한국어 전용 (영어 지원 제거)
 
@@ -13,21 +12,17 @@ type Dict = Record<string, unknown>;
 const ko: Dict = {
   ui: {
     min: '분',
-    example: '예)',
-    related: '관련:',
-    more: '↻ 다른 용어 보기',
   },
   nav: {
     briefing: '브리핑',
     research: 'AI뉴스',
     path: '학습 커리큘럼',
     certs: '인증 기관 교육',
-    calendar: 'AI 교육캘린더',
-    quiz: '퀴즈',
+    calendar: 'AI 캘린더',
     dev: '개발자',
     settings: '설정',
   },
-  footer: { copy: '개인용 학습 보드 · 로컬 저장만 사용 · 언제든 초기화 가능' },
+  footer: { copy: 'AI 소식·교육·일정을 한곳에서' },
   settings: {
     title: '설정',
     theme: '야간 모드',
@@ -42,20 +37,15 @@ const ko: Dict = {
     heading: '오늘의 AI 브리핑',
     loading: '뉴스를 불러오는 중…',
     allResearch: '전체 리서치',
-    concept: '오늘의 AI 개념',
-    sub: 'AI 최신 소식, 무료 학습 경로, 인증 뱃지까지. 비전공자도 쉽게 따라오는 개인용 AI 러닝 패드',
-    tagline: '뉴스, 학습, 인증 — 너만의 AI 데스크탑',
-    streak: '🔥 {0}일 연속 학습 · Lv.{1} (XP {2})',
+    sub: 'AI 최신 소식부터 교육·인증 정보와 다양한 AI 행사까지 한곳에서 확인하세요.',
+    tagline: 'AI 소식·교육·행사를 연결합니다.',
     pick: '오늘의 Pick 4',
-    recent: '요즘 본 기사',
-    badges: '나의 뱃지',
+    recent: '최근 소식',
     noNews: '뉴스 정보를 불러오지 못했거나 등록된 뉴스가 없습니다. 잠시 후 다시 확인해 주세요.',
     devLink: '자기진단',
     briefingLabel: '오늘의 AI 한 줄 브리핑',
-    nextUp: 'Lv.{0} 다음 레벨업 추천',
-    study: '학습 하러 가기 →',
     more: '더 보기 →',
-    progress: '{0}/{1} 항목 완료 ({2}%)',
+    study: '학습 하러 가기 →',
   },
   research: {
     title: '리서치',
@@ -65,47 +55,29 @@ const ko: Dict = {
   },
   path: {
     title: '학습 경로',
-    sub: '비전공자를 위한 4단계 루트 — 완료하면 뱃지가 생겨요',
-    progress: '{0}/{1} 항목 완료 ({2}%)',
+    sub: '공식 교육과 인증으로 이어지는 3단계 학습 경로',
     filterLevel: '난이도:',
     filterCategory: '분야:',
     filterAll: '전체',
     filterReset: '필터 초기화',
-    toCerts: '뱃지 보러 가기',
+    toCerts: '인증기관 교육 보기',
   },
   certs: {
-    title: '인증 뱃지',
+    title: '인증기관 교육',
     back: '학습 경로로 돌아가기',
-    note: '완료 체크 버튼으로 개인 진행 상황을 기록하세요. (localStorage·공유 안 됨)',
+    note: '교육과 시험의 비용·조건은 공식 페이지에서 확인하세요. 개인 완료 기록은 제공하지 않습니다.',
     footer: '인증은 공식 페이지에서 직접 응시하세요. (링크는 2026-10 기준 실측 URL)',
-    checked: '✓ 체크 완료',
-    checkedOn: '완료 체크됨',
-    checkedOff: '완료로 표시',
     free: '무료',
     official: '공식 페이지',
     tab: { course: '무료 과정', exam: '수험 인증', micro: '스킬 배지' },
   },
-  quiz: {
-    qTitle: '용어 맞추기',
-    prompt: '다음은 어떤 용어에 대한 설명인가요?',
-    title: '퀴즈',
-    rate: '정답률 {0}% ({1}/{2})',
-    daily: '📅 오늘의 문제',
-    practice: '🎯 연습 8문제',
-    next: '다음 문제',
-    empty: '내일도 새 문제가 등장해요. (날짜에 따라 문항이 달라집니다)',
-    correct: '정답! 🎉',
-    wrong: '틀렸어요. 정답은 “{0}”예요.',
-    example: '예)',
-  },
   dev: {
     title: '🧪 자기진단',
-    sub: 'RSS 수집 현황과 이 브라우저의 학습 기록을 확인합니다.',
+    sub: '뉴스와 AI 일정의 수집 현황을 확인합니다.',
     fetchedAt: '마지막 RSS 수집 시각',
     count: '저장된 뉴스 건수',
     tiers: '뉴스 설명 방식',
     sourceCounts: '소스별 건수',
-    userState: '사용자 상태 (localStorage)',
     tiFormat: '규칙 발췌 {0} · 원문 설명 {1}',
     helpTitle: '도움말',
     help1: '뉴스 설명은 RSS 원문을 규칙으로 발췌합니다. 자동 번역이나 생성형 요약은 제공하지 않습니다.',
@@ -119,7 +91,7 @@ const ko: Dict = {
     back: '브리핑으로 돌아가기',
   },
   category: {
-    '업체/제품': '업계·제품',
+    '업계/제품': '업계·제품',
     '연구/논문': '연구·논문',
     '정책/규제': '정책·규제',
     오픈소스: '오픈소스',
@@ -136,10 +108,9 @@ const ko: Dict = {
     '비즈니스·전략': '비즈니스·전략',
   },
   pathStage: {
-    understand: { title: '1. 알기', sub: '용어 하나씩, 두려움 없이' },
-    try: { title: '2. 해보기', sub: '코드 없이 체험하는 AI' },
-    certify: { title: '3. 통과하기', sub: '작은 걸음부터 인증을 쌓아가기' },
-    expert: { title: '4. 전문가 되기', sub: '심화하고 연결고리 만들기' },
+    try: { title: '1. 해보기', sub: '코드 없이 체험하는 AI' },
+    certify: { title: '2. 통과하기', sub: '작은 걸음부터 인증을 쌓아가기' },
+    expert: { title: '3. 전문가 되기', sub: '심화하고 연결고리 만들기' },
   },
 };
 
@@ -165,7 +136,6 @@ export function t(lang: Lang, key: string, ...args: (string | number)[]): string
 
 /** 컴포넌트에서 `const t = useT();` 로 사용 */
 export function useT(): (key: string, ...args: (string | number)[]) => string {
-  const { state } = useUser();
-  const lang = state.lang ?? 'ko';
+  const lang: Lang = 'ko';
   return (key: string, ...args: (string | number)[]) => t(lang, key, ...args);
 }

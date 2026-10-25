@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { loadNews } from '../lib/news';
-import { useUser } from '../lib/user';
 import { useT } from '../lib/i18n';
 
 type Meta = { fetchedAt: string; total: number; counts: Record<string, number>; summaryTiers: Record<string, number> };
@@ -8,7 +7,6 @@ type Meta = { fetchedAt: string; total: number; counts: Record<string, number>; 
 export default function Dev() {
   const [meta, setMeta] = useState<Meta | null>(null);
   const [newsCount, setNewsCount] = useState<number | null>(null);
-  const { state } = useUser();
   const t = useT();
 
   useEffect(() => {
@@ -57,14 +55,6 @@ export default function Dev() {
             {meta?.counts
               ? Object.entries(meta.counts).map(([k, v]) => `${k}:${v}`).join(', ')
               : '—'}
-          </dd>
-        </div>
-        <div className="sm:col-span-2">
-          <dt className="text-slate-500">{t('dev.userState')}</dt>
-          <dd className="font-mono text-xs text-slate-700 break-all">
-            streak={state.streak}, level={state.level}, xp={state.xp},
-            courses={state.completedCourseIds.length},
-            certs={state.earnedCertChecks.length}, quiz={state.quizHistory.length}
           </dd>
         </div>
       </dl>

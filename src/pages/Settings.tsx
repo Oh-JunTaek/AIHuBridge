@@ -1,11 +1,11 @@
-import { useUser } from '../lib/user';
+import { usePreferences } from '../lib/preferences';
 import { useT, THEMES, type Theme } from '../lib/i18n';
 
 export default function Settings() {
-  const { state, mutate } = useUser();
+  const { preferences, setTheme, persisted } = usePreferences();
   const t = useT();
 
-  const pickTheme = (theme: Theme) => mutate({ theme });
+  const pickTheme = (theme: Theme) => setTheme(theme);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
@@ -20,7 +20,7 @@ export default function Settings() {
               key={th}
               onClick={() => pickTheme(th)}
               className={`rounded-full px-4 py-1.5 text-sm font-medium ${
-                state.theme === th
+                preferences.theme === th
                   ? 'bg-amber-600 text-white'
                   : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
               }`}
@@ -31,9 +31,10 @@ export default function Settings() {
         </div>
       </section>
 
-      {/* 언어 설정 제거 (한국어 전용) */}
+      {!persisted && <p role="alert" className="mt-4 text-sm text-amber-700 dark:text-amber-300">브라우저에서 설정을 저장하지 못했습니다. 현재 화면에는 적용되지만 창을 닫으면 유지되지 않을 수 있습니다.</p>}
+      {/* 한국어 전용 */}
       <p className="mt-4 text-sm text-stone-600 dark:text-stone-400">
-        🌐 현재 언어: 한국어 (Language setting is not available.)
+        현재 언어: 한국어
       </p>
 
       <p className="mt-8 text-xs text-stone-400">

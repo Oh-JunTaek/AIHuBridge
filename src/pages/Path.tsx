@@ -3,25 +3,15 @@ import { Link } from 'react-router-dom';
 import { stages, levelOrder, categoryOrder } from '../data/path';
 import type { Level, PCategory, PathFilter } from '../data/path';
 import { StageCard } from '../components/StageCard';
-import { useUser } from '../lib/user';
 import { useT } from '../lib/i18n';
 
 export default function Path() {
-  const { state } = useUser();
   const t = useT();
   const [filter, setFilter] = useState<PathFilter>({ level: null, category: null });
 
   const applyLevel = (l: Level | null) => setFilter((f) => ({ ...f, level: l }));
   const applyCategory = (c: PCategory | null) =>
     setFilter((f) => ({ ...f, category: c }));
-
-  // 전체 진도는 항상 all item 기준으로 유지(필터는 뷰만 좁힘)
-  const total = stages.reduce((s, st) => s + st.items.length, 0);
-  const done = stages.reduce(
-    (s, st) => s + st.items.filter((it) => state.completedCourseIds.includes(it.id)).length,
-    0,
-  );
-  const pct = Math.round((done / total) * 100);
 
   // 필터에 맞는 항목이 하나라도 있는 스테이지만 노출
   const visibleStages = stages.filter((s) =>
@@ -45,16 +35,6 @@ export default function Path() {
           {t('path.toCerts')} →
         </Link>
       </header>
-
-      <div className="mb-6 h-3 w-full rounded-full bg-stone-100">
-        <div
-          className="h-full rounded-full bg-amber-500 transition-all"
-          style={{ width: `${pct}%` }}
-        />
-      </div>
-      <p className="mb-6 text-sm text-stone-600">
-        {t('path.progress', done, total, pct)}
-      </p>
 
       {/* ── 분류 필터: 난이도 / 분야 ── */}
       <div className="mb-5 flex flex-wrap items-center gap-4 gap-y-2 border-b border-stone-200 pb-3 text-xs">

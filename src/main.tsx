@@ -7,12 +7,11 @@ import Home from './pages/Home';
 import Research from './pages/Research';
 import Path from './pages/Path';
 import Certs from './pages/Certs';
-import Quiz from './pages/Quiz';
 import Calendar from './pages/Calendar';
 import Dev from './pages/Dev';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
-import { UserProvider } from './lib/user';
+import { PreferencesProvider } from './lib/preferences';
 
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
@@ -30,7 +29,6 @@ const router = createBrowserRouter(
         { path: 'certs', element: <Certs /> },
         { path: 'calendar', element: <Calendar /> },
         { path: 'dev', element: <Dev /> },
-        { path: 'quiz', element: <Quiz /> },
         { path: 'settings', element: <Settings /> },
         { path: 'terms', element: <Terms /> },
         { path: 'privacy', element: <Privacy /> },
@@ -42,9 +40,9 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('app')!).render(
   <React.StrictMode>
-    <UserProvider>
+    <PreferencesProvider>
       <RouterProvider router={router} />
-    </UserProvider>
+    </PreferencesProvider>
   </React.StrictMode>,
 );
 

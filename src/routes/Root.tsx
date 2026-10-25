@@ -3,7 +3,7 @@ import { BadgeIcon, CalendarIcon, DevIcon, SettingsIcon } from '../components/ic
 import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
 
-// 1뎁스 메뉴 (Quiz 제거 + Calendar 추가)
+// 공통 메뉴
 const linkConfs = [
   { to: '/research', key: 'nav.research', icon: <LogoIcon /> },
   { to: '/path', key: 'nav.path', icon: <LogoIcon /> },

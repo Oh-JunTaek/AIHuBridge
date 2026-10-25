@@ -1,9 +1,9 @@
 // ── AI 허브릿지 루트 설정 ─────────────────────────────────
-// ※ open/ 폴더 안에서만 동작. 외부 저장소 참조 없음.
+// ※ AIHuBridge 폴더 안에서만 동작. 외부 저장소 참조 없음.
 
 export const config = {
   siteName: 'AI 허브릿지',
-  tagline: '뉴스, 학습, 인증 — 너만의 AI 데스크탑',
+  tagline: 'AI 소식·교육·행사를 연결합니다.',
   newsSources: [
     {
       id: 'openai',

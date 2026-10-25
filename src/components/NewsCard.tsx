@@ -35,6 +35,7 @@ export function NewsCard({
       <p className="mt-1 line-clamp-2 text-sm text-stone-600 dark:text-stone-300">{summaryText}</p>
       <footer className="mt-2 flex items-center gap-3 text-xs text-stone-500 dark:text-stone-400">
         <span className="font-medium text-stone-600 dark:text-stone-300">{item.source}</span>
+        <time dateTime={item.publishedAt} title="기사 발행일 (한국시간)">{new Date(item.publishedAt).toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}</time>
         <span className="flex items-center gap-1">
           <ClockIcon className="h-3 w-3" /> {mins}{t('ui.min')}
         </span>

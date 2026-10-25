@@ -2,14 +2,14 @@ import Parser from 'rss-parser';
 
 const parser = new Parser();
 // HTTP 요청과 본문 읽기에 같은 제한 시간을 적용하고, RSS 파서는 XML 해석만 맡긴다.
-export async function readRss(url) {
+export async function readPublicText(url) {
   const response = await fetch(url, {
-    headers: { 'user-agent': 'ai-hub-bridge/0.1', accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml' },
+    headers: { 'user-agent': 'ai-hub-bridge/0.1', accept: 'application/json, application/rss+xml, application/atom+xml, application/xml, text/xml' },
     signal: AbortSignal.timeout(15000),
   });
   if (!response.ok) {
     await response.body?.cancel();
-    throw new Error(`RSS 요청 실패: HTTP ${response.status}`);
+    throw new Error(`공개 자료 요청 실패: HTTP ${response.status}`);
   }
   const limit = 4 * 1024 * 1024;
   if (Number(response.headers.get('content-length')) > limit) {
@@ -32,5 +32,9 @@ export async function readRss(url) {
     await reader.cancel();
     reader.releaseLock();
   }
-  return parser.parseString(Buffer.concat(chunks).toString('utf8'));
+  return Buffer.concat(chunks).toString('utf8');
+}
+
+export async function readRss(url) {
+  return parser.parseString(await readPublicText(url));
 }

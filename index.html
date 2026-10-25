@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI 허브릿지 — 너만의 AI 학습·소식 데스크탑</title>
-    <meta name="description" content="AI 최신 소식, 무료 학습 경로, 인증 뱃지까지. 비전공자도 쉽게 따라오는 개인용 AI 러닝 패드" />
+    <title>AI 허브릿지 — AI 소식·교육·행사</title>
+    <meta name="description" content="AI 뉴스, 학습 커리큘럼, 인증기관 교육과 다양한 AI 일정을 한곳에서 확인하세요." />
     <!-- ✨ 글리온/한글 가독성: Pretendard (Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,10 @@
       (function () {
         try {
           const u = JSON.parse(localStorage.getItem('aiHuBridge/user') || '{}');
-          const lang = u.lang || 'ko';
+          const lang = 'ko';
           document.documentElement.lang = lang;
-          // 라이트 모드 고정 (다크모드 제거)
-          document.documentElement.classList.remove('dark');
+          // 저장된 테마를 첫 화면에도 적용한다.
+          document.documentElement.classList.toggle('dark', u.theme === 'dark' || ((!u.theme || u.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches));
         } catch (e) {}
       })();
     </script>

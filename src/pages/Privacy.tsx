@@ -1,44 +1,25 @@
-/**
- * 개인정보 처리방침 페이지
- * - 로컬 저장 기반 → 개인정보 미전송
- * - 제작사: EunmaStudio
- */
+/** 실제 저장 항목과 외부 서비스 요청 범위를 안내한다. */
 export default function Privacy() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12 text-sm text-stone-600 dark:text-stone-300">
-      <h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100 mb-6">
-        개인정보 처리방침
-      </h1>
-
-      <section className="space-y-6">
-        <div>
-          <h2 className="font-semibold text-stone-700 dark:text-stone-200">1. 정보 수집</h2>
-          <p className="mt-2">
-            본 서비스는 **어떠한 개인정보도 수집하지 않습니다**.
-            사용자님의 학습 진도, 설정, 퀴즈 기록 등은 모두 브라우저의 로컬 스토리지에 저장되며,
-            서버로 전송되지 않습니다.
-          </p>
-        </div>
-
-        <div>
-          <h2 className="font-semibold text-stone-700 dark:text-stone-200">2. 쿠키 및 추적</h2>
-          <p className="mt-2">
-            본 서비스는 분석 추적(Cookie/Analytics) 코드를 사용하지 않습니다.
-            오직 브랜드 표시(`HuBridge.png`)를 제외한 모든 리소스는 로컬에서 처리됩니다.
-          </p>
-        </div>
-
-        <div>
-          <h2 className="font-semibold text-stone-700 dark:text-stone-200">3. 문의처</h2>
-          <p className="mt-2">
-            서비스 관련 문의: <strong className="text-amber-600">EunmaStudio</strong>
-          </p>
-        </div>
-
-        <div className="border-t border-stone-200 dark:border-stone-700 pt-4 text-xs">
-          <p>© {new Date().getFullYear()} AI 허브릿지. Developed by <strong className="text-amber-600">EunmaStudio</strong>.</p>
-        </div>
-      </section>
+      <h1 className="mb-6 text-2xl font-bold text-stone-800 dark:text-stone-100">개인정보 및 저장 정보 안내</h1>
+      <p className="mb-6 text-xs">적용일: 2026년 10월 25일</p>
+      <div className="space-y-6">
+        <section>
+          <h2 className="font-semibold text-stone-800 dark:text-stone-100">1. 서비스가 저장하는 항목</h2>
+          <p className="mt-2">본 서비스는 로그인·회원가입·개인 학습 기록 기능을 제공하지 않습니다. 브라우저의 localStorage에는 한국어 표시와 테마 설정만 저장합니다. 이전 버전의 학습·인증 체크·퀴즈 기록은 사용하지 않고 화면 설정만 이어받습니다. 저장소를 사용할 수 없으면 현재 화면에만 설정을 적용합니다.</p>
+        </section>
+        <section>
+          <h2 className="font-semibold text-stone-800 dark:text-stone-100">2. 웹사이트 접속과 외부 요청</h2>
+          <p className="mt-2">사이트 자체의 분석·광고 추적 코드는 사용하지 않습니다. 웹사이트는 GitHub Pages에서 제공하며 GitHub는 보안 목적으로 접속자의 IP 주소를 기록합니다. 글꼴 리소스 요청은 Google Fonts에 연결될 수 있습니다. 원문·신청 링크를 열면 해당 제공처의 서비스와 정책이 적용됩니다.</p>
+          <p className="mt-2 space-x-3"><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" className="underline">GitHub 개인정보 정책</a><a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer" className="underline">Google Fonts 개인정보 안내</a></p>
+        </section>
+        <section>
+          <h2 className="font-semibold text-stone-800 dark:text-stone-100">3. 수집 콘텐츠와 화면 설정</h2>
+          <p className="mt-2">뉴스와 AI 일정은 운영 작업에서 수집한 정적 자료를 제공합니다. 브라우저의 테마 설정은 뉴스·행사 출처로 전송하지 않습니다. 브라우저의 사이트 데이터 삭제 기능으로 화면 설정을 삭제할 수 있으며 다른 브라우저와 동기화되지 않습니다.</p>
+        </section>
+        <section><h2 className="font-semibold text-stone-800 dark:text-stone-100">4. 운영 주체</h2><p className="mt-2">서비스 운영 및 정보 정정: EunmaStudio.</p></section>
+      </div>
     </div>
   );
 }

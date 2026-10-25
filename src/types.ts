@@ -21,6 +21,15 @@ export interface NewsItem {
   readMinutes: number;
 }
 
+export interface NewsResult {
+  status: 'success' | 'empty' | 'error';
+  items: NewsItem[];
+  fetchedAt: string | null;
+  stale: boolean;
+  warning: string | null;
+  error: string | null;
+}
+
 export type CertType = 'exam' | 'micro' | 'course';
 
 export interface Certification {
@@ -51,52 +60,19 @@ export interface Course {
   tags: string[];
 }
 
-export interface GlossaryEntry {
-  term: string;
-  definition: string;
-  example?: string;
-  related?: string[];
-}
-
-export interface UserState {
-  /** "2024-01-31" */
-  lastActive: string;
-  streak: number;
-  completedCourseIds: string[];
-  earnedCertChecks: string[];
-  quizHistory: QuizAttempt[];
-  level: number;
-  xp: number;
-  /** UI 선호: 언어 (ko/en) */
+export interface UiPreferences {
   lang: Lang;
-  /** UI 선호: 다크모드 (light/dark/system) */
   theme: Theme;
 }
 
-export interface QuizAttempt {
-  id: string;
-  term: string;
-  answered: string;
-  correct: string;
-  ok: boolean;
-  at: string;
-}
-
-export interface InternalBadge {
-  id: string;
-  label: string;
-  earned: boolean;
-  icon: string;
-  description: string;
-}
-
 // ── AI 교육·행사 모집 캘린더 (F-002) ─────────────────────────────
-export type EventType = 'seminar' | 'webinar' | 'workshop' | 'bootcamp' | 'hackathon' | 'competition' | 'training';
+export type EventType = 'seminar' | 'webinar' | 'workshop' | 'bootcamp' | 'hackathon' | 'competition' | 'training' | 'conference' | 'meetup' | 'other';
 
 export type EventStatus =
   | 'recruiting'   // 모집 중
   | 'scheduled'    // 모집 예정
   | 'closed'       // 모집 마감
+  | 'announced'    // 개최일 공개, 신청 마감 미확인
   | 'completed';
 
 export interface CalendarEvent {
@@ -111,6 +87,8 @@ export interface CalendarEvent {
   applicationEnd: string | null;    // 마감일 (D-day 계산용)
   eventStart: string | null;        // 행사 시작일
   eventEnd: string | null;          // 행사 종료일
+  eventDate?: string;               // 현지 날짜만 공개된 경우, 시각·시간대 추정 금지
+  eventEndDate?: string | null;
 
   // 분포
   isOnline: boolean | null;
@@ -125,8 +103,10 @@ export interface CalendarEvent {
   confirmedAt: string | null;       // 수동으로 내용 확인한 날짜
   publishedAt: string | null;       // 공고 게시일 (모집일과 별개)
   fetchedAt: string;
-  timezone: 'Asia/Seoul';
-  verification: 'rss-explicit' | 'manual';
+  timezone: 'Asia/Seoul' | null;     // 현지 날짜만 공개된 행사는 null
+  verification: 'rss-explicit' | 'manual' | 'public-event';
+  sourceUrl?: string;               // 공개 일정 제공처
+  topics?: string[];                // 제공처가 공개한 행사 주제
   dateEvidence: string;             // 신청 마감일을 확인한 원문 근거
-  lang: 'ko' | 'en';                // 출처 언어
+  lang: 'ko' | 'en' | 'unknown';    // 출처 언어, 자동 추정하지 않음
 }

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Local-first AI learning + news + badge dashboard for non-engineers.",
+  "description": "AI 뉴스·교육·인증 정보와 다양한 AI 일정을 제공하는 공개 웹 서비스.",
   "keywords": [
     "ai",
     "llm",

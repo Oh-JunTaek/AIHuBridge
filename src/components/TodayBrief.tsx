@@ -7,10 +7,10 @@ import { useT } from '../lib/i18n';
 
 /** 오늘의 AI 한 줄 브리핑 — 가장 최근 뉴스 1건을 한눈에 (휴식/스몰 브리핑용) */
 export function TodayBrief({ items }: { items: NewsItem[] }) {
+  const t = useT();
   const top = items[0];
   if (!top) return null;
 
-  const t = useT();
   const mins = readMinutes(top.excerpt, top.title);
   const badge = config.categoryColor[top.category] || 'bg-stone-100 text-stone-800';
   const summaryText = top.summary || top.excerpt;

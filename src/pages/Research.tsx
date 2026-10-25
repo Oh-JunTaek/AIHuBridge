@@ -1,20 +1,14 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import type { NewsItem } from '../types';
-import { loadNews, filterNews } from '../lib/news';
+import { useNews } from '../lib/use-news';
+import { NewsStatus } from '../components/NewsStatus';
+import { filterNews } from '../lib/news';
 import { NewsCard } from '../components/NewsCard';
 import { useT } from '../lib/i18n';
 
 export default function Research() {
-  const [items, setItems] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    loadNews().then((all) => {
-      setItems(filterNews(all));
-      setLoading(false);
-    });
-  }, []);
+  const { result, loading, reload } = useNews();
+  const items = useMemo(() => filterNews(result?.items ?? []), [result]);
 
   const categories = ['전체', '업계/제품', '연구/논문', '정책/규제', '오픈소스', '언론', '블로그/개인'];
   const [active, setActive] = useState('전체');
@@ -50,8 +44,8 @@ export default function Research() {
         ))}
       </nav>
 
-      {loading && <p className="text-sm text-stone-500">{t('home.loading')}</p>}
-      {!loading && shown.length === 0 && (
+      <NewsStatus result={result} loading={loading} onRetry={reload} />
+      {!loading && result?.status === 'success' && shown.length === 0 && (
         <p className="text-sm text-stone-500">{t('research.empty')}</p>
       )}
 

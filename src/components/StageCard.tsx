@@ -1,8 +1,6 @@
 import type { Stage, Level, PCategory, PathFilter } from '../data/path';
-import { useUser } from '../lib/user';
 import { getCert } from '../lib/certs';
-import { glossary } from '../data/glossary';
-import { CheckIcon, ClockIcon, ExternalLinkIcon } from './icons';
+import { ClockIcon, ExternalLinkIcon } from './icons';
 import { useT } from '../lib/i18n';
 
 const levelColor: Record<Level, string> = {
@@ -20,17 +18,7 @@ const categoryColor: Record<PCategory, string> = {
 };
 
 export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter }) {
-  const { state, mutate } = useUser();
   const t = useT();
-  const completed = state.completedCourseIds;
-
-  function toggle(id: string) {
-    const next = completed.includes(id)
-      ? completed.filter((x) => x !== id)
-      : [...completed, id];
-    mutate({ completedCourseIds: next });
-  }
-
   return (
     <div className="rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-5 shadow-xs">
       <header className="mb-4 flex items-center gap-3">
@@ -49,12 +37,8 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
             (filter.category && it.category !== filter.category);
           if (hidden) return null;
 
-          const done = completed.includes(it.id);
-          const cert = it.kind === 'concept' ? undefined : getCert(it.refId);
-          const refLabel =
-            it.kind === 'concept'
-              ? glossary.find((g) => g.term === it.refId)?.definition
-              : cert?.name;
+          const cert = getCert(it.refId);
+          const refLabel = cert?.name;
           // 동일한 텍스트(예: "Hugging Face LLM Course") 중복 표시 억제
           const showRef = !!refLabel && refLabel !== it.label;
           return (
@@ -99,17 +83,6 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                     <ExternalLinkIcon className="h-4 w-4" />
                   </a>
                 ) : null}
-                <button
-                  className={`rounded p-1 ${
-                    done
-                      ? 'bg-emerald-100 text-emerald-600'
-                      : 'bg-stone-100 text-stone-500'
-                  }`}
-                  onClick={() => toggle(it.id)}
-                  title="완료 체크"
-                >
-                  <CheckIcon className="h-4 w-4" />
-                </button>
               </div>
             </li>
           );

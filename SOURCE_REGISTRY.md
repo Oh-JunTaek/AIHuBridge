@@ -1,0 +1,30 @@
+# 수집 출처 관리표
+
+확인일: 2026-10-25. 공개 여부·접근 정책·이용 안내를 확인하고 최소 정보만 제공합니다. 이 표가 모든 콘텐츠의 포괄적 재사용 허가를 의미하지 않습니다. 출처 정책 변경 시 재확인이 필요합니다.
+
+## 활성 AI 일정 출처
+
+| 출처 | 방식 | 사용 정보 | 제한 |
+|---|---|---|---|
+| 카카오 공식 기술 블로그 | https://tech.kakao.com/blog/feed/ | 모집 표현·일정 근거가 명시된 AI 공고의 제목·마감·링크 | 일반 글·회고 제외, 설명문 전재 없음 |
+| Google 개발자 커뮤니티 공개 행사 지도 | https://developers.google.com/community/GDG_DevFest_Events.json | AI 주제 행사명·주최 커뮤니티명·현지 날짜·도시·진행 방식·원문 링크·주제 | 마감일·요금·시각 추정 금지, RSVP·연락처·좌표·사진·설명문 미수집 |
+
+Google 출처는 [공식 행사 페이지](https://developers.google.com/events)의 공개 지도 설정이 연결하는 JSON입니다. [robots.txt](https://developers.google.com/robots.txt)에서 해당 경로의 제한이 없음을 확인했습니다. 표제와 일정 등 최소 메타데이터만 사용하며, 카드에서 원문과 일정 제공처를 링크합니다. 일반 [문서 이용 정책](https://developers.google.com/terms/site-policies)은 개별 페이지의 이용허락 표시를 전제로 하므로 행사 데이터 전체에 임의로 CC BY 표시를 붙이지 않습니다.
+
+## 검토 후 제외
+
+- K-Startup: RSS 응답은 존재하지만 날짜가 포함되지 않습니다. 상세 공고 재사용은 [이용약관](https://www.k-startup.go.kr/web/contents/webUTILZTN_STPL.do)의 사전 승낙 조건이 있어 자동 수집에 편입하지 않았습니다.
+- 기업마당: [행사 API](https://www.bizinfo.go.kr/apiDetail.do?id=bizinfoEventApi)는 인증키가 필요하고 [저작권 정책](https://www.bizinfo.go.kr/biz/bizd/selectBIZD120View.do)은 별도 협의·허가를 안내하므로 편입하지 않았습니다.
+- Google 개발자 행사 웹페이지의 카드 이미지·설명문은 복제하지 않습니다. 다른 사이트에 연결되는 콘텐츠의 이용허락을 같은 것으로 가정하지 않습니다.
+- Papers with Code AI Deadlines: MIT 표기는 확인했으나 확인된 데이터가 과거 학회 중심이고 논문 제출 기한을 신청 마감으로 혼동할 수 있어 이번 버전에서는 제외했습니다.
+
+## 호출·실패 정책
+
+- 한국시간 07시·19시 기준 예약 실행, AI 일정 출처당 한 번의 목록 요청. 브라우저는 정적 JSON만 요청합니다.
+- HTTP 15초 및 본문 4 MiB 제한. 출처별 실패 격리, 이전 유효 일정 보존, 전체 실패 시 오류 종료.
+- 날짜만 공개된 해외 일정은 가장 먼저 해당 날짜가 시작되는 UTC+14 기준부터 보수적으로 제외합니다. 실제 현지 시각이 확인되지 않았으므로 일부 임박 일정이 일찍 제외될 수 있습니다.
+- 취소·연기·TBD·TBA·미정 표시, 이미 지난 일정, 비AI·중복·샘플을 제외합니다. 제공처의 취소·변경 갱신이 늦을 수 있으므로 원문 확인을 안내합니다.
+
+## 뉴스 출처
+
+현재 뉴스는 OpenAI, Hugging Face, GitHub AI, TechCrunch AI, arXiv cs.AI, Google 뉴스 한국어 RSS를 사용합니다. 수집 URL은 scripts/fetch-news.mjs에 있습니다. 뉴스 출처 설정의 단일화와 소스별 제공 조건 기록 확장은 후속 작업입니다. 생성형 모델이나 외부 서비스 키는 사용하지 않습니다.

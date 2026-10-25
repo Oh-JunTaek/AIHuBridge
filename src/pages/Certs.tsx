@@ -1,23 +1,14 @@
 import { useState } from 'react';
 import { certsByType } from '../lib/certs';
 import { CertCard } from '../components/CertCard';
-import { useUser } from '../lib/user';
 import { useT } from '../lib/i18n';
 import type { CertType } from '../types';
 import { Link } from 'react-router-dom';
 
 export default function Certs() {
-  const { state, mutate } = useUser();
   const t = useT();
   const [tab, setTab] = useState<CertType>('course');
   const groups = certsByType();
-
-  const toggleCheck = (id: string) => {
-    const next = state.earnedCertChecks.includes(id)
-      ? state.earnedCertChecks.filter((x) => x !== id)
-      : [...state.earnedCertChecks, id];
-    mutate({ earnedCertChecks: next });
-  };
 
   const tabs: { id: CertType; label: string; emoji: string }[] = [
     { id: 'course', label: '무료 과정', emoji: '📚' },
@@ -57,8 +48,6 @@ export default function Certs() {
           <CertCard
             key={c.id}
             c={c}
-            checked={state.earnedCertChecks.includes(c.id)}
-            onToggle={() => toggleCheck(c.id)}
           />
         ))}
       </div>

@@ -19,14 +19,14 @@ npm test             # 수집 로직 회귀 검사
 
 ## 구조
 ```
-open/
+AIHuBridge/
 ├── public/data/{news,meta,calendar,calendar-meta}.json   # 자동 생성 (수집 결과)
 ├── scripts/{fetch-news,fetch-calendar,selfcheck}.mjs  # 빌드/검증 스크립트
 ├── src/
-│   ├── pages/        Home Research Path Certs Calendar Quiz Dev Settings
+│   ├── pages/        Home Research Path Certs Calendar Dev Settings
 │   ├── components/     재사용 UI
-│   ├── lib/          config · news · calendar · user · quiz · certs
-│   └── data/         glossary.ts · certifications.ts · path.ts
+│   ├── lib/          config · news · calendar · preferences · certs
+│   └── data/         certifications.ts · path.ts
 ├── AGENTS.md · README.md · CHECKLIST.md
 ```
 

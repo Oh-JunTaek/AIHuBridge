@@ -34,12 +34,6 @@ export const BadgeIcon: Icon = (p) => (
   </svg>
 );
 
-export const QuizIcon: Icon = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
-    <path d="M9.09 14.81a6 6 0 105.81-6.89 3.5 3.5 0 10-5.81 6.89z" />
-    <line x1={12} y1={19} x2={12.01} y2={19} />
-  </svg>
-);
 
 export const SparkleIcon: Icon = (p) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...p}>

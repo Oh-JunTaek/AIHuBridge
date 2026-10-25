@@ -5,13 +5,14 @@
  * 검증 항목:
  *  1. data/news.json 존재 + 스키마 (id/title/url/source/publishedAt/category/summary)
  *  2. data/meta.json 존재
- *  3. certifications / glossary / path 참조 무결성
+ *  3. certifications / path 참조 무결성
  *  4. (옵션) 모든 인증 URL에 HEAD 요청 → 200/301/302 여부
  *
  * GitHub Actions에서 CI에 붙이면 "배포 전 검증"이 됩니다.
  */
 import { readFileSync } from 'node:fs';
 import { isCalendarEvent, visibleEvents } from '../src/lib/calendar-rules.mjs';
+import { isNewsArray } from '../src/lib/news-data.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -30,6 +31,7 @@ function check(name, cond, extra = '') {
 let newsCount = 0;
 try {
   const ns = JSON.parse(readFileSync(resolve(pubDir, 'news.json'), 'utf8'));
+  if (!isNewsArray(ns)) throw new Error('뉴스 배열·필드 타입·URL·날짜·중복 검증 실패');
   newsCount = ns.length;
   check('news.json 존재', ns.length > 0, `${ns.length}건`);
   const bad = ns.filter((i) => !i.id || !i.title || !i.url || !i.source || !i.category || !i.publishedAt || !('summary' in i));
@@ -61,20 +63,13 @@ try {
   check('certifications.ts', false, e.message);
 }
 
-// 4) glossary.ts 용어 중복 검사
-try {
-  const g = readFileSync(resolve(root, 'src/data/glossary.ts'), 'utf8');
-  const terms = [...g.matchAll(/term:\s*'([^']+)'/g)].map((m) => m[1]);
-  const dup = terms.length - new Set(terms).size;
-  check('glossary.ts 용어 중복', dup === 0, `${terms.length}개 용어, 중복 ${dup}`);
-} catch (e) {
-  check('glossary.ts', false, e.message);
-}
-
-// 5) path.ts refId 무결성 (cert.id / glossary.term 참조) — 간단 검사
+// 모든 학습 단계의 참조가 실제 인증·교육 항목에 연결되는지 검사한다.
 try {
   const p = readFileSync(resolve(root, 'src/data/path.ts'), 'utf8');
-  check('path.ts refId 포함', p.includes('refId'), 'OK');
+  const c = readFileSync(resolve(root, 'src/data/certifications.ts'), 'utf8');
+  const ids = new Set([...c.matchAll(/id:\s*'([^']+)'/g)].map((match) => match[1]));
+  const refs = [...p.matchAll(/refId:\s*'([^']+)'/g)].map((match) => match[1]);
+  check('학습 경로 교육 참조 무결성', refs.length > 0 && refs.every((ref) => ids.has(ref)), `${refs.length}개 항목`);
 } catch (e) {
   check('path.ts', false, e.message);
 }
@@ -88,7 +83,7 @@ try {
     && new Set(events.map((event) => event.url)).size === events.length);
   check('행사 메타 일치', meta.schemaVersion === 2 && meta.total === events.length
     && Number.isFinite(Date.parse(meta.fetchedAt)) && ['success', 'partial', 'cleaned'].includes(meta.status));
-  console.log(`현재 공개 가능한 미마감 행사: ${visibleEvents(events).length}건`);
+  console.log(`현재 공개 가능한 향후 AI 일정: ${visibleEvents(events).length}건`);
 } catch (error) {
   check('행사 데이터 검사', false, error.message);
 }
