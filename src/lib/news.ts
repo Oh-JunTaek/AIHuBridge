@@ -1,14 +1,19 @@
 import type { NewsItem } from '../types';
 
 // 빌드 타임에선 fetch가 없고, 런타임(정적 배포 포함)엔 `public/data/news.json` 사용.
-// Vite가 /data/news.json을 정적 에셋으로 서빙해 줍니다.
+// Vite의 base: '/AIHuBridge/'가 자동으로 요청 경로를 /AIHuBridge/data/news.json 로 변환.
 export async function loadNews(): Promise<NewsItem[]> {
+  const url = `${import.meta.env.BASE_URL}data/news.json`;
   try {
-    const res = await fetch(`/data/news.json?ts=${Date.now()}`);
-    if (!res.ok) return [];
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error(`[HuBridge] 뉴스 로드 실패: HTTP ${res.status} (${url})`);
+      return [];
+    }
     const json = (await res.json()) as NewsItem[];
     return json;
-  } catch {
+  } catch (e) {
+    console.error('[HuBridge] 뉴스 데이터 로드 중 예외', e);
     return [];
   }
 }
