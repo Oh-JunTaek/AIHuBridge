@@ -22,6 +22,7 @@ const ko: Dict = {
     research: 'AI뉴스',
     path: '학습 커리큘럼',
     certs: '인증 기관 교육',
+    calendar: 'AI 교육캘린더',
     quiz: '퀴즈',
     dev: '개발자',
     settings: '설정',
