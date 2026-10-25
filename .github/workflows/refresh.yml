@@ -21,11 +21,18 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - run: npm ci
       - name: RSS 수집 (npm run refresh)
         run: npm run refresh
+      - name: 수집 로직 회귀 검사
+        run: npm test
+      - name: 데이터·타입·빌드 검증
+        run: |
+          npm run lint
+          npm run selfcheck
+          npm run build
       - name: 수집 결과 검증 (0건이면 푸시 중단)
         run: |
           node --input-type=commonjs -e "const m=require('./public/data/meta.json');const t=m.total;console.log('수집 건수: '+t);if(!t||t===0){console.error('뉴스 0건 -> 커밋·푸시 건너뜀');process.exit(1)}"
@@ -33,7 +40,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data/news.json public/data/meta.json
+          git add public/data/news.json public/data/meta.json public/data/calendar.json public/data/calendar-meta.json
           if ! git diff --staged --quiet; then
             git commit -m "data: 자동 뉴스 수집 갱신 $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
             git push

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-25T04:19:48.064Z",
+  "fetchedAt": "2026-10-25T11:09:30.216Z",
   "total": 40,
   "counts": {
     "openai": 8,
@@ -9,9 +9,12 @@
     "arxiv": 0,
     "koreagnews": 8
   },
+  "unavailableSources": [
+    "arxiv"
+  ],
   "summaryTiers": {
-    "llm": 0,
     "rule": 40,
     "excerpt": 0
-  }
+  },
+  "summaryMethod": "rss-extract"
 }

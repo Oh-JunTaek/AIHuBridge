@@ -40,6 +40,9 @@ jobs:
       - name: Validate content
         run: npm run selfcheck
 
+      - name: 수집 로직 회귀 검사
+        run: npm test
+
       - name: Build Vite application
         run: npm run build
 

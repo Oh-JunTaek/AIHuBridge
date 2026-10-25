@@ -1,30 +1,16 @@
 {
-  "fetchedAt": "2026-10-25T05:28:16.705Z",
-  "total": 14,
-  "categories": [
-    "government",
-    "corporate",
-    "bootcamp",
-    "webinar",
-    "hackathon",
-    "competition",
-    "community"
-  ],
-  "collected": [
+  "schemaVersion": 2,
+  "fetchedAt": "2026-10-25T11:09:30.471Z",
+  "total": 0,
+  "status": "success",
+  "sources": [
     {
-      "category": "corporate",
-      "id": "kakao-ai",
-      "count": 5
-    },
-    {
-      "category": "webinar",
-      "id": "aws-ai",
-      "count": 5
-    },
-    {
-      "category": "competition",
-      "id": "ai-challenge",
-      "count": 4
+      "id": "kakao",
+      "status": "success",
+      "received": 12,
+      "accepted": 0,
+      "rejected": 12
     }
-  ]
+  ],
+  "policy": "마감일 근거가 명시된 향후 모집 공고만 공개"
 }

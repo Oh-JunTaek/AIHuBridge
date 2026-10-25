@@ -9,6 +9,7 @@ import Path from './pages/Path';
 import Certs from './pages/Certs';
 import Quiz from './pages/Quiz';
 import Calendar from './pages/Calendar';
+import Dev from './pages/Dev';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 import { UserProvider } from './lib/user';
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
         { path: 'path', element: <Path /> },
         { path: 'certs', element: <Certs /> },
         { path: 'calendar', element: <Calendar /> },
+        { path: 'dev', element: <Dev /> },
         { path: 'quiz', element: <Quiz /> },
         { path: 'settings', element: <Settings /> },
         { path: 'terms', element: <Terms /> },

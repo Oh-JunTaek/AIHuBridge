@@ -13,7 +13,7 @@ export default function Dev() {
 
   useEffect(() => {
     loadNews().then((n) => setNewsCount(n.length));
-    fetch('/data/meta.json?ts=' + Date.now())
+    fetch(import.meta.env.BASE_URL + 'data/meta.json', { cache: 'no-cache' })
       .then((r) => (r.ok ? r.json() : null))
       .then(setMeta)
       .catch(() => setMeta(null));
@@ -45,7 +45,6 @@ export default function Dev() {
             {meta?.summaryTiers
               ? t(
                   'dev.tiFormat',
-                  meta.summaryTiers.llm ?? 0,
                   meta.summaryTiers.rule ?? 0,
                   meta.summaryTiers.excerpt ?? 0,
                 )

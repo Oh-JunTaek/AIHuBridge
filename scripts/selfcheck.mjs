@@ -10,13 +10,13 @@
  *
  * GitHub Actions에서 CI에 붙이면 "배포 전 검증"이 됩니다.
  */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
+import { isCalendarEvent, visibleEvents } from '../src/lib/calendar-rules.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
-const dataDir = resolve(root, 'data');
 const pubDir = resolve(root, 'public/data');
 
 let ok = true;
@@ -77,6 +77,20 @@ try {
   check('path.ts refId 포함', p.includes('refId'), 'OK');
 } catch (e) {
   check('path.ts', false, e.message);
+}
+
+// 행사 0건은 정상일 수 있다. 대신 일정 근거·미확인 값·메타 일치를 검사한다.
+try {
+  const events = JSON.parse(readFileSync(resolve(pubDir, 'calendar.json'), 'utf8'));
+  const meta = JSON.parse(readFileSync(resolve(pubDir, 'calendar-meta.json'), 'utf8'));
+  check('행사 데이터 스키마와 일정 근거', Array.isArray(events) && events.every(isCalendarEvent));
+  check('행사 ID·URL 중복', new Set(events.map((event) => event.id)).size === events.length
+    && new Set(events.map((event) => event.url)).size === events.length);
+  check('행사 메타 일치', meta.schemaVersion === 2 && meta.total === events.length
+    && Number.isFinite(Date.parse(meta.fetchedAt)) && ['success', 'partial', 'cleaned'].includes(meta.status));
+  console.log(`현재 공개 가능한 미마감 행사: ${visibleEvents(events).length}건`);
+} catch (error) {
+  check('행사 데이터 검사', false, error.message);
 }
 
 console.log(`\n${ok ? '🎉 selfcheck 통과' : '⚠️  항목 실패 — 수정 필요'}`);

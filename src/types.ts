@@ -17,7 +17,7 @@ export interface NewsItem {
   category: Category;
   tags: string[];
   excerpt: string;        // 본문 앞부분 (규칙 요약 fallback)
-  summary: string | null;  // LLM 요약 (없으면 null → 규칙 요약 사용)
+  summary: string | null;  // RSS 설명문을 규칙으로 발췌한 내용
   readMinutes: number;
 }
 
@@ -95,7 +95,8 @@ export type EventType = 'seminar' | 'webinar' | 'workshop' | 'bootcamp' | 'hacka
 
 export type EventStatus =
   | 'recruiting'   // 모집 중
-  | 'open'         // 모집 완료, 행사 진행 중
+  | 'scheduled'    // 모집 예정
+  | 'closed'       // 모집 마감
   | 'completed';
 
 export interface CalendarEvent {
@@ -112,15 +113,20 @@ export interface CalendarEvent {
   eventEnd: string | null;          // 행사 종료일
 
   // 분포
-  isOnline: boolean;
-  location: string;                 // 온라인 URL 또는 오프라인 주소
-  feeType: 'free' | 'paid';
+  isOnline: boolean | null;
+  location: string | null;          // 미확인 시 null
+  feeType: 'free' | 'paid' | 'unknown';
   feeAmount: number | null;         // 유료 시 금액 (KRW)
-  region: string;                   // 전국/서울/부산/...
+  region: string | null;            // 미확인 시 null
 
   // 메타
   url: string;                      // 공식 신청 링크
   status: EventStatus;
-  confirmedAt: string;              // 최종 확인일 (ISO)
+  confirmedAt: string | null;       // 수동으로 내용 확인한 날짜
+  publishedAt: string | null;       // 공고 게시일 (모집일과 별개)
+  fetchedAt: string;
+  timezone: 'Asia/Seoul';
+  verification: 'rss-explicit' | 'manual';
+  dateEvidence: string;             // 신청 마감일을 확인한 원문 근거
   lang: 'ko' | 'en';                // 출처 언어
 }

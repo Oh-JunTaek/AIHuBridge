@@ -1,78 +1,40 @@
-/**
- * AI 교육·행사 모집 캘린더 스토어 (F-002)
- * ─────────────────────────────────────────────
- * - public/data/calendar.json 로드
- * - D-day 계산 (마감일 기준)
- * - 필터링: status, type, isOnline, region, category
- */
 import { create } from 'zustand';
 import type { CalendarEvent } from '../types';
+import { deadlineLabel, isCalendarEvent, visibleEvents } from './calendar-rules.mjs';
 
-const CALENDAR_URL = `${import.meta.env.BASE_URL}data/calendar.json`;
-
+interface CalendarMeta {
+  fetchedAt: string;
+  status: 'success' | 'partial' | 'cleaned';
+}
 interface CalendarState {
   events: CalendarEvent[];
+  meta: CalendarMeta | null;
   status: 'idle' | 'loading' | 'error';
   loadEvents: () => Promise<void>;
-  /** 마감일 기준 D-day 계산 */
-  getDDay: (end: string | null) => { label: string; isPast: boolean } | null;
-  /** 필터링 */
-  filter: (opts: FilterOpts) => CalendarEvent[];
+  getDDay: typeof deadlineLabel;
 }
-
-interface FilterOpts {
-  status?: string[];
-  type?: string[];
-  isOnline?: boolean;
-  region?: string;
-  category?: string;
-  search?: string;
-}
-
-export const useCalendarStore = create<CalendarState>((set: (state: Partial<CalendarState>) => void, get) => ({
-  events: [],
-  status: 'idle',
+export const useCalendarStore = create<CalendarState>((set) => ({
+  events: [], meta: null, status: 'idle',
+  getDDay: deadlineLabel,
   loadEvents: async () => {
     set({ status: 'loading' });
     try {
-      const res = await fetch(CALENDAR_URL);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = (await res.json()) as CalendarEvent[];
-      set({ events: json, status: 'idle' });
-    } catch (e) {
-      console.error('[HuBridge] 캘린더 로드 실패', e);
-      set({ events: [], status: 'error' });
+      const response = await fetch(import.meta.env.BASE_URL + 'data/calendar.json', { cache: 'no-cache' });
+      if (!response.ok) throw new Error('행사 데이터 요청 실패');
+      const data: unknown = await response.json();
+      if (!Array.isArray(data) || !data.every(isCalendarEvent)) throw new Error('행사 데이터 형식 오류');
+      // 메타 장애로 정상 행사 목록까지 비우지 않는다.
+      const meta = await fetch(import.meta.env.BASE_URL + 'data/calendar-meta.json', { cache: 'no-cache' })
+        .then(async (res) => {
+          if (!res.ok) return null;
+          const value = await res.json();
+          return value && typeof value.fetchedAt === 'string' && Number.isFinite(Date.parse(value.fetchedAt))
+            && ['success', 'partial', 'cleaned'].includes(value.status) ? value as CalendarMeta : null;
+        }).catch(() => null);
+      set({ events: visibleEvents(data), meta, status: 'idle' });
+    } catch (error) {
+      console.error('[허브릿지] 행사 정보를 불러오지 못했습니다', error);
+      set({ status: 'error' });
     }
-  },
-
-  getDDay: (end: string | null) => {
-    if (!end) return null;
-    const d = new Date(end);
-    if (Number.isNaN(d.getTime())) return null;
-    const ms = d.getTime() - Date.now();
-    const days = Math.ceil(ms / (1000 * 60 * 60 * 24));
-    if (days > 0) {
-      return { label: `D-${days}`, isPast: false };
-    } else if (days === 0) {
-      return { label: '마감임박', isPast: false };
-    } else {
-      return { label: `마감 ${Math.abs(days)}일 지남`, isPast: true };
-    }
-  },
-
-  filter: (opts: FilterOpts = {}) => {
-    const { events } = get();
-    return events.filter((e: CalendarEvent) => {
-      if (opts.status && !opts.status.includes(e.status)) return false;
-      if (opts.type && !opts.type.includes(e.type)) return false;
-      if (opts.isOnline !== undefined && e.isOnline !== opts.isOnline) return false;
-      if (opts.region && e.region !== opts.region) return false;
-      if (opts.category && e.category !== opts.category) return false;
-      if (opts.search) {
-        const q = opts.search.toLowerCase();
-        if (!e.title.toLowerCase().includes(q) && !e.host.toLowerCase().includes(q)) return false;
-      }
-      return true;
-    });
   },
 }));

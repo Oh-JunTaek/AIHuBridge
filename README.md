@@ -1,52 +1,62 @@
-# AI 허브릿지 🌍
+# AI 허브릿지
 
-> **AI 최신 소식 + 무료 학습 경로 + 인증 뱃지**를 한 군데에서.
-> 비전공자도 따라올 수 있는, **완전 로컬 저장** 개인 학습판.
+AI 소식과 학습 경로, 인증기관 교육, 모집 공고를 연결하는 한국어 웹 서비스입니다.
 
-![home mockup](https://dummyimage.com/720x400/eee/888&text=AI+Hub+Bridge+데모)
+- 운영 주소: https://oh-juntaek.github.io/AIHuBridge/
+- 학습 경로: https://oh-juntaek.github.io/AIHuBridge/path
+- 2026-10-25 사용자 확인: 위 주소에서 배포 정상 동작. 로컬 수정은 별도이며 푸시·배포는 요청 후 진행합니다.
 
-## 특징
-- 📰 **AI 뉴스** — OpenAI / HuggingFace / GitHub / TechCrunch / Google AI /
-  구글뉴스 한국어 RSS 실시간 수집
-- 📚 **4단계 학습 로드맵** — `알기 → 해보기 → 통과하기 → 전문가 되기`
-- 🎖️ **인증 뱃지** — AWS / Google / Microsoft / NVIDIA / DeepLearning.AI /
-  Hugging Face / Elements of AI 등 **무료 학습 가능한 인증** 정리
-- 🧩 **용어 사전** — LLM, RAG, Agent, Temperature… 비전공자 설명 30선
-- ✍️ **퀴즈** — 매일 새 문제 (날짜 시드) + 연습 모드
-- 🤖 **요약은 켜고 끄기** — 로컬 LLM(옵션) → 규칙 → excerpt 세 단계 자동 fallback
-- 💾 **완전 로컬** — `localStorage` 전체 저장. 계정/Gmail/푸시 없음.
+## 제공 기능
 
-## 페이지 구조
-- **메뉴 (2depth)**
-  - **정보관**: AI 뉴스 (`/research`)
-  - **학습관**: 커리큘럼 (`/curriculum`), 인증기관 교육 (`/certs`)
-- **설정** (`/settings`): 언어 선택 (한국어 / English)
-- **이용약관** (`/terms`) · **개인정보 처리방침** (`/privacy`)
+- AI 뉴스: RSS 수집 결과를 정적 JSON으로 제공하고 카테고리별로 탐색합니다.
+- 학습 경로: 4단계·15항목, 난이도·분야 필터, 브라우저 학습 체크.
+- 인증기관 교육: 16개 항목과 유형별 탭, 개인 완료 체크. 비용·수료 조건은 신청 전 공식 페이지에서 확인하세요.
+- AI 교육·행사: 명시적인 신청 마감일이 있는 향후 공고만 표시합니다.
+- 오늘의 개념·퀴즈, 테마 설정, 수집 현황 진단.
 
-## 시작 (개발자 기준, 2분)
-```bash
-npm install
-npm run refresh      # 뉴스 수집
-npm run dev          # → http://localhost:5173
-npm run selfcheck    # 자료 검증
-```
+브라우저의 학습 기록은 localStorage에 저장됩니다. 서비스 콘텐츠는 웹에서 제공하며 계정·동기화는 제공하지 않습니다.
 
-## 로컬 LLM 요약 켜기 (선택)
-```bash
-# 터미널 1: Ollama + gemma3 4bit
-ollama run gemma3:1b
-# 터미널 2: 수집 시 LLM 요약 시도
-AI_COMPASS_SUMMON=ollama npm run refresh
-# 브라우저 DevTools > localStorage 에서
-#   aiCompassSummon = "ollama"   (프론트 요약 on)
-```
-없어도 완벽하게 동작합니다 — 규칙 요약으로 대체됩니다.
+## 뉴스 설명 방식
 
-## 배포 (GitHub Pages)
-- `master` 브랜치 푸시 → `.github/workflows/deploy.yml` 실행 → `dist/` 자동 배포
-- URL: `https://wns53.github.io/AIHuBridge/`
-- 로컬 빌드 테스트: `npm run preview` → `http://localhost:4173`
+뉴스 설명은 RSS 제공 설명문의 앞 문장을 규칙으로 발췌합니다. 자동 번역이나 생성형 요약은 제공하지 않습니다. 로컬 모델·별도 추론 서버·모델 선택 환경변수는 지원하지 않습니다. 향후 생성형 기능은 웹 서비스에서 운영 가능한 방식과 비용·키 관리 정책을 별도 검토합니다.
 
-## 라이선스
+## 실행과 검사
+
+~~~bash
+npm ci
+npm run dev       # http://localhost:5173/AIHuBridge/
+npm run refresh   # 뉴스와 행사 RSS 수집
+npm test          # 일정 추출·마감·실패 보존 회귀 검사
+npm run selfcheck # JSON·일정 근거·메타·중복 검사
+npm run lint      # TypeScript 검사
+npm run build
+~~~
+
+## 행사 수집 정책
+
+- 현재 활성 RSS: 카카오 공식 기술 블로그. 일반 글을 바로 행사로 변환하지 않습니다.
+- 제목·설명에 AI 관련 행사와 참가 모집이 확인되고, 연도를 포함한 신청 마감일이 명시되어야 합니다.
+- 지원 예: ‘신청 마감: 2026.11.20 18:00’, ‘접수 기간: 2026.11.01 ~ 2026.11.20’. 한국시간 기준입니다.
+- 날짜만 있으면 해당 날짜 23:59:59.999까지로 처리하며 이 해석은 운영 정책입니다. 지원하지 않는 시간 표현이나 상대 날짜는 추정하지 않습니다.
+- 게시일을 마감일·행사일로 복사하지 않습니다. 행사일·비용·장소·진행 방식은 미확인 값을 유지합니다.
+- 과거 공고, 다시보기, 샘플, 중복은 제외합니다. 수집 후 시간이 지나 마감되어도 브라우저에서 자동 제외합니다.
+- 출처 실패 시 검증된 미마감 이전 데이터만 사용합니다. 전체 실패 시 기존 JSON을 보존하고 오류로 종료합니다.
+- 정상 RSS에서 조건을 만족하는 항목이 없으면 0건은 정상입니다. 샘플로 채우지 않습니다.
+- 현재는 구조가 확인된 제한된 RSS만 사용합니다. 정부·교육기관·행사 전용 출처 확장과 영어 공고 날짜 파서는 후속 작업입니다.
+- 수집 시각과 사람의 내용 확인일을 구별합니다. 자동 추출은 ‘수동 확인 전’으로 안내합니다.
+
+## 메뉴
+
+홈 / AI 뉴스 (/research) / 학습 경로 (/path) / 인증기관 교육 (/certs) / 행사 (/calendar) / 진단 (/dev) / 설정 (/settings).
+퀴즈는 /quiz에 유지되며 이용약관과 개인정보 처리방침은 하단에 있습니다. 한국어 전용이며 라이트·다크·시스템 테마를 지원합니다.
+
+## 자동 갱신과 배포
+
+- 예약 수집: 한국시간 07시·19시 기준의 GitHub Actions 스케줄. 실제 실행 시각은 지연될 수 있습니다.
+- 수집 워크플로는 뉴스·행사 JSON 및 메타 4종을 검증 후 커밋합니다.
+- 코드 배포는 기존 master push 또는 수동 실행 방식입니다. 기존 운영 배포 경로는 유지합니다.
+- 예약 수집 봇의 push가 후속 배포를 자동 실행하지 않는 점은 별도 운영 보완 과제입니다. 이번 변경에서 워크플로를 원격 실행하지 않았습니다.
+
+최신 작업 결과: [웹 서비스 정리 결과](./WEB_SERVICE_CLEANUP_2026-10-25.md).
+
 MIT © EunmaStudio
-

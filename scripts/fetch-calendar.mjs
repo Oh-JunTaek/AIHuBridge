@@ -1,209 +1,26 @@
-import { writeFileSync, mkdirSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createHash } from 'node:crypto';
-import Parser from 'rss-parser';
+import { readRss } from './lib/rss.mjs';
+import { collectCalendar, sources } from './lib/calendar-collector.mjs';
+import { writeJson } from './lib/data-files.mjs';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const parser = new Parser({ headers: { 'user-agent': 'ai-hub-bridge/0.1' }, timeout: 20_000 });
-const root = resolve(__dirname, '..');
-const outDir = resolve(root, 'public/data');
-mkdirSync(outDir, { recursive: true });
-
-/**
- * AI 교육·행사 모집 캘린더 수집 스크립트 (F-002)
- * ─────────────────────────────────────────────
- * - Government(RSS): K-Digital Training, AI 정책센터
- * - Corporate(RSS):  Samsung, LG, Naver AI Blog
- * - Community:      AI학회, StartupCamp
- *
- * ※ 실제 RSS가 존재하지 않으면, 빌드/CI가 깨지지 않도록
- *   fallback 샘플 데이터를 사용합니다.
- */
-
-// ── 정의된 수집 출처 ──────────────────────────────────────────
-const CATEGORY_SOURCES = {
-  government: [
-    { id: 'ai-edu-center', name: 'AI 교육진흥센터', url: 'https://aiedu.go.kr/rss.do', type: 'training', category: 'ai-core', lang: 'ko', region: '전국' },
-  ],
-  corporate: [
-    { id: 'naver-ai', name: '네이버 AI', url: 'https://news.blog.naver.com/NaverPostList.naver', type: 'seminar', category: 'ai-applied', lang: 'ko', region: '경기' },
-    { id: 'kakao-ai', name: '카카오 AI', url: 'https://tech.kakao.com/blog/feed/', type: 'workshop', category: 'ai-applied', lang: 'ko', region: '서울' },
-  ],
-  bootcamp: [
-    { id: 'fastcampus', name: '패스트캠퍼스', url: 'https://www.fastcampus.co.kr/feed', type: 'bootcamp', category: 'ai-applied', lang: 'ko', region: '전국' },
-  ],
-  webinar: [
-    { id: 'aws-ai', name: 'AWS Genius', url: 'https://aws.amazon.com/blogs/ai/feed/', type: 'webinar', category: 'ai-applied', lang: 'en', region: '전국' },
-  ],
-  hackathon: [
-    { id: 'devpost-ai', name: 'Devpost AI', url: 'https://devpost.com/hackathons.json', type: 'hackathon', category: 'general', lang: 'en', region: '전국' },
-  ],
-  competition: [
-    { id: 'ai-challenge', name: 'AI 충전소', url: 'https://aichallenge.or.kr/feed', type: 'competition', category: 'ai-core', lang: 'ko', region: '전국' },
-  ],
-  community: [
-    { id: 'ai-society', name: 'AI학회', url: 'https://aidea.or.kr/feed', type: 'seminar', category: 'ai-core', lang: 'ko', region: '서울' },
-  ],
-};
-
-
-/**
- * 날짜 문자열 → ISO 문자열
- */
-function toISO(dateStr) {
-  if (!dateStr) return null;
-  const d = new Date(dateStr);
-  if (Number.isNaN(d.getTime())) return null;
-  return d.toISOString();
-}
-
-/**
- * ID 생성 (소스 + URL 해시)
- */
-function makeId(src, link) {
-  return createHash('sha256')
-    .update(src.id + ':' + (link || ''))
-    .digest('hex')
-    .slice(0, 12);
-}
-
-/**
- * 🎯 FALLBACK: 샘플 데이터 (CI/빌드 안정화용)
- * 실제 RSS 수집이 실패해도 캘린더가 비어있지 않도록 보장
- */
-const SAMPLE_EVENTS = [
-  {
-    id: 'sample-001',
-    title: 'K-Digital AI 기초 워크숍',
-    host: '과학기술정보통상부',
-    type: 'workshop',
-    category: 'ai-core',
-    applicationStart: '2026-10-15T09:00:00.000Z',
-    applicationEnd: '2026-10-25T23:59:59.000Z',
-    eventStart: '2026-11-01T10:00:00.000Z',
-    eventEnd: '2026-11-01T17:00:00.000Z',
-    isOnline: false,
-    location: '서울 특별시 강남구 테헤란로 123, 10층 컨퍼런스룸',
-    feeType: 'free',
-    feeAmount: null,
-    region: '서울',
-    url: 'https://www.kdt.re.kr/kdt/board.do?menuId=AI',
-    status: 'recruiting',
-    confirmedAt: new Date().toISOString(),
-    lang: 'ko',
-  },
-  {
-    id: 'sample-002',
-    title: '실전 RAG 워크부머, LangChain으로 프로젝트 끝내기',
-    host: '패스트캠퍼스',
-    type: 'bootcamp',
-    category: 'ai-applied',
-    applicationStart: '2026-10-20T00:00:00.000Z',
-    applicationEnd: '2026-11-15T23:59:59.000Z',
-    eventStart: '2026-11-20T14:00:00.000Z',
-    eventEnd: '2026-11-20T18:00:00.000Z',
-    isOnline: true,
-    location: 'https://zoom.us/j/123456789',
-    feeType: 'paid',
-    feeAmount: 49000,
-    region: '전국',
-    url: 'https://www.fastcampus.co.kr/ai-rag-bootcamp',
-    status: 'recruiting',
-    confirmedAt: new Date().toISOString(),
-    lang: 'ko',
-  },
-];
-
-/**
- * RSS item → CalendarEvent 변환
- */
-const rssItemToEvent = (s, it) => {
-  const pub = toISO(it.pubDate) || toISO(it.isoDate);
-  return {
-    id: makeId(s, it.link || it.guid || ''),
-    title: (it.title || '(제목 없음)').trim(),
-    host: s.name,
-    type: s.type,
-    category: s.category,
-    applicationStart: pub,
-    applicationEnd: pub,
-    eventStart: pub,
-    eventEnd: null,
-    isOnline: s.url.includes('zoom'),
-    location: it.link || s.url,
-    feeType: 'free',
-    feeAmount: null,
-    region: s.region,
-    url: it.link || s.url,
-    status: 'recruiting',
-    confirmedAt: new Date().toISOString(),
-    lang: s.lang,
-  };
-};
-
-/**
- * 모든 카테고리별 출처에서 RSS 수집 시도
- */
-async function fetchFromSources() {
-  const all = [];
-  const collectedFrom = [];
-
-  for (const [category, sources] of Object.entries(CATEGORY_SOURCES)) {
-    for (const src of sources) {
-      try {
-        const feed = await parser.parseURL(src.url);
-        const items = (feed.items || []).slice(0, 5).map((it) => rssItemToEvent(src, it));
-        all.push(...items);
-        collectedFrom.push({ category, id: src.id, count: items.length });
-      } catch (e) {
-        console.warn(`[skip] ${src.id}: ${e.message || e}`);
-      }
-    }
-  }
-
-  return { all, collectedFrom };
-}
-
+const output = fileURLToPath(new URL('../public/data/', import.meta.url));
 async function main() {
-  let events = [];
-  let sourceInfo = {};
-
-  // ── 실제 출처 수집 시도 ─────────────────────────────────────
-  const { all, collectedFrom } = await fetchFromSources();
-  if (all.length > 0) {
-    events = all;
-    sourceInfo = { collected: collectedFrom };
+  const old = JSON.parse(readFileSync(resolve(output, 'calendar.json'), 'utf8'));
+  if (!Array.isArray(old)) throw new Error('기존 행사 데이터가 배열이 아닙니다');
+  const result = await collectCalendar(sources, readRss, old);
+  // 전부 실패하면 파일을 갱신하지 않고 실패로 보고한다. 샘플로 대체하지 않는다.
+  if (result.sources.every((source) => source.status === 'error')) {
+    console.table(result.sources);
+    throw new Error('행사 출처 전체 수집 실패: 기존 정상 데이터를 유지합니다');
   }
-
-  // ── fallback: 샘플 데이터 사용 ───────────────────────────────
-  if (events.length === 0) {
-    events = SAMPLE_EVENTS;
-    sourceInfo = { note: '샘플 데이터 기반 (실제 RSS 수집 실패)' };
-  }
-
-  // 마감일 기준 정렬 (오름차순)
-  events.sort((a, b) => {
-    const ta = a.applicationEnd ? new Date(a.applicationEnd).getTime() : Infinity;
-    const tb = b.applicationEnd ? new Date(b.applicationEnd).getTime() : Infinity;
-    return ta - tb;
-  });
-
-  const meta = {
-    fetchedAt: new Date().toISOString(),
-    total: events.length,
-    categories: Object.keys(CATEGORY_SOURCES),
-    ...sourceInfo,
-  };
-
-  writeFileSync(resolve(outDir, 'calendar.json'), JSON.stringify(events, null, 2), 'utf8');
-  writeFileSync(resolve(outDir, 'calendar-meta.json'), JSON.stringify(meta, null, 2), 'utf8');
-
-  console.log(`✅ calendar.json: ${events.length}건`);
-  console.table(meta);
+  const meta = { schemaVersion: 2, fetchedAt: new Date().toISOString(), total: result.events.length,
+    status: result.sources.some((source) => source.status === 'error') ? 'partial' : 'success',
+    sources: result.sources, policy: '마감일 근거가 명시된 향후 모집 공고만 공개' };
+  writeJson(resolve(output, 'calendar.json'), result.events);
+  writeJson(resolve(output, 'calendar-meta.json'), meta);
+  console.log('검증 기준을 통과한 행사: ' + result.events.length + '건');
+  console.table(result.sources);
 }
-
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+main().catch((error) => { console.error(error); process.exitCode = 1; });

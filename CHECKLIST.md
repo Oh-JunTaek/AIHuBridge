@@ -1,42 +1,33 @@
-# AI Compass — 완료 점검 체크리스트 (MVP 1.0)
+# AI 허브릿지 현재 점검표
 
-## S0 스캐폴드
-- [x] `git init`, README, AGENTS.md
-- [x] Vite + React 19 + TS6 + Tailwind v4
-- [x] 라우팅: 6페이지 + 404
+기준: 2026-10-25. 과거 완료 표시는 현재 검증 상태와 구분합니다.
 
-## S1 코어
-- [x] 타입 정의 (`src/types.ts`)
-- [x] 설정/config (RSS 소스 6개 실측)
-- [x] 사용자 상태 (localStorage)
-- [x] 용어 사전 35개 (중복 없음)
-- [x] 인증 DB 16곳 (검증일 2026-10-21)
-- [x] 학습 경로 4단계 18항목
+## 웹 서비스 정책
 
-## S2 데이터 파이프라인
-- [x] `npm run refresh` → `public/data/news.json` (6개 피드 실제 파싱, 40건)
-- [x] `public/data/meta.json` 메타 기록 (fetchedAt/total/counts/summaryTiers)
-- [x] `data/` 시드 JSON 없음 — `public/data` 실시간 수집으로 UI 동작 확인 (fallback summary 포함)
+- [x] 운영 주소를 Oh-JunTaek GitHub Pages로 통일 (사용자 정상 동작 확인)
+- [x] 로컬 모델 호출·서버 설정·안내 제거
+- [x] 뉴스 설명은 RSS 규칙 발췌로 제공
 
-## S3 UI
-- [ ] Home: 브리핑 + 오늘개념 + Pick4 + 뱃지
-- [ ] Research: 카테고리 필터 + 무한 스크롤
-- [x] Path: 4단계 + 진도 바 + 체크 + **난이도/분야 필터**
-- [ ] Certs: 탭 전환 + 완료 체크
-- [ ] Quiz: 오늘문제 + 연습 8문제
-- [ ] Dev: 자기진단 메트릭
+## 수집·행사
 
-## S4 검증
-- [x] `npm run dev` 정상 렌더 (Vite v8.3.5 ready, http://localhost:5173 200)
-- [x] `npm run build` 정적 빌드 (tsc + vite, CSS 21.8KB / JS 354KB)
-- [x] `npm run selfcheck` 통과 (news 40건·id 중복 0·cert 16·glossary 35·path OK, exit 0)
+- [x] 게시일과 신청 마감·행사 일정 분리
+- [x] 명시적인 연도·마감일 근거가 있는 AI 모집 공고만 허용
+- [x] 마감/일반 글/다시보기/샘플 제외
+- [x] 비용·장소·온라인 여부 미확인 처리
+- [x] 한국시간 D-day와 마감 시각 경계 처리
+- [x] 출처 실패 시 이전 검증 데이터 보존, 정상 0건 허용
+- [x] 브라우저에서 열린 상태로 시간이 지나도 마감 항목 제외
+- [x] 수집 워크플로에 행사 JSON·메타 추가 및 검사 연결
+- [ ] 실제 모집 일정이 제공되는 출처 확대
+- [ ] 예약 수집 결과의 공개 배포 자동 연결 및 원격 종단간 검증
 
-## S5 로컬 LLM (옵션)
-- [x] Ollama 없으면 규칙 요약 (기본 동작) — summaryTiers.rule=40
-- [x] `AI_COMPASS_SUMMON=ollama` 시 LLM 요약 시도 + fallback (summarizeSync tier 카운터 정상 동작)
+## 기능·검사
 
-## 완료 판정 (사용자 직접 체크)
-- [ ] 첫 화면 브리핑 1분 내에 이해됨
-- [ ] "무료 인증 3곳" 찾는 데 5초
-- [ ] 퀴즘 1문제 풀고 뱃지 확인
-- [ ] Dev 탭에서 "마지막 수집 시각" 보임
+- [x] 기본 뉴스·학습 경로·인증 교육 유지
+- [x] /dev 라우트 연결 및 메타 요청 BASE_URL 적용
+- [x] 행사 회귀 검사 13건
+- [x] 실제 RSS 재수집 (뉴스 40건, 행사 조건 통과 0건)
+- [ ] 모바일·키보드·접근성·브라우저 화면 회귀 검사
+- [ ] 인증 교육 16건의 비용·수료 조건 전수 재검증
+
+이번 변경의 최종 타입·빌드·selfcheck·개발 서버 검사와 한계는 WEB_SERVICE_CLEANUP_2026-10-25.md에 기록합니다.

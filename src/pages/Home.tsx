@@ -14,8 +14,10 @@ export default function Home() {
   const t = useT();
 
   useEffect(() => {
-    loadNews().then((all) => setItems(filterNews(all, { limit: 6 })));
-    setLoading(false);
+    loadNews().then((all) => {
+      setItems(filterNews(all, { limit: 6 }));
+      setLoading(false);
+    });
   }, []);
 
   // 진척도/개인화 기능 일시 비활성화 (개인화 미제공 → 재활성화 시 state + nextSteps 재연결)

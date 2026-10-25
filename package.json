@@ -20,7 +20,8 @@
     "preview": "vite preview",
     "lint": "tsc --noEmit",
     "refresh": "node scripts/fetch-news.mjs && node scripts/fetch-calendar.mjs",
-    "selfcheck": "node scripts/selfcheck.mjs"
+    "selfcheck": "node scripts/selfcheck.mjs",
+    "test": "node --test scripts/*.test.mjs"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

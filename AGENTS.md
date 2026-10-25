@@ -13,18 +13,19 @@
 npm install
 npm run dev          # http://localhost:5173
 npm run refresh      # RSS → public/data/news.json
-npm run selfcheck    # 데이터/링크 검증
+npm run selfcheck    # 데이터/일정 근거 검증
+npm test             # 수집 로직 회귀 검사
 ```
 
 ## 구조
 ```
 open/
-├── public/data/{news.json, meta.json}   # 자동 생성 (수집 결과)
-├── scripts/{fetch-news, selfcheck}.mjs  # 빌드/검증 스크립트
+├── public/data/{news,meta,calendar,calendar-meta}.json   # 자동 생성 (수집 결과)
+├── scripts/{fetch-news,fetch-calendar,selfcheck}.mjs  # 빌드/검증 스크립트
 ├── src/
-│   ├── pages/        Home Research Path Certs Quiz Dev NotFound
+│   ├── pages/        Home Research Path Certs Calendar Quiz Dev Settings
 │   ├── components/     재사용 UI
-│   ├── lib/          config · news · summary · user · quiz · certs
+│   ├── lib/          config · news · calendar · user · quiz · certs
 │   └── data/         glossary.ts · certifications.ts · path.ts
 ├── AGENTS.md · README.md · CHECKLIST.md
 ```
