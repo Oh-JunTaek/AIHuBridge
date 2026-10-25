@@ -113,6 +113,56 @@ const SAMPLE_EVENTS = [
   },
 ];
 
+/**
+ * RSS item → CalendarEvent 변환
+ */
+const rssItemToEvent = (s, it) => {
+  const pub = toISO(it.pubDate) || toISO(it.isoDate);
+  return {
+    id: makeId(s, it.link || it.guid || ''),
+    title: (it.title || '(제목 없음)').trim(),
+    host: s.name,
+    type: s.type,
+    category: s.category,
+    applicationStart: pub,
+    applicationEnd: pub,
+    eventStart: pub,
+    eventEnd: null,
+    isOnline: s.url.includes('zoom'),
+    location: it.link || s.url,
+    feeType: 'free',
+    feeAmount: null,
+    region: s.region,
+    url: it.link || s.url,
+    status: 'recruiting',
+    confirmedAt: new Date().toISOString(),
+    lang: s.lang,
+  };
+};
+
+/**
+ * 모든 카테고리별 출처에서 RSS 수집 시도
+ */
+async function fetchFromSources() {
+  const all = [];
+  const collectedFrom = [];
+
+  for (const [category, sources] of Object.entries(CATEGORY_SOURCES)) {
+    for (const src of sources) {
+      try {
+        const feed = await parser.parseURL(src.url);
+        const items = (feed.items || []).slice(0, 5).map((it) => rssItemToEvent(src, it));
+        all.push(...items);
+        collectedFrom.push({ category, id: src.id, count: items.length });
+      } catch (e) {
+        console.warn(`[skip] ${src.id}: ${e.message || e}`);
+      }
+    }
+  }
+
+  return { all, collectedFrom };
+}
+
 async function main() {
   let events = [];
   let sourceInfo = {};

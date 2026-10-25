@@ -1,9 +1,14 @@
 {
-  "fetchedAt": "2026-10-25T05:17:17.700Z",
+  "fetchedAt": "2026-10-25T05:27:43.775Z",
   "total": 2,
-  "sources": [
-    "kdt",
-    "naver-ai"
+  "categories": [
+    "government",
+    "corporate",
+    "bootcamp",
+    "webinar",
+    "hackathon",
+    "competition",
+    "community"
   ],
-  "note": "샘플 데이터 기반. 실제 RSS 수집 시 이 파일을 교체합니다."
+  "note": "샘플 데이터 기반 (실제 RSS 수집 실패)"
 }
