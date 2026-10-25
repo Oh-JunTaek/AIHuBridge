@@ -29,7 +29,7 @@ export default function Dev() {
           <dt className="text-slate-500">{t('dev.fetchedAt')}</dt>
           <dd className="font-medium text-slate-800">
             {meta?.fetchedAt
-              ? new Date(meta.fetchedAt).toLocaleString(state.lang === 'en' ? 'en-US' : 'ko-KR')
+              ? new Date(meta.fetchedAt).toLocaleString('ko-KR')
               : t('dev.noFetch')}
           </dd>
         </div>

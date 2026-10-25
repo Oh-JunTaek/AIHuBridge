@@ -58,7 +58,7 @@ export default function Home() {
             <h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">
               {t('home.heading')}{' '}
               <span className="font-normal text-stone-500 dark:text-stone-400">
-                ({new Date().toLocaleDateString(state.lang === 'en' ? 'en-US' : 'ko-KR', {
+                ({new Date().toLocaleDateString('ko-KR', {
                   month: 'long',
                   day: 'numeric',
                   weekday: 'short',
