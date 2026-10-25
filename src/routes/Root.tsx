@@ -1,13 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { nav } from '../lib/config';
-import {
-  BadgeIcon,
-  BookIcon,
-  PathIcon,
-  QuizIcon,
-  SettingsIcon,
-  DevIcon,
-} from '../components/icons';
+import { BadgeIcon, QuizIcon, SettingsIcon, DevIcon } from '../components/icons';
+import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
 
 // 2-Level 메뉴 구조 (정보관 / 학습관 + More)
@@ -15,17 +9,15 @@ const topMenu = [
   {
     id: 'info',
     labelKey: 'nav.info',
-    icon: <BookIcon />,
-    children: [
-      { to: '/research', key: 'nav.research', icon: <BookIcon /> },
-    ],
+    icon: <LogoIcon />,
+    children: [{ to: '/research', key: 'nav.research', icon: <LogoIcon /> }],
   },
   {
     id: 'learn',
     labelKey: 'nav.learn',
-    icon: <PathIcon />,
+    icon: <LogoIcon />,
     children: [
-      { to: '/path', key: 'nav.path', icon: <PathIcon /> },
+      { to: '/path', key: 'nav.path', icon: <LogoIcon /> },
       { to: '/certs', key: 'nav.certs', icon: <BadgeIcon /> },
     ],
   },
@@ -43,7 +35,7 @@ export default function Root() {
     <div className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors">
       <header className="sticky top-0 z-20 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur border-b border-stone-200 dark:border-stone-700">
         <div className="mx-auto max-w-4xl px-4 h-14 flex items-center justify-between">
-          {/* 로고: 텍스트 → SVG 아이콘 */}
+          {/* 로고: SVG 아이콘 + 텍스트 */}
           <div className="flex items-center gap-2 font-semibold text-lg">
             <BadgeIcon className="h-6 w-6 text-amber-500" />
             <span>{nav.siteName}</span>
