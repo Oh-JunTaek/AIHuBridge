@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import { BadgeIcon, CalendarIcon, DevIcon, SettingsIcon } from '../components/icons';
+import { BadgeIcon, CalendarIcon, SettingsIcon } from '../components/icons';
 import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
 
@@ -9,7 +9,6 @@ const linkConfs = [
   { to: '/path', key: 'nav.path', icon: <LogoIcon /> },
   { to: '/certs', key: 'nav.certs', icon: <BadgeIcon /> },
   { to: '/calendar', key: 'nav.calendar', icon: <CalendarIcon /> },
-  { to: '/dev', key: 'nav.dev', icon: <DevIcon /> },
   { to: '/settings', key: 'nav.settings', icon: <SettingsIcon /> },
 ];
 
@@ -18,8 +17,9 @@ export default function Root() {
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors">
+      <a href="#main-content" className="fixed left-4 top-2 z-50 -translate-y-24 rounded-lg bg-amber-600 px-4 py-3 text-white focus:translate-y-0">본문으로 건너뛰기</a>
       <header className="sticky top-0 z-20 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur border-b border-stone-200 dark:border-stone-700">
-        <div className="mx-auto max-w-4xl px-4 h-14 flex items-center justify-between">
+        <div className="mx-auto flex max-w-4xl flex-col items-start gap-2 px-4 py-2 lg:h-14 lg:flex-row lg:items-center lg:justify-between lg:py-0">
           {/* 투명 로고는 다크모드에서 단색으로 표시해 글자 대비를 확보한다. */}
           <NavLink to="/" className="shrink-0">
             <img
@@ -29,14 +29,14 @@ export default function Root() {
             />
           </NavLink>
 
-          <nav className="flex items-center gap-1 overflow-x-auto">
+          <nav aria-label="주요 메뉴" className="flex min-w-0 flex-wrap items-center gap-1">
             {linkConfs.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 end
                 className={({ isActive }) =>
-                  `flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium whitespace-nowrap ${
+                  `flex min-h-10 items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium whitespace-nowrap ${
                     isActive
                       ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200'
                       : 'text-stone-500 dark:text-stone-400 hover:bg-stone-200/60 dark:hover:bg-stone-700/60'
@@ -51,7 +51,7 @@ export default function Root() {
         </div>
       </header>
 
-      <main className="flex-1 w-full">
+      <main id="main-content" tabIndex={-1} className="w-full flex-1 scroll-mt-36">
         <Outlet />
       </main>
 

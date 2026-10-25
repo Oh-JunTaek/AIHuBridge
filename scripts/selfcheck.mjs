@@ -14,6 +14,8 @@ import { readFileSync } from 'node:fs';
 import { isCalendarEvent, visibleEvents } from '../src/lib/calendar-rules.mjs';
 import { isNewsArray } from '../src/lib/news-data.mjs';
 import { newsSources } from '../src/lib/news-sources.mjs';
+import { isCertification } from '../src/lib/cert-rules.mjs';
+import { loadStaticData } from './lib/static-data.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -65,22 +67,23 @@ try {
 
 // 3) certifications.ts 정적 참조 무결성
 try {
-  const src = readFileSync(resolve(root, 'src/data/certifications.ts'), 'utf8');
-  const idMatches = [...src.matchAll(/id:\s*'([^']+)'/g)].map((m) => m[1]);
-  const urlMatches = [...src.matchAll(/url:\s*'([^']+)'/g)].map((m) => m[1]);
+  const { certifications } = await loadStaticData(new URL('../src/data/certifications.ts', import.meta.url));
+  const idMatches = certifications.map((item) => item.id);
+  const urlMatches = certifications.map((item) => item.url);
   const dupIds = idMatches.length - new Set(idMatches).size;
   check('certifications.ts id 중복', dupIds === 0, `${idMatches.length}곳, 중복 ${dupIds}`);
   check('certifications.ts url 최소 1개', urlMatches.length >= 10, `${urlMatches.length}개`);
+  check('교육 비용·참여 조건·공식 근거', certifications.every(isCertification));
 } catch (e) {
   check('certifications.ts', false, e.message);
 }
 
 // 모든 학습 단계의 참조가 실제 인증·교육 항목에 연결되는지 검사한다.
 try {
-  const p = readFileSync(resolve(root, 'src/data/path.ts'), 'utf8');
-  const c = readFileSync(resolve(root, 'src/data/certifications.ts'), 'utf8');
-  const ids = new Set([...c.matchAll(/id:\s*'([^']+)'/g)].map((match) => match[1]));
-  const refs = [...p.matchAll(/refId:\s*'([^']+)'/g)].map((match) => match[1]);
+  const { stages } = await loadStaticData(new URL('../src/data/path.ts', import.meta.url));
+  const { certifications } = await loadStaticData(new URL('../src/data/certifications.ts', import.meta.url));
+  const ids = new Set(certifications.map((item) => item.id));
+  const refs = stages.flatMap((stage) => stage.items.map((item) => item.refId));
   check('학습 경로 교육 참조 무결성', refs.length > 0 && refs.every((ref) => ids.has(ref)), `${refs.length}개 항목`);
 } catch (e) {
   check('path.ts', false, e.message);

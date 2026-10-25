@@ -1,6 +1,6 @@
 /**
  * AI Compass 학습 로드맵 (비전공자 3단계).
- * 각 단계는 사이트의 '학습 경로' 페이지에서 진행 체크박스로 사용됩니다.
+ * 공식 교육 탐색용 단계이며 개인 체크·진도는 제공하지 않습니다.
  *
  * level(난이도): 초급 / 중급 / 고급
  * category(분야): 개론/개념 / 언어모델 / 프롬프트·도구 / 에이전트·앱 / 클라우드·MLOps / 비즈니스·전략
@@ -54,9 +54,9 @@ export const stages: Stage[] = [
     subtitle: '코드 없이 체험하는 AI',
     icon: '🚀',
     items: [
-      { id: 't-prompting', label: 'AI Prompting for Everyone', kind: 'course', refId: 'dlai-prompting', estMin: 420, level: '초급', category: '프롬프트·도구' },
-      { id: 't-build', label: 'Build with Andrew', kind: 'course', refId: 'dlai-build-with-andrew', estMin: 30, level: '초급', category: '에이전트·앱' },
-      { id: 't-everyone', label: 'AI For Everyone', kind: 'course', refId: 'coursera-ai-for-everyone', estMin: 690, level: '초급', category: '비즈니스·전략' },
+      { id: 't-prompting', label: 'AI Prompting for Everyone', kind: 'course', refId: 'dlai-prompting', estMin: 184, level: '초급', category: '프롬프트·도구' },
+      { id: 't-build', label: 'Build with Andrew', kind: 'course', refId: 'dlai-build-with-andrew', estMin: 60, level: '초급', category: '에이전트·앱' },
+      { id: 't-everyone', label: 'AI For Everyone', kind: 'course', refId: 'coursera-ai-for-everyone', estMin: 420, level: '초급', category: '비즈니스·전략' },
       { id: 't-eoai', label: 'Elements of AI', kind: 'course', refId: 'elementsofai', estMin: 360, level: '초급', category: '개론/개념' },
       { id: 't-hf', label: 'Hugging Face LLM Course', kind: 'course', refId: 'hf-llm-course', estMin: 240, level: '중급', category: '언어모델' },
     ],
@@ -67,7 +67,7 @@ export const stages: Stage[] = [
     subtitle: '작은 걸음부터 인증을 쌓아가기',
     icon: '🎯',
     items: [
-      { id: 'c-ai900', label: 'Microsoft AI-900 (입문)', kind: 'cert', refId: 'msft-ai-900', estMin: 120, level: '초급', category: '개론/개념' },
+      { id: 'c-ai900', label: 'Microsoft AI-901 (입문)', kind: 'cert', refId: 'msft-ai-900', estMin: 120, level: '초급', category: '개론/개념' },
       { id: 'c-gcpai', label: 'Google Generative AI Leader', kind: 'cert', refId: 'gcp-generative-ai-leader', estMin: 120, level: '초급', category: '비즈니스·전략' },
       { id: 'c-awssai', label: 'AWS AI Business Strategist', kind: 'cert', refId: 'aws-ai-business-strategist', estMin: 120, level: '초급', category: '비즈니스·전략' },
     ],

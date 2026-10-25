@@ -24,10 +24,10 @@ export default function Path() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
-      <header className="mb-6 flex items-baseline justify-between">
+      <header className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-stone-800">{t('path.title')}</h1>
-          <p className="mt-1 text-sm text-stone-500">
+          <h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('path.title')}</h1>
+          <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">
             {t('path.sub')}
           </p>
         </div>
@@ -38,11 +38,12 @@ export default function Path() {
 
       {/* ── 분류 필터: 난이도 / 분야 ── */}
       <div className="mb-5 flex flex-wrap items-center gap-4 gap-y-2 border-b border-stone-200 pb-3 text-xs">
-        <div className="flex items-center gap-1.5">
-          <span className="text-stone-500">{t('path.filterLevel')}</span>
+        <div role="group" aria-label="학습 난이도" className="flex flex-wrap items-center gap-1.5">
+          <span className="text-stone-500 dark:text-stone-400">{t('path.filterLevel')}</span>
           <button
             onClick={() => applyLevel(null)}
-            className={`rounded px-2 py-0.5 ${
+            aria-pressed={!filter.level}
+            className={`min-h-9 rounded px-2 py-1.5 ${
               filter.level ? 'bg-stone-100 text-stone-600' : 'bg-amber-600 text-white'
             }`}
           >
@@ -52,7 +53,8 @@ export default function Path() {
             <button
               key={lv}
               onClick={() => applyLevel(lv)}
-              className={`rounded px-2 py-0.5 ${
+              aria-pressed={filter.level === lv}
+              className={`min-h-9 rounded px-2 py-1.5 ${
                 filter.level === lv ? 'bg-amber-600 text-white' : 'bg-stone-100 text-stone-600'
               }`}
             >
@@ -60,11 +62,12 @@ export default function Path() {
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-1.5">
-          <span className="text-stone-500">{t('path.filterCategory')}</span>
+        <div role="group" aria-label="학습 분야" className="flex flex-wrap items-center gap-1.5">
+          <span className="text-stone-500 dark:text-stone-400">{t('path.filterCategory')}</span>
           <button
             onClick={() => applyCategory(null)}
-            className={`rounded px-2 py-0.5 ${
+            aria-pressed={!filter.category}
+            className={`min-h-9 rounded px-2 py-1.5 ${
               filter.category ? 'bg-stone-100 text-stone-600' : 'bg-amber-600 text-white'
             }`}
           >
@@ -74,7 +77,8 @@ export default function Path() {
             <button
               key={c}
               onClick={() => applyCategory(c)}
-              className={`rounded px-2 py-0.5 ${
+              aria-pressed={filter.category === c}
+              className={`min-h-9 rounded px-2 py-1.5 ${
                 filter.category === c ? 'bg-amber-600 text-white' : 'bg-stone-100 text-stone-600'
               }`}
             >
@@ -85,7 +89,7 @@ export default function Path() {
         {filter.level || filter.category ? (
           <button
             onClick={() => setFilter({ level: null, category: null })}
-            className="rounded px-2 py-0.5 text-stone-500 underline"
+            className="min-h-9 rounded px-2 py-1.5 text-stone-500 underline"
           >
             {t('path.filterReset')}
           </button>

@@ -34,17 +34,25 @@ export interface NewsResult {
 
 export type CertType = 'exam' | 'micro' | 'course';
 
+export interface EducationFee {
+  status: 'free' | 'paid' | 'conditional' | 'unknown';
+  amount?: number;
+  currency?: 'USD' | 'KRW';
+  note: string;
+}
+
 export interface Certification {
   id: string;
   name: string;
   provider: string;
   type: CertType;
   examCode?: string;
-  costUSD?: number;
-  costKRW?: number;
   validity?: string; // e.g. "2 years"
-  freePrep: boolean; // 무료 복습 자료/학습경로 존재 여부
-  language: 'ko' | 'en' | 'both';
+  learningFee: EducationFee;
+  credentialFee: EducationFee;
+  requirements: string;
+  evidenceUrls: string[];
+  language: 'ko' | 'en' | 'both' | 'unknown';
   difficulty: '초급' | '중급' | '고급';
   url: string;
   verifiedAt: string; // YYYY-MM-DD

@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import { useNews } from '../lib/use-news';
 import { NewsStatus } from '../components/NewsStatus';
 import { filterNews } from '../lib/news';
@@ -25,7 +24,7 @@ export default function Research() {
     <div className="mx-auto max-w-4xl px-4 py-6">
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('research.title')}</h1>
-        <p className="mt-1 text-sm text-stone-500">
+        <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">
           {t('research.sub', items.length)}
         </p>
       </header>
@@ -74,7 +73,7 @@ export default function Research() {
 
       <NewsStatus result={result} loading={loading} onRetry={reload} />
       {!loading && result?.status === 'success' && shown.length === 0 && (
-        <p className="text-sm text-stone-500">{t('research.empty')}</p>
+        <p className="text-sm text-stone-500 dark:text-stone-400">{t('research.empty')}</p>
       )}
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -83,14 +82,6 @@ export default function Research() {
         ))}
       </div>
 
-      <div className="mt-6 text-center text-sm">
-        <Link
-          to="/dev"
-          className="underline decoration-dotted"
-        >
-          {t('research.devLink')}
-        </Link>
-      </div>
     </div>
   );
 }

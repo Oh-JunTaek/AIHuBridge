@@ -1,5 +1,6 @@
 import type { Certification } from '../types';
 import { certifications } from '../data/certifications';
+import { feeLabel } from './cert-rules.mjs';
 
 /** 인증 → 카테고리 라벨 */
 export const certTypeLabel: Record<Certification['type'], string> = {
@@ -23,9 +24,5 @@ export function getCert(id: string): Certification | undefined {
 }
 
 export function costLabel(c: Certification): string {
-  const usd = c.costUSD ?? 0;
-  if (usd === 0) return c.type === 'exam' ? '무료 시험' : '무료';
-  // 간단 통화표시. KRW 환산은 개괄적으로 1:1400.
-  const krw = usd * 1400;
-  return `USD $${usd} (약 ₩${krw.toLocaleString()})`;
+  return feeLabel(c.credentialFee);
 }

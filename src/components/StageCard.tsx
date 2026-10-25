@@ -44,7 +44,7 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
           return (
             <li
               key={it.id}
-              className="flex items-center justify-between rounded-lg border border-stone-200 dark:border-stone-700 p-2.5"
+              className="flex flex-col items-start justify-between gap-3 rounded-lg border border-stone-200 p-2.5 dark:border-stone-700 sm:flex-row sm:items-center"
             >
               <div className="flex flex-col">
                 <span className="font-medium text-stone-800 dark:text-stone-200">{it.label}</span>
@@ -69,16 +69,17 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                 </div>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-stone-500">
-                <span className="flex items-center gap-1">
-                  <ClockIcon className="h-3 w-3" /> {it.estMin}{t('ui.min')}
+                <span className="flex items-center gap-1" title="학습 계획용 예상 시간입니다. 실제 소요 시간은 공식 페이지를 확인하세요.">
+                  <ClockIcon className="h-3 w-3" /> 약 {it.estMin}{t('ui.min')}
                 </span>
                 {cert?.url ? (
                   <a
                     href={cert.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded p-1 text-stone-500 hover:bg-stone-100 hover:text-amber-600"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded text-stone-500 hover:bg-stone-100 hover:text-amber-600 dark:text-stone-300 dark:hover:bg-stone-700"
                     title="공식 페이지 열기"
+                    aria-label={`${it.label} 공식 페이지 (새 탭)`}
                   >
                     <ExternalLinkIcon className="h-4 w-4" />
                   </a>

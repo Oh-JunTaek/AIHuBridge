@@ -19,7 +19,7 @@ const ko: Dict = {
     path: '학습 커리큘럼',
     certs: '인증 기관 교육',
     calendar: 'AI 캘린더',
-    dev: '개발자',
+
     settings: '설정',
   },
   footer: { copy: 'AI 소식·교육·일정을 한곳에서' },
@@ -66,10 +66,10 @@ const ko: Dict = {
     title: '인증기관 교육',
     back: '학습 경로로 돌아가기',
     note: '교육과 시험의 비용·조건은 공식 페이지에서 확인하세요. 개인 완료 기록은 제공하지 않습니다.',
-    footer: '인증은 공식 페이지에서 직접 응시하세요. (링크는 2026-10 기준 실측 URL)',
+    footer: '비용과 조건은 변경될 수 있습니다. 각 카드의 검토일·공식 근거와 신청 화면을 확인하세요.',
     free: '무료',
     official: '공식 페이지',
-    tab: { course: '무료 과정', exam: '수험 인증', micro: '스킬 배지' },
+    tab: { course: '학습 과정', exam: '수험 인증', micro: '스킬 배지' },
   },
   dev: {
     title: '🧪 자기진단',
