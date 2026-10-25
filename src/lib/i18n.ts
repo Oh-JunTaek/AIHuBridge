@@ -278,7 +278,7 @@ const en: Dict = {
   },
 };
 
-export const messages: Record<Lang, Dict> = { ko, en };
+export const messages: Record<Lang, Dict> = { ko };
 
 function walk(obj: unknown, path: string[]): unknown {
   return path.reduce<unknown>(
