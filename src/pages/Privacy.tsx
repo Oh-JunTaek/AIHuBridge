@@ -16,7 +16,7 @@ export default function Privacy() {
         </section>
         <section>
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">3. 수집 콘텐츠와 화면 설정</h2>
-          <p className="mt-2">뉴스와 AI 일정은 운영 작업에서 수집한 정적 자료를 제공합니다. 브라우저의 테마 설정은 뉴스·행사 출처로 전송하지 않습니다. 브라우저의 사이트 데이터 삭제 기능으로 화면 설정을 삭제할 수 있으며 다른 브라우저와 동기화되지 않습니다.</p>
+          <p className="mt-2">AI 소식과 AI 일정은 운영 작업에서 수집한 정적 자료를 제공합니다. 브라우저의 테마 설정은 소식·일정 제공처로 전송하지 않습니다. 브라우저의 사이트 데이터 삭제 기능으로 화면 설정을 삭제할 수 있으며 다른 브라우저와 동기화되지 않습니다.</p>
         </section>
         <section><h2 className="font-semibold text-stone-800 dark:text-stone-100">4. 운영 주체</h2><p className="mt-2">서비스 운영 및 정보 정정: eunmastudio. 공개 문의 주소는 추후 추가 예정입니다.</p></section>
       </div>

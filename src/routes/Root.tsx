@@ -5,7 +5,7 @@ import { useT } from '../lib/i18n';
 
 // 공통 메뉴
 const linkConfs = [
-  { to: '/research', key: 'nav.research', icon: <LogoIcon /> },
+  { to: '/updates', key: 'nav.updates', icon: <LogoIcon /> },
   { to: '/path', key: 'nav.path', icon: <LogoIcon /> },
   { to: '/certs', key: 'nav.certs', icon: <BadgeIcon /> },
   { to: '/calendar', key: 'nav.calendar', icon: <CalendarIcon /> },
@@ -60,7 +60,7 @@ export default function Root() {
 
       <footer className="mt-16 border-t border-stone-200 dark:border-stone-700 py-4 text-center text-xs text-stone-400 dark:text-stone-500">
         <p className="mb-1">
-          © {new Date().getFullYear()} AI 허브릿지. Developed by <strong className="text-amber-600">EunmaStudio</strong>.
+          © {new Date().getFullYear()} AI 허브릿지. 제작 <strong className="text-amber-600">EunmaStudio</strong>.
         </p>
         <div className="flex justify-center gap-3 mt-1">
           <NavLink to="terms" className="hover:text-amber-600">이용약관</NavLink>
@@ -70,5 +70,3 @@ export default function Root() {
     </div>
   );
 }
-
-

@@ -32,19 +32,19 @@ export default function Home() {
             <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{t('home.sub')}</p>
           </div>
           <Link
-            to="/research"
+            to="/updates"
             className="rounded-xl bg-amber-600 px-4 py-1.5 text-sm font-semibold text-white shadow-md transition hover:bg-amber-700 dark:shadow-amber-900/30"
           >
-            {t('home.allResearch')}
+            {t('home.allUpdates')}
           </Link>
         </div>
       </section>
 
-      {/* 오늘의 AI 한 줄 브리핑 (휴식/스몰 브리핑 공간) */}
+      {/* 가장 최근 소식 미리 보기 */}
       <NewsStatus result={result} loading={loading} onRetry={reload} />
       {!loading && <TodayBrief items={items} />}
 
-      {/* 상위 뉴스 4 + 나머지 */}
+      {/* 최신 순 소식 4건과 나머지 */}
       {!loading && items.length > 0 && <section className="mt-8">
         <h2 className="mb-3 text-sm font-semibold text-stone-600">{t('home.pick')}</h2>
         <div className="grid gap-4 sm:grid-cols-2">

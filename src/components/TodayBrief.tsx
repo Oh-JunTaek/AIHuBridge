@@ -5,7 +5,7 @@ import { readMinutes } from '../lib/news';
 import { ClockIcon } from '../components/icons';
 import { useT } from '../lib/i18n';
 
-/** 오늘의 AI 한 줄 브리핑 — 가장 최근 뉴스 1건을 한눈에 (휴식/스몰 브리핑용) */
+/** 가장 최근 소식 1건을 표시한다. 중요도나 당일 발행을 보장하지 않는다. */
 export function TodayBrief({ items }: { items: NewsItem[] }) {
   const t = useT();
   const top = items[0];
@@ -34,11 +34,11 @@ export function TodayBrief({ items }: { items: NewsItem[] }) {
       <p className="mt-2 line-clamp-2 text-sm text-stone-600 dark:text-stone-300">{summaryText}</p>
       <footer className="mt-3 flex items-center gap-3 text-xs text-stone-500 dark:text-stone-400">
         <span className="font-medium text-stone-600 dark:text-stone-300">{top.source}</span>
-        <span className="flex items-center gap-1">
+        <span className="flex items-center gap-1" title="표시된 제목·설명문 기준 예상 읽기 시간">
           <ClockIcon className="h-3 w-3" /> {mins}{t('ui.min')}
         </span>
         <Link
-          to="/research"
+          to="/updates"
           className="ml-auto text-xs text-stone-400 dark:text-stone-500 hover:text-amber-600"
         >
           {t('home.more')}

@@ -28,13 +28,13 @@ export function NewsCard({ item }: { item: NewsItem }) {
         </h3>
       </a>
       {summaryText && <p className="mt-1 line-clamp-2 text-sm text-stone-600 dark:text-stone-300">{summaryText}</p>}
-      {(facets.topics.models.length > 0 || facets.publication === 'paper') && <p className="text-xs text-stone-500 dark:text-stone-400">{facets.publication === 'paper' ? '논문 원문 · ' : ''}{facets.topics.models.map((type) => modelTypes[type]).join(' · ')}{facets.topics.models.length > 0 ? ` · ${opennessLabels[facets.openness]}` : ''}</p>}
+      {facets.topics.models.length > 0 && <p className="text-xs text-stone-500 dark:text-stone-400">{facets.topics.models.map((type) => modelTypes[type]).join(' · ')} · {opennessLabels[facets.openness]}</p>}
       <footer className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-stone-500 dark:text-stone-400">
         <span className="font-medium text-stone-600 dark:text-stone-300">{item.source}</span>
         <span>{item.lang === 'ko' ? '한국어' : item.lang === 'en' ? '영어' : '언어 미확인'}</span>
         <span>{publicationLabels[facets.publication] ?? '출처 유형 미확인'}</span>
-        <time dateTime={item.publishedAt} title="기사 발행일 (한국시간)">{new Date(item.publishedAt).toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}</time>
-        <span className="flex items-center gap-1">
+        <time dateTime={item.publishedAt} title="원문 게시일 (한국시간)">{new Date(item.publishedAt).toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}</time>
+        <span className="flex items-center gap-1" title="표시된 제목·설명문 기준 예상 읽기 시간">
           <ClockIcon className="h-3 w-3" /> {mins}{t('ui.min')}
         </span>
         {item.tags.slice(0, 2).map((t) => (

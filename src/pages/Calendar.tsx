@@ -57,20 +57,20 @@ export default function Calendar() {
         </div>
       </header>
 
-      <section aria-label="행사 대분류" className="mb-5">
-        <div className="flex flex-wrap gap-2">{[{id:'domestic',label:'국내'}, {id:'overseas',label:'해외'}, {id:'unknown',label:'지역 미확인'}, {id:'all',label:'전체'}].map((option) => <button key={option.id} type="button" aria-pressed={audience === option.id} onClick={() => { setAudience(option.id); setSelectedDay(null); }} className={`rounded-full px-4 py-2 text-sm font-semibold ${audience === option.id ? 'bg-blue-600 text-white' : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300'}`}>{option.label}</button>)}</div>
-        <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">국내 화면은 국내 행사와 전 세계 온라인 행사를 함께 보여줍니다. 해외 오프라인·미확인 방식은 기본 화면에서 제외합니다. 지역은 공개 개최 도시·주최 커뮤니티 위치 기준이며 실제 장소·접속 조건은 원문을 확인하세요.</p>
+      <section aria-label="일정 범위" className="mb-5">
+        <div className="flex flex-wrap gap-2">{[{id:'domestic',label:'국내·온라인'}, {id:'overseas',label:'해외'}, {id:'unknown',label:'지역 미확인'}, {id:'all',label:'전체'}].map((option) => <button key={option.id} type="button" aria-pressed={audience === option.id} onClick={() => { setAudience(option.id); setSelectedDay(null); }} className={`rounded-full px-4 py-2 text-sm font-semibold ${audience === option.id ? 'bg-blue-600 text-white' : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300'}`}>{option.label}</button>)}</div>
+        <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">국내·온라인은 국내 행사와 전 세계 온라인 행사를 함께 보여줍니다. 해외 오프라인·미확인 방식은 기본 화면에서 제외합니다. 지역은 공개 개최 도시·주최 커뮤니티 위치 기준이며 실제 장소·접속 조건은 원문을 확인하세요.</p>
       </section>
 
       <div className="mb-6 grid grid-cols-3 gap-3">
-        {[{ label: '선택 대분류 일정', value: audienceEvents.length, color: 'text-blue-600 dark:text-blue-300' }, { label: '온라인 일정', value: audienceEvents.filter((event) => event.isOnline === true).length, color: 'text-violet-600 dark:text-violet-300' }, { label: '이달의 검색 결과', value: monthEvents.length, color: 'text-sky-600 dark:text-sky-300' }].map((stat) => <div key={stat.label} className="rounded-2xl border border-stone-200 bg-white px-3 py-4 shadow-sm dark:border-stone-700 dark:bg-stone-900 sm:px-5"><p className="text-xs text-stone-500">{stat.label}</p><p className={'mt-1 text-2xl font-bold ' + stat.color}>{stat.value}<span className="ml-1 text-xs font-normal text-stone-400">건</span></p></div>)}
+        {[{ label: '선택 범위 일정', value: audienceEvents.length, color: 'text-blue-600 dark:text-blue-300' }, { label: '온라인 일정', value: audienceEvents.filter((event) => event.isOnline === true).length, color: 'text-violet-600 dark:text-violet-300' }, { label: '선택 월 검색 결과', value: monthEvents.length, color: 'text-sky-600 dark:text-sky-300' }].map((stat) => <div key={stat.label} className="rounded-2xl border border-stone-200 bg-white px-3 py-4 shadow-sm dark:border-stone-700 dark:bg-stone-900 sm:px-5"><p className="text-xs text-stone-500">{stat.label}</p><p className={'mt-1 text-2xl font-bold ' + stat.color}>{stat.value}<span className="ml-1 text-xs font-normal text-stone-400">건</span></p></div>)}
       </div>
 
       <section aria-label="일정 필터" className="mb-6 rounded-2xl border border-stone-200 bg-stone-50 p-4 dark:border-stone-700 dark:bg-stone-900/50 sm:p-5">
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           <label className="text-xs text-stone-500">행사 유형<select value={type} onChange={(event) => setType(event.target.value)} className={control}><option value="all">전체 유형</option>{Object.entries(eventTypeLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
           <label className="text-xs text-stone-500">진행 방식<select value={mode} onChange={(event) => setMode(event.target.value)} className={control}><option value="all">전체 방식</option><option value="online">온라인</option><option value="offline">오프라인</option><option value="unknown">미확인·혼합</option></select></label>
-          <label className="text-xs text-stone-500">참가 비용<select value={fee} onChange={(event) => setFee(event.target.value)} className={control}><option value="all">모든 비용</option><option value="free">무료로 확인됨</option><option value="paid">유료로 확인됨</option><option value="unknown">비용 미확인</option></select></label>
+          <label className="text-xs text-stone-500">참가 비용<select value={fee} onChange={(event) => setFee(event.target.value)} className={control}><option value="all">전체 비용</option><option value="free">무료로 확인됨</option><option value="paid">유료로 확인됨</option><option value="unknown">비용 미확인</option></select></label>
           <label className="text-xs text-stone-500">신청 일정<select value={registration} onChange={(event) => setRegistration(event.target.value)} className={control}><option value="all">전체 일정</option><option value="known">신청 마감 확인됨</option><option value="unknown">개최일만 확인됨</option></select></label>
         </div>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -78,7 +78,7 @@ export default function Calendar() {
           <label className="text-xs text-stone-500">지역 검색<input type="search" placeholder="예: Seoul, 서울, London" value={region} onChange={(event) => setRegion(event.target.value)} className={control} /></label>
           <label className="text-xs text-stone-500">조회 월<input type="month" min="2000-01" max="2100-12" value={month} onChange={(event) => changeMonth(event.target.value)} className={control} /></label>
         </div>
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2"><p className="text-xs text-stone-500">공개 목록 {available.length}건 · 조건에 맞는 일정 {filtered.length}건</p><button type="button" onClick={reset} className="text-xs font-semibold text-blue-600 underline dark:text-blue-300">필터 초기화</button></div>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2"><p className="text-xs text-stone-500">공개 목록 {available.length}건 · 조건에 맞는 일정 {filtered.length}건</p><button type="button" onClick={reset} className="text-xs font-semibold text-blue-600 underline dark:text-blue-300">조건 초기화</button></div>
       </section>
 
       {meta && <p className="mb-3 text-xs text-stone-500">마지막 수집: {format(meta.fetchedAt)} (한국시간)</p>}
@@ -94,7 +94,7 @@ export default function Calendar() {
         </header>
         {!shown.length && status === 'idle' && <div className="rounded-2xl border border-dashed border-stone-300 px-5 py-10 text-center text-sm text-stone-500 dark:border-stone-700">이 날짜와 조건에 맞는 AI 일정이 없습니다. 다른 달을 선택하거나 필터를 초기화해 보세요.</div>}
         <div className="grid gap-4 lg:grid-cols-2">{shown.slice(0, visibleCount).map((event) => <CalendarEventCard key={event.id} event={event} now={now} />)}</div>
-        {shown.length > visibleCount && <button type="button" className="mt-5 rounded-xl border border-stone-300 px-5 py-3 text-sm font-semibold dark:border-stone-600" onClick={() => setVisibleCount((count) => count + 24)}>다음 일정 더 보기 ({shown.length - visibleCount}건 남음)</button>}
+        {shown.length > visibleCount && <button type="button" className="mt-5 rounded-xl border border-stone-300 px-5 py-3 text-sm font-semibold dark:border-stone-600" onClick={() => setVisibleCount((count) => count + 24)}>일정 더 보기 ({shown.length - visibleCount}건 남음)</button>}
       </section>
       <p className="mt-6 text-xs leading-relaxed text-stone-500">해외 행사에서 날짜만 제공되면 현지 날짜로 표시하며 시각·시간대를 추정하지 않습니다. 신청 마감 미확인은 모집 중을 뜻하지 않습니다. 원문에서 참가 조건과 변경 사항을 확인하세요.</p>
     </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider, useLocation } from 'react-router-dom';
 import './index.css';
 import Root from './routes/Root';
 import Home from './pages/Home';
-import Research from './pages/Research';
+import Updates from './pages/Updates';
 import Path from './pages/Path';
 import Certs from './pages/Certs';
 import Calendar from './pages/Calendar';
@@ -16,6 +16,12 @@ import { PreferencesProvider } from './lib/preferences';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 
+// 이전 공유 주소는 검색 문자열·위치를 보존하고 새 주소로 대체한다.
+function LegacyUpdatesRedirect() {
+  const { search, hash } = useLocation();
+  return <Navigate to={{ pathname: '/updates', search, hash }} replace />;
+}
+
 const router = createBrowserRouter(
   [
     {
@@ -24,7 +30,8 @@ const router = createBrowserRouter(
       errorElement: <NotFound />,
       children: [
         { index: true, element: <Home /> },
-        { path: 'research', element: <Research /> },
+        { path: 'updates', element: <Updates /> },
+        { path: 'research', element: <LegacyUpdatesRedirect /> },
         { path: 'path', element: <Path /> },
         { path: 'certs', element: <Certs /> },
         { path: 'calendar', element: <Calendar /> },

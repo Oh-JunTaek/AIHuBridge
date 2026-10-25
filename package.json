@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "AI 뉴스·교육·인증 정보와 다양한 AI 일정을 제공하는 공개 웹 서비스.",
+  "description": "AI 소식·교육·인증 정보와 다양한 AI 일정을 제공하는 공개 웹 서비스.",
   "keywords": [
     "ai",
     "llm",

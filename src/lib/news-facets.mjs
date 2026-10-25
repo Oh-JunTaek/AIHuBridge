@@ -1,8 +1,8 @@
 import { newsSources } from './news-sources.mjs';
 
-export const modelTypes = { language: '언어모델', audio: '음성·음악모델', image: '이미지모델', video: '영상모델', multimodal: '멀티모달', code: '코딩모델', robotics: '로봇·월드모델', embedding: '임베딩·검색모델', timeseries: '시계열·예측모델', other: '기타 모델' };
+export const modelTypes = { language: '언어 모델', audio: '음성·음악 모델', image: '이미지 모델', video: '영상 모델', multimodal: '멀티모달', code: '코딩 모델', robotics: '로봇·월드 모델', embedding: '임베딩·검색 모델', timeseries: '시계열·예측 모델', other: '기타 모델' };
 export const opennessLabels = { open: '오픈소스 언급', weights: '가중치 공개 언급', closed: '비공개 언급', unknown: '미확인·혼합' };
-export const publicationLabels = { developer: '개발사 공식 발표', community: '커뮤니티·플랫폼', media: '매체 보도', paper: '논문 원문' };
+export const publicationLabels = { developer: '기업 공식 채널', community: '커뮤니티·플랫폼', media: '언론·매체', paper: '논문 저장소' };
 export const topicGroups = {
   models: modelTypes,
   papers: { language: '언어·추론', vision: '시각·이미지·영상', audio: '음성·오디오', learning: '학습·최적화', agents: '에이전트·로봇', safety: '안전·평가' },
@@ -51,7 +51,7 @@ export function newsFacets(item) {
   const topics = Object.fromEntries(Object.entries(patterns).map(([group, entries]) => [group,
     group === 'models' && !modelContext ? [] : Object.entries(entries).filter(([, regex]) => regex.test(text)).map(([key]) => key)]));
   if (modelContext && !topics.models.length) topics.models.push('other');
-  // 공개 방식은 기사 표현에 대한 탐색 단서다. 모델 라이선스를 검증했다는 뜻이 아니다.
+  // 공개 방식은 자료 표현에 대한 탐색 단서다. 모델 라이선스를 검증했다는 뜻이 아니다.
   const closed = /closed.source|proprietary|not open.source|비공개|오픈소스가\s*아닌/i.test(text);
   const open = !/not open.source|오픈소스가\s*아닌/i.test(text) && /open.source|오픈소스/i.test(text);
   const weights = /open.weight|가중치\s*공개|공개\s*가중치/i.test(text);

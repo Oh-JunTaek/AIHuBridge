@@ -39,7 +39,7 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 | Mistral | https://mistral.ai/news/rss | 16건, 개발사 발표 |
 | GitHub AI | https://github.blog/ai-and-ml/feed/ | 8건, 개발사·플랫폼 |
 | TechCrunch AI | https://techcrunch.com/category/artificial-intelligence/feed/ | 8건, 매체 |
-| arXiv | https://rss.arxiv.org/rss/cs.AI+cs.CL+cs.CV+cs.LG+cs.SD | 24건、원문 분류 코드·메타데이터 |
+| arXiv | https://rss.arxiv.org/rss/cs.AI+cs.CL+cs.CV+cs.LG+cs.SD | 24건,원문 분류 코드·메타데이터 |
 | Google 뉴스 한국어 | news-sources.mjs의 기존 한국어 AI RSS 검색 주소 | 8건, 제목·날짜·링크 |
 | 긱뉴스 | https://news.hada.io/rss/news | 12건, AI 관련 제목·날짜·링크만 |
 | AI타임스 | https://cdn.aitimes.com/rss/gn_rss_allArticle.xml | 12건, 제목·날짜·링크만 |
@@ -52,7 +52,7 @@ arXiv의 [RSS 안내](https://info.arxiv.org/help/rss.html)와 [API 메타데이
 
 ## 캘린더 지역 파생 근거
 
-공개 커뮤니티 좌표를 일시 처리해 국내/해외/미확인을 파생하며 좌표 자체는 저장·표시하지 않습니다. 실제 행사장 국가가 아닌 주최 커뮤니티 지역입니다. 미확인 좌표와 대한민국 경계 인근의 모호한 점은 미확인으로 남깁니다. 기본 국내는 국내 행사와 전 세계 온라인 행사를 함께 포함합니다.
+공개 커뮤니티 좌표를 일시 처리해 국내/해외/미확인을 파생하며 좌표 자체는 저장·표시하지 않습니다. 실제 행사장 국가가 아닌 주최 커뮤니티 지역입니다. 미확인 좌표와 대한민국 경계 인근의 모호한 점은 미확인으로 남깁니다. 기본 국내·온라인은 국내 행사와 전 세계 온라인 행사를 함께 포함합니다.
 
 로컬 scripts/data/korea-boundary.json은 [Natural Earth 공식 벡터 저장소](https://github.com/nvkelso/natural-earth-vector)의 50m 국가 자료에서 대한민국 형상만 추출했습니다. [공식 이용 조건](https://www.naturalearthdata.com/about/terms-of-use/)은 public domain입니다. 원본 URL·라이선스를 JSON에 보존하며 실행 때 외부 지도 API를 호출하지 않습니다.
 
@@ -65,3 +65,5 @@ NAVER D2의 공식 Atom(https://d2.naver.com/d2.atom)은 20개 항목을 읽었�
 ## 무료 기초 강의 정적 안내 (2026-10-26)
 
 부스트코스 7개와 성균관대 SKKU Online 2개를 제목·제공 기관·비용 상태·기간·공식 링크 중심의 정적 교육 자료로 추가했다. 강의 영상·교안·이미지를 복제하지 않고 설명은 탐색용으로 작성했다. 온라인 수료증 표시를 무료 발급으로 단정하지 않으며 미발급은 별도 상태로 구분한다. 강좌별 근거와 기간은 [무료 강의 확충 결과](./FREE_COURSES_2026-10-26.md)를 참조한다. 정적 강의 추가 자체는 행사 자동 수집 출처 확대가 아니다.
+
+용어·표기 기준: [TERMINOLOGY.md](./TERMINOLOGY.md). 최신 정비 결과: [TERMINOLOGY_REVIEW_2026-10-26.md](./TERMINOLOGY_REVIEW_2026-10-26.md). 현재 메뉴는 AI 소식(`/updates`)·학습 경로·교육·인증·AI 캘린더·설정이며 이전 `/research`는 새 주소로 이동한다. 날짜가 붙은 기존 보고서와 운영 식별자는 당시 명칭을 보존한다.

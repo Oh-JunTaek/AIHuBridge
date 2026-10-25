@@ -6,10 +6,10 @@
 
 | 대상 | 갱신 방식 |
 |---|---|
-| AI 뉴스 | 매일 한국시간 07:00 / 19:00 예약, RSS 수집 |
+| AI 소식 | 매일 한국시간 07:00 / 19:00 예약, RSS 수집·논문 공식 Atom 보완 |
 | AI 캘린더 | 같은 예약에서 카카오 RSS·Google 공개 커뮤니티 일정 수집 |
-| 인증기관 교육·가격·수료 조건 | 정적 자료, 공식 출처를 별도로 재검증한 후 코드 변경 |
-| 학습 커리큘럼 | 정적 안내, 공식 교육·인증 링크를 별도로 검토하여 변경 |
+| 교육·인증·가격·수료 조건 | 정적 자료, 공식 출처를 별도로 재검증한 후 코드 변경 |
+| 학습 경로 | 정적 안내, 공식 교육·인증 링크를 별도로 검토하여 변경 |
 
 GitHub Actions의 서버에서 실행하므로 개인 PC를 켜 둘 필요가 없다. 정확한 분 단위 실행 시각은 보장되지 않으며 GitHub 대기열 때문에 지연될 수 있다. 추가 외부 계정·키·로컬 모델·개인용 자동화는 사용하지 않는다.
 
@@ -74,3 +74,5 @@ GitHub 자체 장애, 저장소/Actions 비활성화, 정책·권한 변경, 출
 
 - [GitHub 워크플로 트리거](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow): 봇 토큰 push의 후속 실행 제한.
 - [GitHub 이벤트와 schedule/workflow_run](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows): 예약 지연 및 완료 이벤트에 따른 실행.
+
+용어·표기 기준: [TERMINOLOGY.md](./TERMINOLOGY.md). 최신 정비 결과: [TERMINOLOGY_REVIEW_2026-10-26.md](./TERMINOLOGY_REVIEW_2026-10-26.md). 현재 메뉴는 AI 소식(`/updates`)·학습 경로·교육·인증·AI 캘린더·설정이며 이전 `/research`는 새 주소로 이동한다. 날짜가 붙은 기존 보고서와 운영 식별자는 당시 명칭을 보존한다.

@@ -7,7 +7,7 @@ export default function Terms() {
       <div className="space-y-6">
         <section>
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">1. 공개 정보 서비스</h2>
-          <p className="mt-2">AI 허브릿지는 누구나 로그인 없이 AI 뉴스·교육·인증 정보와 AI 일정을 열람할 수 있는 공개 웹 서비스입니다. 서비스는 개인별 학습 기록이나 공식 인증 발급을 제공하지 않습니다.</p>
+          <p className="mt-2">AI 허브릿지는 누구나 로그인 없이 AI 소식·교육·인증 정보와 AI 일정을 열람할 수 있는 공개 웹 서비스입니다. 서비스는 개인별 학습 기록이나 공식 인증 발급을 제공하지 않습니다.</p>
         </section>
         <section>
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">2. 코드와 외부 콘텐츠의 권리</h2>

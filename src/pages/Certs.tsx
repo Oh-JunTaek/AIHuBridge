@@ -21,8 +21,8 @@ export default function Certs() {
 
   const tabs: { id: CertType; label: string; emoji: string }[] = [
     { id: 'course', label: '학습 과정', emoji: '📚' },
-    { id: 'exam', label: '수험 인증', emoji: '🎯' },
-    { id: 'micro', label: '스킬 배지', emoji: '🎖️' },
+    { id: 'exam', label: '자격시험', emoji: '🎯' },
+    { id: 'micro', label: '역량 인증', emoji: '🎖️' },
   ];
 
   return (
@@ -61,7 +61,7 @@ export default function Certs() {
         </div>
         <div className="mt-3 flex items-center justify-between gap-3 text-sm"><p role="status">조건에 맞는 항목 {shown.length}개</p><button type="button" className="rounded-lg px-3 py-2 text-amber-700 dark:text-amber-300" onClick={() => { setLanguage(''); setCost(''); setQuery(''); }}>조건 초기화</button></div>
       </section>
-      {!shown.length && <p className="py-6 text-sm">조건에 맞는 교육이 없습니다. 다른 유형을 선택하거나 조건을 초기화해 보세요.</p>}
+      {!shown.length && <p className="py-6 text-sm">조건에 맞는 교육·인증이 없습니다. 다른 유형을 선택하거나 조건을 초기화해 보세요.</p>}
 
       <div className="grid gap-4 sm:grid-cols-2">
         {shown.map((c) => (

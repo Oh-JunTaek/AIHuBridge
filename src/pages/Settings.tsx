@@ -39,7 +39,7 @@ export default function Settings() {
       </p>
 
       <p className="mt-8 text-xs text-stone-400">
-        설정은 브라우저(localStorage)에 저장됩니다. 다른 브라우저에서는 초기화됩니다.
+        화면 테마는 현재 브라우저에 저장됩니다. 다른 브라우저와 동기화되지 않습니다.
       </p>
     </div>
   );
