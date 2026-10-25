@@ -13,6 +13,7 @@
 import { readFileSync } from 'node:fs';
 import { isCalendarEvent, visibleEvents } from '../src/lib/calendar-rules.mjs';
 import { isNewsArray } from '../src/lib/news-data.mjs';
+import { newsSources } from '../src/lib/news-sources.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,10 +30,12 @@ function check(name, cond, extra = '') {
 
 // 1) news.json 스키마
 let newsCount = 0;
+let newsItems = [];
 try {
   const ns = JSON.parse(readFileSync(resolve(pubDir, 'news.json'), 'utf8'));
   if (!isNewsArray(ns)) throw new Error('뉴스 배열·필드 타입·URL·날짜·중복 검증 실패');
   newsCount = ns.length;
+  newsItems = ns;
   check('news.json 존재', ns.length > 0, `${ns.length}건`);
   const bad = ns.filter((i) => !i.id || !i.title || !i.url || !i.source || !i.category || !i.publishedAt || !('summary' in i));
   check('news.json 스키마', bad.length === 0, bad.length ? `${bad.length}건 누락` : 'OK');
@@ -47,6 +50,15 @@ try {
 try {
   const m = JSON.parse(readFileSync(resolve(pubDir, 'meta.json'), 'utf8'));
   check('meta.json 존재', !!m.fetchedAt && m.total === newsCount, `fetched ${m.total} @ ${m.fetchedAt}`);
+  if (m.sourceResults) {
+    const ids = newsSources.map((source) => source.id);
+    check('뉴스 출처별 수집 상태와 건수', Array.isArray(m.sourceResults)
+      && m.sourceResults.length === ids.length
+      && new Set(m.sourceResults.map((result) => result.id)).size === ids.length
+      && m.sourceResults.every((result) => ids.includes(result.id) && ['success', 'failed'].includes(result.status))
+      && newsItems.every((item) => ids.includes(item.sourceId))
+      && ids.every((id) => m.counts[id] === newsItems.filter((item) => item.sourceId === id).length));
+  }
 } catch (e) {
   check('meta.json', false, '미수집 — npm run refresh 먼저 실행');
 }

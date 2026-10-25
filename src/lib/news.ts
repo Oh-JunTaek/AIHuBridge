@@ -1,6 +1,6 @@
 import type { NewsItem } from '../types';
 
-import { requestNews } from './news-data.mjs';
+import { requestNews, selectNews, type NewsFilters } from './news-data.mjs';
 
 export function loadNewsResult(signal?: AbortSignal) {
   return requestNews(import.meta.env.BASE_URL, fetch, Date.now(), signal);
@@ -11,19 +11,12 @@ export async function loadNews(): Promise<NewsItem[]> {
   return (await loadNewsResult()).items;
 }
 
-/** 오늘 날짜 기준 최신 뉴스 위주. 카테고리 필터 지원 */
+/** 화면에서 선택한 조건만 적용한다. 개인 기록이나 선호는 저장하지 않는다. */
 export function filterNews(
   items: NewsItem[],
-  opts: { category?: string; tag?: string; limit?: number } = {},
+  opts: NewsFilters = {},
 ) {
-  const withDate = items.filter((i) => !!i.publishedAt);
-  withDate.sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-  );
-  const out = withDate.filter(
-    (i) => (!opts.category || i.category === opts.category) && (!opts.tag || i.tags.includes(opts.tag)),
-  );
-  return opts.limit ? out.slice(0, opts.limit) : out;
+  return selectNews(items, opts);
 }
 
 /** 읽는데 걸리는 분 시간 계산 (기준: 220자/분) */

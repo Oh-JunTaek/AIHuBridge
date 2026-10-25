@@ -1,6 +1,52 @@
 {
-  "fetchedAt": "2026-10-25T12:22:13.541Z",
+  "fetchedAt": "2026-10-25T12:46:22.674Z",
   "total": 40,
+  "status": "success",
+  "sourceResults": [
+    {
+      "id": "openai",
+      "status": "success",
+      "count": 8,
+      "rejected": 0,
+      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+    },
+    {
+      "id": "huggingface",
+      "status": "success",
+      "count": 8,
+      "rejected": 0,
+      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+    },
+    {
+      "id": "github",
+      "status": "success",
+      "count": 8,
+      "rejected": 0,
+      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+    },
+    {
+      "id": "techcrunch",
+      "status": "success",
+      "count": 8,
+      "rejected": 0,
+      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+    },
+    {
+      "id": "arxiv",
+      "status": "success",
+      "count": 0,
+      "rejected": 0,
+      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+    },
+    {
+      "id": "koreagnews",
+      "status": "success",
+      "count": 8,
+      "rejected": 0,
+      "lastSuccessAt": "2026-10-25T12:46:22.674Z"
+    }
+  ],
+  "unavailableSources": [],
   "counts": {
     "openai": 8,
     "huggingface": 8,
@@ -9,12 +55,9 @@
     "arxiv": 0,
     "koreagnews": 8
   },
-  "unavailableSources": [
-    "arxiv"
-  ],
   "summaryTiers": {
-    "rule": 40,
-    "excerpt": 0
+    "rule": 24,
+    "excerpt": 16
   },
   "summaryMethod": "rss-extract"
 }

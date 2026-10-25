@@ -12,12 +12,6 @@ export default function Home() {
   const items = filterNews(result?.items ?? [], { limit: 6 });
   const t = useT();
 
-  // 진척도/개인화 기능 일시 비활성화 (개인화 미제공 → 재활성화 시 state + nextSteps 재연결)
-
-  const handleRead = (_id?: string) => {
-    // lastActive 갱신용 (추후 읽음 기록으로 확장)
-  };
-
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
             {/* Hero 배너 — 따뜻한 우드톤 그라데이션 */}
@@ -55,7 +49,7 @@ export default function Home() {
         <h2 className="mb-3 text-sm font-semibold text-stone-600">{t('home.pick')}</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {items.slice(0, 4).map((it) => (
-            <NewsCard key={it.id} item={it} onRead={handleRead} />
+            <NewsCard key={it.id} item={it} />
           ))}
         </div>
       </section>}
@@ -72,7 +66,6 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="line-clamp-2 text-sm text-stone-700 hover:text-amber-600 hover:underline"
-                onClick={() => handleRead(it.id)}
               >
                 [{it.source}] {it.title}
               </Link>

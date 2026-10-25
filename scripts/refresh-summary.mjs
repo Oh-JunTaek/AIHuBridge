@@ -9,6 +9,7 @@ const output = [
   '## AI 정보 갱신 결과', '',
   `- 실행: ${run}`,
   `- 뉴스: ${news.total}건 / 수집 시각 ${news.fetchedAt}`,
+  `- 뉴스 수집 상태: ${news.status ?? '이전 형식'} / 갱신 실패 출처: ${(news.unavailableSources ?? []).join(', ') || '없음'}`,
   `- AI 일정: ${calendar.total}건 / 수집 시각 ${calendar.fetchedAt}`,
   `- 일정 수집 상태: ${calendar.status}`,
   '- 성공한 수집 실행은 별도 배포 워크플로로 자동 연결됩니다.', '',

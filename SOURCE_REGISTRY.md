@@ -29,4 +29,6 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 
 ## 뉴스 출처
 
-현재 뉴스는 OpenAI, Hugging Face, GitHub AI, TechCrunch AI, arXiv cs.AI, Google 뉴스 한국어 RSS를 사용합니다. 수집 URL은 scripts/fetch-news.mjs에 있습니다. 뉴스 출처 설정의 단일화와 소스별 제공 조건 기록 확장은 후속 작업입니다. 생성형 모델이나 외부 서비스 키는 사용하지 않습니다.
+현재 뉴스는 OpenAI, Hugging Face, GitHub AI, TechCrunch AI, arXiv cs.AI, Google 뉴스 한국어 RSS를 사용합니다. 수집 URL과 출처 ID·언어·분야는 src/lib/news-sources.mjs 한 곳에서 관리하며 화면 설정과 수집기가 함께 사용합니다. 신규 출처와 소스별 제공 조건 기록 확장은 후속 작업입니다. 생성형 모델이나 외부 서비스 키는 사용하지 않습니다.
+
+뉴스는 출처당 최신 유효 8건을 선택합니다. 발행일 누락·무효·미래(5분 허용 초과)는 제외하고 제목을 임의로 잘라내지 않습니다. 일부 실패 시 발행 후 7일 이내의 기존 기사만 보존하며 메타에 출처별 마지막 성공·실패·보존 건수를 기록합니다. 전체 실패나 전체 0건은 이전 파일을 유지합니다. 자세한 변경·검증: [뉴스 수집 안정화 결과](./NEWS_RELIABILITY_2026-10-25.md).

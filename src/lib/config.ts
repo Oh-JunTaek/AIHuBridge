@@ -1,53 +1,11 @@
+import { newsSources } from './news-sources.mjs';
 // ── AI 허브릿지 루트 설정 ─────────────────────────────────
 // ※ AIHuBridge 폴더 안에서만 동작. 외부 저장소 참조 없음.
 
 export const config = {
   siteName: 'AI 허브릿지',
   tagline: 'AI 소식·교육·행사를 연결합니다.',
-  newsSources: [
-    {
-      id: 'openai',
-      name: 'OpenAI Blog',
-      url: 'https://openai.com/blog/rss.xml',
-      category: '업계/제품',
-      lang: 'en',
-    },
-    {
-      id: 'huggingface',
-      name: 'Hugging Face',
-      url: 'https://huggingface.co/blog/feed.xml',
-      category: '오픈소스',
-      lang: 'en',
-    },
-    {
-      id: 'github',
-      name: 'GitHub Blog (AI)',
-      url: 'https://github.blog/ai-and-ml/feed/',
-      category: '오픈소스',
-      lang: 'en',
-    },
-    {
-      id: 'techcrunch',
-      name: 'TechCrunch AI',
-      url: 'https://techcrunch.com/category/artificial-intelligence/feed/',
-      category: '언론',
-      lang: 'en',
-    },
-    {
-      id: 'google-ai',
-      name: 'Google AI Blog RSS',
-      url: 'https://ai.googleblog.com/feeds/posts/default',
-      category: '연구/논문',
-      lang: 'en',
-    },
-    {
-      id: 'korea-ai',
-      name: 'Google 뉴스 AI (한국)',
-      url: 'https://news.google.com/rss/search?q=AI&hl=ko&gl=KR&ceid=KR:ko',
-      category: '언론',
-      lang: 'ko',
-    },
-  ] as const,
+  newsSources,
 
   /** 카테고리별 컬러 (따뜻한 우드톤) */
   categoryColor: {

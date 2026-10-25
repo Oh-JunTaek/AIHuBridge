@@ -13,6 +13,8 @@ export interface NewsItem {
   title: string;
   url: string;
   source: string;
+  sourceId?: string; // 이전 수집 파일은 표시명으로 호환한다.
+  lang?: 'ko' | 'en' | 'unknown';
   publishedAt: string; // ISO
   category: Category;
   tags: string[];

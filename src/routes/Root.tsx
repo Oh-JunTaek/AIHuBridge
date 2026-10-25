@@ -20,12 +20,12 @@ export default function Root() {
     <div className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors">
       <header className="sticky top-0 z-20 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur border-b border-stone-200 dark:border-stone-700">
         <div className="mx-auto max-w-4xl px-4 h-14 flex items-center justify-between">
-          {/* 로고: HuBridge.png 이미지 (클릭 시 홈 랜딩) */}
-          <NavLink to="/">
+          {/* 투명 로고는 다크모드에서 단색으로 표시해 글자 대비를 확보한다. */}
+          <NavLink to="/" className="shrink-0">
             <img
-              src={`${import.meta.env.BASE_URL}icon/HuBridge.png`}
+              src={`${import.meta.env.BASE_URL}icon/hubridge-transparent.png`}
               alt="AI 허브릿지 로고"
-              className="h-8 w-auto"
+              className="h-8 w-auto dark:brightness-0 dark:invert"
             />
           </NavLink>
 

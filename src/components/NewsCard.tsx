@@ -4,13 +4,7 @@ import { readMinutes } from '../lib/news';
 import { ClockIcon } from './icons';
 import { useT } from '../lib/i18n';
 
-export function NewsCard({
-  item,
-  onRead,
-}: {
-  item: NewsItem;
-  onRead?: (id: string) => void;
-}) {
+export function NewsCard({ item }: { item: NewsItem }) {
   const mins = readMinutes(item.excerpt, item.title);
   const badge = config.categoryColor[item.category] || 'bg-stone-100 text-stone-800';
   const summaryText = item.summary || item.excerpt;
@@ -22,7 +16,6 @@ export function NewsCard({
         href={item.url}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => onRead?.(item.id)}
         className="textLeft text-stone-800 dark:text-stone-200"
       >
         <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${badge}`}>
@@ -32,9 +25,10 @@ export function NewsCard({
           {item.title}
         </h3>
       </a>
-      <p className="mt-1 line-clamp-2 text-sm text-stone-600 dark:text-stone-300">{summaryText}</p>
-      <footer className="mt-2 flex items-center gap-3 text-xs text-stone-500 dark:text-stone-400">
+      {summaryText && <p className="mt-1 line-clamp-2 text-sm text-stone-600 dark:text-stone-300">{summaryText}</p>}
+      <footer className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-stone-500 dark:text-stone-400">
         <span className="font-medium text-stone-600 dark:text-stone-300">{item.source}</span>
+        <span>{item.lang === 'ko' ? '한국어' : item.lang === 'en' ? '영어' : '언어 미확인'}</span>
         <time dateTime={item.publishedAt} title="기사 발행일 (한국시간)">{new Date(item.publishedAt).toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}</time>
         <span className="flex items-center gap-1">
           <ClockIcon className="h-3 w-3" /> {mins}{t('ui.min')}
