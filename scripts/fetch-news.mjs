@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { writeJson } from './lib/data-files.mjs';
-import { readRss } from './lib/rss.mjs';
+import { readNewsFeed } from './lib/news-feeds.mjs';
 import { collectNews } from './lib/news-collector.mjs';
 
 const data = new URL('../public/data/', import.meta.url);
@@ -14,7 +14,7 @@ function previousFile(name, fallback) {
 }
 
 async function main() {
-  const result = await collectNews({ readFeed: readRss,
+  const result = await collectNews({ readFeed: readNewsFeed,
     previous: previousFile('news.json', []), previousMeta: previousFile('meta.json', {}) });
   writeJson(fileURLToPath(new URL('news.json', data)), result.items);
   writeJson(fileURLToPath(new URL('meta.json', data)), result.meta);

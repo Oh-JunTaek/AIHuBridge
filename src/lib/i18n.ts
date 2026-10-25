@@ -36,7 +36,7 @@ const ko: Dict = {
   home: {
     heading: '오늘의 AI 브리핑',
     loading: '뉴스를 불러오는 중…',
-    allResearch: '전체 리서치',
+    allResearch: '전체 AI뉴스',
     sub: 'AI 최신 소식부터 교육·인증 정보와 다양한 AI 행사까지 한곳에서 확인하세요.',
     tagline: 'AI 소식·교육·행사를 연결합니다.',
     pick: '오늘의 Pick 4',
@@ -48,9 +48,9 @@ const ko: Dict = {
     study: '학습 하러 가기 →',
   },
   research: {
-    title: '리서치',
-    sub: 'AI 최신 소식 {0}건 · 카테고리로 걸러보기',
-    empty: '이 카테고리에는 현재 표시할 기사가 없습니다.',
+    title: 'AI뉴스',
+    sub: 'AI 소식·공식 모델 발표·연구 논문 {0}건',
+    empty: '선택한 분야와 조건에 맞는 소식이 없습니다. 필터를 조정해 보세요.',
     devLink: '개발용 자기진단 → 마지막 수집 시각 확인',
   },
   path: {

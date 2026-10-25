@@ -1,3 +1,4 @@
+import { newsFacets } from './news-facets.mjs';
 const text = (value) => typeof value === 'string' && value.trim().length > 0;
 const date = (value) => typeof value === 'string' && Number.isFinite(Date.parse(value));
 const categories = ['업계/제품', '연구/논문', '정책/규제', '오픈소스', '블로그/개인', '언론'];
@@ -9,6 +10,7 @@ export function isNewsItem(item) {
   return ['id', 'title', 'source'].every((key) => text(item[key]))
     && (item.lang === undefined || ['ko', 'en', 'unknown'].includes(item.lang))
     && (item.sourceId === undefined || text(item.sourceId))
+    && (item.paperCategories === undefined || (Array.isArray(item.paperCategories) && item.paperCategories.every(text)))
     && ['http:', 'https:'].includes(url.protocol)
     && date(item.publishedAt) && categories.includes(item.category)
     && Array.isArray(item.tags) && item.tags.every(text)
@@ -22,12 +24,19 @@ export function isNewsArray(items) {
     && new Set(items.map((item) => item.url)).size === items.length;
 }
 
-export function selectNews(items, { category, tag, lang, source, query = '', limit } = {}) {
+export function selectNews(items, { category, tag, lang, source, query = '', limit, origin, modelsOnly, topicGroup, topic, openness, publication, paperKind, company } = {}) {
   const words = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
-  const selected = items.filter((item) => (!category || item.category === category)
+  const selected = items.filter((item) => {
+    const facets = newsFacets(item);
+    return (!category || item.category === category)
     && (!tag || item.tags.includes(tag)) && (!lang || (item.lang ?? 'unknown') === lang)
     && (!source || item.source === source)
-    && words.every((word) => `${item.title} ${item.source} ${item.excerpt} ${item.tags.join(' ')}`.toLocaleLowerCase().includes(word)))
+    && (!origin || facets.origin === origin) && (!modelsOnly || facets.topics.models.length > 0)
+    && (!topic || (topicGroup && facets.topics[topicGroup]?.includes(topic)))
+    && (!openness || facets.openness === openness) && (!publication || facets.publication === publication)
+    && (!paperKind || facets.paperKinds.includes(paperKind)) && (!company || facets.companies.includes(company))
+    && words.every((word) => `${item.title} ${item.source} ${item.excerpt} ${item.tags.join(' ')}`.toLocaleLowerCase().includes(word));
+  })
     .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
   return limit ? selected.slice(0, limit) : selected;
 }

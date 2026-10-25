@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import { BadgeIcon, CalendarIcon, SettingsIcon } from '../components/icons';
 import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
@@ -14,12 +14,15 @@ const linkConfs = [
 
 export default function Root() {
   const t = useT();
+  const { pathname } = useLocation();
+  // 넓은 달력을 사용하는 페이지에서는 헤더도 본문과 같은 폭으로 정렬한다.
+  const headerWidth = pathname.replace(/\/+$/, '') === '/calendar' ? 'max-w-6xl' : 'max-w-4xl';
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors">
       <a href="#main-content" className="fixed left-4 top-2 z-50 -translate-y-24 rounded-lg bg-amber-600 px-4 py-3 text-white focus:translate-y-0">본문으로 건너뛰기</a>
       <header className="sticky top-0 z-20 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur border-b border-stone-200 dark:border-stone-700">
-        <div className="mx-auto flex max-w-4xl flex-col items-start gap-2 px-4 py-2 lg:h-14 lg:flex-row lg:items-center lg:justify-between lg:py-0">
+        <div className={`mx-auto flex ${headerWidth} flex-col items-start gap-2 px-4 py-2 lg:h-14 lg:flex-row lg:items-center lg:justify-between lg:py-0`}>
           {/* 투명 로고는 다크모드에서 단색으로 표시해 글자 대비를 확보한다. */}
           <NavLink to="/" className="shrink-0">
             <img

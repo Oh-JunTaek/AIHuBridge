@@ -1,13 +1,13 @@
 # 수집 출처 관리표
 
-확인일: 2026-10-25. 공개 여부·접근 정책·이용 안내를 확인하고 최소 정보만 제공합니다. 이 표가 모든 콘텐츠의 포괄적 재사용 허가를 의미하지 않습니다. 출처 정책 변경 시 재확인이 필요합니다.
+확인일: 2026-10-26. 공개 여부·접근 정책·이용 안내를 확인하고 최소 정보만 제공합니다. 이 표가 모든 콘텐츠의 포괄적 재사용 허가를 의미하지 않습니다. 출처 정책 변경 시 재확인이 필요합니다.
 
 ## 활성 AI 일정 출처
 
 | 출처 | 방식 | 사용 정보 | 제한 |
 |---|---|---|---|
 | 카카오 공식 기술 블로그 | https://tech.kakao.com/blog/feed/ | 모집 표현·일정 근거가 명시된 AI 공고의 제목·마감·링크 | 일반 글·회고 제외, 설명문 전재 없음 |
-| Google 개발자 커뮤니티 공개 행사 지도 | https://developers.google.com/community/GDG_DevFest_Events.json | AI 주제 행사명·주최 커뮤니티명·현지 날짜·도시·진행 방식·원문 링크·주제 | 마감일·요금·시각 추정 금지, RSVP·연락처·좌표·사진·설명문 미수집 |
+| Google 개발자 커뮤니티 공개 행사 지도 | https://developers.google.com/community/GDG_DevFest_Events.json | AI 주제 행사명·주최 커뮤니티명·현지 날짜·도시·진행 방식·원문 링크·주제·파생 지역 | 마감일·요금·시각 추정 금지, RSVP·연락처·좌표·사진·설명문 저장·표시 금지 |
 
 Google 출처는 [공식 행사 페이지](https://developers.google.com/events)의 공개 지도 설정이 연결하는 JSON입니다. [robots.txt](https://developers.google.com/robots.txt)에서 해당 경로의 제한이 없음을 확인했습니다. 표제와 일정 등 최소 메타데이터만 사용하며, 카드에서 원문과 일정 제공처를 링크합니다. 일반 [문서 이용 정책](https://developers.google.com/terms/site-policies)은 개별 페이지의 이용허락 표시를 전제로 하므로 행사 데이터 전체에 임의로 CC BY 표시를 붙이지 않습니다.
 
@@ -27,11 +27,34 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 - 날짜만 공개된 해외 일정은 가장 먼저 해당 날짜가 시작되는 UTC+14 기준부터 보수적으로 제외합니다. 실제 현지 시각이 확인되지 않았으므로 일부 임박 일정이 일찍 제외될 수 있습니다.
 - 취소·연기·TBD·TBA·미정 표시, 이미 지난 일정, 비AI·중복·샘플을 제외합니다. 제공처의 취소·변경 갱신이 늦을 수 있으므로 원문 확인을 안내합니다.
 
-## 뉴스 출처
+## 뉴스·공식 발표·논문 출처
 
-현재 뉴스는 OpenAI, Hugging Face, GitHub AI, TechCrunch AI, arXiv cs.AI, Google 뉴스 한국어 RSS를 사용합니다. 수집 URL과 출처 ID·언어·분야는 src/lib/news-sources.mjs 한 곳에서 관리하며 화면 설정과 수집기가 함께 사용합니다. 신규 출처와 소스별 제공 조건 기록 확장은 후속 작업입니다. 생성형 모델이나 외부 서비스 키는 사용하지 않습니다.
+수집 URL과 출처 ID·언어·분야·지역·한도는 src/lib/news-sources.mjs 한 곳에서 관리하며 화면과 수집기가 함께 사용합니다. 생성형 모델이나 외부 서비스 키는 사용하지 않습니다.
 
-뉴스는 출처당 최신 유효 8건을 선택합니다. 발행일 누락·무효·미래(5분 허용 초과)는 제외하고 제목을 임의로 잘라내지 않습니다. 일부 실패 시 발행 후 7일 이내의 기존 기사만 보존하며 메타에 출처별 마지막 성공·실패·보존 건수를 기록합니다. 전체 실패나 전체 0건은 이전 파일을 유지합니다. 자세한 변경·검증: [뉴스 수집 안정화 결과](./NEWS_RELIABILITY_2026-10-25.md).
+| 출처 | 공식 제공 주소 | 한도·취급 |
+|---|---|---|
+| OpenAI 공식 발표 | https://openai.com/blog/rss.xml | 16건, 개발사 발표 |
+| Hugging Face | https://huggingface.co/blog/feed.xml | 16건, 플랫폼·커뮤니티 글; 전체를 회사 공식 발표로 간주하지 않음 |
+| Google DeepMind | https://deepmind.google/blog/rss.xml | 16건, 개발사 발표 |
+| Mistral | https://mistral.ai/news/rss | 16건, 개발사 발표 |
+| GitHub AI | https://github.blog/ai-and-ml/feed/ | 8건, 개발사·플랫폼 |
+| TechCrunch AI | https://techcrunch.com/category/artificial-intelligence/feed/ | 8건, 매체 |
+| arXiv | https://rss.arxiv.org/rss/cs.AI+cs.CL+cs.CV+cs.LG+cs.SD | 24건、원문 분류 코드·메타데이터 |
+| Google 뉴스 한국어 | news-sources.mjs의 기존 한국어 AI RSS 검색 주소 | 8건, 제목·날짜·링크 |
+| 긱뉴스 | https://news.hada.io/rss/news | 12건, AI 관련 제목·날짜·링크만 |
+| AI타임스 | https://cdn.aitimes.com/rss/gn_rss_allArticle.xml | 12건, 제목·날짜·링크만 |
+
+긱뉴스 RSS는 [공식 홈페이지](https://news.hada.io/)의 RSS 링크와 [이용약관](https://news.hada.io/terms)을 확인했습니다. AI타임스는 [공식 홈페이지](https://www.aitimes.com/) HTML의 rel=alternate가 연결한 RSS입니다. 신규 국내 두 출처의 설명·본문은 재게시하지 않으며 RSS 제공을 전문 재사용 허가로 간주하지 않습니다. 국내 구분은 한국·한국어 편집 출처 기준이며 기사 사건의 발생 국가를 판별한 결과가 아닙니다.
+
+arXiv의 [RSS 안내](https://info.arxiv.org/help/rss.html)와 [API 메타데이터·호출 조건](https://info.arxiv.org/help/api/tou.html)을 확인했습니다. RSS가 비거나 유효 날짜가 없거나 요청이 실패하면 3초 뒤 export.arxiv.org/api/query의 공식 Atom 최근 제출 40건을 조회합니다. 기관당 3초 간격·단일 연결을 유지합니다. CC0 메타데이터와 원문 링크·원문 분야만 사용하며 PDF 복제 허가나 동료평가·획기성을 가정하지 않습니다. 발행 후 7일 이내 논문을 분야별로 최대 24건 선택합니다.
+
+발행일 누락·무효·미래(5분 허용 초과)는 제외하고 제목을 임의로 잘라내지 않습니다. 일부 실패 시 발행 후 7일 이내의 기존 자료만 출처별 한도까지 보존하며 메타에 출처별 성공·실패·보존 건수를 기록합니다. 전체 실패나 전체 0건은 이전 파일을 유지합니다. 최신 검증: [탐색·수집 결과](./DISCOVERY_FILTERS_2026-10-26.md).
+
+## 캘린더 지역 파생 근거
+
+공개 커뮤니티 좌표를 일시 처리해 국내/해외/미확인을 파생하며 좌표 자체는 저장·표시하지 않습니다. 실제 행사장 국가가 아닌 주최 커뮤니티 지역입니다. 미확인 좌표와 대한민국 경계 인근의 모호한 점은 미확인으로 남깁니다. 기본 국내는 국내 행사와 전 세계 온라인 행사를 함께 포함합니다.
+
+로컬 scripts/data/korea-boundary.json은 [Natural Earth 공식 벡터 저장소](https://github.com/nvkelso/natural-earth-vector)의 50m 국가 자료에서 대한민국 형상만 추출했습니다. [공식 이용 조건](https://www.naturalearthdata.com/about/terms-of-use/)은 public domain입니다. 원본 URL·라이선스를 JSON에 보존하며 실행 때 외부 지도 API를 호출하지 않습니다.
 
 ## 국내 출처 추가 검토와 정적 교육 근거 (2026-10-26)
 
@@ -41,4 +64,4 @@ NAVER D2의 공식 Atom(https://d2.naver.com/d2.atom)은 20개 항목을 읽었�
 
 ## 무료 기초 강의 정적 안내 (2026-10-26)
 
-부스트코스 7개와 성균관대 SKKU Online 2개를 제목·제공 기관·비용 상태·기간·공식 링크 중심의 정적 교육 자료로 추가했다. 강의 영상·교안·이미지를 복제하지 않고 설명은 탐색용으로 작성했다. 온라인 수료증 표시를 무료 발급으로 단정하지 않으며 미발급은 별도 상태로 구분한다. 강좌별 근거와 기간은 [무료 강의 확충 결과](./FREE_COURSES_2026-10-26.md)를 참조한다. 뉴스 RSS·행사 자동 수집 출처 목록은 바꾸지 않았다.
+부스트코스 7개와 성균관대 SKKU Online 2개를 제목·제공 기관·비용 상태·기간·공식 링크 중심의 정적 교육 자료로 추가했다. 강의 영상·교안·이미지를 복제하지 않고 설명은 탐색용으로 작성했다. 온라인 수료증 표시를 무료 발급으로 단정하지 않으며 미발급은 별도 상태로 구분한다. 강좌별 근거와 기간은 [무료 강의 확충 결과](./FREE_COURSES_2026-10-26.md)를 참조한다. 정적 강의 추가 자체는 행사 자동 수집 출처 확대가 아니다.

@@ -1,5 +1,6 @@
 import { isWebUrl, visibleEvents } from '../../src/lib/calendar-rules.mjs';
 import { readPublicText } from './rss.mjs';
+import { communityRegion } from './community-region.mjs';
 
 export const googleEventsSource = {
   id: 'google-developer-events', name: 'Google 개발자 커뮤니티',
@@ -40,6 +41,7 @@ export function normalizeGoogleEvent(id, item, now = Date.now()) {
     eventStart: null, eventEnd: null, eventDate: item.start_date, eventEndDate: item.end_date || null,
     isOnline: item.audience_type === 'VIRTUAL' ? true : item.audience_type === 'IN_PERSON' ? false : null,
     location, region: location, feeType: 'unknown', feeAmount: null,
+    territory: communityRegion(item.chapter_latitude, item.chapter_longitude), territoryBasis: 'community-location',
     url: url.href, status: 'announced', confirmedAt: null, publishedAt: null,
     fetchedAt: new Date(now).toISOString(), timezone: null,
     verification: 'public-event', dateEvidence: `공개 행사 일정: ${item.start_date}${item.end_date && item.end_date !== item.start_date ? ' ~ ' + item.end_date : ''} (현지 날짜·시각 미확인)`,

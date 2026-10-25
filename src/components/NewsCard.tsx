@@ -3,12 +3,14 @@ import { config } from '../lib/config';
 import { readMinutes } from '../lib/news';
 import { ClockIcon } from './icons';
 import { useT } from '../lib/i18n';
+import { newsFacets, modelTypes, opennessLabels, publicationLabels } from '../lib/news-facets.mjs';
 
 export function NewsCard({ item }: { item: NewsItem }) {
   const mins = readMinutes(item.excerpt, item.title);
   const badge = config.categoryColor[item.category] || 'bg-stone-100 text-stone-800';
   const summaryText = item.summary || item.excerpt;
   const t = useT();
+  const facets = newsFacets(item);
 
   return (
     <article className="group flex flex-col gap-2 rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-4 shadow-xs transition hover:shadow-md">
@@ -26,9 +28,11 @@ export function NewsCard({ item }: { item: NewsItem }) {
         </h3>
       </a>
       {summaryText && <p className="mt-1 line-clamp-2 text-sm text-stone-600 dark:text-stone-300">{summaryText}</p>}
+      {(facets.topics.models.length > 0 || facets.publication === 'paper') && <p className="text-xs text-stone-500 dark:text-stone-400">{facets.publication === 'paper' ? '논문 원문 · ' : ''}{facets.topics.models.map((type) => modelTypes[type]).join(' · ')}{facets.topics.models.length > 0 ? ` · ${opennessLabels[facets.openness]}` : ''}</p>}
       <footer className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-stone-500 dark:text-stone-400">
         <span className="font-medium text-stone-600 dark:text-stone-300">{item.source}</span>
         <span>{item.lang === 'ko' ? '한국어' : item.lang === 'en' ? '영어' : '언어 미확인'}</span>
+        <span>{publicationLabels[facets.publication] ?? '출처 유형 미확인'}</span>
         <time dateTime={item.publishedAt} title="기사 발행일 (한국시간)">{new Date(item.publishedAt).toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}</time>
         <span className="flex items-center gap-1">
           <ClockIcon className="h-3 w-3" /> {mins}{t('ui.min')}

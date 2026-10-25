@@ -15,6 +15,7 @@ export interface NewsItem {
   source: string;
   sourceId?: string; // 이전 수집 파일은 표시명으로 호환한다.
   lang?: 'ko' | 'en' | 'unknown';
+  paperCategories?: string[]; // 논문 제공처의 분류 코드
   publishedAt: string; // ISO
   category: Category;
   tags: string[];
@@ -107,6 +108,8 @@ export interface CalendarEvent {
   feeType: 'free' | 'paid' | 'unknown';
   feeAmount: number | null;         // 유료 시 금액 (KRW)
   region: string | null;            // 미확인 시 null
+  territory?: 'domestic' | 'overseas' | 'unknown';
+  territoryBasis?: 'community-location';
 
   // 메타
   url: string;                      // 공식 신청 링크

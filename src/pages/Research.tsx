@@ -1,24 +1,37 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useNews } from '../lib/use-news';
 import { NewsStatus } from '../components/NewsStatus';
 import { filterNews } from '../lib/news';
 import { NewsCard } from '../components/NewsCard';
 import { useT } from '../lib/i18n';
+import { topicGroups, opennessLabels, publicationLabels, paperKinds, companies } from '../lib/news-facets.mjs';
 
 export default function Research() {
   const { result, loading, reload } = useNews();
   const items = useMemo(() => filterNews(result?.items ?? []), [result]);
 
-  const categories = ['전체', '업계/제품', '연구/논문', '정책/규제', '오픈소스', '언론', '블로그/개인'];
+  const categories = ['전체', 'models', '업계/제품', '연구/논문', '정책/규제', '오픈소스', '언론'];
   const [active, setActive] = useState('전체');
   const [lang, setLang] = useState('');
   const [source, setSource] = useState('');
   const [query, setQuery] = useState('');
+  const [origin, setOrigin] = useState('');
+  const [topic, setTopic] = useState('');
+  const [openness, setOpenness] = useState('');
+  const [publication, setPublication] = useState('');
+  const [paperKind, setPaperKind] = useState('');
+  const [company, setCompany] = useState('');
+  const [visibleCount, setVisibleCount] = useState(24);
+  const group = ({ models: 'models', '업계/제품': 'products', '연구/논문': 'papers', '정책/규제': 'policy', '오픈소스': 'software', '언론': 'media' } as Record<string, string>)[active];
   const sources = useMemo(() => [...new Set(items.map((item) => item.source))].sort(), [items]);
   const t = useT();
 
-  const shown = useMemo(() => filterNews(items, { category: active === '전체' ? undefined : active, lang, source, query }),
-    [items, active, lang, source, query]);
+  const shown = useMemo(() => filterNews(items, { category: ['전체', 'models'].includes(active) ? undefined : active, modelsOnly: active === 'models', lang, source, query, origin, topicGroup: group, topic, openness, publication, paperKind, company }),
+    [items, active, lang, source, query, origin, group, topic, openness, publication, paperKind, company]);
+  useEffect(() => setVisibleCount(24), [active, lang, source, query, origin, topic, openness, publication, paperKind, company]);
+  const changeCategory = (category: string) => { setActive(category); setTopic(''); setOpenness(''); setPublication(''); setPaperKind(''); setCompany(''); };
+  const clear = () => { changeCategory('전체'); setLang(''); setSource(''); setQuery(''); setOrigin(''); setCompany(''); };
+  const selectStyle = 'min-w-0 rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900';
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
@@ -33,7 +46,7 @@ export default function Research() {
         {categories.map((c) => (
           <button
             key={c}
-            onClick={() => setActive(c)}
+            onClick={() => changeCategory(c)}
             aria-pressed={active === c}
             className={`rounded-full px-3 py-1 font-medium ${
               active === c
@@ -41,10 +54,14 @@ export default function Research() {
                 : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'
             }`}
           >
-            {c === '전체' ? t('path.filterAll') : t('category.' + c)}
+            {c === '전체' ? t('path.filterAll') : c === 'models' ? '모델 소식' : t('category.' + c)}
           </button>
         ))}
       </nav>
+
+      <div role="group" aria-label="뉴스 출처 범위" className="mb-4 flex gap-2 text-sm">
+        {[{value:'',label:'전체 기사 보기'}, {value:'domestic',label:'국내 기사만 보기'}].map((option) => <button type="button" key={option.value} aria-pressed={origin === option.value} onClick={() => setOrigin(option.value)} className={`rounded-lg px-4 py-2 ${origin === option.value ? 'bg-amber-600 text-white' : 'bg-stone-100 dark:bg-stone-800'}`}>{option.label}</button>)}
+      </div>
 
       <section aria-label="뉴스 탐색 조건" className="mb-5 rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
         <div className="grid gap-3 sm:grid-cols-3">
@@ -63,12 +80,23 @@ export default function Research() {
             </select>
           </label>
         </div>
+        {group && <fieldset className="mt-4 border-t border-stone-200 pt-4 dark:border-stone-700">
+          <legend className="px-1 text-sm font-semibold">{active === 'models' ? '모델 소식' : t('category.' + active)} 세부 필터</legend>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="grid gap-1 text-sm">{active === 'models' ? '모델 유형' : '세부 주제'}<select value={topic} onChange={(event) => setTopic(event.target.value)} className={selectStyle}><option value="">전체 주제</option>{Object.entries(topicGroups[group]).map(([key,label])=><option key={key} value={key}>{label}</option>)}</select></label>
+            <label className="grid gap-1 text-sm">기업·기관 언급<select value={company} onChange={(event) => setCompany(event.target.value)} className={selectStyle}><option value="">전체 기업·기관</option>{companies.map((name)=><option key={name} value={name}>{name}</option>)}</select></label>
+            {['models', 'software'].includes(group) && <label className="grid gap-1 text-sm">공개 방식 표현<select value={openness} onChange={(event) => setOpenness(event.target.value)} className={selectStyle}><option value="">전체 공개 방식</option>{Object.entries(opennessLabels).map(([key,label])=><option key={key} value={key}>{label}</option>)}</select></label>}
+            <label className="grid gap-1 text-sm">자료 출처 유형<select value={publication} onChange={(event) => setPublication(event.target.value)} className={selectStyle}><option value="">전체 출처 유형</option>{Object.entries(publicationLabels).map(([key,label])=><option key={key} value={key}>{label}</option>)}</select></label>
+            {group === 'papers' && <label className="grid gap-1 text-sm">논문 유형<select value={paperKind} onChange={(event) => setPaperKind(event.target.value)} className={selectStyle}><option value="">전체 논문 유형</option>{Object.entries(paperKinds).map(([key,label])=><option key={key} value={key}>{label}</option>)}</select></label>}
+          </div>
+          {group === 'papers' && <p className="mt-3 text-xs text-stone-500 dark:text-stone-400">최신 AI 논문의 제목·초록 키워드로 분야와 유형을 분류합니다. 출판 전 논문을 포함하며 중요도·성능·동료평가 여부를 보증하지 않습니다.</p>}
+        </fieldset>}
         <div className="mt-3 flex items-center justify-between gap-3 text-sm">
           <p role="status">검색 결과 {shown.length}건 / 전체 {items.length}건</p>
-          <button type="button" onClick={() => { setActive('전체'); setLang(''); setSource(''); setQuery(''); }}
+          <button type="button" onClick={clear}
             className="rounded-lg px-3 py-2 text-amber-700 hover:bg-amber-50 dark:text-amber-300 dark:hover:bg-stone-800">조건 초기화</button>
         </div>
-        <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">원문 언어 기준이며 번역은 제공하지 않습니다. 선택한 탐색 조건은 저장하지 않습니다.</p>
+        <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">국내는 국내·한국어 편집 출처 기준이며 보도 대상 국가와는 다릅니다. 분야·세부 주제와 공개 방식은 제목·설명문 표현으로 분류하며 모델 라이선스를 검증한 결과가 아닙니다. 조건은 저장하지 않습니다.</p>
       </section>
 
       <NewsStatus result={result} loading={loading} onRetry={reload} />
@@ -77,10 +105,11 @@ export default function Research() {
       )}
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        {shown.map((it) => (
+        {shown.slice(0, visibleCount).map((it) => (
           <NewsCard key={it.id} item={it} />
         ))}
       </div>
+      {shown.length > visibleCount && <button type="button" onClick={() => setVisibleCount((count) => count + 24)} className="mt-5 rounded-lg border border-stone-300 px-4 py-3 text-sm dark:border-stone-600">소식 더 보기 ({shown.length - visibleCount}건 남음)</button>}
 
     </div>
   );

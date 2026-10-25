@@ -35,6 +35,8 @@ export function isCalendarEvent(event) {
     && (event.feeAmount === null || (Number.isFinite(event.feeAmount) && event.feeAmount >= 0))
     && (event.location === null || text(event.location))
     && (event.region === null || text(event.region))
+    && (event.territory === undefined || ['domestic', 'overseas', 'unknown'].includes(event.territory))
+    && (event.territoryBasis === undefined || event.territoryBasis === 'community-location')
     && ['ko', 'en', 'unknown'].includes(event.lang)
     && (!event.applicationStart || (event.applicationEnd && Date.parse(event.applicationStart) <= Date.parse(event.applicationEnd)))
     && (!event.eventStart || !event.applicationEnd || Date.parse(event.applicationEnd) <= Date.parse(event.eventStart))

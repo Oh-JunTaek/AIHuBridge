@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useCalendarStore } from '../lib/calendar';
 import { visibleEvents } from '../lib/calendar-rules.mjs';
 import { koreaDate, periodEvents } from '../lib/calendar-view.mjs';
+import { matchesAudience } from '../lib/calendar-audience.mjs';
 import { CalendarMonth } from '../components/CalendarMonth';
 import { CalendarEventCard, eventTypeLabels } from '../components/CalendarEventCard';
 
@@ -12,6 +13,7 @@ export default function Calendar() {
   const { events, meta, status, loadEvents } = useCalendarStore();
   const [now, setNow] = useState(Date.now);
   const [type, setType] = useState('all');
+  const [audience, setAudience] = useState('domestic');
   const [mode, setMode] = useState('all');
   const [fee, setFee] = useState('all');
   const [registration, setRegistration] = useState('all');
@@ -22,7 +24,7 @@ export default function Calendar() {
   const [scope, setScope] = useState<'month' | 'all'>('month');
   const [view, setView] = useState<'calendar' | 'list'>('calendar');
   const [visibleCount, setVisibleCount] = useState(24);
-  useEffect(() => setVisibleCount(24), [type, mode, fee, registration, search, region, month, selectedDay, scope]);
+  useEffect(() => setVisibleCount(24), [audience, type, mode, fee, registration, search, region, month, selectedDay, scope]);
   useEffect(() => {
     void loadEvents();
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -30,7 +32,8 @@ export default function Calendar() {
   }, [loadEvents]);
 
   const available = visibleEvents(events, now);
-  const filtered = available.filter((event) => (type === 'all' || event.type === type)
+  const audienceEvents = available.filter((event) => matchesAudience(event, audience));
+  const filtered = audienceEvents.filter((event) => (type === 'all' || event.type === type)
     && (mode === 'all' || (mode === 'online' ? event.isOnline === true : mode === 'offline' ? event.isOnline === false : event.isOnline === null))
     && (fee === 'all' || event.feeType === fee)
     && (registration === 'all' || (registration === 'known' ? event.applicationEnd !== null : event.applicationEnd === null))
@@ -43,7 +46,7 @@ export default function Calendar() {
     if (!/^\d{4}-\d{2}$/.test(value)) return;
     setMonth(value); setSelectedDay(null); setScope('month');
   };
-  const reset = () => { setType('all'); setMode('all'); setFee('all'); setRegistration('all'); setSearch(''); setRegion(''); setSelectedDay(null); };
+  const reset = () => { setAudience('domestic'); setType('all'); setMode('all'); setFee('all'); setRegistration('all'); setSearch(''); setRegion(''); setSelectedDay(null); };
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 text-stone-700 dark:text-stone-200">
@@ -54,8 +57,13 @@ export default function Calendar() {
         </div>
       </header>
 
+      <section aria-label="행사 대분류" className="mb-5">
+        <div className="flex flex-wrap gap-2">{[{id:'domestic',label:'국내'}, {id:'overseas',label:'해외'}, {id:'unknown',label:'지역 미확인'}, {id:'all',label:'전체'}].map((option) => <button key={option.id} type="button" aria-pressed={audience === option.id} onClick={() => { setAudience(option.id); setSelectedDay(null); }} className={`rounded-full px-4 py-2 text-sm font-semibold ${audience === option.id ? 'bg-blue-600 text-white' : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300'}`}>{option.label}</button>)}</div>
+        <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">국내 화면은 국내 행사와 전 세계 온라인 행사를 함께 보여줍니다. 해외 오프라인·미확인 방식은 기본 화면에서 제외합니다. 지역은 공개 개최 도시·주최 커뮤니티 위치 기준이며 실제 장소·접속 조건은 원문을 확인하세요.</p>
+      </section>
+
       <div className="mb-6 grid grid-cols-3 gap-3">
-        {[{ label: '공개 AI 일정', value: available.length, color: 'text-blue-600 dark:text-blue-300' }, { label: '온라인 일정', value: available.filter((event) => event.isOnline === true).length, color: 'text-violet-600 dark:text-violet-300' }, { label: '이달의 검색 결과', value: monthEvents.length, color: 'text-sky-600 dark:text-sky-300' }].map((stat) => <div key={stat.label} className="rounded-2xl border border-stone-200 bg-white px-3 py-4 shadow-sm dark:border-stone-700 dark:bg-stone-900 sm:px-5"><p className="text-xs text-stone-500">{stat.label}</p><p className={'mt-1 text-2xl font-bold ' + stat.color}>{stat.value}<span className="ml-1 text-xs font-normal text-stone-400">건</span></p></div>)}
+        {[{ label: '선택 대분류 일정', value: audienceEvents.length, color: 'text-blue-600 dark:text-blue-300' }, { label: '온라인 일정', value: audienceEvents.filter((event) => event.isOnline === true).length, color: 'text-violet-600 dark:text-violet-300' }, { label: '이달의 검색 결과', value: monthEvents.length, color: 'text-sky-600 dark:text-sky-300' }].map((stat) => <div key={stat.label} className="rounded-2xl border border-stone-200 bg-white px-3 py-4 shadow-sm dark:border-stone-700 dark:bg-stone-900 sm:px-5"><p className="text-xs text-stone-500">{stat.label}</p><p className={'mt-1 text-2xl font-bold ' + stat.color}>{stat.value}<span className="ml-1 text-xs font-normal text-stone-400">건</span></p></div>)}
       </div>
 
       <section aria-label="일정 필터" className="mb-6 rounded-2xl border border-stone-200 bg-stone-50 p-4 dark:border-stone-700 dark:bg-stone-900/50 sm:p-5">

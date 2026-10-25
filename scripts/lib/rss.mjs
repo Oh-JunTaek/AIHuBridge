@@ -1,6 +1,6 @@
 import Parser from 'rss-parser';
 
-const parser = new Parser();
+const parser = new Parser({ customFields: { item: [['category', 'feedCategories', { keepArray: true }]] } });
 // HTTP 요청과 본문 읽기에 같은 제한 시간을 적용하고, RSS 파서는 XML 해석만 맡긴다.
 export async function readPublicText(url) {
   const response = await fetch(url, {

@@ -1,5 +1,6 @@
 import type { CalendarEvent } from '../types';
 import { deadlineLabel } from '../lib/calendar-rules.mjs';
+import { eventTerritory } from '../lib/calendar-audience.mjs';
 
 export const eventTypeLabels = { seminar: '세미나', webinar: '웨비나', workshop: '워크숍', bootcamp: '부트캠프', hackathon: '해커톤', competition: '공모전', training: '교육', conference: '컨퍼런스', meetup: '밋업', other: '기타 AI 행사' };
 const format = (value: string) => new Date(value).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -13,6 +14,7 @@ export function CalendarEventCard({ event, now }: { event: CalendarEvent; now: n
             </div>
             <div className="space-y-1 text-sm text-stone-600 dark:text-stone-300">
               <p>{event.host} · {eventTypeLabels[event.type]}</p>
+              <p className="text-xs">지역 구분: {{ domestic: '국내', overseas: '해외', unknown: '미확인' }[eventTerritory(event)]}{event.territoryBasis === 'community-location' ? ' · 주최 커뮤니티 위치 기준' : ' · 공개 도시·기관 표기 기준'}</p>
               {event.applicationStart && <p>신청 시작: {format(event.applicationStart)}</p>}
               <p>신청 마감: {event.applicationEnd ? <>{format(event.applicationEnd)} · <strong>{deadlineLabel(event.applicationEnd, now)?.label}</strong></> : '미확인 · 원문에서 확인'}</p>
               <p>행사 일정: {event.eventStart ? format(event.eventStart) + ' (한국시간)' : event.eventDate ? event.eventDate + (event.eventEndDate && event.eventEndDate !== event.eventDate ? ' ~ ' + event.eventEndDate : '') + ' (현지 날짜·시각 미확인)' : '미확인'}</p>

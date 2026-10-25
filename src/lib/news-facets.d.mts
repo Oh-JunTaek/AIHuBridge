@@ -1,0 +1,10 @@
+import type { NewsItem } from '../types';
+import type { NewsSource } from './news-sources.mjs';
+export const modelTypes: Record<string, string>;
+export const opennessLabels: Record<string, string>;
+export const publicationLabels: Record<string, string>;
+export const topicGroups: Record<string, Record<string, string>>;
+export const paperKinds: Record<string, string>;
+export const companies: string[];
+export function newsSource(item: NewsItem): NewsSource | undefined;
+export function newsFacets(item: NewsItem): { topics: Record<string, string[]>; openness: string; paperKinds: string[]; companies: string[]; origin: string; publication: string };
