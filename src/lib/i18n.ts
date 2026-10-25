@@ -55,7 +55,7 @@ const ko: Dict = {
   },
   path: {
     title: '학습 경로',
-    sub: '공식 교육과 인증으로 이어지는 3단계 학습 경로',
+    sub: '기초 쌓기부터 공식 교육·인증으로 이어지는 4단계 학습 경로',
     filterLevel: '난이도:',
     filterCategory: '분야:',
     filterAll: '전체',
@@ -100,6 +100,8 @@ const ko: Dict = {
   },
   level: { 초급: '초급', 중급: '중급', 고급: '고급' },
   pathCategory: {
+    '프로그래밍·데이터': '프로그래밍·데이터',
+    'AI 수학': 'AI 수학',
     '개론/개념': '개론·개념',
     언어모델: '언어모델',
     '프롬프트·도구': '프롬프트·도구',
@@ -108,6 +110,7 @@ const ko: Dict = {
     '비즈니스·전략': '비즈니스·전략',
   },
   pathStage: {
+    foundation: { title: '0. 기초 쌓기', sub: 'AI 개념 → 파이썬 → 수학·데이터 기초' },
     try: { title: '1. 해보기', sub: '코드 없이 체험하는 AI' },
     certify: { title: '2. 통과하기', sub: '작은 걸음부터 인증을 쌓아가기' },
     expert: { title: '3. 전문가 되기', sub: '심화하고 연결고리 만들기' },

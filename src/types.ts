@@ -35,7 +35,7 @@ export interface NewsResult {
 export type CertType = 'exam' | 'micro' | 'course';
 
 export interface EducationFee {
-  status: 'free' | 'paid' | 'conditional' | 'unknown';
+  status: 'free' | 'paid' | 'conditional' | 'unknown' | 'not-offered';
   amount?: number;
   currency?: 'USD' | 'KRW';
   note: string;
@@ -51,6 +51,7 @@ export interface Certification {
   learningFee: EducationFee;
   credentialFee: EducationFee;
   requirements: string;
+  availableUntil?: string; // 제공처 기준 수강·학습 종료 날짜. 한국 기관의 기간 안내에만 사용한다.
   evidenceUrls: string[];
   language: 'ko' | 'en' | 'both' | 'unknown';
   difficulty: '초급' | '중급' | '고급';

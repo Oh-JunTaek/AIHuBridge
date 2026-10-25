@@ -1,5 +1,5 @@
 /**
- * AI Compass 학습 로드맵 (비전공자 3단계).
+ * AI 허브릿지 학습 로드맵 (기초 쌓기를 포함한 4단계).
  * 공식 교육 탐색용 단계이며 개인 체크·진도는 제공하지 않습니다.
  *
  * level(난이도): 초급 / 중급 / 고급
@@ -9,6 +9,8 @@
 export type Level = '초급' | '중급' | '고급';
 export type PCategory =
   | '개론/개념'
+  | '프로그래밍·데이터'
+  | 'AI 수학'
   | '언어모델'
   | '프롬프트·도구'
   | '에이전트·앱'
@@ -16,7 +18,7 @@ export type PCategory =
   | '비즈니스·전략';
 
 export type Stage = {
-  id: 'try' | 'certify' | 'expert';
+  id: 'foundation' | 'try' | 'certify' | 'expert';
   title: string;
   subtitle: string;
   icon: string;
@@ -28,7 +30,7 @@ export type StageItem = {
   label: string;
   kind: 'course' | 'cert';
   refId: string; // certification.id
-  estMin: number; // 예상 소요 시간 (분)
+  estMin: number | null; // 예상 시간 근거가 없거나 자율 학습이면 null
   level: Level;
   category: PCategory;
 };
@@ -37,6 +39,8 @@ export type StageItem = {
 export const levelOrder: Level[] = ['초급', '중급', '고급'];
 export const categoryOrder: PCategory[] = [
   '개론/개념',
+  '프로그래밍·데이터',
+  'AI 수학',
   '언어모델',
   '프롬프트·도구',
   '에이전트·앱',
@@ -48,6 +52,19 @@ export const categoryOrder: PCategory[] = [
 export type PathFilter = { level: Level | null; category: PCategory | null };
 
 export const stages: Stage[] = [
+  {
+    id: 'foundation',
+    title: '0. 기초 쌓기',
+    subtitle: 'AI 개념 → 파이썬 → 수학·데이터 기초',
+    icon: '🌱',
+    items: [
+      { id: 'f-ai', label: '모두를 위한 인공지능 기초', kind: 'course', refId: 'boost-ai-basics', estMin: null, level: '초급', category: '개론/개념' },
+      { id: 'f-python', label: '모두를 위한 프로그래밍 : 파이썬', kind: 'course', refId: 'boost-python-everybody', estMin: null, level: '초급', category: '프로그래밍·데이터' },
+      { id: 'f-linear', label: '인공지능을 위한 선형대수', kind: 'course', refId: 'boost-ai-linear-algebra', estMin: null, level: '초급', category: 'AI 수학' },
+      { id: 'f-data', label: '파이썬으로 시작하는 데이터 사이언스', kind: 'course', refId: 'boost-data-science', estMin: null, level: '초급', category: '프로그래밍·데이터' },
+      { id: 'f-ml-python', label: '머신러닝을 위한 파이썬', kind: 'course', refId: 'boost-ml-python', estMin: null, level: '중급', category: '프로그래밍·데이터' },
+    ],
+  },
   {
     id: 'try',
     title: '1. 해보기',

@@ -37,6 +37,7 @@ export function CertCard({ c }: { c: Certification }) {
         <div><dt className="font-semibold">{c.type === 'exam' ? '시험·응시 비용' : '수료증·평가 비용'} · {feeLabel(c.credentialFee)}</dt><dd className="mt-1 leading-relaxed">{c.credentialFee.note}</dd></div>
         <div><dt className="font-semibold">참여·수료 조건</dt><dd className="mt-1 leading-relaxed">{c.requirements}</dd></div>
       </dl>
+      {c.availableUntil && <p className="mt-3 text-xs font-medium text-amber-700 dark:text-amber-300">수강·학습 종료: {c.availableUntil} (제공처 기준 날짜)</p>}
       {c.note && <p className="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">{c.note}</p>}
       <details className="mt-3 text-xs text-slate-500 dark:text-slate-400">
         <summary className="cursor-pointer py-2">검토일 {c.verifiedAt} · 근거 보기</summary>

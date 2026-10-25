@@ -38,3 +38,7 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 NAVER D2의 공식 Atom(https://d2.naver.com/d2.atom)은 20개 항목을 읽었다. 정책 확인은 완료되지 않았다(robots.txt 406). 자동 수집에는 아직 추가하지 않았으며, 기존 활성 출처와 허가·키 제외 원칙을 유지한다.
 
 교육·인증 자료는 src/data/certifications.ts의 learningFee / credentialFee / requirements / evidenceUrls / verifiedAt을 함께 관리한다. 검토일은 모든 필드의 확정 보장이 아니다. 미확인을 무료로 바꾸거나 무료 영상 청강을 무료 수료증으로 간주하지 않는다. 전수 재검토·정정 근거는 [교육 검토 결과](./EDUCATION_ACCESSIBILITY_2026-10-26.md)를 따른다. 자동 수집 대상에 추가한 것은 아니다.
+
+## 무료 기초 강의 정적 안내 (2026-10-26)
+
+부스트코스 7개와 성균관대 SKKU Online 2개를 제목·제공 기관·비용 상태·기간·공식 링크 중심의 정적 교육 자료로 추가했다. 강의 영상·교안·이미지를 복제하지 않고 설명은 탐색용으로 작성했다. 온라인 수료증 표시를 무료 발급으로 단정하지 않으며 미발급은 별도 상태로 구분한다. 강좌별 근거와 기간은 [무료 강의 확충 결과](./FREE_COURSES_2026-10-26.md)를 참조한다. 뉴스 RSS·행사 자동 수집 출처 목록은 바꾸지 않았다.

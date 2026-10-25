@@ -3,6 +3,222 @@ import type { Certification } from '../types';
 // 비용·수료·선행 요건은 정적 검토 자료다. 근거 URL과 검토일을 함께 유지한다.
 export const certifications: Certification[] = [
   {
+    "id": "boost-ai-basics",
+    "name": "모두를 위한 인공지능 기초",
+    "provider": "네이버 커넥트재단 · 부스트코스",
+    "type": "course",
+    "language": "ko",
+    "difficulty": "초급",
+    "url": "https://www.boostcourse.org/ai102",
+    "verifiedAt": "2026-10-26",
+    "learningFee": {
+      "status": "free",
+      "note": "부스트코스 무료 공개 강의. 상시 수강·자율 학습 과정입니다."
+    },
+    "credentialFee": {
+      "status": "unknown",
+      "note": "온라인 수료증 발급 안내는 있으나 별도 발급 요금·세부 수료 기준은 확인하지 못했습니다. 원문에서 확인하세요."
+    },
+    "requirements": "AI 개념을 처음 접하는 입문자를 위한 출발점입니다. 수강 등록·이수 조건은 제공처에서 확인하세요.",
+    "note": "AI가 낯설다면 개념부터 살펴보는 기초 강의입니다.",
+    "evidenceUrls": [
+      "https://www.boostcourse.org/ai102",
+      "https://www.boostcourse.org/opencourse"
+    ]
+  },
+  {
+    "id": "boost-python-everybody",
+    "name": "모두를 위한 프로그래밍 : 파이썬",
+    "provider": "네이버 커넥트재단 · 부스트코스",
+    "type": "course",
+    "language": "both",
+    "difficulty": "초급",
+    "url": "https://www.boostcourse.org/pythonforeverybody",
+    "verifiedAt": "2026-10-26",
+    "learningFee": {
+      "status": "free",
+      "note": "부스트코스 무료 공개 강의. 상시 수강·자율 학습 과정입니다."
+    },
+    "credentialFee": {
+      "status": "unknown",
+      "note": "온라인 수료증 발급 안내는 있으나 별도 발급 요금·세부 수료 기준은 확인하지 못했습니다. 원문에서 확인하세요."
+    },
+    "requirements": "프로그래밍 입문용 강의입니다. 실습 환경과 수료 기준은 공식 학습 안내를 확인하세요.",
+    "note": "Python for Everybody를 한국어로 번역하여 제공하는 과정입니다.",
+    "evidenceUrls": [
+      "https://www.boostcourse.org/pythonforeverybody",
+      "https://www.boostcourse.org/opencourse"
+    ]
+  },
+  {
+    "id": "boost-ai-linear-algebra",
+    "name": "인공지능을 위한 선형대수",
+    "provider": "네이버 커넥트재단 · 부스트코스",
+    "type": "course",
+    "language": "ko",
+    "difficulty": "초급",
+    "url": "https://www.boostcourse.org/ai251",
+    "verifiedAt": "2026-10-26",
+    "learningFee": {
+      "status": "free",
+      "note": "부스트코스 무료 공개 강의. 상시 수강·자율 학습 과정입니다."
+    },
+    "credentialFee": {
+      "status": "unknown",
+      "note": "온라인 수료증 발급 안내는 있으나 별도 발급 요금·세부 수료 기준은 확인하지 못했습니다. 원문에서 확인하세요."
+    },
+    "requirements": "권장 순서: AI 개념을 살펴본 뒤 벡터·행렬 등 수학 기초를 학습하세요.",
+    "note": "벡터·선형시스템·고유값 등 AI 학습에 필요한 선형대수 기초를 다룹니다.",
+    "evidenceUrls": [
+      "https://www.boostcourse.org/ai251",
+      "https://www.boostcourse.org/opencourse"
+    ]
+  },
+  {
+    "id": "boost-data-science",
+    "name": "파이썬으로 시작하는 데이터 사이언스",
+    "provider": "네이버 커넥트재단 · 부스트코스",
+    "type": "course",
+    "language": "ko",
+    "difficulty": "초급",
+    "url": "https://www.boostcourse.org/ds112",
+    "verifiedAt": "2026-10-26",
+    "learningFee": {
+      "status": "free",
+      "note": "부스트코스 무료 공개 강의. 상시 수강·자율 학습 과정입니다."
+    },
+    "credentialFee": {
+      "status": "unknown",
+      "note": "온라인 수료증 발급 안내는 있으나 별도 발급 요금·세부 수료 기준은 확인하지 못했습니다. 원문에서 확인하세요."
+    },
+    "requirements": "권장 순서: 파이썬 기초 이후 데이터 분석 입문으로 연결하세요.",
+    "note": "파이썬으로 데이터를 다루고 분석·시각화의 기초를 학습하는 과정입니다.",
+    "evidenceUrls": [
+      "https://www.boostcourse.org/ds112",
+      "https://www.boostcourse.org/opencourse"
+    ]
+  },
+  {
+    "id": "boost-ml-python",
+    "name": "머신러닝을 위한 파이썬",
+    "provider": "네이버 커넥트재단 · 부스트코스",
+    "type": "course",
+    "language": "ko",
+    "difficulty": "중급",
+    "url": "https://www.boostcourse.org/ai222",
+    "verifiedAt": "2026-10-26",
+    "learningFee": {
+      "status": "free",
+      "note": "부스트코스 무료 공개 강의. 상시 수강·자율 학습 과정입니다."
+    },
+    "credentialFee": {
+      "status": "unknown",
+      "note": "온라인 수료증 발급 안내는 있으나 별도 발급 요금·세부 수료 기준은 확인하지 못했습니다. 원문에서 확인하세요."
+    },
+    "requirements": "권장 순서: 파이썬 입문을 마친 뒤 머신러닝에 필요한 프로그래밍 기초를 보완하세요.",
+    "note": "파이썬과 데이터 처리에서 머신러닝 학습으로 이어지는 준비 과정입니다.",
+    "evidenceUrls": [
+      "https://www.boostcourse.org/ai222",
+      "https://www.boostcourse.org/opencourse"
+    ]
+  },
+  {
+    "id": "boost-pytorch-theory",
+    "name": "파이토치로 만드는 딥러닝 이론",
+    "provider": "네이버 커넥트재단 · 부스트코스",
+    "type": "course",
+    "language": "ko",
+    "difficulty": "중급",
+    "url": "https://www.boostcourse.org/ai213",
+    "verifiedAt": "2026-10-26",
+    "learningFee": {
+      "status": "free",
+      "note": "부스트코스 무료 공개 강의. 상시 수강·자율 학습 과정입니다."
+    },
+    "credentialFee": {
+      "status": "unknown",
+      "note": "온라인 수료증 발급 안내는 있으나 별도 발급 요금·세부 수료 기준은 확인하지 못했습니다. 원문에서 확인하세요."
+    },
+    "requirements": "권장 순서: 파이썬·선형대수 기초 이후 딥러닝 이론과 프레임워크로 확장하세요.",
+    "note": "입문 이후 PyTorch·딥러닝을 더 공부하려는 학습자를 위한 연결 강의입니다.",
+    "evidenceUrls": [
+      "https://www.boostcourse.org/ai213",
+      "https://www.boostcourse.org/opencourse"
+    ]
+  },
+  {
+    "id": "boost-ml-coders",
+    "name": "프로그래머를 위한 머신러닝",
+    "provider": "네이버 커넥트재단 · 부스트코스",
+    "type": "course",
+    "language": "both",
+    "difficulty": "중급",
+    "url": "https://www.boostcourse.org/machinelearningforcoders",
+    "verifiedAt": "2026-10-26",
+    "learningFee": {
+      "status": "free",
+      "note": "부스트코스 무료 공개 강의. 상시 수강·자율 학습 과정입니다."
+    },
+    "credentialFee": {
+      "status": "not-offered",
+      "note": "공식 강좌 개요에서 수료증 미발급으로 안내합니다."
+    },
+    "requirements": "프로그래밍 경험이 있는 학습자에게 권장합니다. 강의 언어·번역과 실습 환경을 원문에서 확인하세요.",
+    "note": "머신러닝 실습으로 확장하는 과정이며 수료증을 발급하지 않습니다.",
+    "evidenceUrls": [
+      "https://www.boostcourse.org/machinelearningforcoders",
+      "https://www.boostcourse.org/opencourse"
+    ]
+  },
+  {
+    "id": "skku-ai-math-intro",
+    "name": "[K-MOOC] 인공지능 수학 입문",
+    "provider": "성균관대학교 · SKKU Online",
+    "type": "course",
+    "language": "ko",
+    "difficulty": "초급",
+    "url": "https://online.skku.edu/local/ubonline/view.php?id=285&lang=ko",
+    "verifiedAt": "2026-10-26",
+    "availableUntil": "2026-12-31",
+    "learningFee": {
+      "status": "free",
+      "note": "공식 강좌 상세의 결제여부가 무료로 표시되어 있습니다. 제공 기간 내 수강 등록이 필요합니다."
+    },
+    "credentialFee": {
+      "status": "unknown",
+      "note": "수료증 제공 표시는 있으나 발급 비용·세부 이수 기준은 별도로 확인해야 합니다."
+    },
+    "requirements": "제공처 로그인과 수강 등록이 필요합니다. 모집 정원·승인 및 이수 조건을 원문에서 확인하세요.",
+    "note": "AI 이해에 필요한 수학을 익히는 한국어 기초 과정입니다. 학습 종료 후에는 공개 교육 목록에서 제외합니다.",
+    "evidenceUrls": [
+      "https://online.skku.edu/local/ubonline/view.php?id=285&lang=ko"
+    ]
+  },
+  {
+    "id": "skku-ai-math-basics",
+    "name": "[K-MOOC] 인공지능 수학 기초",
+    "provider": "성균관대학교 · SKKU Online",
+    "type": "course",
+    "language": "ko",
+    "difficulty": "초급",
+    "url": "https://online.skku.edu/local/ubonline/view.php?id=286&lang=ko",
+    "verifiedAt": "2026-10-26",
+    "availableUntil": "2026-12-26",
+    "learningFee": {
+      "status": "free",
+      "note": "공식 강좌 상세의 결제여부가 무료로 표시되어 있습니다. 제공 기간 내 수강 등록이 필요합니다."
+    },
+    "credentialFee": {
+      "status": "unknown",
+      "note": "수료증 제공 표시는 있으나 발급 비용·세부 이수 기준은 별도로 확인해야 합니다."
+    },
+    "requirements": "제공처 로그인과 수강 등록이 필요합니다. 모집 정원·승인 및 이수 조건을 원문에서 확인하세요.",
+    "note": "AI 이해에 필요한 수학을 익히는 한국어 기초 과정입니다. 학습 종료 후에는 공개 교육 목록에서 제외합니다.",
+    "evidenceUrls": [
+      "https://online.skku.edu/local/ubonline/view.php?id=286&lang=ko"
+    ]
+  },
+  {
     "id": "aws-ai-business-strategist",
     "name": "AWS Certified AI Business Strategist",
     "provider": "Amazon Web Services",

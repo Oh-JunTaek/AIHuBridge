@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { certifications } from '../data/certifications';
 import { selectCertifications } from '../lib/cert-rules.mjs';
 import { CertCard } from '../components/CertCard';
@@ -12,7 +12,12 @@ export default function Certs() {
   const [language, setLanguage] = useState('');
   const [cost, setCost] = useState('');
   const [query, setQuery] = useState('');
-  const shown = selectCertifications(certifications, { type: tab, language, cost, query });
+  const [now, setNow] = useState(Date.now);
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(Date.now()), 60000);
+    return () => window.clearInterval(timer);
+  }, []);
+  const shown = selectCertifications(certifications, { type: tab, language, cost, query }, now);
 
   const tabs: { id: CertType; label: string; emoji: string }[] = [
     { id: 'course', label: '학습 과정', emoji: '📚' },

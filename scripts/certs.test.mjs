@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { feeLabel, isCertification, selectCertifications } from '../src/lib/cert-rules.mjs';
+import { feeLabel, isCertification, isEducationAvailable, selectCertifications } from '../src/lib/cert-rules.mjs';
 import { loadStaticData } from './lib/static-data.mjs';
 
 const { certifications } = await loadStaticData(new URL('../src/data/certifications.ts', import.meta.url));
@@ -47,4 +47,31 @@ test('학습 경로의 모든 참조 유지와 종료된 AI-900 안내 교체', 
   assert.equal(ai.examCode, 'AI-901');
   assert.equal(ai.url.endsWith('/ai-901/'), true);
   assert.ok(stages.flatMap((stage) => stage.items).some((item) => item.label.includes('AI-901')));
+});
+
+test('수료증 미발급을 무료 발급이나 미확인과 혼동하지 않음', () => {
+  const item = certifications.find((item) => item.id === 'boost-ml-coders');
+  assert.equal(feeLabel(item.credentialFee), '미발급');
+  assert.equal(selectCertifications([item], { cost: 'credential-free' }).length, 0);
+  assert.equal(selectCertifications([item], { cost: 'unknown' }).length, 0);
+  assert.equal(isCertification({ ...item, credentialFee: { ...item.credentialFee, amount: 0, currency: 'USD' } }), false);
+});
+
+test('한국 기관의 종료일은 한국시간 당일 끝까지 표시하고 다음 순간 제외', () => {
+  const item = certifications.find((item) => item.id === 'skku-ai-math-basics');
+  const end = Date.parse('2026-12-26T23:59:59.999+09:00');
+  assert.equal(isEducationAvailable(item, end), true);
+  assert.equal(isEducationAvailable(item, end + 1), false);
+  assert.equal(selectCertifications([item], {}, end).length, 1);
+  assert.equal(selectCertifications([item], {}, end + 1).length, 0);
+  assert.equal(isEducationAvailable({ ...item, availableUntil: undefined }, end + 1), true);
+});
+
+test('불가능한 종료일·비표준 날짜는 자료 검사와 공개 목록에서 거부', () => {
+  const item = certifications[0];
+  for (const availableUntil of ['2026-02-30', '2026-13-01', '2026-2-1', '날짜 미정']) {
+    const invalid = { ...item, availableUntil };
+    assert.equal(isCertification(invalid), false);
+    assert.equal(isEducationAvailable(invalid), false);
+  }
 });

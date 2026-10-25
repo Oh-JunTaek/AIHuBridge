@@ -10,6 +10,8 @@ const levelColor: Record<Level, string> = {
 };
 const categoryColor: Record<PCategory, string> = {
   '개론/개념': 'bg-stone-100 text-stone-600',
+  '프로그래밍·데이터': 'bg-teal-100 text-teal-800',
+  'AI 수학': 'bg-sky-100 text-sky-800',
   언어모델: 'bg-indigo-100 text-indigo-700',
   '프롬프트·도구': 'bg-cyan-100 text-cyan-700',
   '에이전트·앱': 'bg-purple-100 text-purple-700',
@@ -69,8 +71,8 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                 </div>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-stone-500">
-                <span className="flex items-center gap-1" title="학습 계획용 예상 시간입니다. 실제 소요 시간은 공식 페이지를 확인하세요.">
-                  <ClockIcon className="h-3 w-3" /> 약 {it.estMin}{t('ui.min')}
+                <span className="flex items-center gap-1" title={it.estMin === null ? '제공처가 고정 시간을 안내하지 않은 자율 학습 과정입니다.' : '학습 계획용 예상 시간입니다. 실제 소요 시간은 공식 페이지를 확인하세요.'}>
+                  <ClockIcon className="h-3 w-3" /> {it.estMin === null ? '자율 학습' : <>약 {it.estMin}{t('ui.min')}</>}
                 </span>
                 {cert?.url ? (
                   <a
