@@ -5,7 +5,7 @@
  * - D-day 계산 (마감일 기준)
  * - 필터링: status, type, isOnline, region, category
  */
-import { create, type StateCreator } from 'zustand';
+import { create } from 'zustand';
 import type { CalendarEvent } from '../types';
 
 const CALENDAR_URL = `${import.meta.env.BASE_URL}data/calendar.json`;
