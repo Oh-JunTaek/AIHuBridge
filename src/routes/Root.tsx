@@ -3,12 +3,11 @@ import { BadgeIcon, SettingsIcon, DevIcon } from '../components/icons';
 import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
 
-// 1뎁스 메뉴 (롤백된 구조) - Quiz 항목 제거
+// 1뎁스 메뉴 (Quiz 및 Dev 항목 제거)
 const linkConfs = [
   { to: '/research', key: 'nav.research', icon: <LogoIcon /> },
   { to: '/path', key: 'nav.path', icon: <LogoIcon /> },
   { to: '/certs', key: 'nav.certs', icon: <BadgeIcon /> },
-  { to: '/dev', key: 'nav.dev', icon: <DevIcon /> },
   { to: '/settings', key: 'nav.settings', icon: <SettingsIcon /> },
 ];
 
