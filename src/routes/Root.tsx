@@ -37,14 +37,13 @@ export default function Root() {
     <div className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors">
       <header className="sticky top-0 z-20 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur border-b border-stone-200 dark:border-stone-700">
         <div className="mx-auto max-w-4xl px-4 h-14 flex items-center justify-between">
-          {/* 로고: HuBridge.png 이미지 + 텍스트 */}
-          <div className="flex items-center gap-2 font-semibold text-lg">
+          {/* 로고: HuBridge.png 이미지만 표시 */}
+          <div className="flex items-center">
             <img
               src={`${import.meta.env.BASE_URL}icon/HuBridge.png`}
               alt="AI 허브릿지 로고"
-              className="h-6 w-auto"
+              className="h-8 w-auto"
             />
-            <span>{nav.siteName}</span>
           </div>
 
           <nav className="flex items-center gap-1 overflow-x-auto">
