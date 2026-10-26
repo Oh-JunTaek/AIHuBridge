@@ -9,7 +9,6 @@ const linkConfs = [
   { to: '/path', key: 'nav.path', icon: <LogoIcon /> },
   { to: '/certs', key: 'nav.certs', icon: <BadgeIcon /> },
   { to: '/calendar', key: 'nav.calendar', icon: <CalendarIcon /> },
-  { to: '/openrouter-skills', key: 'nav.openrouterSkills', icon: <CompassIcon /> },
   { to: '/settings', key: 'nav.settings', icon: <SettingsIcon /> },
 ];
 

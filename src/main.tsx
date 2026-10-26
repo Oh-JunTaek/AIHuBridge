@@ -15,7 +15,6 @@ import { PreferencesProvider } from './lib/preferences';
 
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
-import OpenRouterSkills from './pages/OpenRouterSkills';
 
 // 이전 공유 주소는 검색 문자열·위치를 보존하고 새 주소로 대체한다.
 function LegacyUpdatesRedirect() {
@@ -36,7 +35,6 @@ const router = createBrowserRouter(
         { path: 'path', element: <Path /> },
         { path: 'certs', element: <Certs /> },
         { path: 'calendar', element: <Calendar /> },
-        { path: 'openrouter-skills', element: <OpenRouterSkills /> },
         { path: 'dev', element: <Dev /> },
         { path: 'settings', element: <Settings /> },
         { path: 'terms', element: <Terms /> },

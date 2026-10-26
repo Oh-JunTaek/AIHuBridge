@@ -19,7 +19,6 @@ const ko: Dict = {
     path: '학습 경로',
     certs: '교육·인증',
     calendar: 'AI 캘린더',
-    openrouterSkills: 'OpenRouter 스킬',
     settings: '설정',
   },
   footer: { copy: 'AI 소식·교육·일정을 한곳에서' },

@@ -1,12 +1,18 @@
 # AGENTS.md — AI HuBridge 개발 가이드
 
 > **규칙 (절대 위반 금지)**
-> 1. `C:\Users\wns53\Documents\GitHub\AIHuBridge` 폴더 **안에서만** 작업. 형제 저장소(EU/ondiai/Private) 절대 건드리지 말 것.
+> 1. `C:\Users\wns53\Documents\GitHub\AIHuBridge` 폴더 **안에서만** 작업. 형제 저장소(EU/ondiai/Private) 절대 건드리지 말 것. 단 스킬호출을 위한 C:\Users\wns53\.agents 경로는 접근 가능
 > 2. **배포/푸시 금지 단 사용자 요청이 있을 경우 진행.** `npm run dev` + `npm run selfcheck` 로 검증.
 > 3. 외부 서비스 계정·키 금지. 뉴스 수집은 RSS.
 > 4. 한국어로 코딩: 파일명은 영어, **문자열·UI·주석은 한국어**.
 > 5. 코드 작업 이후에는 문서를 최신화, 커밋까지 하는 것까지 진행.
 > 6. 커밋 내용은 한국어로 주된 변경사항을 기재한다.
+> 7. Cline SDK 플러그인: 개발 생산성 향상을 위해 Cline SDK 플러그인을 허용하되, 모든 플러그인은 `.agents` 디렉토리 내에 있어야 함 (Git 푸시 금지, 사용자 요청 시만).
+> 8. 플러그인은 플러그인 매니페스트(`SKILL.md`)를 통해 노출되어야 하며, `ctx.workspaceInfo?.rootPath`를 사용하여 프로젝트 루트만 접근 가능.
+> 9. 플러그인은 필수 캡ABILITY(`tools`, `mcp` 등)만 선언해야 하며, 권한 없는 리소스에 접근하지 않도록 해야 함.
+> 10. 플러그인 개발 후, AGENTS.md에 플러그인 등록 및 사용 방법 문서화 필요.
+> 11. 외부 npm 의존성 추가 전 검증 필요; 오직 Node builtins 또는 @cline/* 패키지만 사용 가능.
+> 12. 모든 플러그인은 테스트 후 루트 디렉토리에 상대적 경로로 배포되어야 함. 
 
 ## 시작하기
 ```bash
