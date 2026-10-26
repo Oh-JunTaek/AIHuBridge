@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
-import { BadgeIcon, CalendarIcon, SettingsIcon } from '../components/icons';
+import { BadgeIcon, CalendarIcon, SettingsIcon, CompassIcon } from '../components/icons';
 import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
 
@@ -9,6 +9,7 @@ const linkConfs = [
   { to: '/path', key: 'nav.path', icon: <LogoIcon /> },
   { to: '/certs', key: 'nav.certs', icon: <BadgeIcon /> },
   { to: '/calendar', key: 'nav.calendar', icon: <CalendarIcon /> },
+  { to: '/openrouter-skills', key: 'nav.openrouterSkills', icon: <CompassIcon /> },
   { to: '/settings', key: 'nav.settings', icon: <SettingsIcon /> },
 ];
 

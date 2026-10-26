@@ -19,7 +19,7 @@ const ko: Dict = {
     path: '학습 경로',
     certs: '교육·인증',
     calendar: 'AI 캘린더',
-
+    openrouterSkills: 'OpenRouter 스킬',
     settings: '설정',
   },
   footer: { copy: 'AI 소식·교육·일정을 한곳에서' },
@@ -85,6 +85,10 @@ const ko: Dict = {
     help3: '전체 자동 검증: 터미널에서 npm run selfcheck',
     noFetch: '미수집 (npm run refresh)',
     ruleFallback: 'RSS 설명문 발췌 사용 중',
+  },
+  openrouterSkills: {
+    title: 'OpenRouter 스킬',
+    sub: 'OpenRouter를 통해 사용 가능한 모델 목록을 확인하고, AI 뉴스를 무료 AI 학습 활동으로 변환할 수 있습니다.',
   },
   notFound: {
     message: '페이지를 찾을 수 없습니다. 주소를 확인해 주세요.',
