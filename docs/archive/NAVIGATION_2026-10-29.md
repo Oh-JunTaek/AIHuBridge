@@ -26,3 +26,7 @@
 - [학습관 화면](../../artifacts/navigation-learning-2026-10-29.png), [다크 정보관 화면](../../artifacts/navigation-dark-2026-10-29.png).
 
 이번 메뉴 변경은 로컬 구현·검증·커밋 범위다. 별도 승인 없이 원격 푸시·배포하지 않는다.
+
+## 운영 반영 추가 확인
+
+후속 사용자 응답 ‘푸시해줘’에 따라 메뉴 커밋 8c1a5fa를 master에 반영했다. [배포 40789436112](https://github.com/Oh-JunTaek/AIHuBridge/actions/runs/40789436112)가 성공했고 공개 index.html이 검증한 메뉴 빌드 index-CnLfTvzE.js·index-scxuNSMP.css를 제공하는 것을 확인했다. 위 로컬 검증 단계와 구분한 운영 반영 기록이다.
