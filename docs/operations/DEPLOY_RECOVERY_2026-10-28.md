@@ -29,7 +29,13 @@ OpenRouter 메뉴 제거 뒤 남은 import를 TypeScript의 noUnusedLocals가 �
 
 ## 운영 확인
 
-복구 커밋 push 후 배포와 최신 master를 체크아웃하는 수집 작업을 확인한다. 실행 결과는 작업 최종 보고에서 실제 실행 ID와 함께 제공한다. 수집 후 공개 JSON의 fetchedAt과 봇 커밋 값을 대조해야 데이터 자동 갱신까지 복구된 것으로 판단할 수 있다.
+- 복구 커밋 `4cb6dc3`의 [일반 배포 40680927259](https://github.com/Oh-JunTaek/AIHuBridge/actions/runs/40680927259): success.
+- 최신 master로 수동 시작한 [News Refresh 40681005178](https://github.com/Oh-JunTaek/AIHuBridge/actions/runs/40681005178): success. 예약과 같은 작업을 검증했으며 다음 예약 시각 자체의 실행을 기다린 것은 아니다.
+- 봇 데이터 커밋 `051a70a`: 소식·일정 JSON/메타 4종 갱신. 로컬에도 fast-forward로 반영했고 기존 문서 개편은 보존했다.
+- 수집 성공으로 자동 시작한 [workflow_run 배포 40681085959](https://github.com/Oh-JunTaek/AIHuBridge/actions/runs/40681085959): success.
+- 공개 소식 메타: total=136, status=success, fetchedAt=2026-10-28T11:34:37.933Z(한국시간 20:34).
+- 공개 일정 메타: total=450, status=success, fetchedAt=2026-10-28T11:34:49.328Z. 공개 메타의 수집 시각·건수·상태가 봇 커밋과 일치했다.
+- 개발 서버 진입 응답 HTTP 200 확인. 계정·키·권한 변경 없이 복구했다. 연결 도구의 재실행 권한이 403이어서 기존 Git 인증으로 공식 workflow_dispatch를 호출했으며 인증값을 출력·파일 저장하지 않았다.
 
 ## 재발 방지
 
