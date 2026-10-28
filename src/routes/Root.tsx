@@ -1,19 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import { BadgeIcon, CalendarIcon, SettingsIcon } from '../components/icons';
-import { LogoIcon } from '../components/LogoIcon';
-import { useT } from '../lib/i18n';
-
-// 공통 메뉴
-const linkConfs = [
-  { to: '/updates', key: 'nav.updates', icon: <LogoIcon /> },
-  { to: '/path', key: 'nav.path', icon: <LogoIcon /> },
-  { to: '/certs', key: 'nav.certs', icon: <BadgeIcon /> },
-  { to: '/calendar', key: 'nav.calendar', icon: <CalendarIcon /> },
-  { to: '/settings', key: 'nav.settings', icon: <SettingsIcon /> },
-];
+import { SiteNavigation } from '../components/SiteNavigation';
 
 export default function Root() {
-  const t = useT();
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors">
@@ -29,25 +17,7 @@ export default function Root() {
             />
           </NavLink>
 
-          <nav aria-label="주요 메뉴" className="flex min-w-0 flex-wrap items-center gap-1">
-            {linkConfs.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                end
-                className={({ isActive }) =>
-                  `flex min-h-10 items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium whitespace-nowrap ${
-                    isActive
-                      ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200'
-                      : 'text-stone-500 dark:text-stone-400 hover:bg-stone-200/60 dark:hover:bg-stone-700/60'
-                  }`
-                }
-              >
-                {l.icon}
-                <span>{t(l.key)}</span>
-              </NavLink>
-            ))}
-          </nav>
+          <SiteNavigation />
         </div>
       </header>
 

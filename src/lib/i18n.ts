@@ -16,7 +16,9 @@ const ko: Dict = {
   nav: {
     briefing: '홈',
     updates: 'AI 소식',
-    path: '학습 경로',
+    learning: '학습관',
+    information: '정보관',
+    path: '추천 커리큘럼',
     certs: '교육·인증',
     calendar: 'AI 캘린더',
     settings: '설정',
@@ -44,7 +46,7 @@ const ko: Dict = {
     devLink: '자기진단',
     briefingLabel: '가장 최근 소식',
     more: '더 보기 →',
-    study: '학습 경로 보기 →',
+    study: '추천 커리큘럼 보기 →',
   },
   updates: {
     title: 'AI 소식',
@@ -53,7 +55,7 @@ const ko: Dict = {
     devLink: '개발용 자기진단 → 마지막 수집 시각 확인',
   },
   path: {
-    title: '학습 경로',
+    title: '추천 커리큘럼',
     sub: '기초 쌓기부터 공식 교육·인증으로 이어지는 4단계 학습 경로',
     filterLevel: '난이도:',
     filterCategory: '분야:',
@@ -63,7 +65,7 @@ const ko: Dict = {
   },
   certs: {
     title: '교육·인증',
-    back: '학습 경로로 돌아가기',
+    back: '추천 커리큘럼으로 돌아가기',
     note: '교육과 시험의 비용·조건은 공식 페이지에서 확인하세요. 개인 완료 기록은 제공하지 않습니다.',
     footer: '비용과 조건은 변경될 수 있습니다. 각 카드의 검토일·공식 근거와 신청 화면을 확인하세요.',
     free: '무료',
