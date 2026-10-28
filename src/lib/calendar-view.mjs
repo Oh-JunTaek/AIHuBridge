@@ -19,8 +19,15 @@ export function calendarEntries(events) {
     const entries = [];
     const start = event.eventDate || (event.eventStart ? koreaDate(Date.parse(event.eventStart)) : null);
     if (start) {
-      const end = event.eventEndDate || (event.eventEnd ? koreaDate(Date.parse(event.eventEnd)) : start);
-      entries.push({ event, start, end, kind: 'event' });
+      entries.push({ event, start, end: start, kind: 'event' });
+    }
+    const end = event.eventEndDate || (event.eventEnd ? koreaDate(Date.parse(event.eventEnd)) : null);
+    if (end) {
+      entries.push({ event, start: end, end, kind: 'end' });
+    }
+    if (event.applicationStart) {
+      const opening = koreaDate(Date.parse(event.applicationStart));
+      entries.push({ event, start: opening, end: opening, kind: 'application' });
     }
     if (event.applicationEnd) {
       const deadline = koreaDate(Date.parse(event.applicationEnd));
@@ -31,6 +38,17 @@ export function calendarEntries(events) {
 }
 export function entriesOnDay(entries, day) {
   return entries.filter((entry) => entry.start <= day && entry.end >= day);
+}
+// 같은 행사의 여러 표시는 유형별 건수에 한 번만 반영한다.
+export function groupDayEntries(entries) {
+  const groups = new Map();
+  for (const entry of entries) {
+    const type = entry.event.type;
+    if (!groups.has(type)) groups.set(type, new Map());
+    const events = groups.get(type);
+    if (!events.has(entry.event.id)) events.set(entry.event.id, entry.event);
+  }
+  return [...groups].sort(([a], [b]) => a.localeCompare(b)).map(([type, events]) => ({ type, events: [...events.values()], count: events.size }));
 }
 export function periodEvents(events, month, selectedDay = null, all = false) {
   if (all && !selectedDay) return events;

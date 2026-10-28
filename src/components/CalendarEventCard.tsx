@@ -19,6 +19,7 @@ export function CalendarEventCard({ event, now }: { event: CalendarEvent; now: n
               <p>신청 마감: {event.applicationEnd ? <>{format(event.applicationEnd)} · <strong>{deadlineLabel(event.applicationEnd, now)?.label}</strong></> : '미확인 · 원문에서 확인'}</p>
               {event.scheduleUnknown && <p className="font-semibold text-amber-700 dark:text-amber-300">변경 일정 미확인 · 아래 날짜는 변경 전 참고 일정입니다.</p>}
               <p>{event.scheduleUnknown ? '기존 행사 일정' : '행사 일정'}: {event.eventStart ? format(event.eventStart) + ' (한국시간)' : event.eventDate ? event.eventDate + (event.eventEndDate && event.eventEndDate !== event.eventDate ? ' ~ ' + event.eventEndDate : '') + ' (현지 날짜·시각 미확인)' : '미확인'}</p>
+              {event.eventEnd && <p>행사 종료: {format(event.eventEnd)} (한국시간)</p>}
               <p>진행 방식: {event.isOnline === null ? '미확인' : event.isOnline ? '온라인' : '오프라인'}{event.location ? ' · ' + event.location : ''}</p>
               <p>참가 비용: {event.feeType === 'unknown' ? '미확인' : event.feeType === 'free' ? '무료' : event.feeAmount === null ? '유료 (금액 미확인)' : event.feeAmount.toLocaleString('ko-KR') + '원'}</p>
               <p className="text-xs">일정 근거: {event.dateEvidence}</p>
