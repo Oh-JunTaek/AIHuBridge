@@ -26,3 +26,7 @@ dist-ssr
 # 개인 설정 파일 (.env), 예제 .env.example 포함
 .env
 .env.example
+
+# 비활성 확장 원본은 로컬에만 보관하며 자동 로딩·원격 전송 대상에서 제외한다.
+.agents/disabled/
+.cline/plugins/
