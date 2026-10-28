@@ -71,8 +71,12 @@ GitHub 자체 장애, 저장소/Actions 비활성화, 정책·권한 변경, 출
 - [GitHub 워크플로 트리거](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow): 봇 토큰 push의 후속 실행 제한.
 - [GitHub 이벤트와 schedule/workflow_run](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows): 예약 지연 및 완료 이벤트에 따른 실행.
 
-관련 기준: [AGENTS](../../AGENTS.md)·[PLAN](../../PLAN.md)·[문서 우선순위](../standards/DOCUMENTATION.md)·[용어](../standards/TERMINOLOGY.md). 원격 실행은 승인 범위를 확인하며 이번 충돌 정리의 로컬 변경은 아직 배포된 상태가 아니다.
+관련 기준: [AGENTS](../../AGENTS.md)·[PLAN](../../PLAN.md)·[문서 우선순위](../standards/DOCUMENTATION.md)·[용어](../standards/TERMINOLOGY.md). 원격 실행은 해당 작업의 사용자 승인 범위를 확인한다.
 
-## 일일 갱신·누적 보관 변경 (로컬 구현, 미배포)
+## 일일 갱신·누적 보관 운영 반영 (2026-10-28)
 
-2026-10-28 사용자 결정: 매일 한국시간 오전 7시 1회(`0 22 * * *`), 최근 7일 기본 탐색, 소식 30·90·180일 및 지난 행사·공고 30일 누적 보관. [정본](../standards/CONTENT_LIFECYCLE.md)을 따른다. News Refresh 이름·권한·성공 조건·workflow_run·JSON 4종은 유지했다. 이번 cron 변경의 원격 적용·수집 봇 커밋·후속 배포는 별도 승인 후 확인해야 하며 위 과거 실행 성공을 새 설정 검증으로 간주하지 않는다.
+2026-10-28 사용자 결정: 매일 한국시간 오전 7시 1회(`0 22 * * *`), 최근 7일 기본 탐색, 소식 30·90·180일 및 지난 행사·공고 30일 누적 보관. [정본](../standards/CONTENT_LIFECYCLE.md)을 따른다. News Refresh 이름·권한·성공 조건·workflow_run·JSON 4종은 유지했다.
+
+사용자 승인으로 구현 커밋 5f9ad18을 푸시했고 [일반 배포 40687753730](https://github.com/Oh-JunTaek/AIHuBridge/actions/runs/40687753730)가 성공했다. 활성 원격 워크플로의 일일 cron과 이전 하루 2회 설정 제거를 확인했다. [수동 수집 40687763130](https://github.com/Oh-JunTaek/AIHuBridge/actions/runs/40687763130) → 봇 커밋 98557bb → [workflow_run 배포 40687843707](https://github.com/Oh-JunTaek/AIHuBridge/actions/runs/40687843707)가 모두 성공했다. 공개 JSON 4종이 봇 커밋과 일치했고 소식 128건·일정 511건, 두 메타 모두 success였다. 수집 시각은 각각 2026-10-28T12:26:15.184Z·12:26:26.170Z다.
+
+이번 확인은 새 설정의 같은 수집 작업을 수동 실행한 종단간 검증이다. 다음 한국시간 오전 7시 예약 실행 자체를 관찰한 것은 아니다. 상세는 [작업 결과](../archive/CONTENT_LIFECYCLE_2026-10-28.md)를 따른다.
