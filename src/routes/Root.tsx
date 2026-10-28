@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
-import { BadgeIcon, CalendarIcon, SettingsIcon, CompassIcon } from '../components/icons';
+import { BadgeIcon, CalendarIcon, SettingsIcon } from '../components/icons';
 import { LogoIcon } from '../components/LogoIcon';
 import { useT } from '../lib/i18n';
 
