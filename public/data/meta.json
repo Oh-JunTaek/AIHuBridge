@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-25T23:57:24.748Z",
+  "fetchedAt": "2026-10-28T11:34:37.933Z",
   "total": 136,
   "status": "success",
   "sourceResults": [
@@ -9,7 +9,7 @@
       "count": 16,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "huggingface",
@@ -17,7 +17,7 @@
       "count": 16,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "deepmind",
@@ -25,7 +25,7 @@
       "count": 16,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "mistral",
@@ -33,7 +33,7 @@
       "count": 16,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "github",
@@ -41,7 +41,7 @@
       "count": 8,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "techcrunch",
@@ -49,15 +49,15 @@
       "count": 8,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "arxiv",
       "status": "success",
       "count": 24,
       "rejected": 0,
-      "mode": "recent-atom",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "mode": "rss",
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "koreagnews",
@@ -65,15 +65,15 @@
       "count": 8,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "geeknews",
       "status": "success",
       "count": 12,
-      "rejected": 33,
+      "rejected": 28,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     },
     {
       "id": "aitimes",
@@ -81,7 +81,7 @@
       "count": 12,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-10-25T23:57:24.748Z"
+      "lastSuccessAt": "2026-10-28T11:34:37.933Z"
     }
   ],
   "unavailableSources": [],
@@ -98,8 +98,8 @@
     "aitimes": 12
   },
   "summaryTiers": {
-    "rule": 75,
-    "excerpt": 61
+    "rule": 76,
+    "excerpt": 60
   },
   "summaryMethod": "rss-extract"
 }
