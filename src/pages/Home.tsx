@@ -8,8 +8,8 @@ import { TodayBrief } from '../components/TodayBrief';
 import { NewsCard } from '../components/NewsCard';
 
 export default function Home() {
-  const { result, loading, reload } = useNews();
-  const items = filterNews(result?.items ?? [], { limit: 6 });
+  const { result, loading, reload, now } = useNews();
+  const items = filterNews(result?.items ?? [], { limit: 6, days: 7, now });
   const t = useT();
 
   return (
@@ -43,6 +43,7 @@ export default function Home() {
       {/* 가장 최근 소식 미리 보기 */}
       <NewsStatus result={result} loading={loading} onRetry={reload} />
       {!loading && <TodayBrief items={items} />}
+      {!loading && result?.status === 'success' && items.length === 0 && <p className="text-sm text-stone-500">최근 7일 소식이 없습니다. AI 소식의 게시 기간을 넓혀 보관 자료를 찾아보세요.</p>}
 
       {/* 최신 순 소식 4건과 나머지 */}
       {!loading && items.length > 0 && <section className="mt-8">

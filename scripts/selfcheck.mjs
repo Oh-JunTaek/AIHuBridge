@@ -98,7 +98,7 @@ try {
     && new Set(events.map((event) => event.url)).size === events.length);
   check('행사 메타 일치', meta.schemaVersion === 2 && meta.total === events.length
     && Number.isFinite(Date.parse(meta.fetchedAt)) && ['success', 'partial', 'cleaned'].includes(meta.status));
-  console.log(`현재 공개 가능한 향후 AI 일정: ${visibleEvents(events).length}건`);
+  console.log(`현재 기본 조회 대상 AI 일정: ${visibleEvents(events).length}건`);
 } catch (error) {
   check('행사 데이터 검사', false, error.message);
 }

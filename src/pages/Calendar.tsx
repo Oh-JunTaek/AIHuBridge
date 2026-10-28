@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useCalendarStore } from '../lib/calendar';
-import { visibleEvents } from '../lib/calendar-rules.mjs';
+import { visibleEvents, registrationMatches } from '../lib/calendar-rules.mjs';
 import { koreaDate, periodEvents } from '../lib/calendar-view.mjs';
 import { matchesAudience } from '../lib/calendar-audience.mjs';
 import { CalendarMonth } from '../components/CalendarMonth';
@@ -17,6 +17,7 @@ export default function Calendar() {
   const [mode, setMode] = useState('all');
   const [fee, setFee] = useState('all');
   const [registration, setRegistration] = useState('all');
+  const [includePast, setIncludePast] = useState(false);
   const [search, setSearch] = useState('');
   const [region, setRegion] = useState('');
   const [month, setMonth] = useState(() => koreaDate().slice(0, 7));
@@ -24,19 +25,19 @@ export default function Calendar() {
   const [scope, setScope] = useState<'month' | 'all'>('month');
   const [view, setView] = useState<'calendar' | 'list'>('calendar');
   const [visibleCount, setVisibleCount] = useState(24);
-  useEffect(() => setVisibleCount(24), [audience, type, mode, fee, registration, search, region, month, selectedDay, scope]);
+  useEffect(() => setVisibleCount(24), [audience, type, mode, fee, registration, search, region, month, selectedDay, scope, includePast]);
   useEffect(() => {
     void loadEvents();
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(timer);
   }, [loadEvents]);
 
-  const available = visibleEvents(events, now);
+  const available = visibleEvents(events, now, includePast);
   const audienceEvents = available.filter((event) => matchesAudience(event, audience));
   const filtered = audienceEvents.filter((event) => (type === 'all' || event.type === type)
     && (mode === 'all' || (mode === 'online' ? event.isOnline === true : mode === 'offline' ? event.isOnline === false : event.isOnline === null))
     && (fee === 'all' || event.feeType === fee)
-    && (registration === 'all' || (registration === 'known' ? event.applicationEnd !== null : event.applicationEnd === null))
+    && registrationMatches(event, registration, now)
     && (event.title + ' ' + event.host + ' ' + (event.topics ?? []).join(' ')).toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())
     && (event.host + ' ' + (event.location ?? '') + ' ' + (event.region ?? '')).toLocaleLowerCase().includes(region.trim().toLocaleLowerCase()));
   const monthEvents = periodEvents(filtered, month);
@@ -46,7 +47,7 @@ export default function Calendar() {
     if (!/^\d{4}-\d{2}$/.test(value)) return;
     setMonth(value); setSelectedDay(null); setScope('month');
   };
-  const reset = () => { setAudience('domestic'); setType('all'); setMode('all'); setFee('all'); setRegistration('all'); setSearch(''); setRegion(''); setSelectedDay(null); };
+  const reset = () => { setAudience('domestic'); setType('all'); setMode('all'); setFee('all'); setRegistration('all'); setIncludePast(false); setSearch(''); setRegion(''); setSelectedDay(null); };
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 text-stone-700 dark:text-stone-200">
@@ -71,13 +72,15 @@ export default function Calendar() {
           <label className="text-xs text-stone-500">행사 유형<select value={type} onChange={(event) => setType(event.target.value)} className={control}><option value="all">전체 유형</option>{Object.entries(eventTypeLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
           <label className="text-xs text-stone-500">진행 방식<select value={mode} onChange={(event) => setMode(event.target.value)} className={control}><option value="all">전체 방식</option><option value="online">온라인</option><option value="offline">오프라인</option><option value="unknown">미확인·혼합</option></select></label>
           <label className="text-xs text-stone-500">참가 비용<select value={fee} onChange={(event) => setFee(event.target.value)} className={control}><option value="all">전체 비용</option><option value="free">무료로 확인됨</option><option value="paid">유료로 확인됨</option><option value="unknown">비용 미확인</option></select></label>
-          <label className="text-xs text-stone-500">신청 일정<select value={registration} onChange={(event) => setRegistration(event.target.value)} className={control}><option value="all">전체 일정</option><option value="known">신청 마감 확인됨</option><option value="unknown">개최일만 확인됨</option></select></label>
+          <label className="text-xs text-stone-500">신청·행사 상태<select value={registration} onChange={(event) => setRegistration(event.target.value)} className={control}><option value="all">전체 상태</option><option value="open">신청 마감 전 · 마감일 확인</option><option value="closed">신청 마감</option><option value="cancelled">취소</option><option value="postponed">연기</option><option value="known">신청 마감일 확인됨</option><option value="unknown">신청 마감일 미확인</option></select></label>
         </div>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <label className="text-xs text-stone-500">행사·기관·주제 검색<input type="search" placeholder="예: Gemini, 해커톤" value={search} onChange={(event) => setSearch(event.target.value)} className={control} /></label>
           <label className="text-xs text-stone-500">지역 검색<input type="search" placeholder="예: Seoul, 서울, London" value={region} onChange={(event) => setRegion(event.target.value)} className={control} /></label>
           <label className="text-xs text-stone-500">조회 월<input type="month" min="2000-01" max="2100-12" value={month} onChange={(event) => changeMonth(event.target.value)} className={control} /></label>
         </div>
+        <label className="mt-4 flex items-center gap-2 text-sm"><input type="checkbox" checked={includePast} onChange={(event) => { setIncludePast(event.target.checked); setSelectedDay(null); }} />지난 행사·공고 포함 (30일 보관)</label>
+        <p className="mt-2 text-xs text-stone-500">신청 마감 후에도 개최 전 행사는 유지합니다. 취소·연기는 기본 달력에도 표시하며 참가 가능 여부는 원문을 확인하세요. 지난 자료는 조회 월 또는 전체 기간을 바꿔 찾을 수 있습니다.</p>
         <div className="mt-4 flex flex-wrap items-center justify-between gap-2"><p className="text-xs text-stone-500">공개 목록 {available.length}건 · 조건에 맞는 일정 {filtered.length}건</p><button type="button" onClick={reset} className="text-xs font-semibold text-blue-600 underline dark:text-blue-300">조건 초기화</button></div>
       </section>
 

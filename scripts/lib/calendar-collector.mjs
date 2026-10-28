@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
-import { isCalendarEvent, isWebUrl, visibleEvents } from '../../src/lib/calendar-rules.mjs';
+import { isCalendarEvent, isWebUrl, retainedEvents } from '../../src/lib/calendar-rules.mjs';
+import { noticeStatus, observeNotice, mergeCalendarHistory } from './calendar-history.mjs';
 
 // 공고를 제공할 수 있는 실제 RSS만 사용한다. 기술 글은 항목별로 다시 제외한다.
 export const sources = [
@@ -65,11 +66,11 @@ export function rssItemToEvent(source, item, now = Date.now()) {
     applicationStart: start?.date ?? null, applicationEnd: deadline.date,
     eventStart: eventDate?.date ?? null, eventEnd: null,
     isOnline: null, location: null, feeType: 'unknown', feeAmount: null, region: null,
-    url: item.link, status: 'recruiting', confirmedAt: null,
+    url: item.link, status: noticeStatus(title) || 'recruiting', confirmedAt: null,
     publishedAt: isoOrNull(item.isoDate || item.pubDate), fetchedAt: new Date(now).toISOString(),
     timezone: 'Asia/Seoul', verification: 'rss-explicit', dateEvidence: deadline.evidence, lang: source.lang,
   };
-  return isCalendarEvent(event) ? visibleEvents([event], now)[0] ?? null : null;
+  return isCalendarEvent(event) ? retainedEvents([event], now)[0] ?? null : null;
 }
 
 export async function collectCalendar(sourceList, parseFeed, previous = [], now = Date.now()) {
@@ -79,14 +80,23 @@ export async function collectCalendar(sourceList, parseFeed, previous = [], now 
       const feed = await parseFeed(source.url);
       if (!Array.isArray(feed.items)) throw new Error('RSS 항목 배열이 없습니다');
       const items = feed.items.slice(0, 100);
-      const accepted = items.map((item) => rssItemToEvent(source, item, now)).filter(Boolean);
-      events.push(...accepted);
-      results.push({ id: source.id, status: 'success', received: items.length, accepted: accepted.length, rejected: items.length - accepted.length });
+      const old = previous.filter((event) => event.sourceId === source.id);
+      const accepted = items.map((item) => {
+        const previousEvent = old.find((event) => event.url === item.link);
+        let event = rssItemToEvent(source, item, now);
+        if (!event && previousEvent && noticeStatus(item.title)) {
+          event = { ...previousEvent, title: item.title, scheduleUnknown: true, fetchedAt: new Date(now).toISOString() };
+        }
+        return event ? observeNotice(event, previousEvent, now) : null;
+      }).filter(Boolean);
+      const stored = mergeCalendarHistory(accepted, old, now);
+      events.push(...stored);
+      results.push({ id: source.id, status: 'success', received: items.length, accepted: accepted.length, retained: stored.length - accepted.length, rejected: items.length - accepted.length });
     } catch (error) {
-      const retained = visibleEvents(previous.filter((event) => event.sourceId === source.id), now);
+      const retained = retainedEvents(previous.filter((event) => event.sourceId === source.id), now);
       events.push(...retained);
       results.push({ id: source.id, status: 'error', retained: retained.length, error: String(error.message || error) });
     }
   }
-  return { events: visibleEvents(events, now), sources: results };
+  return { events: retainedEvents(events, now), sources: results };
 }

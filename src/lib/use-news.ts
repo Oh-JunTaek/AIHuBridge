@@ -6,6 +6,8 @@ export function useNews() {
   const [result, setResult] = useState<NewsResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [revision, setRevision] = useState(0);
+  const [now, setNow] = useState(Date.now);
+  useEffect(() => { const timer = window.setInterval(() => setNow(Date.now()), 60000); return () => window.clearInterval(timer); }, []);
   const reload = useCallback(() => setRevision((value) => value + 1), []);
   useEffect(() => {
     const controller = new AbortController();
@@ -17,5 +19,5 @@ export function useNews() {
     });
     return () => controller.abort();
   }, [revision]);
-  return { result, loading, reload };
+  return { result, loading, reload, now };
 }

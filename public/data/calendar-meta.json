@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-10-28T11:34:49.328Z",
-  "total": 450,
+  "fetchedAt": "2026-10-28T12:09:32.080Z",
+  "total": 511,
   "status": "success",
   "sources": [
     {
@@ -9,15 +9,17 @@
       "status": "success",
       "received": 12,
       "accepted": 0,
+      "retained": 0,
       "rejected": 12
     },
     {
       "id": "google-developer-events",
       "status": "success",
       "received": 961,
-      "accepted": 450,
-      "rejected": 511
+      "accepted": 511,
+      "retained": 0,
+      "rejected": 450
     }
   ],
-  "policy": "명시적 모집 마감 또는 공개 개최일이 확인된 향후 AI 행사만 공개"
+  "policy": "명시적 일정 근거를 보존하며 지난 행사·공고는 30일 보관, 취소·연기는 원문 상태 표시"
 }

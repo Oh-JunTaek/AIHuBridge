@@ -2,6 +2,7 @@
 
 - [공통 에이전트 규칙](../AGENTS.md) · [단일 개발 계획](../PLAN.md) · [공개 README](../README.md)
 - [문서 우선순위·상태·이력 관리 기준](./standards/DOCUMENTATION.md)
+- [자료 갱신·보관·기본 노출 기준](./standards/CONTENT_LIFECYCLE.md)
 - [자동화 및 배포 운영](./operations/AUTOMATION.md)
 - [도구·스킬·MCP·플러그인 정책](./operations/TOOLING.md)
 - [공식 출처 등록](./standards/SOURCE_REGISTRY.md)

@@ -21,16 +21,16 @@ test('공개 행사는 날짜만 보존하고 마감·시각·요금은 추정�
   assert.equal(event.url.includes('utm_'), false);
   assert.equal(deadlineLabel(event.applicationEnd, now), null);
 });
-test('과거·비AI·허용되지 않은 링크·불가능한 날짜 제외', () => {
-  for (const patch of [{ start_date: '2026-10-24' }, { event_title: '일반 취업 모임', tags: 'Career' },
+test('보관 기한이 지난 행사·비AI·허용되지 않은 링크·불가능한 날짜 제외', () => {
+  for (const patch of [{ start_date: '2026-09-01', end_date: '2026-09-02' }, { event_title: '일반 취업 모임', tags: 'Career' },
     { links: { url: 'https://example.org/event' } }, { start_date: '2026-02-30' }, { end_date: '2026-11-09' },
-    { event_title: 'Cancelled AI Workshop' }, { event_title: 'AI Workshop - date TBD' }]) {
+    { event_title: 'AI Workshop - date TBD' }]) {
     assert.equal(normalizeGoogleEvent('1', { ...item, ...patch }, now), null);
   }
 });
-test('날짜만 공개된 행사는 가능한 가장 이른 시작 시각부터 보수적으로 제외', () => {
+test('날짜만 공개된 여러 날 행사는 마지막 날짜의 하루 끝까지 유지', () => {
   const event = normalizeGoogleEvent('1', item, now);
-  const earliest = Date.parse('2026-11-10T00:00:00+14:00');
+  const earliest = Date.parse('2026-11-12T00:00:00-12:00');
   assert.equal(visibleEvents([event], earliest - 1).length, 1);
   assert.equal(visibleEvents([event], earliest).length, 0);
 });

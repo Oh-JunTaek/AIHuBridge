@@ -2,11 +2,10 @@ import { createHash } from 'node:crypto';
 import { newsSources } from '../../src/lib/news-sources.mjs';
 import { isNewsItem } from '../../src/lib/news-data.mjs';
 import { newsFacets } from '../../src/lib/news-facets.mjs';
+import { keepNews } from '../../src/lib/content-retention.mjs';
 
 const keywords = ['GPT', 'Gemini', 'Claude', 'Llama', 'Open Source', '오픈소스', 'NVIDIA', 'Microsoft', 'Google', 'AWS', 'Meta', 'DeepLearning', 'Hugging Face', '연구', '정책', '규제', '안전'];
 const text = (value) => String(value ?? '').replace(/\s+/g, ' ').trim();
-const perSource = 8;
-const retention = 7 * 86400000;
 const aiRelevant = (item) => /\bAI\b|OpenAI|LLM|Gemini|GPT|Claude|인공지능|생성형|머신러닝|딥러닝|음성\s*모델|영상\s*모델/i.test(`${item?.title ?? ''} ${item?.contentSnippet ?? ''}`);
 
 export function articleUrl(value) {
@@ -60,7 +59,11 @@ export async function collectNews({ readFeed, previous = [], previousMeta = {}, 
   if (!Array.isArray(previous)) previous = [];
   const all = [], retained = [], sourceResults = [];
   for (const source of sources) {
-    const limit = source.limit ?? perSource;
+    const existing = previous.filter((item) => isNewsItem(item)
+      && (item.sourceId ? item.sourceId === source.id : item.source === source.name
+        || (source.id === 'openai' && item.source === 'OpenAI Blog') || (source.id === 'arxiv' && item.source === 'arXiv cs.AI')))
+      .map((item) => ({ ...item, url: articleUrl(item.url), source: source.name, sourceId: source.id, lang: source.lang }))
+      .filter((item) => item.url && keepNews(item, now));
     try {
       const feed = await readFeed(source.url);
       if (!Array.isArray(feed?.items)) throw new Error('RSS 항목 배열이 없습니다');
@@ -68,8 +71,10 @@ export async function collectNews({ readFeed, previous = [], previousMeta = {}, 
       const valid = candidates.map((item) => normalizeArticle(item, source, now)).filter(Boolean);
       if (candidates.length && !valid.length) throw new Error('발행일·제목·URL이 유효한 기사가 없습니다');
       let unique = [...new Map(valid.map((item) => [item.url, item])).values()]
-        .filter((item) => source.kind !== 'paper' || Date.parse(item.publishedAt) >= now - retention)
+        .filter((item) => keepNews(item, now))
         .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
+      // 회당 신규 수집량은 기존 출처 한도를 유지하고, 이미 보관한 자료에는 한도를 적용하지 않는다.
+      const limit = source.limit ?? 8;
       if (source.kind === 'paper') {
         const groups = new Map();
         for (const item of unique) {
@@ -83,15 +88,15 @@ export async function collectNews({ readFeed, previous = [], previousMeta = {}, 
         }
       } else unique = unique.slice(0, limit);
       all.push(...unique);
+      // 정상 RSS에서 사라진 자료도 원문 게시일 기준 보관 기간 안에서는 검색할 수 있다.
+      const urls = new Set(unique.map((item) => item.url));
+      const archived = existing.filter((item) => !urls.has(item.url));
+      retained.push(...archived);
       sourceResults.push({ id: source.id, status: 'success', count: unique.length,
+        retained: archived.length,
         rejected: feed.items.length - valid.length, mode: feed.collectionMode ?? 'rss', lastSuccessAt: new Date(now).toISOString() });
     } catch (error) {
-      // 마지막 기사 발행일 기준 7일까지만 보존한다. 재실행으로 보존 기간을 연장하지 않는다.
-      const kept = previous.filter((item) => isNewsItem(item)
-        && (item.sourceId ? item.sourceId === source.id : item.source === source.name || (source.id === 'openai' && item.source === 'OpenAI Blog') || (source.id === 'arxiv' && item.source === 'arXiv cs.AI'))
-        && Date.parse(item.publishedAt) >= now - retention && Date.parse(item.publishedAt) <= now + 300000)
-        .map((item) => ({ ...item, url: articleUrl(item.url), source: source.name, sourceId: source.id, lang: source.lang }))
-        .filter((item) => item.url).sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt)).slice(0, limit);
+      const kept = existing;
       retained.push(...kept);
       sourceResults.push({ id: source.id, status: 'failed', count: 0, retained: kept.length,
         lastSuccessAt: (Array.isArray(previousMeta?.sourceResults) ? previousMeta.sourceResults : [])

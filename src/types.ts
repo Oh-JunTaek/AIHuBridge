@@ -85,7 +85,9 @@ export type EventStatus =
   | 'scheduled'    // 모집 예정
   | 'closed'       // 모집 마감
   | 'announced'    // 개최일 공개, 신청 마감 미확인
-  | 'completed';
+  | 'completed'
+  | 'cancelled'   // 원문 취소 확인
+  | 'postponed';  // 원문 연기 확인
 
 export interface CalendarEvent {
   id: string;                      // hash(ID)
@@ -114,6 +116,8 @@ export interface CalendarEvent {
   // 메타
   url: string;                      // 공식 신청 링크
   status: EventStatus;
+  noticeObservedAt?: string;       // 취소·연기 최초 관찰 시각, 반복 수집으로 갱신하지 않음
+  scheduleUnknown?: boolean;       // 변경 일정 미확인, 기존 날짜를 확정 일정으로 오인하지 않음
   confirmedAt: string | null;       // 수동으로 내용 확인한 날짜
   publishedAt: string | null;       // 공고 게시일 (모집일과 별개)
   fetchedAt: string;

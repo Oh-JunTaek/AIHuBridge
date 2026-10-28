@@ -48,12 +48,12 @@ test('부분 실패에서 기존 유효 기사 보존, 날짜·마지막 성공 
   assert.equal(result.items.find((item) => item.sourceId === 'one').publishedAt, baseline.items[0].publishedAt);
 });
 
-test('발행 후 7일이 지난 기사와 깨진 이전 데이터는 보존하지 않음', async () => {
+test('일반 소식의 30일 보관 기한을 넘긴 자료와 손상 데이터는 보존하지 않음', async () => {
   const baseline = await collect(async () => ({ items: [raw()] }), { sources: [sources[0]] });
   const result = await collect(async (url) => {
     if (url === sources[0].url) throw new Error('연결 실패');
     return { items: [raw({ link: 'https://example.kr/new' })] };
-  }, { previous: [{ ...baseline.items[0], publishedAt: '2026-10-01T00:00:00Z' }, { title: '깨진 데이터' }] });
+  }, { previous: [{ ...baseline.items[0], publishedAt: '2026-09-01T00:00:00Z' }, { title: '깨진 데이터' }] });
   assert.equal(result.meta.sourceResults[0].retained, 0);
   assert.equal(result.items.length, 1);
 });
@@ -78,9 +78,9 @@ test('같은 제목의 다른 원문은 유지, 같은 URL 추적 변형은 제�
 test('언어·출처·분야·검색을 함께 적용하고 원본 배열 순서 유지', async () => {
   const { items } = await collect(async (url) => ({ items: [raw({ link: url + '/story' })] }));
   const before = structuredClone(items);
-  assert.equal(selectNews(items, { lang: 'ko', source: sources[1].name, category: '언론', query: 'AI safety' }).length, 1);
-  assert.equal(selectNews(items, { lang: 'en', source: sources[1].name }).length, 0);
-  assert.equal(selectNews(items, { query: '존재하지 않는 주제' }).length, 0);
+  assert.equal(selectNews(items, { now, lang: 'ko', source: sources[1].name, category: '언론', query: 'AI safety' }).length, 1);
+  assert.equal(selectNews(items, { now, lang: 'en', source: sources[1].name }).length, 0);
+  assert.equal(selectNews(items, { now, query: '존재하지 않는 주제' }).length, 0);
   assert.deepEqual(items, before);
 });
 
@@ -104,7 +104,7 @@ test('실패 출처의 이전 기사와 URL이 겹치면 새로 수집한 원문
   assert.equal(result.items[0].title, '새 제목');
 });
 
-test('출처별 최신 8건을 선택하며 오래된 앞쪽 기사가 최신 기사를 밀어내지 않음', async () => {
+test('회당 신규 수집은 기존 출처별 8건 한도를 유지', async () => {
   const result = await collect(async () => ({ items: Array.from({ length: 12 }, (_, index) => raw({
     link: `https://example.org/${index}`, pubDate: new Date(now - (12 - index) * 3600000).toISOString(),
   })) }), { sources: [sources[0]] });

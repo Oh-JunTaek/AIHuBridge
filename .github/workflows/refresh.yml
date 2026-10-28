@@ -6,9 +6,9 @@ name: News Refresh
 # - 외부 서비스 계정/키 미보관 (AGENTS.md rule 3 준수)
 
 on:
-  # UTC 기준. KST(UTC+9) 07:00 / 19:00 에 해당.
+  # UTC 기준. 매일 KST(UTC+9) 07:00 한 번 실행한다.
   schedule:
-    - cron: '0 22,10 * * *'
+    - cron: '0 22 * * *'
   workflow_dispatch:   # 브라우저에서 수동 수동 새로고침
 
 permissions:

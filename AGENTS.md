@@ -16,6 +16,7 @@
 2. [PLAN.md](./PLAN.md): 확정 범위·구현 체크·우선순위·미해결 사항의 유일한 관리 기준.
 3. 작업과 직접 관련된 문서 **한두 개만 선택해서 읽기**:
    - 수집, 자동화, 배포: [AUTOMATION](./docs/operations/AUTOMATION.md)
+   - 갱신 주기·보관·기간 탐색: [CONTENT_LIFECYCLE](./docs/standards/CONTENT_LIFECYCLE.md)
    - 자료 출처·재사용 조건: [SOURCE_REGISTRY](./docs/standards/SOURCE_REGISTRY.md)
    - UI 명칭·주소·문구: [TERMINOLOGY](./docs/standards/TERMINOLOGY.md)
    - 스킬·MCP·플러그인: [TOOLING](./docs/operations/TOOLING.md)

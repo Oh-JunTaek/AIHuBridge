@@ -6,6 +6,7 @@ import { readNewsFeed, arxivRecent } from './lib/news-feeds.mjs';
 import { newsSources } from '../src/lib/news-sources.mjs';
 import { collectNews } from './lib/news-collector.mjs';
 
+const now = Date.parse('2026-10-28T12:00:00Z');
 const article = (patch = {}) => ({ id: '1', title: 'Introducing a new language model', sourceId: 'openai', source: 'OpenAI 공식 발표',
   url: 'https://example.org/1', category: '업계/제품', lang: 'en', publishedAt: '2026-10-25T00:00:00.000Z',
   excerpt: '', summary: null, tags: [], readMinutes: 1, ...patch });
@@ -14,7 +15,7 @@ test('국내 출처 구분은 기사 언어 또는 보도 대상 국가와 별�
   const foreign = article({ lang: 'ko' });
   const domestic = article({ id: '2', sourceId: 'aitimes', lang: 'en', url: 'https://example.org/2' });
   assert.equal(newsFacets(foreign).origin, 'overseas');
-  assert.deepEqual(selectNews([foreign, domestic], { origin: 'domestic' }), [domestic]);
+  assert.deepEqual(selectNews([foreign, domestic], { now, origin: 'domestic' }), [domestic]);
 });
 
 test('언어·음성·영상 모델을 복수 분류하고 일반 연설을 모델로 오인하지 않음', () => {
@@ -33,21 +34,21 @@ test('출처 이름으로 공개 라이선스를 추정하지 않고 부정·혼
 test('원문 논문 분류 코드와 서베이·벤치마크 표현을 탐색에 사용', () => {
   const paper = article({ sourceId: 'arxiv', category: '연구/논문', title: 'A survey of visual benchmarks', paperCategories: ['cs.CV'] });
   assert.ok(newsFacets(paper).topics.papers.includes('vision'));
-  assert.equal(selectNews([paper], { topicGroup: 'papers', topic: 'vision', paperKind: 'survey' }).length, 1);
-  assert.equal(selectNews([paper], { topicGroup: 'papers', topic: 'audio' }).length, 0);
+  assert.equal(selectNews([paper], { now, topicGroup: 'papers', topic: 'vision', paperKind: 'survey' }).length, 1);
+  assert.equal(selectNews([paper], { now, topicGroup: 'papers', topic: 'audio' }).length, 0);
 });
 
 test('분야별 주제와 기업 필터 적용, metadata를 Meta 기업으로 오인하지 않음', () => {
   assert.equal(newsFacets(article({ title: 'Metadata management for datasets' })).companies.includes('Meta'), false);
   const item = article({ title: '엔비디아 GPU 인프라 투자 발표', sourceId: 'aitimes' });
-  assert.equal(selectNews([item], { topicGroup: 'products', topic: 'infrastructure', company: 'NVIDIA' }).length, 1);
-  assert.equal(selectNews([item], { topicGroup: 'products', topic: 'tools' }).length, 0);
+  assert.equal(selectNews([item], { now, topicGroup: 'products', topic: 'infrastructure', company: 'NVIDIA' }).length, 1);
+  assert.equal(selectNews([item], { now, topicGroup: 'products', topic: 'tools' }).length, 0);
 });
 
 test('모델 소식의 개발사 발표·공개 방식·유형 필터를 함께 적용', () => {
   const item = article({ title: 'Introducing an open-source audio model' });
-  assert.equal(selectNews([item], { modelsOnly: true, publication: 'developer', topicGroup: 'models', topic: 'audio', openness: 'open' }).length, 1);
-  assert.equal(selectNews([item], { modelsOnly: true, openness: 'closed' }).length, 0);
+  assert.equal(selectNews([item], { now, modelsOnly: true, publication: 'developer', topicGroup: 'models', topic: 'audio', openness: 'open' }).length, 1);
+  assert.equal(selectNews([item], { now, modelsOnly: true, openness: 'closed' }).length, 0);
 });
 
 test('arXiv 휴일 빈 RSS는 3초 간격 후 공식 최근 제출 Atom으로 보완', async () => {

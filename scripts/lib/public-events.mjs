@@ -1,4 +1,5 @@
-import { isWebUrl, visibleEvents } from '../../src/lib/calendar-rules.mjs';
+import { isWebUrl, retainedEvents } from '../../src/lib/calendar-rules.mjs';
+import { noticeStatus, observeNotice, mergeCalendarHistory } from './calendar-history.mjs';
 import { readPublicText } from './rss.mjs';
 import { communityRegion } from './community-region.mjs';
 
@@ -15,7 +16,7 @@ export function normalizeGoogleEvent(id, item, now = Date.now()) {
   if (!item || typeof item !== 'object' || typeof item.event_title !== 'string'
     || !validDay(item.start_date) || (item.end_date && (!validDay(item.end_date) || item.end_date < item.start_date))) return null;
   const title = item.event_title.trim();
-  if (/(?:cancelled|canceled|postponed|\bTBD\b|\bTBA\b|취소|연기|미정|다시보기)/i.test(title)) return null;
+  if (/(?:\bTBD\b|\bTBA\b|미정|다시보기)/i.test(title)) return null;
   const tags = typeof item.tags === 'string' ? item.tags : '';
   if (!/(?:\bAI\b|artificial intelligence|machine learning|Gemini|LLM|generative|agentic|인공지능|생성형)/i.test(`${title} ${tags}`)) return null;
   if (!isWebUrl(item.links?.url)) return null;
@@ -42,13 +43,13 @@ export function normalizeGoogleEvent(id, item, now = Date.now()) {
     isOnline: item.audience_type === 'VIRTUAL' ? true : item.audience_type === 'IN_PERSON' ? false : null,
     location, region: location, feeType: 'unknown', feeAmount: null,
     territory: communityRegion(item.chapter_latitude, item.chapter_longitude), territoryBasis: 'community-location',
-    url: url.href, status: 'announced', confirmedAt: null, publishedAt: null,
+    url: url.href, status: noticeStatus(title) || 'announced', confirmedAt: null, publishedAt: null,
     fetchedAt: new Date(now).toISOString(), timezone: null,
     verification: 'public-event', dateEvidence: `공개 행사 일정: ${item.start_date}${item.end_date && item.end_date !== item.start_date ? ' ~ ' + item.end_date : ''} (현지 날짜·시각 미확인)`,
     sourceUrl: googleEventsSource.sourceUrl, lang: 'unknown',
     topics: tags.split(',').map((tag) => tag.trim()).filter(Boolean).slice(0, 8),
   };
-  return visibleEvents([event], now)[0] ?? null;
+  return retainedEvents([event], now)[0] ?? null;
 }
 
 export async function collectGoogleEvents(previous = [], now = Date.now(), read = readPublicText) {
@@ -59,10 +60,20 @@ export async function collectGoogleEvents(previous = [], now = Date.now(), read 
       throw new Error('공개 행사 목록의 형식이 변경되었습니다');
     }
     const entries = Object.entries(data);
-    const events = visibleEvents(entries.map(([id, item]) => normalizeGoogleEvent(id, item, now)).filter(Boolean), now);
-    return { events, source: { id: googleEventsSource.id, status: 'success', received: entries.length, accepted: events.length, rejected: entries.length - events.length } };
+    const fresh = retainedEvents(entries.map(([id, item]) => {
+      const old = previous.find((event) => event.id === `gdg-${id}`);
+      let event = normalizeGoogleEvent(id, item, now);
+      // 원문에 연기·취소만 있고 새 날짜가 없으면 기존 날짜를 변경 전 참고 위치로 유지한다.
+      if (!event && old && noticeStatus(item.event_title)) {
+        event = { ...old, title: item.event_title, scheduleUnknown: true, fetchedAt: new Date(now).toISOString() };
+      }
+      return event ? observeNotice(event, old, now) : null;
+    }).filter(Boolean), now);
+    const old = previous.filter((event) => event.sourceId === googleEventsSource.id);
+    const events = mergeCalendarHistory(fresh, old, now);
+    return { events, source: { id: googleEventsSource.id, status: 'success', received: entries.length, accepted: fresh.length, retained: events.length - fresh.length, rejected: entries.length - fresh.length } };
   } catch (error) {
-    const events = visibleEvents(previous.filter((event) => event.sourceId === googleEventsSource.id), now);
+    const events = retainedEvents(previous.filter((event) => event.sourceId === googleEventsSource.id), now);
     return { events, source: { id: googleEventsSource.id, status: 'error', retained: events.length, error: String(error.message || error) } };
   }
 }
