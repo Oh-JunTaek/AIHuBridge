@@ -23,7 +23,7 @@ export default function Path() {
   );
 
   return (
-    <div className="space-page space-library mx-auto max-w-4xl px-4 py-6">
+    <div className="space-page space-library space-path mx-auto max-w-6xl px-4 py-6">
       <header className="space-header mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <div>
           <p className="space-label">학습관</p>
@@ -37,6 +37,10 @@ export default function Path() {
         </Link>
       </header>
 
+      <div className="reading-layout">
+      <a className="results-skip" href="#reading-results">결과 바로 보기</a>
+      <aside className="reading-sidebar" aria-label="커리큘럼 탐색">
+        <p className="reading-label">나에게 맞는 배움 찾기</p>
       {/* ── 분류 필터: 난이도 / 분야 ── */}
       <div className="mb-5 flex flex-wrap items-center gap-4 gap-y-2 border-b border-stone-200 pb-3 text-xs">
         <div role="group" aria-label="학습 난이도" className="flex flex-wrap items-center gap-1.5">
@@ -97,10 +101,15 @@ export default function Path() {
         ) : null}
       </div>
 
-      <div className="grid gap-4">
+      </aside>
+      <section id="reading-results" className="reading-results" aria-label="추천 커리큘럼 단계">
+      <div className="results-heading"><div><span>학습관의 길</span><h2>한 걸음씩 이어지는 배움</h2></div><p>원하는 단계부터 살펴보세요</p></div>
+      <div className="learning-journey grid gap-4">
         {visibleStages.map((s) => (
           <StageCard key={s.id} stage={s} filter={filter} />
         ))}
+      </div>
+      </section>
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ export default function Updates() {
   const selectStyle = 'min-w-0 rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900';
 
   return (
-    <div className="space-page space-plaza mx-auto max-w-4xl px-4 py-6">
+    <div className="space-page space-plaza space-news mx-auto max-w-6xl px-4 py-6">
       <header className="space-header mb-6">
         <p className="space-label">정보관</p>
         <h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('updates.title')}</h1>
@@ -45,6 +45,10 @@ export default function Updates() {
         </p>
       </header>
 
+      <div className="reading-layout">
+      <a className="results-skip" href="#reading-results">결과 바로 보기</a>
+      <aside className="reading-sidebar" aria-label="소식 탐색">
+      <p className="reading-label">관심 있는 소식 찾기</p>
       <nav aria-label="소식 분야" className="mb-5 flex flex-wrap gap-2 text-sm">
         {categories.map((c) => (
           <button
@@ -104,18 +108,23 @@ export default function Updates() {
         <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">국내 출처는 국내·한국어 편집 제공처 기준이며 자료가 다루는 국가나 자료 언어와는 다릅니다. 분야·세부 주제와 공개 방식은 원문 분류 코드·제목·설명문으로 분류하며 모델 라이선스를 검증한 결과가 아닙니다. 조건은 저장하지 않습니다.</p>
       </section>
 
+      </aside>
+      <section id="reading-results" className="reading-results" aria-label="AI 소식 목록">
+      <div className="results-heading"><div><span>정보관의 소식</span><h2>지금 살펴볼 이야기</h2></div><p>원문을 직접 확인할 수 있습니다</p></div>
       <NewsStatus result={result} loading={loading} onRetry={reload} />
       {!loading && result?.status === 'success' && shown.length === 0 && (
         <p className="text-sm text-stone-500 dark:text-stone-400">{t('updates.empty')}</p>
       )}
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+      <div className="news-list mt-4 grid gap-4">
         {shown.slice(0, visibleCount).map((it) => (
           <NewsCard key={it.id} item={it} />
         ))}
       </div>
       {shown.length > visibleCount && <button type="button" onClick={() => setVisibleCount((count) => count + 24)} className="mt-5 rounded-lg border border-stone-300 px-4 py-3 text-sm dark:border-stone-600">소식 더 보기 ({shown.length - visibleCount}건 남음)</button>}
 
+      </section>
+      </div>
     </div>
   );
 }

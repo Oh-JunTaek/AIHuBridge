@@ -26,7 +26,7 @@ export default function Certs() {
   ];
 
   return (
-    <div className="space-page space-library mx-auto max-w-4xl px-4 py-6">
+    <div className="space-page space-library space-certs mx-auto max-w-6xl px-4 py-6">
       <header className="space-header mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <div><p className="space-label">학습관</p><h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('certs.title')}</h1><p className="space-caption">교육과 인증 정보를 한곳에서 살펴보세요.</p></div>
         <Link to="/path" className="text-xs underline">
@@ -34,6 +34,10 @@ export default function Certs() {
         </Link>
       </header>
 
+      <div className="reading-layout">
+      <a className="results-skip" href="#reading-results">결과 바로 보기</a>
+      <aside className="reading-sidebar" aria-label="교육·인증 탐색">
+      <p className="reading-label">배움의 자료 살펴보기</p>
       <nav aria-label="교육·인증 유형" className="mb-4 flex flex-wrap gap-2 text-sm">
         {tabs.map((tb) => (
           <button
@@ -61,6 +65,9 @@ export default function Certs() {
         </div>
         <div className="mt-3 flex items-center justify-between gap-3 text-sm"><p role="status">조건에 맞는 항목 {shown.length}개</p><button type="button" className="rounded-lg px-3 py-2 text-amber-700 dark:text-amber-300" onClick={() => { setLanguage(''); setCost(''); setQuery(''); }}>조건 초기화</button></div>
       </section>
+      </aside>
+      <section id="reading-results" className="reading-results" aria-label="교육·인증 목록">
+      <div className="results-heading"><div><span>학습관의 자료실</span><h2>나에게 필요한 배움</h2></div><p>비용과 조건은 공식 페이지에서 확인하세요</p></div>
       {!shown.length && <p className="py-6 text-sm">조건에 맞는 교육·인증이 없습니다. 다른 유형을 선택하거나 조건을 초기화해 보세요.</p>}
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -73,6 +80,8 @@ export default function Certs() {
       </div>
 
       <p className="mt-6 text-center text-xs text-stone-500 dark:text-stone-400">{t('certs.footer')}</p>
+      </section>
+      </div>
     </div>
   );
 }

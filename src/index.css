@@ -261,3 +261,59 @@
   .dark .space-header { background-image: linear-gradient(90deg,rgba(13,35,55,.98),rgba(13,35,55,.96) 60%,rgba(13,35,55,.78)),url('./assets/plaza.webp'); }
   .dark .space-library .space-header { background-image: linear-gradient(90deg,rgba(19,39,52,.98),rgba(19,39,52,.96) 60%,rgba(19,39,52,.78)),url('./assets/library.webp'); }
 }
+
+/* 광장의 안내 데스크와 자료실의 서가를 바탕으로 탐색 구조를 구성한다. */
+.space-page { padding-top: 2rem; padding-bottom: 5rem; }
+.space-header { min-height: 245px; display: flex; flex-wrap: wrap; align-content: center; align-items: end; padding: clamp(1.5rem, 4vw, 3.2rem); border-radius: 26px; box-shadow: 0 24px 60px #224d7020; }
+.space-header h1 { font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.16; }
+.space-header .space-label { font-size: .78rem; margin-bottom: .8rem; }
+.space-header p:not(.space-label) { line-height: 1.6; }
+.reading-layout { display: grid; grid-template-columns: minmax(210px, 270px) minmax(0, 1fr); align-items: start; gap: clamp(1.1rem, 2.5vw, 2.5rem); margin-top: 2.4rem; }
+.reading-sidebar { min-width: 0; border-radius: 20px; padding: 1.3rem; background: rgba(255,255,255,.88); border: 1px solid #d7e6ee; box-shadow: 0 18px 45px #32658212; }
+.space-library .reading-sidebar { border-color: #eadfce; background: rgba(255,253,248,.94); }
+.reading-label { color: #173c62; font-weight: 750; font-size: 1rem; margin: 0 0 1.3rem; padding-bottom: 1rem; border-bottom: 1px solid #dce7ef; }
+.reading-sidebar nav { gap: .4rem; }
+.reading-sidebar nav button { min-height: 2.4rem; }
+.space-news .reading-sidebar nav button { text-align: left; }
+.space-news .reading-sidebar section[aria-label="소식 탐색 조건"], .space-certs .reading-sidebar section[aria-label="교육 탐색 조건"] { padding: 0; border: 0; background: transparent; border-radius: 0; }
+.space-news .reading-sidebar section[aria-label="소식 탐색 조건"] > .grid, .space-certs .reading-sidebar section[aria-label="교육 탐색 조건"] > .grid, .space-news .reading-sidebar fieldset .grid { grid-template-columns: minmax(0,1fr); }
+.space-news .reading-sidebar select, .space-news .reading-sidebar input, .space-certs .reading-sidebar select, .space-certs .reading-sidebar input { background-color: white; width: 100%; }
+.space-path .reading-sidebar > div { display: block; padding: 0; border: 0; }
+.space-path .reading-sidebar [role="group"] { margin-bottom: 1.2rem; }
+.space-path .reading-sidebar [role="group"] > span { flex-basis: 100%; margin-bottom: .3rem; }
+.space-path .reading-sidebar button { border-radius: 999px; padding: .45rem .7rem; }
+.reading-results { min-width: 0; }
+.results-heading, .calendar-board-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin: 0 0 1.35rem; color: #193e5f; }
+.results-heading span, .calendar-board-heading span { color: #537997; font-size: .75rem; font-weight: 700; }
+.results-heading h2, .calendar-board-heading h2 { margin: .35rem 0 0; font-size: clamp(1.3rem, 2.2vw, 1.75rem); font-weight: 750; letter-spacing: -.04em; }
+.results-heading p, .calendar-board-heading p { font-size: .75rem; color: #5a7185; text-align: right; }
+.news-list article { border-radius: 18px; border-color: #dbe8ef; padding: 1.3rem 1.5rem; box-shadow: 0 12px 30px #315c7810; }
+.news-list article h3 { font-size: 1.06rem; line-height: 1.5; }
+.news-list article footer { border-top: 1px solid #edf2f5; padding-top: .8rem; }
+.learning-journey { position: relative; padding-left: 1.6rem; }
+.learning-journey::before { content: ''; position: absolute; left: .35rem; top: 1rem; bottom: 1rem; width: 2px; background: linear-gradient(#ca9e62,#b9d8e9); }
+.learning-journey > .space-card { position: relative; border-radius: 18px; }
+.learning-journey > .space-card::before { content: ''; position: absolute; left: -1.53rem; top: 1.6rem; width: .72rem; height: .72rem; border: 2px solid #c99e68; border-radius: 50%; background: #fffaf1; }
+.space-certs .reading-results > .grid { align-items: stretch; }
+.space-certs .space-card { border-radius: 18px; padding: 1.3rem; box-shadow: 0 12px 32px #816b4912; }
+.calendar-board { margin: 2rem 0; }
+.calendar-board > section { box-shadow: 0 18px 50px #315b7c1c; }
+.calendar-controls { border-radius: 20px; padding: 1.4rem; background: rgba(255,255,255,.84); border: 1px solid #d4e5f0; margin: 2rem 0; }
+.calendar-controls > section[aria-label="일정 필터"] { background: #f6fafd; }
+.dark .reading-sidebar { background: #102b40f2; border-color: #3b5b72; }
+.dark .space-library .reading-sidebar { background: #243441f2; border-color: #615a4d; }
+.dark .reading-label, .dark .results-heading h2, .dark .calendar-board-heading h2 { color: #e4f1fc; }
+.dark .results-heading span, .dark .results-heading p, .dark .calendar-board-heading span, .dark .calendar-board-heading p { color: #bed0de; }
+.dark .space-news .reading-sidebar select, .dark .space-news .reading-sidebar input, .dark .space-certs .reading-sidebar select, .dark .space-certs .reading-sidebar input { background: #102941; color: #e4f1fc; }
+.dark .calendar-controls { background: #102b40ef; border-color: #3b5b72; }
+.dark .calendar-controls > section[aria-label="일정 필터"] { background: #102941; }
+.dark .news-list article footer { border-color: #395069; }
+@media (max-width: 760px) { .reading-layout { grid-template-columns: 1fr; margin-top: 1.4rem; } .space-header { min-height: 190px; } .reading-sidebar { padding: 1.1rem; } .results-heading, .calendar-board-heading { align-items: start; flex-direction: column; gap: .35rem; } .results-heading p, .calendar-board-heading p { text-align: left; } }
+.space-news .space-header { display: block; align-content: center; }
+.space-news .space-header > p, .space-news .space-header > h1 { display: block; }
+.results-skip { display: none; }
+@media (max-width: 760px) { .results-skip { display: block; color: #214e79; background: #fff; border: 1px solid #cbdfeb; border-radius: 12px; text-align: center; padding: .7rem; font-weight: 700; } .dark .results-skip { color: #d7eafa; background: #102b40; border-color: #4b6a82; } .reading-results { scroll-margin-top: 10rem; } }
+.calendar-quick-links { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
+.calendar-quick-links a { display: inline-flex; align-items: center; min-height: 2.6rem; border-radius: 999px; padding: .5rem 1rem; color: #17466f; background: #fff; border: 1px solid #cce0ef; font-size: .85rem; font-weight: 700; }
+.dark .calendar-quick-links a { color: #e6f3ff; background: #173a58; border-color: #456b88; }
+#calendar-controls, #calendar-results { scroll-margin-top: 10rem; }
