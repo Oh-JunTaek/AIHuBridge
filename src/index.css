@@ -451,3 +451,31 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 /* 카드 폭은 좌우 여백과 독립적으로 계산한다. */
 .exhibition-grid { --exhibit-width: clamp(200px, 27vw, 320px); grid-auto-columns: var(--exhibit-width); padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); scroll-padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); }
 @media (max-width: 760px) { .exhibition-grid { --exhibit-width: clamp(175px, 56vw, 280px); grid-auto-columns: var(--exhibit-width); padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); scroll-padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); } }
+/* 상단 탐색은 배경 대신 색과 미세한 눌림으로 반응한다. */
+.nav-top-link, .nav-primary { color: #51677d; }
+.nav-top-link, .nav-primary-link, .nav-expand { transition: color .22s ease, transform .22s ease; }
+.nav-top-link:hover, .nav-primary:hover .nav-primary-link, .nav-primary.is-expanded .nav-primary-link { color: #1c5b89; transform: translateY(1px); }
+.nav-top-link.is-active, .nav-primary.is-active .nav-primary-link { color: #153d66; text-decoration: underline; text-decoration-color: #87b8d3; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+@media (prefers-reduced-motion: reduce) { .nav-top-link, .nav-primary-link, .nav-expand { transition: none; } .nav-top-link:hover, .nav-primary:hover .nav-primary-link, .nav-primary.is-expanded .nav-primary-link { transform: none; } }
+/* 달력과 일정이 함께 놓인 작은 전시 장면 */
+.calendar-scene { display: flex; align-items: center; justify-content: center; gap: 4%; padding: 14% 7% 9%; }
+.mini-calendar { width: 48%; padding: 8px 7px; border-radius: 10px; background: #fffdfb; box-shadow: 0 8px 18px #a2773b1c; transform: rotate(-2deg); transition: transform .5s ease; }
+.mini-calendar-heading { display: flex; justify-content: space-between; align-items: center; color: #254c70; font-size: 7px; margin-bottom: 5px; }
+.mini-calendar-heading span { color: #94a9bc; }
+.mini-calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; align-items: center; font-size: 5px; color: #67819a; }
+.mini-calendar-grid b { color: #9aaaba; font-weight: 500; }
+.mini-calendar-grid span { display: grid; place-items: center; aspect-ratio: 1; border-radius: 50%; }
+.mini-calendar-grid .marked { background: #e8b15e; color: white; }
+.mini-calendar-grid .marked ~ .marked { background: #e4eff8; color: #507598; }
+.mini-agenda { width: 44%; display: grid; gap: 5px; transform: rotate(2deg); transition: transform .5s ease; }
+.mini-agenda-tabs { display: flex; gap: 4px; margin-bottom: 1px; }
+.mini-agenda-tabs i { width: 24%; height: 8px; border-radius: 8px; background: #fffaf4; }
+.mini-agenda-tabs i:first-child { background: #e0ab58; }
+.mini-event { display: flex; align-items: center; gap: 5px; min-height: 24px; padding: 4px; border-radius: 6px; background: #fffdfb; box-shadow: 0 5px 12px #a2773b12; border-left: 2px solid #e1b264; }
+.mini-event:nth-child(3) { border-color: #7da6c8; }.mini-event:nth-child(4) { border-color: #abb9df; }
+.mini-date { color: #7790a6; font-size: 6px; font-weight: 700; }
+.mini-event-lines { flex: 1; display: grid; gap: 3px; }.mini-event-lines i { height: 2px; border-radius: 2px; background: #d7e1e9; }.mini-event-lines i:first-child { width: 90%; background: #7590a7; }.mini-event-lines i:last-child { width: 55%; }
+.mini-event b { width: 13px; height: 7px; border-radius: 5px; background: #edf3fa; }
+.exhibit-card:hover .mini-calendar, .exhibit-card:focus-visible .mini-calendar { transform: rotate(0deg) translateY(-3px); }
+.exhibit-card:hover .mini-agenda, .exhibit-card:focus-visible .mini-agenda { transform: rotate(0deg) translateY(2px); }
+@media (prefers-reduced-motion: reduce) { .mini-calendar, .mini-agenda { transition: none; } .exhibit-card:hover .mini-calendar, .exhibit-card:focus-visible .mini-calendar { transform: rotate(-2deg); } .exhibit-card:hover .mini-agenda, .exhibit-card:focus-visible .mini-agenda { transform: rotate(2deg); } }

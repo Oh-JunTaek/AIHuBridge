@@ -1,5 +1,5 @@
-import { nextCarouselIndex } from '../lib/carousel.mjs';
 import { useEffect, useRef, useState } from 'react';
+import { middleCarouselIndex } from '../lib/carousel.mjs';
 import { WayfindingIcon } from '../components/WayfindingIcon';
 import { Link } from 'react-router-dom';
 import { ExhibitArt } from '../components/ExhibitArt';
@@ -14,7 +14,8 @@ const exhibits = [
 
 export default function Home() {
   const carousel = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(Math.min(1, exhibits.length - 1));
+  const settleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const [active, setActive] = useState(exhibits.length + Math.min(1, exhibits.length - 1));
   const centerCard = (index: number, smooth = true) => {
     const rail = carousel.current;
     const card = rail?.querySelectorAll<HTMLElement>('.exhibit-card')[index];
@@ -24,8 +25,8 @@ export default function Home() {
     setActive(index);
   };
   useEffect(() => {
-    const frame = requestAnimationFrame(() => centerCard(Math.min(1, exhibits.length - 1), false));
-    return () => cancelAnimationFrame(frame);
+    const frame = requestAnimationFrame(() => centerCard(exhibits.length + Math.min(1, exhibits.length - 1), false));
+    return () => { cancelAnimationFrame(frame); clearTimeout(settleTimer.current); };
   }, []);
   const updateActive = () => {
     const rail = carousel.current;
@@ -39,8 +40,15 @@ export default function Home() {
       if (d < distance) { distance = d; closest = index; }
     });
     setActive(closest);
+    clearTimeout(settleTimer.current);
+    // 복제 구간에 도착한 뒤 동일한 가운데 구간으로 보이지 않게 옮긴다.
+    settleTimer.current = setTimeout(() => {
+      if (closest < exhibits.length || closest >= exhibits.length * 2) {
+        centerCard(middleCarouselIndex(closest, exhibits.length), false);
+      }
+    }, 160);
   };
-  const moveCarousel = (direction: -1 | 1) => centerCard(nextCarouselIndex(active, exhibits.length, direction));
+  const moveCarousel = (direction: -1 | 1) => centerCard(active + direction);
   return <div className="landing">
     <section className="landing-hero" aria-labelledby="landing-title">
       <div className="landing-hero-image" aria-hidden="true" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bridge-exhibition.webp)` }} />
@@ -60,7 +68,7 @@ export default function Home() {
       <div className="carousel-stage">
       <button className="carousel-side carousel-prev" type="button" aria-label="이전 전시 공간" onClick={() => moveCarousel(-1)}><WayfindingIcon direction="left" /></button>
       <div ref={carousel} className="exhibition-grid" role="region" aria-label="전시 공간 목록" tabIndex={0} onScroll={updateActive}>
-        {exhibits.map(({ to, title, description, Icon, style }, index) => <Link className={`exhibit-card exhibit-${style} ${active === index ? 'is-centered' : ''}`} to={to} key={to}>
+        {[...exhibits, ...exhibits, ...exhibits].map(({ to, title, description, Icon, style }, index) => <Link className={`exhibit-card exhibit-${style} ${active === index ? 'is-centered' : ''}`} to={to} key={`${index}-${to}`} aria-hidden={index < exhibits.length || index >= exhibits.length * 2 ? true : undefined} tabIndex={index < exhibits.length || index >= exhibits.length * 2 ? -1 : undefined}>
           <div className="exhibit-art"><ExhibitArt kind={style as 'news' | 'calendar' | 'learning' | 'certs'} /></div>
           <div className="exhibit-copy"><Icon className="exhibit-icon" aria-hidden="true" /><h3>{title}</h3><p>{description}</p><WayfindingIcon className="exhibit-arrow" /></div>
         </Link>)}

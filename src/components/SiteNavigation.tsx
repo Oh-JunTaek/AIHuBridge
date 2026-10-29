@@ -34,7 +34,7 @@ export function SiteNavigation() {
           setOpen(null);
         }
       }}>
-      <NavLink to="/dashboard" className={({ isActive }) => `flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-semibold ${focusStyle} ${isActive ? activeStyle : idleStyle}`}>대시보드</NavLink>
+      <NavLink to="/dashboard" className={({ isActive }) => `nav-top-link flex min-h-10 items-center px-3 py-2 text-sm font-semibold ${focusStyle} ${isActive ? 'is-active' : ''}`}>대시보드</NavLink>
       {groups.map((group) => {
         const expanded = open === group.id;
         const active = group.items.some((item) => location.pathname === item.to || location.pathname.startsWith(item.to + '/'));
@@ -42,7 +42,7 @@ export function SiteNavigation() {
           <div key={group.id} className="nav-group sm:relative"
             onPointerEnter={(event) => { if (event.pointerType === 'mouse') setOpen(group.id); }}
             onPointerLeave={(event) => { if (event.pointerType === 'mouse' && !(document.activeElement instanceof HTMLAnchorElement && event.currentTarget.contains(document.activeElement))) setOpen((current) => current === group.id ? null : current); }}>
-            <div className={`nav-primary ${active || expanded ? activeStyle : idleStyle}`}>
+            <div className={`nav-primary ${active ? 'is-active' : ''} ${expanded ? 'is-expanded' : ''}`}>
               <NavLink to={group.items[0].to} onClick={() => setOpen(null)} className={`nav-primary-link ${focusStyle}`}>{t(group.key)}</NavLink>
               <button type="button" id={`nav-${group.id}-trigger`} aria-label={`${t(group.key)} 하위 메뉴`} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
                 onClick={() => setOpen(expanded ? null : group.id)} className={`nav-expand ${focusStyle}`}><span aria-hidden="true">···</span></button>
