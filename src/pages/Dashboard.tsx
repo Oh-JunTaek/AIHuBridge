@@ -14,7 +14,7 @@ export default function Dashboard() {
   const t = useT();
   const date = new Date(now).toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' });
   return (
-    <div className="space-page space-plaza dashboard-page mx-auto max-w-6xl px-4 py-8">
+    <div className="space-page space-plaza dashboard-page mx-auto max-w-6xl px-4 py-6">
       <header className="space-header dashboard-header mb-6">
         <div><p className="space-label">AI 허브릿지 대시보드</p><h1 className="text-3xl font-bold text-stone-900 dark:text-stone-100">AI 소식 한눈에</h1><p className="mt-2 text-sm text-stone-600 dark:text-stone-300">소식부터 배움까지, 필요한 정보를 한곳에서 만나보세요.</p><p className="dashboard-date">{date}</p></div>
         <Link to="/updates" className="dashboard-hero-link">AI 소식 모두 보기 <WayfindingIcon /></Link>

@@ -43,9 +43,9 @@ export function SiteNavigation() {
             onPointerEnter={(event) => { if (event.pointerType === 'mouse') setOpen(group.id); }}
             onPointerLeave={(event) => { if (event.pointerType === 'mouse' && !(document.activeElement instanceof HTMLAnchorElement && event.currentTarget.contains(document.activeElement))) setOpen((current) => current === group.id ? null : current); }}>
             <div className={`nav-primary ${active ? 'is-active' : ''} ${expanded ? 'is-expanded' : ''}`}>
-              <NavLink to={group.items[0].to} onClick={() => setOpen(null)} className={`nav-primary-link ${focusStyle}`}>{t(group.key)}</NavLink>
+              <NavLink to={group.items[0].to} onFocus={() => setOpen(group.id)} onClick={() => setOpen(null)} className={`nav-primary-link ${focusStyle}`}>{t(group.key)}</NavLink>
               <button type="button" id={`nav-${group.id}-trigger`} aria-label={`${t(group.key)} 하위 메뉴`} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
-                onClick={() => setOpen(expanded ? null : group.id)} className={`nav-expand ${focusStyle}`}><span aria-hidden="true">···</span></button>
+                onClick={() => setOpen(expanded ? null : group.id)} className={`nav-expand ${focusStyle}`}>메뉴</button>
             </div>
             <ul id={`nav-${group.id}-links`} hidden={!expanded}
               className="absolute left-0 right-0 top-full z-30 space-y-1 nav-popup rounded-xl border border-stone-200 bg-white p-2 shadow-lg dark:border-stone-700 dark:bg-stone-900 sm:right-auto sm:w-52 lg:left-auto lg:right-0">

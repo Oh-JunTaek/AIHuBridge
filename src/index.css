@@ -491,3 +491,13 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .exhibit-card:hover .reference-art-motion, .exhibit-card:focus-visible .reference-art-motion { transform: scale(1.045); }
 .exhibit-card:hover .reference-art::after, .exhibit-card:focus-visible .reference-art::after { transform: translateX(130%); }
 @media (prefers-reduced-motion: reduce) { .reference-art-motion, .reference-art::after { transition: none; } .exhibit-card:hover .reference-art-motion, .exhibit-card:focus-visible .reference-art-motion { transform: scale(1.005); } .reference-art::after { display: none; } }
+/* 공간별 배너의 폭과 기본 높이를 맞추고 긴 내용은 자연스럽게 늘린다. */
+.space-header { min-height: 280px; padding: 2rem clamp(1.5rem, 4vw, 3.2rem); }
+@media (max-width: 760px) { .space-header { min-height: 210px; padding: 1.5rem; } }
+/* 필터는 패널과 어울리는 작은 모서리로 정리한다. */
+.reading-sidebar nav button, .reading-sidebar [role="group"] button, .space-path .reading-sidebar button { border-radius: 8px; }
+/* 마우스 화면에서는 부가 기호 없이 메뉴를 보여 준다. */
+.nav-primary-link { padding-right: .75rem; }
+.nav-expand { position: absolute; width: 1px; height: 1px; min-width: 0; min-height: 0; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.nav-expand:focus-visible { position: static; width: auto; height: auto; min-height: 40px; padding: 0 .45rem; clip-path: none; font-size: .7rem; }
+@media (hover: none) { .nav-expand { position: static; width: auto; height: auto; min-width: 40px; min-height: 40px; padding: 0 .35rem; clip-path: none; color: #58748c; font-size: .7rem; } .nav-primary-link { padding-right: .2rem; } }
