@@ -20,8 +20,8 @@ export default function Terms() {
           <p className="mt-2">수강·응시·행사 신청은 연결된 제공처에서 진행합니다. 일정·모집 상태·가격·수료 조건은 변경될 수 있으므로 신청 전에 원문을 확인해 주세요. 신청 마감이 미확인인 행사는 모집 중으로 보장하지 않습니다.</p>
         </section>
         <section>
-          <h2 className="font-semibold text-stone-800 dark:text-stone-100">4. 화면 설정과 문의</h2>
-          <p className="mt-2">테마 설정은 이 브라우저에만 저장되며 기기 간 동기화되지 않습니다. 서비스 관련 문의 및 정보 정정 요청의 운영 주체는 eunmastudio입니다. 공개 문의 주소는 추후 추가 예정입니다.</p>
+          <h2 className="font-semibold text-stone-800 dark:text-stone-100">4. 문의</h2>
+          <p className="mt-2">서비스 관련 문의 및 정보 정정 요청의 운영 주체는 eunmastudio입니다. 공개 문의 주소는 추후 추가 예정입니다.</p>
         </section>
       </div>
     </div>

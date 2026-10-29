@@ -1,3 +1,5 @@
+import { nextCarouselOffset } from '../lib/carousel.mjs';
+import { useRef } from 'react';
 import { WayfindingIcon } from '../components/WayfindingIcon';
 import { Link } from 'react-router-dom';
 import { ExhibitArt } from '../components/ExhibitArt';
@@ -11,6 +13,18 @@ const exhibits = [
 ];
 
 export default function Home() {
+  const carousel = useRef<HTMLDivElement>(null);
+  const moveCarousel = (direction: -1 | 1) => {
+    const rail = carousel.current;
+    if (!rail) return;
+    const card = rail.querySelector<HTMLElement>('.exhibit-card');
+    if (!card) return;
+    const gap = parseFloat(window.getComputedStyle(rail).columnGap) || 0;
+    const step = card.offsetWidth + gap;
+    const max = rail.scrollWidth - rail.clientWidth;
+    const left = nextCarouselOffset(rail.scrollLeft, max, step, direction);
+    rail.scrollTo({ left, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
   return <div className="landing">
     <section className="landing-hero" aria-labelledby="landing-title">
       <div className="landing-hero-image" aria-hidden="true" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bridge-exhibition.webp)` }} />
@@ -26,11 +40,17 @@ export default function Home() {
         <h2 id="exhibition-title">AI와 사람이 만나는<br />지식의 공간</h2>
         <p>AI의 흐름을 살펴보고,<br />나에게 필요한 배움을 찾아보세요.</p>
       </div>
-      <div className="exhibition-grid">
+      <div className="exhibition-carousel">
+      <div className="carousel-controls" aria-label="전시 공간 이동">
+        <button type="button" aria-label="이전 전시 공간" onClick={() => moveCarousel(-1)}><WayfindingIcon direction="left" /></button>
+        <button type="button" aria-label="다음 전시 공간" onClick={() => moveCarousel(1)}><WayfindingIcon /></button>
+      </div>
+      <div ref={carousel} className="exhibition-grid" role="region" aria-label="전시 공간 목록" tabIndex={0}>
         {exhibits.map(({ to, title, description, Icon, style }) => <Link className={`exhibit-card exhibit-${style}`} to={to} key={to}>
           <div className="exhibit-art"><ExhibitArt kind={style as 'news' | 'calendar' | 'learning' | 'certs'} /></div>
           <div className="exhibit-copy"><Icon className="exhibit-icon" aria-hidden="true" /><h3>{title}</h3><p>{description}</p><WayfindingIcon className="exhibit-arrow" /></div>
         </Link>)}
+      </div>
       </div>
     </section>
   </div>;

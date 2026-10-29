@@ -51,7 +51,7 @@ export function SiteNavigation() {
             </button>
             <ul id={`nav-${group.id}-links`} hidden={!expanded}
               className="absolute left-0 right-0 top-full z-30 space-y-1 nav-popup rounded-xl border border-stone-200 bg-white p-2 shadow-lg dark:border-stone-700 dark:bg-stone-900 sm:right-auto sm:w-52 lg:left-auto lg:right-0">
-              {group.items.map((item) => <li key={item.to}><NavLink to={item.to} onClick={() => setOpen(null)}
+              {group.items.map((item, index) => <li key={item.to} style={{ animationDuration: `${360 / group.items.length}ms`, animationDelay: `${index * 360 / group.items.length}ms` }}><NavLink to={item.to} onClick={() => setOpen(null)}
                 className={({ isActive }) => `block rounded-lg px-3 py-3 text-sm font-medium ${focusStyle} ${isActive ? activeStyle : idleStyle}`}>
                 {t(item.key)}
               </NavLink></li>)}
@@ -59,7 +59,6 @@ export function SiteNavigation() {
           </div>
         );
       })}
-      <NavLink to="/settings" className={({ isActive }) => `flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-medium ${focusStyle} ${isActive ? activeStyle : idleStyle}`}>{t('nav.settings')}</NavLink>
     </nav>
   );
 }

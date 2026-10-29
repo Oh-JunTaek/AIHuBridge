@@ -17,8 +17,6 @@ export const config = {
     '블로그/개인': 'bg-purple-100 text-purple-800',
   },
 
-  /** 로컬 저장 키 */
-  storageKey: 'aiHuBridge/user',
 } as const;
 
 export type NewsSource = (typeof config.newsSources)[number];

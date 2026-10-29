@@ -10,9 +10,7 @@ import Path from './pages/Path';
 import Certs from './pages/Certs';
 import Calendar from './pages/Calendar';
 import Dev from './pages/Dev';
-import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
-import { PreferencesProvider } from './lib/preferences';
 
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
@@ -38,7 +36,7 @@ const router = createBrowserRouter(
         { path: 'certs', element: <Certs /> },
         { path: 'calendar', element: <Calendar /> },
         { path: 'dev', element: <Dev /> },
-        { path: 'settings', element: <Settings /> },
+        { path: 'settings', element: <Navigate to="/" replace /> },
         { path: 'terms', element: <Terms /> },
         { path: 'privacy', element: <Privacy /> },
       ],
@@ -47,11 +45,11 @@ const router = createBrowserRouter(
   { basename: import.meta.env.BASE_URL },
 );
 
+document.documentElement.classList.remove('dark');
+
 ReactDOM.createRoot(document.getElementById('app')!).render(
   <React.StrictMode>
-    <PreferencesProvider>
-      <RouterProvider router={router} />
-    </PreferencesProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 );
 

@@ -4,8 +4,6 @@ export type Lang = 'ko';  // 한국어 전용 (영어 지원 제거)
 // 언어 고정 (한국어 전용)
 export const LANG = { value: 'ko' as Lang, label: '한국어' } as const;
 
-export const THEMES = ['light', 'dark', 'system'] as const;
-export type Theme = (typeof THEMES)[number];
 
 type Dict = Record<string, unknown>;
 
@@ -21,19 +19,8 @@ const ko: Dict = {
     path: '추천 커리큘럼',
     certs: '교육·인증',
     calendar: 'AI 캘린더',
-    settings: '설정',
   },
   footer: { copy: 'AI 소식·교육·일정을 한곳에서' },
-  settings: {
-    title: '설정',
-    theme: '화면 테마',
-    light: '라이트',
-    dark: '다크',
-    system: '시스템',
-    language: '언어 (Language)',
-    saved: '변경사항이 저장되었습니다',
-    themeHint: '시스템: 기기의 화면 테마 설정을 따릅니다.',
-  },
   home: {
     heading: 'AI 소식 한눈에',
     loading: '소식을 불러오는 중…',

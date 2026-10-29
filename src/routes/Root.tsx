@@ -8,7 +8,6 @@ export default function Root() {
       <a href="#main-content" className="fixed left-4 top-2 z-50 -translate-y-24 rounded-lg bg-amber-600 px-4 py-3 text-white focus:translate-y-0">본문으로 건너뛰기</a>
       <header className="sticky top-0 z-20 bg-white/90 dark:bg-stone-950/90 backdrop-blur border-b border-stone-200 dark:border-stone-700">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-2 px-4 py-2 lg:h-14 lg:flex-row lg:items-center lg:justify-between lg:py-0">
-          {/* 투명 로고는 다크모드에서 단색으로 표시해 글자 대비를 확보한다. */}
           <NavLink to="/" className="shrink-0">
             <img
               src={`${import.meta.env.BASE_URL}icon/hubridge-transparent.png`}

@@ -1,4 +1,3 @@
-import type { Lang, Theme } from './lib/i18n';
 
 export type Category =
   | '업계/제품'
@@ -72,10 +71,6 @@ export interface Course {
   tags: string[];
 }
 
-export interface UiPreferences {
-  lang: Lang;
-  theme: Theme;
-}
 
 // ── AI 교육·행사 모집 캘린더 (F-002) ─────────────────────────────
 export type EventType = 'seminar' | 'webinar' | 'workshop' | 'bootcamp' | 'hackathon' | 'competition' | 'training' | 'conference' | 'meetup' | 'other';

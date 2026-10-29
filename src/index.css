@@ -398,3 +398,22 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
   .space-calendar .space-header [aria-label="일정 보기 방식"] button { white-space: nowrap; padding-left: .55rem; padding-right: .55rem; }
   .space-header p, .reading-sidebar p { word-break: keep-all; overflow-wrap: break-word; }
 }
+/* TOP은 콘텐츠 가림을 줄이도록 화면 하단 중앙에 배치한다. */
+.back-to-top { top: auto; right: auto; left: 50%; bottom: max(.45rem, env(safe-area-inset-bottom)); transform: translateX(-50%); }
+@media (max-width: 640px) { #main-content { padding-right: 0; } }
+/* 상위 패널과 그 안의 선택 항목이 같은 곡률을 사용한다. */
+.reading-sidebar nav button, .reading-sidebar [role="group"] button { border-radius: 20px; }
+.nav-popup:not([hidden]) { animation-duration: .36s; }
+.nav-popup:not([hidden]) li { animation-name: nav-item-enter; animation-timing-function: ease-out; animation-fill-mode: both; }
+@keyframes nav-item-enter { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+.exhibition-carousel { min-width: 0; }
+.exhibition-grid { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2rem) / 3); grid-template-columns: none; gap: 1rem; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; padding: .2rem .15rem .8rem; }
+.exhibition-grid .exhibit-card { scroll-snap-align: start; min-width: 0; }
+.carousel-controls { display: flex; justify-content: flex-end; gap: .4rem; margin-bottom: .55rem; }
+.carousel-controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 0; background: transparent; border-radius: 50%; }
+.carousel-controls button:hover { background: #e2edf5; }
+@media (max-width: 1050px) { .exhibition-grid { grid-template-columns: none; grid-auto-columns: calc((100% - 1rem) / 2); } }
+@media (max-width: 640px) { .exhibition-grid { grid-auto-columns: min(82%, 290px); } }
+/* 하단 고정 TOP이 푸터 링크의 클릭 영역을 덮지 않도록 한다. */
+#main-content + .back-to-top + footer { padding-bottom: 4.5rem; }
+@media (prefers-reduced-motion: reduce) { .nav-popup:not([hidden]) li { animation-delay: 0s !important; } }

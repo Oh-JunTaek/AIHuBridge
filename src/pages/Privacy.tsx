@@ -7,7 +7,7 @@ export default function Privacy() {
       <div className="space-y-6">
         <section>
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">1. 서비스가 저장하는 항목</h2>
-          <p className="mt-2">본 서비스는 로그인·회원가입·개인 학습 기록 기능을 제공하지 않습니다. 브라우저의 localStorage에는 한국어 표시와 테마 설정만 저장합니다. 이전 버전의 학습·인증 체크·퀴즈 기록은 사용하지 않고 화면 설정만 이어받습니다. 저장소를 사용할 수 없으면 현재 화면에만 설정을 적용합니다.</p>
+          <p className="mt-2">본 서비스는 로그인·회원가입·개인 학습 기록 기능을 제공하지 않습니다. 현재 화면 설정이나 개인 기록을 브라우저에 저장하지 않습니다. 이전 버전의 저장값은 읽거나 사용하지 않으며, 브라우저의 사이트 데이터 삭제 기능으로 지울 수 있습니다.</p>
         </section>
         <section>
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">2. 웹사이트 접속과 외부 요청</h2>
@@ -15,8 +15,8 @@ export default function Privacy() {
           <p className="mt-2 space-x-3"><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" className="underline">GitHub 개인정보 정책</a><a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer" className="underline">Google Fonts 개인정보 안내</a></p>
         </section>
         <section>
-          <h2 className="font-semibold text-stone-800 dark:text-stone-100">3. 수집 콘텐츠와 화면 설정</h2>
-          <p className="mt-2">AI 소식과 AI 일정은 운영 작업에서 수집한 정적 자료를 제공합니다. 브라우저의 테마 설정은 소식·일정 제공처로 전송하지 않습니다. 브라우저의 사이트 데이터 삭제 기능으로 화면 설정을 삭제할 수 있으며 다른 브라우저와 동기화되지 않습니다.</p>
+          <h2 className="font-semibold text-stone-800 dark:text-stone-100">3. 수집 콘텐츠</h2>
+          <p className="mt-2">AI 소식과 AI 일정은 운영 작업에서 수집한 정적 자료를 제공합니다. 탐색 조건은 브라우저에 저장하거나 제공처로 전송하지 않습니다.</p>
         </section>
         <section><h2 className="font-semibold text-stone-800 dark:text-stone-100">4. 운영 주체</h2><p className="mt-2">서비스 운영 및 정보 정정: eunmastudio. 공개 문의 주소는 추후 추가 예정입니다.</p></section>
       </div>

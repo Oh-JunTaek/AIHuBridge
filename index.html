@@ -9,18 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 언어 초기값: React 마운트 전 깜빡임 방지 -->
-    <script>
-      (function () {
-        try {
-          const u = JSON.parse(localStorage.getItem('aiHuBridge/user') || '{}');
-          const lang = 'ko';
-          document.documentElement.lang = lang;
-          // 저장된 테마를 첫 화면에도 적용한다.
-          document.documentElement.classList.toggle('dark', u.theme === 'dark' || ((!u.theme || u.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches));
-        } catch (e) {}
-      })();
-    </script>
   </head>
   <body>
     <div id="app"></div>
