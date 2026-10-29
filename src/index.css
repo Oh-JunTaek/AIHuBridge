@@ -417,3 +417,37 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 /* 하단 고정 TOP이 푸터 링크의 클릭 영역을 덮지 않도록 한다. */
 #main-content + .back-to-top + footer { padding-bottom: 4.5rem; }
 @media (prefers-reduced-motion: reduce) { .nav-popup:not([hidden]) li { animation-delay: 0s !important; } }
+/* 배경 위에 놓여도 읽히는 하단 이동 버튼 */
+.back-to-top { background: #fff; border: 1px solid #d6e4ee; border-radius: 999px; box-shadow: 0 5px 18px #264d6c24; text-shadow: none; min-width: 58px; min-height: 44px; }
+.back-to-top:hover { background: #f3f8fc; }
+/* 1차 목적지와 하위 메뉴 열기를 별도의 조작으로 제공한다. */
+.nav-primary { display: flex; align-items: center; border-radius: .6rem; }
+.nav-primary-link { display: flex; align-items: center; min-height: 40px; padding: .5rem .25rem .5rem .75rem; font-size: .875rem; font-weight: 600; }
+.nav-expand { min-width: 32px; min-height: 40px; padding: 0 .4rem; line-height: 1; letter-spacing: .04em; font-weight: 700; }
+.nav-expand:hover { color: #17588b; }
+.mobile-filter-toggle { display: none; }
+.mobile-filter-content[hidden] { display: none !important; }
+@media (max-width: 760px) {
+  .mobile-filter-toggle { display: flex; width: 100%; min-height: 52px; align-items: center; justify-content: space-between; gap: 1rem; color: #214a6c; text-align: left; }
+  .mobile-filter-toggle strong { display: block; font-size: .88rem; }
+  .mobile-filter-toggle small { display: block; margin-top: .25rem; font-size: .72rem; color: #526f87; line-height: 1.5; }
+  .mobile-filter-toggle > span:last-child { font-size: 1.4rem; font-weight: 400; }
+  .mobile-filter-content:not([hidden]) { padding-top: 1rem; }
+  .reading-sidebar .reading-label { margin-bottom: .4rem; padding-bottom: .7rem; }
+}
+/* 카드의 양쪽 가장자리를 부드럽게 감싸고 가운데 장면을 강조한다. */
+.carousel-stage { position: relative; display: flex; align-items: stretch; min-width: 0; }
+.carousel-side { display: grid; place-items: center; flex: 0 0 clamp(38px, 5vw, 62px); border: 0; background: transparent; cursor: pointer; }
+.carousel-side:hover { background: #d9e8f34a; }
+.carousel-side:focus-visible { outline: 2px solid #316da0; outline-offset: -4px; border-radius: 16px; }
+.exhibition-grid { flex: 1; min-width: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 40%; grid-template-columns: none; gap: 1rem; padding: 1rem 30% 1.1rem; scroll-padding-inline: 30%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; mask-image: linear-gradient(to right,transparent 0%,#000 12%,#000 88%,transparent 100%); }
+.exhibition-grid::-webkit-scrollbar { display: none; }
+.exhibition-grid:focus-within { mask-image: none; }
+.exhibition-grid .exhibit-card { scroll-snap-align: center; transform: scale(.94); opacity: .85; transition: transform .45s ease, opacity .45s ease, box-shadow .25s; }
+.exhibition-grid .exhibit-card.is-centered { transform: scale(1); opacity: 1; box-shadow: 0 18px 40px #36587c20; }
+.exhibition-grid .exhibit-card:hover, .exhibition-grid .exhibit-card:focus-visible { transform: scale(1); opacity: 1; }
+@media (max-width: 760px) { .exhibition-grid { grid-auto-columns: 75%; padding-inline: 12.5%; scroll-padding-inline: 12.5%; mask-image: linear-gradient(to right,transparent,#000 8%,#000 92%,transparent); } .carousel-side { flex-basis: 35px; } }
+@media (prefers-reduced-motion: reduce) { .exhibition-grid .exhibit-card, .exhibition-grid .exhibit-card.is-centered { transition: none; } }
+/* 카드 폭은 좌우 여백과 독립적으로 계산한다. */
+.exhibition-grid { --exhibit-width: clamp(200px, 27vw, 320px); grid-auto-columns: var(--exhibit-width); padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); scroll-padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); }
+@media (max-width: 760px) { .exhibition-grid { --exhibit-width: clamp(175px, 56vw, 280px); grid-auto-columns: var(--exhibit-width); padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); scroll-padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); } }

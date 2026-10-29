@@ -1,3 +1,4 @@
+import { MobileFilter } from '../components/MobileFilter';
 import { AutoLoadMore } from '../components/AutoLoadMore';
 import { useEffect, useState } from 'react';
 import { useCalendarStore } from '../lib/calendar';
@@ -65,6 +66,7 @@ export default function Calendar() {
       <div className="calendar-quick-links"><a href="#calendar-results">{selectedDay ? `${selectedDay} 일정 보기` : '선택 월 일정 보기'}</a><a href="#calendar-controls">일정 조건 보기</a></div>
       </div>
       <div id="calendar-controls" className="calendar-controls">
+      <MobileFilter summary={`${({domestic:'국내·온라인', overseas:'해외', unknown:'지역 미확인', all:'전체'} as Record<string, string>)[audience]} · ${[type !== 'all', mode !== 'all', fee !== 'all', registration !== 'all', includePast, !!search, !!region].filter(Boolean).length ? `추가 조건 ${[type !== 'all', mode !== 'all', fee !== 'all', registration !== 'all', includePast, !!search, !!region].filter(Boolean).length}개` : '전체 조건'}`}>
       <section aria-label="일정 범위" className="mb-5">
         <div className="flex flex-wrap gap-2">{[{id:'domestic',label:'국내·온라인'}, {id:'overseas',label:'해외'}, {id:'unknown',label:'지역 미확인'}, {id:'all',label:'전체'}].map((option) => <button key={option.id} type="button" aria-pressed={audience === option.id} onClick={() => { setAudience(option.id); setSelectedDay(null); }} className={`rounded-full px-4 py-2 text-sm font-semibold ${audience === option.id ? 'bg-blue-600 text-white' : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300'}`}>{option.label}</button>)}</div>
         <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">국내·온라인은 국내 행사와 전 세계 온라인 행사를 함께 보여줍니다. 해외 오프라인·미확인 방식은 기본 화면에서 제외합니다. 지역은 공개 개최 도시·주최 커뮤니티 위치 기준이며 실제 장소·접속 조건은 원문을 확인하세요.</p>
@@ -91,6 +93,7 @@ export default function Calendar() {
         <div className="mt-4 flex flex-wrap items-center justify-between gap-2"><p className="text-xs text-stone-500">공개 목록 {available.length}건 · 조건에 맞는 일정 {filtered.length}건</p><button type="button" onClick={reset} className="text-xs font-semibold text-blue-600 underline dark:text-blue-300">조건 초기화</button></div>
       </section>
 
+      </MobileFilter>
       </div>
       {meta && <p className="mb-3 text-xs text-stone-500">마지막 수집: {format(meta.fetchedAt)} (한국시간)</p>}
       {status === 'loading' && <p role="status" className="mb-4 text-sm">AI 일정을 불러오는 중입니다…</p>}

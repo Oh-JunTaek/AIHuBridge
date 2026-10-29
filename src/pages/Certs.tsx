@@ -1,3 +1,4 @@
+import { MobileFilter } from '../components/MobileFilter';
 import { StageSymbol } from '../components/StageSymbol';
 import { useEffect, useState } from 'react';
 import { certifications } from '../data/certifications';
@@ -39,6 +40,7 @@ export default function Certs() {
       <a className="results-skip" href="#reading-results">결과 바로 보기</a>
       <aside className="reading-sidebar" aria-label="교육·인증 탐색">
       <p className="reading-label">배움의 자료 살펴보기</p>
+      <MobileFilter summary={`${t('certs.tab.' + tab)} · ${[language, cost, query].filter(Boolean).length ? `추가 조건 ${[language, cost, query].filter(Boolean).length}개` : '전체 조건'}`}>
       <nav aria-label="교육·인증 유형" className="mb-4 flex flex-wrap gap-2 text-sm">
         {tabs.map((tb) => (
           <button
@@ -66,6 +68,7 @@ export default function Certs() {
         </div>
         <div className="mt-3 flex items-center justify-between gap-3 text-sm"><p role="status">조건에 맞는 항목 {shown.length}개</p><button type="button" className="rounded-lg px-3 py-2 text-amber-700 dark:text-amber-300" onClick={() => { setLanguage(''); setCost(''); setQuery(''); }}>조건 초기화</button></div>
       </section>
+      </MobileFilter>
       </aside>
       <section id="reading-results" className="reading-results" aria-label="교육·인증 목록">
       <div className="results-heading"><div><span>학습관의 자료실</span><h2>나에게 필요한 배움</h2></div><p>비용과 조건은 공식 페이지에서 확인하세요</p></div>

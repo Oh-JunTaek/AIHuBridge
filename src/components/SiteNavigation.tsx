@@ -15,7 +15,6 @@ export function SiteNavigation() {
   const location = useLocation();
   const [open, setOpen] = useState<string | null>(null);
   const nav = useRef<HTMLElement>(null);
-  const pointerType = useRef<string | null>(null);
 
   useEffect(() => { setOpen(null); }, [location]);
   useEffect(() => {
@@ -43,12 +42,11 @@ export function SiteNavigation() {
           <div key={group.id} className="nav-group sm:relative"
             onPointerEnter={(event) => { if (event.pointerType === 'mouse') setOpen(group.id); }}
             onPointerLeave={(event) => { if (event.pointerType === 'mouse' && !(document.activeElement instanceof HTMLAnchorElement && event.currentTarget.contains(document.activeElement))) setOpen((current) => current === group.id ? null : current); }}>
-            <button type="button" id={`nav-${group.id}-trigger`} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
-              onPointerDown={(event) => { pointerType.current = event.pointerType; }}
-              onClick={(event) => { const fromMouse = event.detail > 0 && pointerType.current === 'mouse'; setOpen(fromMouse ? group.id : expanded ? null : group.id); pointerType.current = null; }}
-              className={`flex min-h-10 items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${focusStyle} ${active || expanded ? activeStyle : idleStyle}`}>
-              {t(group.key)}
-            </button>
+            <div className={`nav-primary ${active || expanded ? activeStyle : idleStyle}`}>
+              <NavLink to={group.items[0].to} onClick={() => setOpen(null)} className={`nav-primary-link ${focusStyle}`}>{t(group.key)}</NavLink>
+              <button type="button" id={`nav-${group.id}-trigger`} aria-label={`${t(group.key)} 하위 메뉴`} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
+                onClick={() => setOpen(expanded ? null : group.id)} className={`nav-expand ${focusStyle}`}><span aria-hidden="true">···</span></button>
+            </div>
             <ul id={`nav-${group.id}-links`} hidden={!expanded}
               className="absolute left-0 right-0 top-full z-30 space-y-1 nav-popup rounded-xl border border-stone-200 bg-white p-2 shadow-lg dark:border-stone-700 dark:bg-stone-900 sm:right-auto sm:w-52 lg:left-auto lg:right-0">
               {group.items.map((item, index) => <li key={item.to} style={{ animationDuration: `${360 / group.items.length}ms`, animationDelay: `${index * 360 / group.items.length}ms` }}><NavLink to={item.to} onClick={() => setOpen(null)}

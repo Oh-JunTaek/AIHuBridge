@@ -1,1 +1,1 @@
-export function nextCarouselOffset(current: number, max: number, step: number, direction: -1 | 1): number;
+export function nextCarouselIndex(current: number, length: number, direction: -1 | 1): number;

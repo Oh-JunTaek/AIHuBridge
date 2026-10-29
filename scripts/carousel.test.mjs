@@ -1,16 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { nextCarouselOffset } from '../src/lib/carousel.mjs';
+import { nextCarouselIndex } from '../src/lib/carousel.mjs';
 
-test('전시 공간은 한 장씩 이동하고 끝에서 처음으로 순환한다', () => {
-  assert.equal(nextCarouselOffset(0, 600, 200, 1), 200);
-  assert.equal(nextCarouselOffset(400, 600, 200, 1), 600);
-  assert.equal(nextCarouselOffset(600, 600, 200, 1), 0);
-  assert.equal(nextCarouselOffset(0, 600, 200, -1), 600);
-  assert.equal(nextCarouselOffset(3, 600, 200, -1), 600);
+test('전시 공간은 한 장씩 이동하고 양쪽 끝에서 순환한다', () => {
+  assert.equal(nextCarouselIndex(0, 4, 1), 1);
+  assert.equal(nextCarouselIndex(3, 4, 1), 0);
+  assert.equal(nextCarouselIndex(0, 4, -1), 3);
+  assert.equal(nextCarouselIndex(2, 4, -1), 1);
 });
-test('카드가 더 적거나 남은 거리가 짧아도 범위 밖으로 이동하지 않는다', () => {
-  assert.equal(nextCarouselOffset(0, 0, 200, 1), 0);
-  assert.equal(nextCarouselOffset(400, 500, 200, 1), 500);
-  assert.equal(nextCarouselOffset(100, 500, 200, -1), 0);
+test('항목이 추가되거나 없는 경우에도 순환 범위를 지킨다', () => {
+  assert.equal(nextCarouselIndex(4, 5, 1), 0);
+  assert.equal(nextCarouselIndex(0, 1, -1), 0);
+  assert.equal(nextCarouselIndex(0, 0, 1), 0);
 });
