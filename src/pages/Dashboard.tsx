@@ -1,3 +1,4 @@
+import { WayfindingIcon } from '../components/WayfindingIcon';
 import { Link } from 'react-router-dom';
 import { useNews } from '../lib/use-news';
 import { NewsStatus } from '../components/NewsStatus';
@@ -16,18 +17,18 @@ export default function Dashboard() {
     <div className="space-page space-plaza dashboard-page mx-auto max-w-6xl px-4 py-8">
       <header className="space-header dashboard-header mb-6">
         <div><p className="space-label">AI 허브릿지 대시보드</p><h1 className="text-3xl font-bold text-stone-900 dark:text-stone-100">AI 소식 한눈에</h1><p className="mt-2 text-sm text-stone-600 dark:text-stone-300">소식부터 배움까지, 필요한 정보를 한곳에서 만나보세요.</p><p className="dashboard-date">{date}</p></div>
-        <Link to="/updates" className="dashboard-hero-link">AI 소식 모두 보기 →</Link>
+        <Link to="/updates" className="dashboard-hero-link">AI 소식 모두 보기 <WayfindingIcon /></Link>
       </header>
       <div className="dashboard-layout">
         <aside className="dashboard-guide" aria-label="대시보드 빠른 이동">
           <span className="dashboard-kicker">AI 허브릿지 둘러보기</span><h2>관심 있는 공간으로</h2>
-          <Link to="/updates"><span>AI 소식</span><span aria-hidden="true">→</span></Link>
-          <Link to="/calendar"><span>AI 캘린더</span><span aria-hidden="true">→</span></Link>
-          <Link to="/path"><span>추천 커리큘럼</span><span aria-hidden="true">→</span></Link>
-          <Link to="/certs"><span>교육·인증</span><span aria-hidden="true">→</span></Link>
+          <Link to="/updates"><span>AI 소식</span><WayfindingIcon /></Link>
+          <Link to="/calendar"><span>AI 캘린더</span><WayfindingIcon /></Link>
+          <Link to="/path"><span>추천 커리큘럼</span><WayfindingIcon /></Link>
+          <Link to="/certs"><span>교육·인증</span><WayfindingIcon /></Link>
         </aside>
         <div className="dashboard-content">
-          <div className="results-heading"><div><span>정보관의 소식</span><h2>최근 소식 살펴보기</h2></div><Link to="/updates">소식 모두 보기 →</Link></div>
+          <div className="results-heading"><div><span>정보관의 소식</span><h2>최근 소식 살펴보기</h2></div><Link to="/updates">소식 모두 보기 <WayfindingIcon /></Link></div>
           <NewsStatus result={result} loading={loading} onRetry={reload} />
           {!loading && <TodayBrief items={items} />}
           {!loading && result?.status === 'success' && items.length === 0 && <p className="text-sm text-stone-500">최근 7일 소식이 없습니다. AI 소식의 게시 기간을 넓혀 보관 자료를 찾아보세요.</p>}

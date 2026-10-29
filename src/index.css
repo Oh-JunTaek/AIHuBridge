@@ -365,3 +365,36 @@
 .back-to-top span:first-child { font-size: 1.1rem; line-height: 1; }
 .back-to-top:hover { background: #24598b; }
 .dark .back-to-top { background: #dcecf9; color: #102e4f; border-color: #9fbdd6; }
+/* 유리 전시관의 얇은 금속 표식을 공통 이동 아이콘으로 사용한다. */
+.wayfinding-icon { display: inline-block; flex: none; width: 1.55rem; height: 1.55rem; vertical-align: middle; color: #376a91; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; transition: color .2s ease, transform .2s ease; }
+.wayfinding-ring { stroke: #9ebccf; stroke-width: 1; }
+a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfinding-icon, button:focus-visible .wayfinding-icon { color: #164c7c; transform: translateX(2px); }
+.dark .wayfinding-icon { color: #c4dced; }
+.dark .wayfinding-ring { stroke: #7396ae; }
+.dark a:hover .wayfinding-icon, .dark button:hover .wayfinding-icon { color: #fff; }
+.dashboard-guide a .wayfinding-icon { width: 1.5rem; height: 1.5rem; }
+.dashboard-hero-link, .dashboard-content .results-heading a, .space-header > a, .landing-button { display: inline-flex; align-items: center; gap: .55rem; }
+.landing-button .wayfinding-icon { color: #fff; }
+.landing-button .wayfinding-ring { stroke: #91b3d2; }
+.exhibit-copy .exhibit-arrow { position: absolute; right: 1rem; bottom: 1rem; }
+.news-tray .wayfinding-icon { width: 1rem; height: 1rem; }
+[aria-label="이전 달"] .wayfinding-icon, [aria-label="다음 달"] .wayfinding-icon { width: 1.35rem; height: 1.35rem; }
+.stage-symbol { width: 2.15rem; height: 2.15rem; flex: none; color: #477492; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.stage-symbol-bg { fill: #ecf4f8; stroke: #d4e4ed; stroke-width: 1; }
+.dark .stage-symbol { color: #b8d5e8; }
+.dark .stage-symbol-bg { fill: #23455c; stroke: #4d7086; }
+.space-certs nav .stage-symbol { width: 1.25rem; height: 1.25rem; }
+.space-certs nav button[aria-pressed="true"] .stage-symbol { color: #e7f3fc; }
+.space-certs nav button[aria-pressed="true"] .stage-symbol-bg { fill: #365d7e; stroke: #7295b2; }
+.back-to-top { top: 50%; bottom: auto; right: max(.25rem, env(safe-area-inset-right)); transform: translateY(-50%); min-width: 48px; min-height: 48px; padding: .5rem; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: #244e70; text-shadow: 0 1px 3px #fff, 0 0 8px #fff, 0 0 14px #fff; font-size: .7rem; font-weight: 800; letter-spacing: .12em; }
+.back-to-top span:first-child { font-size: inherit; line-height: inherit; }
+.back-to-top:hover { background: transparent; color: #0c365b; }
+.dark .back-to-top { background: transparent; border: 0; color: #e7f4ff; text-shadow: 0 1px 4px #081b2d, 0 0 10px #081b2d; }
+.dark .back-to-top:hover { background: transparent; color: #fff; }
+@media (prefers-reduced-motion: reduce) { a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfinding-icon, button:focus-visible .wayfinding-icon { transform: none; } }
+/* 小さい画面では中央の TOP がリンクや入力欄を覆わないよう右端に操作領域を確保する。 */
+@media (max-width: 640px) { #main-content { padding-right: 44px; box-sizing: border-box; } }
+@media (max-width: 640px) {
+  .space-calendar .space-header [aria-label="일정 보기 방식"] button { white-space: nowrap; padding-left: .55rem; padding-right: .55rem; }
+  .space-header p, .reading-sidebar p { word-break: keep-all; overflow-wrap: break-word; }
+}

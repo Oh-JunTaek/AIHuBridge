@@ -1,3 +1,4 @@
+import { WayfindingIcon } from '../components/WayfindingIcon';
 import { Link } from 'react-router-dom';
 import { ExhibitArt } from '../components/ExhibitArt';
 import { BookIcon, BadgeIcon, ClockIcon, CompassIcon } from '../components/icons';
@@ -16,7 +17,7 @@ export default function Home() {
       <div className="landing-hero-content">
         <h1 id="landing-title">AI의 세계로<br />이어지는 다리</h1>
         <p>소식부터 배움까지, 한곳에서 만나다.</p>
-        <Link className="landing-button" to="/dashboard">대시보드 보기 <span aria-hidden="true">→</span></Link>
+        <Link className="landing-button" to="/dashboard">대시보드 보기 <WayfindingIcon /></Link>
       </div>
     </section>
     <section className="exhibition" aria-labelledby="exhibition-title">
@@ -28,7 +29,7 @@ export default function Home() {
       <div className="exhibition-grid">
         {exhibits.map(({ to, title, description, Icon, style }) => <Link className={`exhibit-card exhibit-${style}`} to={to} key={to}>
           <div className="exhibit-art"><ExhibitArt kind={style as 'news' | 'calendar' | 'learning' | 'certs'} /></div>
-          <div className="exhibit-copy"><Icon className="exhibit-icon" aria-hidden="true" /><h3>{title}</h3><p>{description}</p><span className="exhibit-arrow" aria-hidden="true">→</span></div>
+          <div className="exhibit-copy"><Icon className="exhibit-icon" aria-hidden="true" /><h3>{title}</h3><p>{description}</p><WayfindingIcon className="exhibit-arrow" /></div>
         </Link>)}
       </div>
     </section>

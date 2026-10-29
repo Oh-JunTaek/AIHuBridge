@@ -1,3 +1,4 @@
+import { WayfindingIcon } from './WayfindingIcon';
 import type { Certification } from '../types';
 import { feeLabel } from '../lib/cert-rules.mjs';
 import { ClockIcon } from './icons';
@@ -41,7 +42,7 @@ export function CertCard({ c }: { c: Certification }) {
       {c.note && <p className="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">{c.note}</p>}
       <details className="mt-3 text-xs text-slate-500 dark:text-slate-400">
         <summary className="cursor-pointer py-2">검토일 {c.verifiedAt} · 근거 보기</summary>
-        <ul className="mt-1 grid gap-1">{c.evidenceUrls.map((url, index) => <li key={url}><a href={url} target="_blank" rel="noopener noreferrer" className="inline-block py-2 underline">공식 근거 {index + 1} ↗</a></li>)}</ul>
+        <ul className="mt-1 grid gap-1">{c.evidenceUrls.map((url, index) => <li key={url}><a href={url} target="_blank" rel="noopener noreferrer" className="inline-block py-2 underline">공식 근거 {index + 1} <WayfindingIcon direction="external" /></a></li>)}</ul>
       </details>
       <div className="mt-3 flex justify-end">
         <a

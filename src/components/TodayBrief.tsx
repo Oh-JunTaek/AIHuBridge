@@ -1,3 +1,4 @@
+import { WayfindingIcon } from './WayfindingIcon';
 import type { NewsItem } from '../types';
 import { Link } from 'react-router-dom';
 import { config } from '../lib/config';
@@ -41,7 +42,7 @@ export function TodayBrief({ items }: { items: NewsItem[] }) {
           to="/updates"
           className="ml-auto text-xs text-stone-400 dark:text-stone-500 hover:text-amber-600"
         >
-          {t('home.more')}
+          {t('home.more')} <WayfindingIcon />
         </Link>
       </footer>
     </section>

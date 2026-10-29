@@ -1,3 +1,4 @@
+import { StageSymbol } from './StageSymbol';
 import type { Stage, Level, PCategory, PathFilter } from '../data/path';
 import { getCert } from '../lib/certs';
 import { ClockIcon, ExternalLinkIcon } from './icons';
@@ -24,7 +25,7 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
   return (
     <div className="space-card rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-5 shadow-xs">
       <header className="mb-4 flex items-center gap-3">
-        <span className="text-2xl">{stage.icon}</span>
+        <StageSymbol kind={stage.id} />
         <div>
           <h2 className="font-semibold text-stone-800 dark:text-stone-200">{t('pathStage.' + stage.id + '.title')}</h2>
           <p className="text-sm text-stone-500 dark:text-stone-400">{t('pathStage.' + stage.id + '.sub')}</p>

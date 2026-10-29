@@ -1,3 +1,4 @@
+import { WayfindingIcon } from '../components/WayfindingIcon';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { stages, levelOrder, categoryOrder } from '../data/path';
@@ -33,7 +34,7 @@ export default function Path() {
           </p>
         </div>
         <Link to="/certs" className="text-xs font-medium text-stone-500 hover:text-amber-600">
-          {t('path.toCerts')} →
+          {t('path.toCerts')} <WayfindingIcon />
         </Link>
       </header>
 

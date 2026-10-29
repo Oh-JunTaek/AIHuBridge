@@ -1,3 +1,4 @@
+import { WayfindingIcon } from './WayfindingIcon';
 import type { CalendarEvent } from '../types';
 import { deadlineLabel, eventStatusLabel } from '../lib/calendar-rules.mjs';
 import { eventTerritory } from '../lib/calendar-audience.mjs';
@@ -27,7 +28,7 @@ export function CalendarEventCard({ event, now }: { event: CalendarEvent; now: n
               {event.topics && event.topics.length > 0 && <p className="text-xs">주제: {event.topics.join(' · ')}</p>}
               <p className="text-xs">{event.verification === 'manual' && event.confirmedAt ? '내용 확인: ' + format(event.confirmedAt) : event.verification === 'public-event' ? '공개 커뮤니티 일정 · 신청 가능 여부는 원문 확인' : 'RSS 공고에 명시된 일정 · 수동 확인 전'}</p>
             </div>
-            <a href={event.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-sm text-amber-700 underline dark:text-amber-300">원문 공고 확인 →</a>
+            <a href={event.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-sm text-amber-700 underline dark:text-amber-300">원문 공고 확인 <WayfindingIcon direction="external" /></a>
             {event.sourceUrl && <a href={event.sourceUrl} target="_blank" rel="noopener noreferrer" className="ml-4 text-xs underline">일정 제공처</a>}
           </article>
   );

@@ -26,7 +26,7 @@ export default function Root() {
       </main>
 
       <button type="button" className="back-to-top" aria-label="페이지 맨 위로 이동" onClick={() => { document.getElementById('main-content')?.focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }}>
-        <span aria-hidden="true">↑</span><span>맨 위로</span>
+        <span aria-hidden="true">TOP</span>
       </button>
       <footer className="mt-16 border-t border-stone-200 dark:border-stone-700 py-4 text-center text-xs text-stone-400 dark:text-stone-500">
         <p className="mb-1">

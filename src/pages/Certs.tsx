@@ -1,3 +1,4 @@
+import { StageSymbol } from '../components/StageSymbol';
 import { useEffect, useState } from 'react';
 import { certifications } from '../data/certifications';
 import { selectCertifications } from '../lib/cert-rules.mjs';
@@ -19,10 +20,10 @@ export default function Certs() {
   }, []);
   const shown = selectCertifications(certifications, { type: tab, language, cost, query }, now);
 
-  const tabs: { id: CertType; label: string; emoji: string }[] = [
-    { id: 'course', label: '학습 과정', emoji: '📚' },
-    { id: 'exam', label: '자격시험', emoji: '🎯' },
-    { id: 'micro', label: '역량 인증', emoji: '🎖️' },
+  const tabs: { id: CertType; label: string; symbol: 'foundation' | 'try' | 'certify' }[] = [
+    { id: 'course', label: '학습 과정', symbol: 'foundation' },
+    { id: 'exam', label: '자격시험', symbol: 'try' },
+    { id: 'micro', label: '역량 인증', symbol: 'certify' },
   ];
 
   return (
@@ -50,7 +51,7 @@ export default function Certs() {
                 : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300'
             }`}
           >
-            <span>{tb.emoji} {t('certs.tab.' + tb.id)}</span>
+            <StageSymbol kind={tb.symbol} /><span>{t('certs.tab.' + tb.id)}</span>
           </button>
         ))}
       </nav>

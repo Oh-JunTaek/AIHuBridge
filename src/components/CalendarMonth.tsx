@@ -1,3 +1,4 @@
+import { WayfindingIcon } from './WayfindingIcon';
 import type { CalendarEvent } from '../types';
 import { calendarEntries, entriesOnDay, groupDayEntries, monthDays, shiftMonth } from '../lib/calendar-view.mjs';
 import { eventTypeLabels } from './CalendarEventCard';
@@ -38,8 +39,8 @@ export function CalendarMonth({ events, month, today, selectedDay, onMonthChange
         </div>
         <div className="flex items-center gap-2">
           <button type="button" onClick={() => moveMonth(today.slice(0, 7))} className="rounded-lg border border-stone-200 px-3 py-2 text-xs dark:border-stone-700">이번 달</button>
-          <button type="button" aria-label="이전 달" disabled={month <= '2000-01'} onClick={() => moveMonth(shiftMonth(month, -1))} className="h-9 w-9 rounded-lg border border-stone-200 text-lg disabled:opacity-30 dark:border-stone-700">‹</button>
-          <button type="button" aria-label="다음 달" disabled={month >= '2100-12'} onClick={() => moveMonth(shiftMonth(month, 1))} className="h-9 w-9 rounded-lg border border-stone-200 text-lg disabled:opacity-30 dark:border-stone-700">›</button>
+          <button type="button" aria-label="이전 달" disabled={month <= '2000-01'} onClick={() => moveMonth(shiftMonth(month, -1))} className="h-9 w-9 rounded-lg border border-stone-200 text-lg disabled:opacity-30 dark:border-stone-700"><WayfindingIcon direction="left" /></button>
+          <button type="button" aria-label="다음 달" disabled={month >= '2100-12'} onClick={() => moveMonth(shiftMonth(month, 1))} className="h-9 w-9 rounded-lg border border-stone-200 text-lg disabled:opacity-30 dark:border-stone-700"><WayfindingIcon /></button>
         </div>
       </header>
       <div className="grid grid-cols-7 border-b border-stone-100 dark:border-stone-800" aria-hidden="true">{weekdays.map((day, index) => <span key={day} className={`py-2 text-center text-xs font-semibold ${index === 0 ? 'text-rose-500' : index === 6 ? 'text-blue-500' : 'text-stone-500'}`}>{day}</span>)}</div>

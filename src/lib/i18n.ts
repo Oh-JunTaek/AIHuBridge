@@ -45,7 +45,7 @@ const ko: Dict = {
     noNews: '소식을 불러오지 못했거나 등록된 소식이 없습니다. 잠시 후 다시 확인해 주세요.',
     devLink: '자기진단',
     briefingLabel: '가장 최근 소식',
-    more: '더 보기 →',
+    more: '더 보기',
     study: '추천 커리큘럼 보기 →',
   },
   updates: {
