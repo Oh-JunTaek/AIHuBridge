@@ -479,3 +479,15 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .exhibit-card:hover .mini-calendar, .exhibit-card:focus-visible .mini-calendar { transform: rotate(0deg) translateY(-3px); }
 .exhibit-card:hover .mini-agenda, .exhibit-card:focus-visible .mini-agenda { transform: rotate(0deg) translateY(2px); }
 @media (prefers-reduced-motion: reduce) { .mini-calendar, .mini-agenda { transition: none; } .exhibit-card:hover .mini-calendar, .exhibit-card:focus-visible .mini-calendar { transform: rotate(-2deg); } .exhibit-card:hover .mini-agenda, .exhibit-card:focus-visible .mini-agenda { transform: rotate(2deg); } }
+/* 전달받은 카드 시안의 상단 장면만 보여 주고 전체에 잔잔한 움직임을 준다. */
+.exhibit-art { height: auto; aspect-ratio: 1.9; }
+.reference-art { position: absolute; inset: 0; z-index: 2; overflow: hidden; }
+.reference-art-motion { position: absolute; inset: 0; transform: scale(1.005); transition: transform .8s cubic-bezier(.2,.65,.25,1); }
+.reference-art img { position: absolute; top: 0; max-width: none; height: auto; display: block; }
+.reference-art-learning img { width: 110.24%; left: -5.12%; transform: translateY(-11.1%); }
+.reference-art-certs img { width: 112.6%; left: -6.77%; transform: translateY(-7.46%); }
+.reference-art-news img { width: 111.76%; left: -5.88%; transform: translateY(-7.5%); }
+.reference-art::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 32%, #fff5 48%, transparent 65%); transform: translateX(-130%); transition: transform .9s ease; }
+.exhibit-card:hover .reference-art-motion, .exhibit-card:focus-visible .reference-art-motion { transform: scale(1.045); }
+.exhibit-card:hover .reference-art::after, .exhibit-card:focus-visible .reference-art::after { transform: translateX(130%); }
+@media (prefers-reduced-motion: reduce) { .reference-art-motion, .reference-art::after { transition: none; } .exhibit-card:hover .reference-art-motion, .exhibit-card:focus-visible .reference-art-motion { transform: scale(1.005); } .reference-art::after { display: none; } }
