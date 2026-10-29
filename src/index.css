@@ -359,3 +359,9 @@
 @media (prefers-reduced-motion: reduce) { .exhibit-card:hover .news-chip, .exhibit-card:focus-visible .news-chip, .exhibit-card:hover .calendar-sheet, .exhibit-card:focus-visible .calendar-sheet, .exhibit-card:hover .learning-person, .exhibit-card:focus-visible .learning-person, .exhibit-card:hover .cert-paper, .exhibit-card:focus-visible .cert-paper { transform: none; } }
 .exhibition-intro h2, .exhibition-intro p, .exhibit-copy p { word-break: keep-all; overflow-wrap: break-word; }
 .dark .dashboard-kicker { color: #b9d2e8; }
+.auto-load-marker { min-height: 3rem; display: flex; align-items: center; justify-content: center; padding: 1rem; color: #526f89; font-size: .78rem; text-align: center; }
+.dark .auto-load-marker { color: #c3d7e9; }
+.back-to-top { position: fixed; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 40; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .05rem; min-width: 56px; min-height: 56px; padding: .45rem .7rem; border: 1px solid #c7d9e8; border-radius: 16px; color: #fff; background: #173d69; box-shadow: 0 8px 24px #183b6040; font-size: .7rem; font-weight: 700; }
+.back-to-top span:first-child { font-size: 1.1rem; line-height: 1; }
+.back-to-top:hover { background: #24598b; }
+.dark .back-to-top { background: #dcecf9; color: #102e4f; border-color: #9fbdd6; }

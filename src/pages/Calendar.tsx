@@ -1,3 +1,4 @@
+import { AutoLoadMore } from '../components/AutoLoadMore';
 import { useEffect, useState } from 'react';
 import { useCalendarStore } from '../lib/calendar';
 import { visibleEvents, registrationMatches } from '../lib/calendar-rules.mjs';
@@ -104,7 +105,7 @@ export default function Calendar() {
         </header>
         {!shown.length && status === 'idle' && <div className="rounded-2xl border border-dashed border-stone-300 px-5 py-10 text-center text-sm text-stone-500 dark:border-stone-700">이 날짜와 조건에 맞는 AI 일정이 없습니다. 다른 달을 선택하거나 필터를 초기화해 보세요.</div>}
         <div className="grid gap-4 lg:grid-cols-2">{shown.slice(0, visibleCount).map((event) => <CalendarEventCard key={event.id} event={event} now={now} />)}</div>
-        {shown.length > visibleCount && <button type="button" className="mt-5 rounded-xl border border-stone-300 px-5 py-3 text-sm font-semibold dark:border-stone-600" onClick={() => setVisibleCount((count) => count + 24)}>일정 더 보기 ({shown.length - visibleCount}건 남음)</button>}
+      <AutoLoadMore visible={visibleCount} total={shown.length} label="일정" onLoad={() => setVisibleCount((count) => count + 24)} />
       </section>
       <p className="mt-6 text-xs leading-relaxed text-stone-500">해외 행사에서 날짜만 제공되면 현지 날짜로 표시하며 시각·시간대를 추정하지 않습니다. 신청 마감 미확인은 모집 중을 뜻하지 않습니다. 원문에서 참가 조건과 변경 사항을 확인하세요.</p>
     </div>

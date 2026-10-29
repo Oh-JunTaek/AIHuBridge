@@ -1,3 +1,4 @@
+import { AutoLoadMore } from '../components/AutoLoadMore';
 import { useState, useMemo, useEffect } from 'react';
 import { useNews } from '../lib/use-news';
 import { NewsStatus } from '../components/NewsStatus';
@@ -121,7 +122,7 @@ export default function Updates() {
           <NewsCard key={it.id} item={it} />
         ))}
       </div>
-      {shown.length > visibleCount && <button type="button" onClick={() => setVisibleCount((count) => count + 24)} className="mt-5 rounded-lg border border-stone-300 px-4 py-3 text-sm dark:border-stone-600">소식 더 보기 ({shown.length - visibleCount}건 남음)</button>}
+      <AutoLoadMore visible={visibleCount} total={shown.length} label="소식" onLoad={() => setVisibleCount((count) => count + 24)} />
 
       </section>
       </div>
