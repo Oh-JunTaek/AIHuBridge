@@ -6,7 +6,7 @@ const groups = [
   { id: 'learning', key: 'nav.learning', items: [{ to: '/path', key: 'nav.path' }, { to: '/certs', key: 'nav.certs' }] },
   { id: 'information', key: 'nav.information', items: [{ to: '/updates', key: 'nav.updates' }, { to: '/calendar', key: 'nav.calendar' }] },
 ];
-const activeStyle = 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200';
+const activeStyle = 'bg-blue-100 text-blue-900 dark:bg-blue-900/40 dark:text-blue-100';
 const idleStyle = 'text-stone-600 hover:bg-stone-200/60 dark:text-stone-300 dark:hover:bg-stone-800';
 const focusStyle = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600';
 
@@ -34,6 +34,7 @@ export function SiteNavigation() {
           setOpen(null);
         }
       }}>
+      <NavLink to="/dashboard" className={({ isActive }) => `flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-semibold ${focusStyle} ${isActive ? activeStyle : idleStyle}`}>대시보드</NavLink>
       {groups.map((group) => {
         const expanded = open === group.id;
         const active = group.items.some((item) => location.pathname === item.to || location.pathname.startsWith(item.to + '/'));

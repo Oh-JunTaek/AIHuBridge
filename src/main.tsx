@@ -4,6 +4,7 @@ import { createBrowserRouter, Navigate, RouterProvider, useLocation } from 'reac
 import './index.css';
 import Root from './routes/Root';
 import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
 import Updates from './pages/Updates';
 import Path from './pages/Path';
 import Certs from './pages/Certs';
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
       errorElement: <NotFound />,
       children: [
         { index: true, element: <Home /> },
+        { path: 'dashboard', element: <Dashboard /> },
         { path: 'updates', element: <Updates /> },
         { path: 'research', element: <LegacyUpdatesRedirect /> },
         { path: 'path', element: <Path /> },

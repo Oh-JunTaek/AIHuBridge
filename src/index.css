@@ -153,3 +153,58 @@
     background-color: rgb(var(--color-muted));
   }
 }
+/* 전시관의 청색과 밝은 유리 표면을 공통 화면에 적용한다. */
+@theme {
+  --color-stone-50: #f6f9fc;
+  --color-stone-100: #eaf0f6;
+  --color-stone-200: #d9e3ee;
+  --color-stone-300: #bfcedd;
+  --color-stone-400: #8093a8;
+  --color-stone-500: #5d7188;
+  --color-stone-600: #455c74;
+  --color-stone-700: #314b66;
+  --color-stone-800: #1c3857;
+  --color-stone-900: #102941;
+  --color-stone-950: #091b2d;
+}
+.landing { color: #102d52; background: #f7f9fc; }
+.landing-hero { position: relative; min-height: min(670px, 78vh); display: flex; align-items: center; overflow: hidden; background: #dceafa; }
+.landing-hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.landing-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(250,252,255,.96) 0%, rgba(250,252,255,.84) 26%, rgba(250,252,255,.1) 65%); pointer-events: none; }
+.landing-hero-content { position: relative; z-index: 1; width: min(100% - 3rem, 1440px); margin: auto; padding: 5rem 0; }
+.landing-hero h1 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.7rem); line-height: 1.14; font-weight: 800; letter-spacing: -.055em; }
+.landing-hero p { margin: 1.25rem 0 2rem; color: #425d7f; font-size: clamp(1rem, 1.5vw, 1.35rem); }
+.landing-button { display: inline-flex; align-items: center; gap: 2rem; border-radius: 999px; background: #183b6c; color: white; font-weight: 700; padding: .85rem 1.5rem; }
+.landing-button:hover { background: #245591; }
+.landing-button span { font-size: 1.3em; }
+.exhibition { max-width: 1500px; margin: auto; display: grid; grid-template-columns: minmax(210px, .9fr) 4fr; gap: 2rem; padding: 4rem 2rem 5rem; }
+.exhibition-intro { padding-top: .8rem; }
+.exhibition-intro > span { color: #557291; font-size: .78rem; font-weight: 700; }
+.exhibition-intro h2 { margin: .8rem 0; font-size: clamp(1.4rem, 2vw, 2rem); line-height: 1.35; font-weight: 750; letter-spacing: -.04em; }
+.exhibition-intro p { color: #617791; font-size: .88rem; line-height: 1.7; }
+.exhibition-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.exhibit-card { min-width: 0; background: white; border: 1px solid #e1eaf3; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 32px #36587c0b; transition: transform .25s, box-shadow .25s; }
+.exhibit-card:hover, .exhibit-card:focus-visible { transform: translateY(-4px); box-shadow: 0 16px 36px #36587c20; }
+.exhibit-art { position: relative; height: 145px; display: grid; place-items: center; overflow: hidden; background: linear-gradient(135deg,#d7e8fa,#f7fbff 60%,#b8d4ea); }
+.exhibit-calendar .exhibit-art, .exhibit-certs .exhibit-art { background: linear-gradient(135deg,#f7e2c5,#fffaf2 60%,#e8d2af); }
+.exhibit-art::before, .exhibit-art::after { content: ''; position: absolute; border: 1px solid #ffffffb8; border-radius: 50%; width: 140%; height: 110%; transform: rotate(-20deg); }
+.exhibit-art::after { width: 100%; height: 85%; transform: rotate(24deg); }
+.exhibit-window { z-index: 1; display: grid; place-items: center; height: 72px; width: 72px; border-radius: 20px; background: #ffffffba; border: 1px solid white; box-shadow: 0 8px 20px #426b9233; color: #244f82; }
+.exhibit-window svg { width: 33px; height: 33px; }
+.exhibit-copy { position: relative; padding: 1.15rem; min-height: 165px; }
+.exhibit-icon { width: 22px; height: 22px; color: #27558a; }
+.exhibit-copy h3 { margin: .6rem 0 .35rem; font-size: 1rem; font-weight: 750; }
+.exhibit-copy p { color: #617791; font-size: .78rem; line-height: 1.5; padding-right: 1rem; }
+.exhibit-arrow { position: absolute; right: 1rem; bottom: 1rem; color: #557291; }
+.dark .landing { background: #091b2d; color: #edf5ff; }
+.dark .exhibition-intro p, .dark .exhibition-intro > span { color: #b5c8dd; }
+.dark .exhibit-card { background: #102941; border-color: #314b66; }
+.dark .exhibit-copy p { color: #b5c8dd; }
+.dark .exhibit-icon, .dark .exhibit-arrow { color: #a7c8ef; }
+@media (max-width: 1050px) { .exhibition { grid-template-columns: 1fr; } .exhibition-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .landing-hero { min-height: 680px; align-items: flex-start; } .landing-hero-image { background-position: 65% center; } .landing-hero::after { background: linear-gradient(180deg,rgba(250,252,255,.98) 0%,rgba(250,252,255,.9) 30%,rgba(250,252,255,.02) 65%); } .landing-hero-content { padding: 3rem 0; } .exhibition { padding: 2.5rem 1rem 3rem; } .exhibition-grid { gap: .7rem; } .exhibit-art { height: 105px; } .exhibit-copy { padding: .8rem; min-height: 160px; } }
+@media (max-width: 360px) { .exhibition-grid { grid-template-columns: 1fr; } .exhibit-copy { min-height: 130px; } }
+.landing-hero-content { color: #102d52; }
+.landing-hero::before { content: ''; position: absolute; z-index: 1; pointer-events: none; left: 30%; right: 0; bottom: 8%; height: 2px; background: linear-gradient(90deg, transparent, #fff3bf, transparent); opacity: 0; animation: bridge-light 1.4s ease-out 1; }
+@keyframes bridge-light { 0% { opacity: 0; transform: scaleX(.2); } 45% { opacity: .8; } 100% { opacity: 0; transform: scaleX(1); } }
+@media (max-width: 640px) { .landing-hero-content { margin: 0 auto; } .landing-hero::after { background: linear-gradient(180deg,rgba(250,252,255,1) 0%,rgba(250,252,255,.97) 34%,rgba(250,252,255,.18) 72%); } }
