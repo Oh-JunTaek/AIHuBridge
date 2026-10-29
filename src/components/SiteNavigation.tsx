@@ -15,6 +15,7 @@ export function SiteNavigation() {
   const location = useLocation();
   const [open, setOpen] = useState<string | null>(null);
   const nav = useRef<HTMLElement>(null);
+  const pointerType = useRef<string | null>(null);
 
   useEffect(() => { setOpen(null); }, [location]);
   useEffect(() => {
@@ -39,14 +40,17 @@ export function SiteNavigation() {
         const expanded = open === group.id;
         const active = group.items.some((item) => location.pathname === item.to || location.pathname.startsWith(item.to + '/'));
         return (
-          <div key={group.id} className="sm:relative">
+          <div key={group.id} className="nav-group sm:relative"
+            onPointerEnter={(event) => { if (event.pointerType === 'mouse') setOpen(group.id); }}
+            onPointerLeave={(event) => { if (event.pointerType === 'mouse' && !(document.activeElement instanceof HTMLAnchorElement && event.currentTarget.contains(document.activeElement))) setOpen((current) => current === group.id ? null : current); }}>
             <button type="button" id={`nav-${group.id}-trigger`} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
-              onClick={() => setOpen(expanded ? null : group.id)}
+              onPointerDown={(event) => { pointerType.current = event.pointerType; }}
+              onClick={(event) => { const fromMouse = event.detail > 0 && pointerType.current === 'mouse'; setOpen(fromMouse ? group.id : expanded ? null : group.id); pointerType.current = null; }}
               className={`flex min-h-10 items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${focusStyle} ${active || expanded ? activeStyle : idleStyle}`}>
-              {t(group.key)}<span aria-hidden="true" className={`text-xs transition-transform ${expanded ? 'rotate-180' : ''}`}>⌄</span>
+              {t(group.key)}
             </button>
             <ul id={`nav-${group.id}-links`} hidden={!expanded}
-              className="absolute left-0 right-0 top-full z-30 mt-2 space-y-1 rounded-xl border border-stone-200 bg-white p-2 shadow-lg dark:border-stone-700 dark:bg-stone-900 sm:right-auto sm:w-52 lg:left-auto lg:right-0">
+              className="absolute left-0 right-0 top-full z-30 space-y-1 nav-popup rounded-xl border border-stone-200 bg-white p-2 shadow-lg dark:border-stone-700 dark:bg-stone-900 sm:right-auto sm:w-52 lg:left-auto lg:right-0">
               {group.items.map((item) => <li key={item.to}><NavLink to={item.to} onClick={() => setOpen(null)}
                 className={({ isActive }) => `block rounded-lg px-3 py-3 text-sm font-medium ${focusStyle} ${isActive ? activeStyle : idleStyle}`}>
                 {t(item.key)}

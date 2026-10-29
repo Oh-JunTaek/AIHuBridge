@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ExhibitArt } from '../components/ExhibitArt';
 import { BookIcon, BadgeIcon, ClockIcon, CompassIcon } from '../components/icons';
 
 const exhibits = [
@@ -26,7 +27,7 @@ export default function Home() {
       </div>
       <div className="exhibition-grid">
         {exhibits.map(({ to, title, description, Icon, style }) => <Link className={`exhibit-card exhibit-${style}`} to={to} key={to}>
-          <div className="exhibit-art" aria-hidden="true"><span className="exhibit-window"><Icon /></span></div>
+          <div className="exhibit-art"><ExhibitArt kind={style as 'news' | 'calendar' | 'learning' | 'certs'} /></div>
           <div className="exhibit-copy"><Icon className="exhibit-icon" aria-hidden="true" /><h3>{title}</h3><p>{description}</p><span className="exhibit-arrow" aria-hidden="true">→</span></div>
         </Link>)}
       </div>

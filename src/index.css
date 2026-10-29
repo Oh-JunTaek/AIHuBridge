@@ -317,3 +317,45 @@
 .calendar-quick-links a { display: inline-flex; align-items: center; min-height: 2.6rem; border-radius: 999px; padding: .5rem 1rem; color: #17466f; background: #fff; border: 1px solid #cce0ef; font-size: .85rem; font-weight: 700; }
 .dark .calendar-quick-links a { color: #e6f3ff; background: #173a58; border-color: #456b88; }
 #calendar-controls, #calendar-results { scroll-margin-top: 10rem; }
+/* 주 메뉴: 포인터로 열리되 키보드와 터치도 버튼으로 사용한다. */
+.nav-popup:not([hidden]) { animation: nav-enter .18s ease-out both; }
+@keyframes nav-enter { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.reading-label { font-size: .86rem; line-height: 1.5; }
+.reading-sidebar nav button, .reading-sidebar label, .reading-sidebar input, .reading-sidebar select { font-size: .8rem; }
+.reading-sidebar section > div:last-of-type { flex-wrap: wrap; }
+.reading-sidebar section button { white-space: nowrap; }
+.dashboard-header { display: flex; justify-content: space-between; gap: 1rem; }
+.dashboard-date { color: #476887; font-size: .8rem; margin-top: 1rem; }
+.dark .dashboard-date { color: #c3d9ec; }
+.dashboard-layout { display: grid; grid-template-columns: minmax(220px,270px) minmax(0,1fr); gap: 2rem; align-items: start; margin-top: 2.4rem; }
+.dashboard-guide { border: 1px solid #d7e6ee; border-radius: 20px; background: #ffffffed; padding: 1.3rem; box-shadow: 0 18px 45px #32658212; }
+.dashboard-kicker { font-size: .72rem; font-weight: 700; color: #6285a2; }
+.dashboard-guide h2 { color: #173c62; font-size: 1rem; font-weight: 750; margin: .45rem 0 1rem; }
+.dashboard-guide a { display: flex; justify-content: space-between; align-items: center; padding: .85rem .2rem; border-top: 1px solid #e2edf3; font-size: .84rem; color: #315b7e; }
+.dashboard-guide a:hover { color: #075baa; }
+.dashboard-content { min-width: 0; }
+.dashboard-content .results-heading a { color: #315d87; font-size: .8rem; font-weight: 700; }
+.dark .dashboard-guide { background: #102b40f2; border-color: #3b5b72; }
+.dark .dashboard-guide h2, .dark .dashboard-guide a, .dark .dashboard-content .results-heading a { color: #dbeefa; }
+.dark .dashboard-guide a { border-color: #3b5b72; }
+@media (max-width: 760px) { .dashboard-layout { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.4rem; } .dashboard-guide { padding: 1rem; } .dashboard-guide a { display: inline-flex; gap: .4rem; padding: .65rem; border: 0; } }
+
+/* 각 전시물은 기능을 상징하는 자체 그래픽으로 표현한다. */
+.exhibit-art { height: 175px; }
+.exhibit-art::before, .exhibit-art::after { opacity: .5; }
+.art-news, .art-calendar, .art-learning, .art-certs { position: relative; width: 100%; height: 100%; z-index: 1; overflow: hidden; }
+.news-chip { position: absolute; font-size: .53rem; font-weight: 750; color: #31577c; background: #fff; border: 1px solid #dae8f2; border-radius: 999px; padding: .28rem .5rem; box-shadow: 0 5px 12px #3260811a; transition: transform .55s cubic-bezier(.2,.7,.3,1); }
+.chip-a { left: 9%; top: 17%; transform: rotate(-12deg); }.chip-b { left: 39%; top: 8%; transform: rotate(8deg); }.chip-c { right: 6%; top: 23%; transform: rotate(14deg); }.chip-d { left: 19%; top: 45%; transform: rotate(8deg); }.chip-e { right: 12%; top: 52%; transform: rotate(-8deg); }.chip-f { left: 44%; top: 35%; transform: rotate(-7deg); }
+.news-tray { position: absolute; bottom: -8px; left: 19%; width: 62%; height: 52px; display: flex; justify-content: space-between; padding: .7rem; background: #fff; color: #215486; font-size: .62rem; font-weight: 750; border-radius: 14px 14px 0 0; box-shadow: 0 -5px 20px #315c7d18; }
+.exhibit-card:hover .news-chip, .exhibit-card:focus-visible .news-chip { transform: translateY(17px) rotate(0deg); }
+.calendar-sheet { position: absolute; left: 30%; top: 17%; width: 42%; height: 75%; background: #fffefa; border-radius: 12px; box-shadow: 0 10px 25px #8c6b431d; transform: rotate(-5deg); transition: transform .4s; }
+.calendar-rings { position: absolute; display: flex; justify-content: space-around; width: 100%; top: -6px; }.calendar-rings i { width: 6px; height: 14px; border-radius: 5px; background: #4d7190; }.calendar-sheet-head { padding: .55rem .55rem .35rem; color: #33567a; font-weight: 750; font-size: .58rem; border-bottom: 1px solid #ecedf1; }.calendar-dots { display: grid; grid-template-columns: repeat(7,1fr); gap: .32rem .2rem; padding: .5rem; }.calendar-dots span { aspect-ratio: 1; border-radius: 50%; background: #e5edf3; }.calendar-dots .marked { background: #e2b15c; }.art-calendar-spark { position: absolute; right: 13%; top: 21%; color: #c79243; font-size: 1.4rem; }.art-calendar-orbit { position: absolute; left: 12%; bottom: 17%; width: 28px; height: 28px; border: 2px solid #b7cfe1; border-radius: 50%; }
+.exhibit-card:hover .calendar-sheet, .exhibit-card:focus-visible .calendar-sheet { transform: rotate(0deg) translateY(-5px); }
+.learning-board { position: absolute; top: 16%; left: 13%; width: 46%; height: 46%; background: #f9fcff; border: 3px solid #82aac7; border-radius: 8px; padding: .45rem; box-shadow: 0 7px 16px #356a8e1a; color: #345b7a; font-size: .65rem; font-weight: 800; }.learning-board i { display: block; width: 67%; height: 3px; margin-top: 6px; background: #bed6e7; border-radius: 4px; }.learning-board i:last-child { width: 43%; background: #e9c18c; }
+.learning-person { position: absolute; left: 57%; top: 19%; width: 26%; height: 63%; transition: transform .4s; }.learning-head { position: absolute; left: 31%; top: 0; width: 35%; aspect-ratio: 1; background: #e8b794; border-radius: 50%; border-top: 5px solid #35536c; }.learning-body { position: absolute; left: 10%; top: 27%; width: 75%; height: 66%; border-radius: 45% 45% 10% 10%; background: #658fae; }.learning-arm { position: absolute; left: -23%; top: 37%; width: 65%; height: 10%; border-radius: 10px; background: #658fae; transform: rotate(-35deg); transform-origin: right center; }.learning-desk { position: absolute; bottom: 12%; left: 11%; right: 12%; height: 8px; border-radius: 6px; background: #d7b58b; }.learning-book { position: absolute; left: 27%; bottom: 17%; width: 22%; height: 16px; border-radius: 3px; background: #fff; border-bottom: 4px solid #9cbcd1; transform: rotate(-5deg); }
+.exhibit-card:hover .learning-person, .exhibit-card:focus-visible .learning-person { transform: translateX(-5px); }
+.cert-paper { position: absolute; left: 29%; top: 15%; width: 45%; height: 72%; background: #fffefa; border: 1px solid #e6d7bd; border-radius: 8px; box-shadow: 0 9px 22px #9b78451c; transform: rotate(5deg); padding: .8rem .7rem; transition: transform .4s; }.cert-paper i { display: block; height: 3px; margin: .4rem 0; background: #e8e0d5; border-radius: 4px; }.cert-paper i:nth-of-type(2) { width: 75%; }.cert-seal { display: grid; place-items: center; margin: 0 auto .3rem; width: 30px; height: 30px; border: 2px solid #d2a257; border-radius: 50%; color: #be8a38; }.cert-ribbon { position: absolute; left: 67%; top: 56%; width: 38px; height: 38px; display: grid; place-items: center; color: white; background: #6d9ab7; border: 3px solid #e9f4fa; border-radius: 50%; box-shadow: 0 5px 12px #49749336; }.cert-spark { position: absolute; left: 17%; top: 24%; color: #bb9359; font-size: 1.5rem; }
+.exhibit-card:hover .cert-paper, .exhibit-card:focus-visible .cert-paper { transform: rotate(0deg) translateY(-5px); }
+@media (prefers-reduced-motion: reduce) { .exhibit-card:hover .news-chip, .exhibit-card:focus-visible .news-chip, .exhibit-card:hover .calendar-sheet, .exhibit-card:focus-visible .calendar-sheet, .exhibit-card:hover .learning-person, .exhibit-card:focus-visible .learning-person, .exhibit-card:hover .cert-paper, .exhibit-card:focus-visible .cert-paper { transform: none; } }
+.exhibition-intro h2, .exhibition-intro p, .exhibit-copy p { word-break: keep-all; overflow-wrap: break-word; }
+.dark .dashboard-kicker { color: #b9d2e8; }
