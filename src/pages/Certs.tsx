@@ -26,9 +26,9 @@ export default function Certs() {
   ];
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-6">
-      <header className="mb-6 flex items-baseline justify-between">
-        <h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('certs.title')}</h1>
+    <div className="space-page space-library mx-auto max-w-4xl px-4 py-6">
+      <header className="space-header mb-6 flex flex-wrap items-baseline justify-between gap-3">
+        <div><p className="space-label">학습관</p><h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('certs.title')}</h1><p className="space-caption">교육과 인증 정보를 한곳에서 살펴보세요.</p></div>
         <Link to="/path" className="text-xs underline">
           {t('certs.back')}
         </Link>
@@ -42,7 +42,7 @@ export default function Certs() {
             aria-pressed={tab === tb.id}
             className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 font-medium ${
               tab === tb.id
-                ? 'bg-amber-600 text-white'
+                ? 'bg-blue-900 text-white'
                 : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300'
             }`}
           >

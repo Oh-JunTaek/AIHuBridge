@@ -13,7 +13,7 @@ export function NewsCard({ item }: { item: NewsItem }) {
   const facets = newsFacets(item);
 
   return (
-    <article className="group flex flex-col gap-2 rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-4 shadow-xs transition hover:shadow-md">
+    <article className="space-card group flex flex-col gap-2 rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-4 shadow-xs transition hover:shadow-md">
       <a
         href={item.url}
         target="_blank"

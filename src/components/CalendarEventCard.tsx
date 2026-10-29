@@ -7,7 +7,7 @@ const format = (value: string) => new Date(value).toLocaleString('ko-KR', { time
 
 export function CalendarEventCard({ event, now }: { event: CalendarEvent; now: number }) {
   return (
-          <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900">
+          <article className="space-card rounded-2xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900">
             <div className="mb-2 flex flex-col items-start justify-between gap-2 sm:flex-row sm:gap-3">
               <h3 className="min-w-0 break-words font-semibold text-stone-800 dark:text-stone-200">{event.title}</h3>
               <span className="shrink-0 rounded-full bg-sky-50 px-2 py-1 text-[10px] text-sky-800 dark:bg-sky-950 dark:text-sky-200">{eventStatusLabel(event, now)}</span>

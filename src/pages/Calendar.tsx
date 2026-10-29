@@ -50,9 +50,9 @@ export default function Calendar() {
   const reset = () => { setAudience('domestic'); setType('all'); setMode('all'); setFee('all'); setRegistration('all'); setIncludePast(false); setSearch(''); setRegion(''); setSelectedDay(null); };
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 text-stone-700 dark:text-stone-200">
-      <header className="mb-6 flex flex-wrap items-end justify-between gap-4">
-        <div><p className="mb-1 text-xs font-semibold tracking-widest text-blue-600 dark:text-blue-300">배우고, 만나고, 만들어보세요</p><h1 className="text-3xl font-bold text-stone-900 dark:text-stone-100">AI 캘린더</h1><p className="mt-2 max-w-2xl text-sm text-stone-500 dark:text-stone-400">교육부터 세미나·웨비나·워크숍·해커톤·공모전·컨퍼런스·밋업까지, 필요한 AI 일정을 찾아보세요.</p></div>
+    <div className="space-page space-plaza mx-auto max-w-4xl px-4 py-8 text-stone-700 dark:text-stone-200">
+      <header className="space-header mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div><p className="space-label">정보관</p><h1 className="text-3xl font-bold text-stone-900 dark:text-stone-100">AI 캘린더</h1><p className="mt-2 max-w-2xl text-sm text-stone-500 dark:text-stone-400">교육부터 세미나·웨비나·워크숍·해커톤·공모전·컨퍼런스·밋업까지, 필요한 AI 일정을 찾아보세요.</p></div>
         <div className="flex gap-1 rounded-xl bg-stone-100 p-1 dark:bg-stone-800" aria-label="일정 보기 방식">
           {(['calendar', 'list'] as const).map((option) => <button key={option} type="button" aria-pressed={view === option} onClick={() => setView(option)} className={view === option ? 'rounded-lg bg-white px-4 py-2 text-sm font-semibold text-blue-700 shadow-sm dark:bg-stone-700 dark:text-blue-200' : 'rounded-lg px-4 py-2 text-sm text-stone-500'}>{option === 'calendar' ? '달력 보기' : '목록 보기'}</button>)}
         </div>

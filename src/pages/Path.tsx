@@ -23,9 +23,10 @@ export default function Path() {
   );
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-6">
-      <header className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+    <div className="space-page space-library mx-auto max-w-4xl px-4 py-6">
+      <header className="space-header mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <div>
+          <p className="space-label">학습관</p>
           <h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('path.title')}</h1>
           <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">
             {t('path.sub')}
@@ -44,7 +45,7 @@ export default function Path() {
             onClick={() => applyLevel(null)}
             aria-pressed={!filter.level}
             className={`min-h-9 rounded px-2 py-1.5 ${
-              filter.level ? 'bg-stone-100 text-stone-600' : 'bg-amber-600 text-white'
+              filter.level ? 'bg-stone-100 text-stone-600' : 'bg-blue-900 text-white'
             }`}
           >
             {t('path.filterAll')}
@@ -55,7 +56,7 @@ export default function Path() {
               onClick={() => applyLevel(lv)}
               aria-pressed={filter.level === lv}
               className={`min-h-9 rounded px-2 py-1.5 ${
-                filter.level === lv ? 'bg-amber-600 text-white' : 'bg-stone-100 text-stone-600'
+                filter.level === lv ? 'bg-blue-900 text-white' : 'bg-stone-100 text-stone-600'
               }`}
             >
               {t('level.' + lv)}
@@ -68,7 +69,7 @@ export default function Path() {
             onClick={() => applyCategory(null)}
             aria-pressed={!filter.category}
             className={`min-h-9 rounded px-2 py-1.5 ${
-              filter.category ? 'bg-stone-100 text-stone-600' : 'bg-amber-600 text-white'
+              filter.category ? 'bg-stone-100 text-stone-600' : 'bg-blue-900 text-white'
             }`}
           >
             {t('path.filterAll')}
@@ -79,7 +80,7 @@ export default function Path() {
               onClick={() => applyCategory(c)}
               aria-pressed={filter.category === c}
               className={`min-h-9 rounded px-2 py-1.5 ${
-                filter.category === c ? 'bg-amber-600 text-white' : 'bg-stone-100 text-stone-600'
+                filter.category === c ? 'bg-blue-900 text-white' : 'bg-stone-100 text-stone-600'
               }`}
             >
               {t('pathCategory.' + c)}

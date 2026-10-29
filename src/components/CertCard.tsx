@@ -6,7 +6,7 @@ import { useT } from '../lib/i18n';
 export function CertCard({ c }: { c: Certification }) {
   const t = useT();
   return (
-    <div className="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-4 shadow-xs">
+    <div className="space-card rounded-xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-4 shadow-xs">
       <div className="flex items-start justify-between gap-2">
         <span
           className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${

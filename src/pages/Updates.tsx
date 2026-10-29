@@ -36,8 +36,9 @@ export default function Updates() {
   const selectStyle = 'min-w-0 rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900';
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-6">
-      <header className="mb-6">
+    <div className="space-page space-plaza mx-auto max-w-4xl px-4 py-6">
+      <header className="space-header mb-6">
+        <p className="space-label">정보관</p>
         <h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('updates.title')}</h1>
         <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">
           {t('updates.sub', items.length)}
@@ -52,7 +53,7 @@ export default function Updates() {
             aria-pressed={active === c}
             className={`rounded-full px-3 py-1 font-medium ${
               active === c
-                ? 'bg-amber-600 text-white'
+                ? 'bg-blue-900 text-white'
                 : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'
             }`}
           >
@@ -62,7 +63,7 @@ export default function Updates() {
       </nav>
 
       <div role="group" aria-label="출처 지역" className="mb-4 flex gap-2 text-sm">
-        {[{value:'',label:'전체 출처'}, {value:'domestic',label:'국내 출처'}].map((option) => <button type="button" key={option.value} aria-pressed={origin === option.value} onClick={() => setOrigin(option.value)} className={`rounded-lg px-4 py-2 ${origin === option.value ? 'bg-amber-600 text-white' : 'bg-stone-100 dark:bg-stone-800'}`}>{option.label}</button>)}
+        {[{value:'',label:'전체 출처'}, {value:'domestic',label:'국내 출처'}].map((option) => <button type="button" key={option.value} aria-pressed={origin === option.value} onClick={() => setOrigin(option.value)} className={`rounded-lg px-4 py-2 ${origin === option.value ? 'bg-blue-900 text-white' : 'bg-stone-100 dark:bg-stone-800'}`}>{option.label}</button>)}
       </div>
 
       <section aria-label="소식 탐색 조건" className="mb-5 rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">

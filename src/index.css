@@ -208,3 +208,25 @@
 .landing-hero::before { content: ''; position: absolute; z-index: 1; pointer-events: none; left: 30%; right: 0; bottom: 8%; height: 2px; background: linear-gradient(90deg, transparent, #fff3bf, transparent); opacity: 0; animation: bridge-light 1.4s ease-out 1; }
 @keyframes bridge-light { 0% { opacity: 0; transform: scaleX(.2); } 45% { opacity: .8; } 100% { opacity: 0; transform: scaleX(1); } }
 @media (max-width: 640px) { .landing-hero-content { margin: 0 auto; } .landing-hero::after { background: linear-gradient(180deg,rgba(250,252,255,1) 0%,rgba(250,252,255,.97) 34%,rgba(250,252,255,.18) 72%); } }
+
+/* 같은 전시관 안에서 광장과 자료실의 공간감을 구분한다. */
+.space-page { position: relative; }
+.space-header { position: relative; isolation: isolate; overflow: hidden; min-height: 140px; padding: 1.65rem 1.75rem; border: 1px solid #d9e5f0; border-radius: 20px; background: linear-gradient(118deg,#fbfdff 3%,#eff7ff 54%,#dcecf9 100%); box-shadow: 0 10px 32px #284b7010; }
+.space-header::before { content: ''; position: absolute; z-index: -1; right: -2%; bottom: -62%; width: 47%; height: 180%; border: 1px solid #a9c7df85; border-radius: 50%; box-shadow: 0 0 0 18px #ffffff55, 0 0 0 19px #b1cde155, 0 0 0 50px #ffffff35, 0 0 0 51px #b1cde144; transform: rotate(-18deg); pointer-events: none; }
+.space-header::after { content: ''; position: absolute; z-index: -1; right: 2%; bottom: 0; width: 50%; height: 1px; background: linear-gradient(90deg,transparent,#a5c2d9,transparent); }
+.space-library .space-header { background: linear-gradient(118deg,#fffcf7 0%,#f8f9fa 52%,#e8f2fa 100%); border-color: #e3e8eb; }
+.space-library .space-header::before { border-radius: 12px 12px 0 0; right: 5%; bottom: -36%; width: 33%; height: 150%; transform: none; border-color: #c0d1dc90; box-shadow: -30px 0 0 -29px #c0d1dc, -60px 0 0 -59px #c0d1dc, 30px 0 0 -29px #c0d1dc, 60px 0 0 -59px #c0d1dc; }
+.space-label { margin: 0 0 .45rem; color: #486b91; font-size: .72rem; font-weight: 700; }
+.space-caption { margin: .4rem 0 0; color: #5d7188; font-size: .875rem; }
+.space-header > div, .space-header > h1, .space-header > p, .space-header > a { position: relative; }
+.space-header h1 { letter-spacing: -.035em; }
+.space-page article, .space-page .space-card { box-shadow: 0 7px 24px #375e8510; }
+.space-library .space-card { border-top: 3px solid #c4d7e5; }
+.dark .space-header { background: linear-gradient(120deg,#142d46,#1c3954 55%,#254965); border-color: #3d5c75; }
+.dark .space-library .space-header { background: linear-gradient(120deg,#192f43,#21384a 52%,#304958); border-color: #456072; }
+.dark .space-label, .dark .space-caption { color: #b9d2e8; }
+.dark .space-header::before { opacity: .35; }
+@media (max-width: 640px) { .space-header { min-height: 125px; padding: 1.25rem; } .space-header::before { right: -15%; width: 65%; opacity: .6; } .space-library .space-header::before { right: -15%; width: 48%; } }
+/* 어두운 공간에서 기존 보조 설명과 헤더 링크의 대비를 확보한다. */
+.dark .space-page .text-stone-500, .dark .space-page .text-stone-400 { color: #b8cce0; }
+.dark .space-header a { color: #c8dded; }

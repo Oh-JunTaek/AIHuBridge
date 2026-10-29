@@ -22,7 +22,7 @@ const categoryColor: Record<PCategory, string> = {
 export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter }) {
   const t = useT();
   return (
-    <div className="rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-5 shadow-xs">
+    <div className="space-card rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-5 shadow-xs">
       <header className="mb-4 flex items-center gap-3">
         <span className="text-2xl">{stage.icon}</span>
         <div>
