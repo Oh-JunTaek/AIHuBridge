@@ -230,3 +230,34 @@
 /* 어두운 공간에서 기존 보조 설명과 헤더 링크의 대비를 확보한다. */
 .dark .space-page .text-stone-500, .dark .space-page .text-stone-400 { color: #b8cce0; }
 .dark .space-header a { color: #c8dded; }
+
+/* 전시관 장면은 상단에 또렷하게, 페이지 바탕에는 빛으로 이어진다. */
+.space-page { isolation: isolate; }
+.space-page::before { content: ''; position: absolute; z-index: -1; pointer-events: none; left: 50%; top: 0; bottom: -4rem; width: 100vw; transform: translateX(-50%); background: radial-gradient(ellipse at 8% 18%, #cee7fb 0%, transparent 44%), radial-gradient(ellipse at 94% 39%, #f9e5c9 0%, transparent 39%), linear-gradient(170deg,#ecf6ff 0%,#f5faff 32%,#e4f1fa 75%,#faf7ef 100%); }
+.space-library::before { background: radial-gradient(ellipse at 8% 20%, #fbe9cd 0%, transparent 42%), radial-gradient(ellipse at 95% 38%, #cce8fa 0%, transparent 42%), linear-gradient(160deg,#fff6e9 0%,#f9fbfd 42%,#e2f0fa 75%,#faf4e7 100%); }
+.space-header { min-height: 190px; background: linear-gradient(90deg,rgba(249,252,255,.99) 0%,rgba(249,252,255,.94) 29%,rgba(249,252,255,.55) 55%,rgba(249,252,255,.08) 100%), url('./assets/plaza.webp') center 53% / cover; border-color: #c8ddec; }
+.space-library .space-header { background: linear-gradient(90deg,rgba(255,252,247,.99) 0%,rgba(255,252,247,.94) 30%,rgba(255,252,247,.50) 57%,rgba(255,252,247,.06) 100%), url('./assets/library.webp') center 54% / cover; border-color: #e7d9c8; }
+.space-header::before, .space-header::after { display: none; }
+.space-page .space-card { box-shadow: 0 9px 26px #35608b16; }
+.space-library .space-card { border-top-color: #d8bb90; }
+.space-page > section[aria-label="일정 필터"], .space-page > section[aria-label="교육 탐색 조건"] { background-color: rgba(255,255,255,.88); }
+.dark .space-page::before { background: radial-gradient(ellipse at 10% 10%, #204b6c, transparent 45%),radial-gradient(ellipse at 90% 35%, #51473c 0%, transparent 40%),#0c2235; }
+.dark .space-library::before { background: radial-gradient(ellipse at 10% 12%, #514537, transparent 45%),radial-gradient(ellipse at 90% 38%, #234a62, transparent 43%),#102537; }
+.dark .space-header { background: linear-gradient(90deg,rgba(13,35,55,.98),rgba(13,35,55,.9) 35%,rgba(13,35,55,.68) 70%,rgba(13,35,55,.45)),url('./assets/plaza.webp') center 53% / cover; }
+.dark .space-library .space-header { background: linear-gradient(90deg,rgba(19,39,52,.98),rgba(19,39,52,.9) 35%,rgba(19,39,52,.68) 70%,rgba(19,39,52,.45)),url('./assets/library.webp') center 54% / cover; }
+.dark .space-page > section[aria-label="일정 필터"], .dark .space-page > section[aria-label="교육 탐색 조건"] { background-color: #102941; }
+@media (max-width: 640px) { .space-header { min-height: 160px; background-position: center, 65% center; } .space-library .space-header { background-position: center, 70% center; } .space-page::before { background-size: auto; } }
+/* 그림 위의 설명과 보조 링크는 독립적으로 읽히게 한다. */
+#main-content { overflow-x: clip; }
+.space-header { background-image: linear-gradient(90deg,rgba(249,252,255,.99) 0%,rgba(249,252,255,.96) 40%,rgba(249,252,255,.82) 65%,rgba(249,252,255,.08) 100%),url('./assets/plaza.webp'); }
+.space-library .space-header { background-image: linear-gradient(90deg,rgba(255,252,247,.99) 0%,rgba(255,252,247,.96) 40%,rgba(255,252,247,.82) 65%,rgba(255,252,247,.06) 100%),url('./assets/library.webp'); }
+.space-header > a { border-radius: .5rem; background: rgba(255,255,255,.88); padding: .45rem .7rem; color: #294d71; }
+.dark .space-header { background-image: linear-gradient(90deg,rgba(13,35,55,.98),rgba(13,35,55,.96) 40%,rgba(13,35,55,.83) 70%,rgba(13,35,55,.45)),url('./assets/plaza.webp'); }
+.dark .space-library .space-header { background-image: linear-gradient(90deg,rgba(19,39,52,.98),rgba(19,39,52,.96) 40%,rgba(19,39,52,.83) 70%,rgba(19,39,52,.45)),url('./assets/library.webp'); }
+.dark .space-header > a { background: #142e45eb; color: #d5e8f8; }
+@media (max-width: 640px) {
+  .space-header { background-image: linear-gradient(90deg,rgba(249,252,255,.99) 0%,rgba(249,252,255,.96) 52%,rgba(249,252,255,.75) 78%,rgba(249,252,255,.25) 100%),url('./assets/plaza.webp'); }
+  .space-library .space-header { background-image: linear-gradient(90deg,rgba(255,252,247,.99) 0%,rgba(255,252,247,.96) 52%,rgba(255,252,247,.75) 78%,rgba(255,252,247,.25) 100%),url('./assets/library.webp'); }
+  .dark .space-header { background-image: linear-gradient(90deg,rgba(13,35,55,.98),rgba(13,35,55,.96) 60%,rgba(13,35,55,.78)),url('./assets/plaza.webp'); }
+  .dark .space-library .space-header { background-image: linear-gradient(90deg,rgba(19,39,52,.98),rgba(19,39,52,.96) 60%,rgba(19,39,52,.78)),url('./assets/library.webp'); }
+}
