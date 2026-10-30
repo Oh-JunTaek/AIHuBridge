@@ -8,12 +8,14 @@ import kdataSymbol from '../assets/kdata-symbol.png';
 import kpcSymbol from '../assets/kpc-symbol.png';
 import korchamSymbol from '../assets/korcham-symbol.png';
 import hrdkSymbol from '../assets/hrdk-symbol.svg';
+import aiceSymbol from '../assets/aice-symbol.png';
 
 const providerSymbols: Record<string, string> = {
   '한국데이터산업진흥원': kdataSymbol,
   '한국생산성본부': kpcSymbol,
   '대한상공회의소': korchamSymbol,
   '한국산업인력공단': hrdkSymbol,
+  'KT · 한국경제신문': aiceSymbol,
 };
 
 const passRates: Record<string, { year: number; practical: number; written: number; url: string }> = { 'information-processing-engineer': { year: 2025, practical: 22.1, written: 65, url: 'https://www.q-net.or.kr/crf005.do?gId=&gSite=Q&id=crf00503s01&jmCd=1320&jmInfoDivCcd=B0&jmNm=' } };
@@ -84,10 +86,10 @@ export default function Qualifications() {
           <div><dt>유효기간·갱신</dt><dd>{selected.validity}</dd></div>
         </dl>
         {currentRate(selected.id) && <div className="qualification-rate-detail"><strong>{currentRate(selected.id)?.year}년 합격률</strong><p>필기 {currentRate(selected.id)?.written}% · 실기 {currentRate(selected.id)?.practical}%</p><p>각 단계 응시자 기준이며 최종 취득률이나 개인의 난이도를 뜻하지 않습니다.</p><a href={currentRate(selected.id)?.url} target="_blank" rel="noopener noreferrer">공식 통계 보기 <WayfindingIcon direction="external" /></a></div>}
-        <section className="qualification-prep"><h3>시험을 준비하는 자료</h3>{selected.preparation.map((item) => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer"><span><strong>{item.label}</strong><small>{item.note}</small></span><WayfindingIcon direction="external" /></a>)}</section>
         <p className="qualification-evidence">정보 확인일 {selected.verifiedAt} · 시험 조건과 한국 내 예약 가능 여부는 공식 페이지에서 확인하세요.</p>
-        <a className="qualification-official" href={selected.url} target="_blank" rel="noopener noreferrer">공식 시험 안내 보기 <WayfindingIcon direction="external" /></a>
+        <a className="qualification-official" href={selected.url} target="_blank" rel="noopener noreferrer">공식홈페이지 방문 <WayfindingIcon direction="external" /></a>
         {scheduleLink(selected.provider) && <a className="qualification-schedule" href={scheduleLink(selected.provider)!} target="_blank" rel="noopener noreferrer">공식 일정·접수 확인 <WayfindingIcon direction="external" /></a>}
+        <section className="qualification-prep"><h3>시험을 준비하는 자료</h3>{selected.preparation.map((item) => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer"><span><strong>{item.label}</strong><small>{item.note}</small></span><WayfindingIcon direction="external" /></a>)}</section>
       </div>}
     </dialog>
   </div>;
