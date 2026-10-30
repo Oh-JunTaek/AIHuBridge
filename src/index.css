@@ -599,3 +599,16 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .qualification-rate-detail { margin-top:1.2rem; padding:1rem; background:#f5f9fb; border-radius:10px; color:#46677c; font-size:.82rem; line-height:1.6; }
 .qualification-rate-detail p { margin-top:.35rem; }.qualification-rate-detail a { display:inline-block; margin-top:.4rem; text-decoration:underline; }
 @media (prefers-reduced-motion:reduce) { .qualification-layout .qualification-card:hover::before,.qualification-layout .qualification-card:focus-visible::before { animation:none; } }
+
+/* 소개 문구와 자격증 탐색 피드백 */
+.landing-hero-content h1, .landing-hero-content > p { user-select:none; -webkit-user-select:none; }
+.qualification-layout .qualification-filter-footer { display:grid; justify-items:start; gap:.3rem; }
+.qualification-layout .qualification-filter-footer p, .qualification-layout .qualification-filter-footer button { white-space:nowrap; }
+.qualification-layout .qualification-filter-footer button { padding:.4rem 0; }
+.qualification-layout .qualification-card.rate-low { --hover-tint:#fff4f3; }
+.qualification-layout .qualification-card.rate-mid { --hover-tint:#fff9ea; }
+.qualification-layout .qualification-card.rate-high { --hover-tint:#f2f5f7; }
+.qualification-layout .qualification-card.rate-unknown { --hover-tint:#f0f8fc; }
+.qualification-layout .qualification-card:hover, .qualification-layout .qualification-card:focus-visible { background:var(--hover-tint); transition:background-color .35s ease; }
+.qualification-layout .qualification-card:hover::before, .qualification-layout .qualification-card:focus-visible::before { animation:qualification-sheen 1.15s ease-in-out; }
+@media (prefers-reduced-motion:reduce) { .qualification-layout .qualification-card:hover::before, .qualification-layout .qualification-card:focus-visible::before { animation:none; } .qualification-layout .qualification-card:hover, .qualification-layout .qualification-card:focus-visible { transition:none; } }

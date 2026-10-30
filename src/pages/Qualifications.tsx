@@ -41,7 +41,6 @@ export default function Qualifications() {
   return <div className="space-page space-library qualifications-page mx-auto max-w-6xl px-4 py-6">
     <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>자격증 도전</h1><p className="space-caption">컴퓨터 활용부터 AI까지, 나에게 맞는 자격시험을 찾아보세요.</p></div></header>
     <div className="reading-layout qualification-layout"><aside className="reading-sidebar qualification-filters" aria-label="자격증 검색과 필터"><MobileFilter summary={`${tag || '전체 분야'} · ${classification || '전체 자격'}`}>
-      <div className="qualification-filter-heading"><div><span>자격 탐색</span><h2>분야별로 찾아보기</h2></div></div>
       <div className="qualification-filter-grid">
         <div className="qualification-category"><span>분야</span><div>{tags.map((value, index) => <button type="button" key={value} aria-pressed={tag === value} onClick={() => setTag(tag === value ? '' : value)}><span aria-hidden="true">{['✦', '▤', '☁', '◇', '▣', '⌘'][index]}</span> {value}</button>)}</div></div>
         <label>자격 종류<select value={classification} onChange={(e) => setClassification(e.target.value)}><option value="">전체 종류</option>{classes.map((value) => <option key={value} value={value}>{displayClass(value)}</option>)}</select></label>
@@ -52,7 +51,6 @@ export default function Qualifications() {
     <section className="qualification-results" aria-label="자격증 목록">
       <div className="results-heading"><div><span>학습관의 자격 안내</span><h2>자격증</h2></div></div>
       <label className="qualification-search"><span className="sr-only">자격증·주관사 검색</span><input type="search" placeholder="자격증 이름 또는 주관사 검색" value={query} onChange={(e) => setQuery(e.target.value)} /></label>
-      <p className="qualification-guide">전년도 실기 합격률: 25% 이하 붉은빛 · 50% 이하 금빛 · 50% 초과 은빛 · 미확인 푸른빛</p>
       {results.length === 0 && <p className="qualification-empty">조건에 맞는 자격증이 없습니다. 검색어나 필터를 변경해 보세요.</p>}
       <div className="qualification-list">{visibleResults.map((item) => <button type="button" className={`qualification-card rate-${rateClass(item.id)}`} key={item.id} onClick={() => open(item.id)}>
         <span className="qualification-card-top"><strong>{item.id.startsWith('computer-skills-') ? '컴퓨터활용능력' : item.name}</strong><span className="qualification-tags">{categoryOf(item).map((value) => <span key={value}>{value}</span>)}</span></span>
