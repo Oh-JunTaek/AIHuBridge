@@ -50,6 +50,7 @@ export interface Certification {
   validity?: string; // e.g. "2 years"
   learningFee: EducationFee;
   credentialFee: EducationFee;
+  completionCertificateVerified?: boolean; // 공식 근거에서 수료증 발급을 확인한 과정만 true
   requirements: string;
   availableUntil?: string; // 제공처 기준 수강·학습 종료 날짜. 한국 기관의 기간 안내에만 사용한다.
   evidenceUrls: string[];

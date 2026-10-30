@@ -36,6 +36,14 @@ test('무료 영상 청강과 무료 수료증 필터를 구분', () => {
   assert.ok(credentials.some((item) => item.id === 'hf-agents'));
   assert.equal(learning.some((item) => item.id === 'google-ai-essentials'), false);
 });
+test('수료증 발급 확인은 비용 확인과 별개이며 시험이나 미발급과 모순되지 않는다', () => {
+  const verified = certifications.filter((item) => item.completionCertificateVerified === true);
+  assert.deepEqual(verified.map((item) => item.id).sort(), ['coursera-ai-for-everyone', 'dlai-prompting', 'google-ai-essentials', 'hf-agents']);
+  assert.ok(verified.every(isCertification));
+  assert.equal(isCertification({ ...verified[0], credentialFee: { status: 'unknown', note: '미확인' } }), true);
+  assert.equal(isCertification({ ...verified[0], credentialFee: { status: 'not-offered', note: '미발급' } }), false);
+  assert.equal(isCertification({ ...verified[0], type: 'exam' }), false);
+});
 test('한국어 포함·미확인 비용·검색 조합과 빈 결과 처리', () => {
   assert.ok(selectCertifications(certifications, { language: 'ko', query: '파이썬' }).length > 0);
   assert.equal(selectCertifications(certifications, { query: '없는교육123' }).length, 0);

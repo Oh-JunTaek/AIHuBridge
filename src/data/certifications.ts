@@ -220,6 +220,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "dlai-prompting",
+    "completionCertificateVerified": true,
     "name": "AI Prompting for Everyone (Andrew Ng)",
     "provider": "DeepLearning.AI",
     "type": "course",
@@ -315,6 +316,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "hf-agents",
+    "completionCertificateVerified": true,
     "name": "Hugging Face Agents Course",
     "provider": "Hugging Face",
     "type": "course",
@@ -362,6 +364,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "google-ai-essentials",
+    "completionCertificateVerified": true,
     "name": "Google AI Essentials",
     "provider": "Google",
     "type": "course",
@@ -386,6 +389,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "coursera-ai-for-everyone",
+    "completionCertificateVerified": true,
     "name": "AI For Everyone (Andrew Ng)",
     "provider": "Coursera / DeepLearning.AI",
     "type": "course",

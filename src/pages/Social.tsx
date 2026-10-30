@@ -66,7 +66,7 @@ export default function Social() {
     </section>
     <section className="qualification-results" aria-label="SNS 게시물 목록">
       {failures.length > 0 && <p className="social-error" role="alert">{failures.join(', ')} 채널을 불러오지 못했습니다. 잠시 후 다시 시도하거나 공식 계정을 방문해 주세요.</p>}
-      {!loading && shown.length === 0 && <p className="qualification-empty">표시할 게시물이 없습니다. 기간을 늘리거나 조건을 바꿔보세요.</p>}
+      {!loading && failures.length < socialSources.length && shown.length === 0 && <p className="qualification-empty">표시할 게시물이 없습니다. 기간을 늘리거나 조건을 바꿔보세요.</p>}
       <div className="social-list">{shown.slice(0, visibleCount).map((post, index) => <article key={`${post.id}-${post.company}-${index}`} className="space-card social-card"><div className="social-card-meta"><span>{post.company} · {post.channel} · Bluesky</span><time dateTime={post.date}>{new Date(post.date).toLocaleString('ko-KR', { timeZone:'Asia/Seoul', dateStyle:'medium', timeStyle:'short' })}</time></div><p className="social-author">{post.author} {post.handle && `@${post.handle}`}{post.repost && ' · 재게시'}</p><p className="social-text">{post.text.slice(0, 220)}{post.text.length > 220 ? '…' : ''}</p><a href={post.url} target="_blank" rel="noopener noreferrer">원문 보기 <WayfindingIcon direction="external" /></a></article>)}</div>
       {visibleCount < shown.length && <div ref={sentinel} className="social-note" role="status">스크롤하면 더 많은 게시물을 보여드립니다.</div>}
       <p className="social-note">게시물 신고·삭제·정정 요청은 <a href="mailto:eunmastudio@gmail.com" className="underline">eunmastudio@gmail.com</a>으로 보내주세요. 각 게시물은 원문에서도 신고할 수 있습니다.</p>

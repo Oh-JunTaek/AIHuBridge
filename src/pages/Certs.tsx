@@ -2,24 +2,24 @@ import { MobileFilter } from '../components/MobileFilter';
 import { useEffect, useState } from 'react';
 import { certifications } from '../data/certifications';
 import { selectCertifications } from '../lib/cert-rules.mjs';
-import { CertCard } from '../components/CertCard';
+import { CertCard, CertDetail } from '../components/CertCard';
+import { LearningDialog } from '../components/LearningDialog';
+import type { Certification } from '../types';
 import { useT } from '../lib/i18n';
 import { Link } from 'react-router-dom';
-
-// 공식 과정별 수료증 발급을 확인한 항목만 수료증 취득 강의에 노출한다.
-const completionCourseIds = new Set(['dlai-prompting', 'hf-agents', 'google-ai-essentials', 'coursera-ai-for-everyone']);
 
 export default function Certs() {
   const t = useT();
   const [language, setLanguage] = useState('');
   const [cost, setCost] = useState('');
   const [query, setQuery] = useState('');
+  const [selected, setSelected] = useState<Certification | null>(null);
   const [now, setNow] = useState(Date.now);
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 60000);
     return () => window.clearInterval(timer);
   }, []);
-  const shown = selectCertifications(certifications.filter((course) => completionCourseIds.has(course.id)), { type: 'course', language, cost, query }, now);
+  const shown = selectCertifications(certifications.filter((course) => course.completionCertificateVerified === true), { type: 'course', language, cost, query }, now);
 
   return (
     <div className="space-page space-library space-certs mx-auto max-w-6xl px-4 py-6">
@@ -54,11 +54,12 @@ export default function Certs() {
       <div className="results-heading"><div><span>학습관의 자료실</span><h2>나에게 필요한 배움</h2></div><p>비용과 조건은 공식 페이지에서 확인하세요</p></div>
       {!shown.length && <p className="py-6 text-sm">조건에 맞는 수료 과정이 없습니다. 검색어나 조건을 변경해 보세요.</p>}
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="learning-list">
         {shown.map((c) => (
           <CertCard
             key={c.id}
             c={c}
+            onOpen={() => setSelected(c)}
           />
         ))}
       </div>
@@ -66,6 +67,7 @@ export default function Certs() {
       <p className="mt-6 text-center text-xs text-stone-500 dark:text-stone-400">{t('certs.footer')}</p>
       </section>
       </div>
+      <LearningDialog title={selected?.name ?? ''} open={!!selected} onClose={() => setSelected(null)}>{selected && <CertDetail c={selected} />}</LearningDialog>
     </div>
   );
 }

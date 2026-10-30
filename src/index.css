@@ -569,6 +569,8 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .qualification-layout .qualification-list { gap:0; border:1px solid #dbe6ee; border-radius:15px; overflow:hidden; background:white; } .qualification-layout .qualification-card { border:0; border-radius:0; border-bottom:1px solid #e3ebef; box-shadow:none; } .qualification-layout .qualification-card:last-child { border-bottom:0; } .qualification-layout .qualification-card:hover { transform:none; background:#f6fafc; }
 
 .security-toggle { margin:0 0 1rem; padding:.6rem .8rem; border:1px solid #c9dae5; border-radius:9px; background:#edf5f9; color:#315d78; font-size:.8rem; }
+.news-advanced-filters > summary { cursor:pointer; color:#315f85; font-size:.8rem; font-weight:650; padding:.45rem 0; }
+.news-advanced-filters > summary:focus-visible { outline:2px solid #3476a4; outline-offset:3px; }
 
 /* 배너 이동 링크와 자격 탐색 */
 .landing-button { background:#294b70; color:#fff; box-shadow:0 4px 12px #173b6018; }
@@ -620,3 +622,22 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 @media (max-width: 480px) {
   .qualification-provider-symbol { width:4.5rem; max-height:2rem; margin-right:0; }
 }
+
+/* 학습 자료와 수료 과정은 자격증 목록과 같은 밀도로 표시한다. */
+.learning-list { border:1px solid #dbe6ee; border-radius:15px; overflow:hidden; background:#fff; }
+.learning-list-card { position:relative; display:block; width:100%; min-height:8rem; padding:1.35rem 3rem 1.35rem 1.45rem; text-align:left; border:0; border-bottom:1px solid #e3ebef; color:#183b5d; background:#fff; transition:background-color .25s; }
+.learning-list-card:last-child { border-bottom:0; }
+.learning-list-card:hover, .learning-list-card:focus-visible { background:#f2f8fb; }
+.learning-list-card:focus-visible { outline:3px solid #4583aa; outline-offset:-3px; }
+.learning-list-main, .learning-list-description, .learning-list-meta { display:block; }
+.learning-list-heading { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:.55rem; }
+.learning-list-heading strong { font-size:1rem; line-height:1.4; }
+.learning-list-tags { display:flex; flex-wrap:wrap; gap:.3rem; }
+.learning-list-tag { padding:.22rem .45rem; border-radius:5px; color:#285d82; background:#e8f3fa; font-size:.67rem; font-weight:700; }
+.learning-list-description { max-width:68%; margin-top:.65rem; color:#48677e; font-size:.83rem; line-height:1.55; }
+.learning-list-meta { max-width:75%; margin-top:.9rem; color:#60798e; font-size:.72rem; line-height:1.5; }
+.learning-list-arrow { position:absolute; right:1rem; bottom:1rem; }
+.learning-visual { position:absolute; right:18%; top:50%; transform:translateY(-50%); display:grid; place-items:center; width:6.5rem; border-radius:14px; background:linear-gradient(135deg,#eef7fb,#f8f4eb); pointer-events:none; }
+.learning-visual svg { width:100%; height:auto; }
+.learning-visual-certificate { background:linear-gradient(135deg,#faf0dd,#edf6fa); }
+@media (max-width: 640px) { .learning-visual { right:2.3rem; width:4rem; opacity:.6; } .learning-list-description, .learning-list-meta { max-width:calc(100% - 4.5rem); } .learning-list-heading { display:grid; } }

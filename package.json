@@ -21,9 +21,12 @@
     "lint": "tsc --noEmit",
     "refresh": "node scripts/fetch-news.mjs && node scripts/fetch-calendar.mjs",
     "selfcheck": "node scripts/selfcheck.mjs",
-    "test": "node --test scripts/*.test.mjs"
+    "test": "node --test scripts/*.test.mjs",
+    "test:e2e": "playwright test",
+    "optimize:exhibits": "node scripts/optimize-exhibit-images.mjs"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -32,6 +35,7 @@
     "autoprefixer": "^10.6.1",
     "postcss": "^8.5.31",
     "rss-parser": "^3.13.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
     "vite": "^8.3.4"

@@ -61,6 +61,12 @@ jobs:
       - name: Build Vite application
         run: npm run build
 
+      - name: 브라우저 검사 준비
+        run: npx playwright install --with-deps chromium
+
+      - name: 주요 화면 브라우저 검사
+        run: npm run test:e2e
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 

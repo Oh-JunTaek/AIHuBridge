@@ -26,6 +26,8 @@ export function isCertification(item) {
     && /^\d{4}-\d{2}-\d{2}$/.test(item.verifiedAt) && Number.isFinite(Date.parse(item.verifiedAt))
     && isFee(item.learningFee) && isFee(item.credentialFee)
     && item.learningFee.status !== 'not-offered'
+    && (item.completionCertificateVerified === undefined || (typeof item.completionCertificateVerified === 'boolean'
+      && (!item.completionCertificateVerified || (item.type === 'course' && item.credentialFee.status !== 'not-offered'))))
     && (item.availableUntil === undefined || dateOnly(item.availableUntil))
     && Array.isArray(item.evidenceUrls) && item.evidenceUrls.length > 0 && item.evidenceUrls.every(webUrl);
 }

@@ -59,7 +59,7 @@ export default function Home() {
       <div className="landing-hero-content">
         <h1 id="landing-title">AI의 세계로<br />이어지는 다리</h1>
         <p>소식부터 배움까지, 한곳에서 만나다.</p>
-        <Link className="landing-button" to="/dashboard">대시보드 보기 <WayfindingIcon /></Link>
+        <Link className="landing-button" to="/dashboard">최근 AI 소식 보기 <WayfindingIcon /></Link>
       </div>
     </section>
     <section className="exhibition" aria-labelledby="exhibition-title">

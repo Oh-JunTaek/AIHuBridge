@@ -70,11 +70,6 @@ export default function Updates() {
         ))}
       </nav>
 
-      <div role="group" aria-label="출처 지역" className="mb-4 flex gap-2 text-sm">
-        {[{value:'',label:'전체 출처'}, {value:'domestic',label:'국내 출처'}].map((option) => <button type="button" key={option.value} aria-pressed={origin === option.value} onClick={() => setOrigin(option.value)} className={`rounded-lg px-4 py-2 ${origin === option.value ? 'bg-blue-900 text-white' : 'bg-stone-100 dark:bg-stone-800'}`}>{option.label}</button>)}
-      </div>
-
-      <button type="button" className="security-toggle" aria-pressed={securityOnly} onClick={() => setSecurityOnly(!securityOnly)}>보안 관련 소식</button>
       <section aria-label="소식 탐색 조건" className="mb-5 rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
         <p className="mb-3 text-xs text-stone-500 dark:text-stone-400">기본 최근 7일 · 일반 소식 30일, 모델 소식 90일, 논문 180일 보관. 기간을 바꾸면 이전 자료도 검색할 수 있습니다.</p>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -83,6 +78,14 @@ export default function Updates() {
             <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="제목·주제·출처 검색"
               className="min-w-0 rounded-lg border border-stone-300 bg-transparent px-3 py-2 dark:border-stone-600" />
           </label>
+        </div>
+        <details className="news-advanced-filters mt-4">
+          <summary>상세 조건{[lang, source, origin, topic, openness, publication, paperKind, company, securityOnly].filter(Boolean).length > 0 && ` · ${[lang, source, origin, topic, openness, publication, paperKind, company, securityOnly].filter(Boolean).length}개 적용`}</summary>
+          <div role="group" aria-label="출처 지역" className="mb-4 mt-4 flex gap-2 text-sm">
+            {[{value:'',label:'전체 출처'}, {value:'domestic',label:'국내 출처'}].map((option) => <button type="button" key={option.value} aria-pressed={origin === option.value} onClick={() => setOrigin(option.value)} className={`rounded-lg px-4 py-2 ${origin === option.value ? 'bg-blue-900 text-white' : 'bg-stone-100 dark:bg-stone-800'}`}>{option.label}</button>)}
+          </div>
+          <button type="button" className="security-toggle" aria-pressed={securityOnly} onClick={() => setSecurityOnly(!securityOnly)}>보안 관련 소식</button>
+          <div className="grid gap-3 sm:grid-cols-2">
           <label className="grid gap-1 text-sm">자료 언어
             <select value={lang} onChange={(event) => setLang(event.target.value)} className="rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900">
               <option value="">전체 언어</option><option value="ko">한국어</option><option value="en">영어</option><option value="unknown">미확인</option>
@@ -105,6 +108,7 @@ export default function Updates() {
           </div>
           {group === 'papers' && <p className="mt-3 text-xs text-stone-500 dark:text-stone-400">최신 AI 논문의 제목·초록 키워드로 분야와 유형을 분류합니다. 출판 전 논문을 포함하며 중요도·성능·동료평가 여부를 보증하지 않습니다.</p>}
         </fieldset>}
+        </details>
         <div className="mt-3 flex items-center justify-between gap-3 text-sm">
           <p role="status">검색 결과 {shown.length}건 / 전체 {items.length}건</p>
           <button type="button" onClick={clear}

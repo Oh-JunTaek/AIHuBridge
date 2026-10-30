@@ -78,17 +78,17 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                   <ClockIcon className="h-3 w-3" /> {it.estMin === null ? '자율 학습' : <>약 {it.estMin}{t('ui.min')}</>}
                 </span>
                 {it.kind === 'cert' && qualifications.some((item) => item.id === it.refId) ? (
-                  <Link to={`/qualifications?exam=${encodeURIComponent(it.refId)}`} className="inline-flex h-9 w-9 items-center justify-center rounded text-stone-500 hover:bg-stone-100" aria-label={`${it.label} 자격증 상세 보기`}><ExternalLinkIcon className="h-4 w-4" /></Link>
+                  <Link to={`/qualifications?exam=${encodeURIComponent(it.refId)}`} className="inline-flex min-h-9 items-center gap-1 rounded px-2 text-stone-500 hover:bg-stone-100" aria-label={`${it.label} 자격증 상세 보기`}>자격 상세 <ExternalLinkIcon className="h-4 w-4" /></Link>
                 ) : cert?.url ? (
                   <a
                     href={cert.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded text-stone-500 hover:bg-stone-100 hover:text-amber-600 dark:text-stone-300 dark:hover:bg-stone-700"
+                    className="inline-flex min-h-9 items-center gap-1 rounded px-2 text-stone-500 hover:bg-stone-100 hover:text-amber-600 dark:text-stone-300 dark:hover:bg-stone-700"
                     title="공식 페이지 열기"
                     aria-label={`${it.label} 공식 페이지 (새 탭)`}
                   >
-                    <ExternalLinkIcon className="h-4 w-4" />
+                    공식 자료 <ExternalLinkIcon className="h-4 w-4" />
                   </a>
                 ) : null}
               </div>

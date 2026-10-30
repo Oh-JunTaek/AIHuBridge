@@ -1,10 +1,10 @@
-import newsDesign from '../assets/exhibit-news-design.png';
-import learningDesign from '../assets/exhibit-learning-design.png';
-import dashboardDesign from '../assets/exhibit-dashboard.png';
-import resourcesDesign from '../assets/exhibit-resources.png';
-import completionDesign from '../assets/exhibit-completion.png';
-import qualificationsDesign from '../assets/exhibit-qualifications.png';
-import socialDesign from '../assets/exhibit-social.png';
+import newsDesign from '../assets/exhibit-news-design.webp';
+import learningDesign from '../assets/exhibit-learning-design.webp';
+import dashboardDesign from '../assets/exhibit-dashboard.webp';
+import resourcesDesign from '../assets/exhibit-resources.webp';
+import completionDesign from '../assets/exhibit-completion.webp';
+import qualificationsDesign from '../assets/exhibit-qualifications.webp';
+import socialDesign from '../assets/exhibit-social.webp';
 type ExhibitKind = 'news' | 'calendar' | 'learning' | 'dashboard' | 'resources' | 'completion' | 'qualifications' | 'social';
 
 export function ExhibitArt({ kind }: { kind: ExhibitKind }) {
