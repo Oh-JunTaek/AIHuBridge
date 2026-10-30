@@ -70,6 +70,8 @@ export default function Calendar() {
       <section aria-label="일정 범위" className="mb-5">
         <div className="flex flex-wrap gap-2">{[{id:'domestic',label:'국내·온라인'}, {id:'overseas',label:'해외'}, {id:'unknown',label:'지역 미확인'}, {id:'all',label:'전체'}].map((option) => <button key={option.id} type="button" aria-pressed={audience === option.id} onClick={() => { setAudience(option.id); setSelectedDay(null); }} className={`rounded-full px-4 py-2 text-sm font-semibold ${audience === option.id ? 'bg-blue-600 text-white' : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300'}`}>{option.label}</button>)}</div>
         <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">국내·온라인은 국내 행사와 전 세계 온라인 행사를 함께 보여줍니다. 해외 오프라인·미확인 방식은 기본 화면에서 제외합니다. 지역은 공개 개최 도시·주최 커뮤니티 위치 기준이며 실제 장소·접속 조건은 원문을 확인하세요.</p>
+        {status === 'idle' && audienceEvents.length > 0 && !audienceEvents.some((event) => event.applicationEnd) && <p className="mt-2 text-xs text-stone-600">선택한 범위에 확인된 신청 마감일이 없습니다. 행사 일정과 신청 가능 여부는 원문에서 확인하세요.</p>}
+        {status === 'idle' && audienceEvents.length > 0 && audienceEvents.every((event) => event.feeType === 'unknown') && <p className="mt-1 text-xs text-stone-600">선택한 범위의 참가 비용은 모두 미확인입니다.</p>}
       </section>
 
       <div className="mb-6 grid grid-cols-3 gap-3">

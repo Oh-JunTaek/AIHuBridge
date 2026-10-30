@@ -1,12 +1,9 @@
 import type { NewsItem } from '../types';
 import { config } from '../lib/config';
-import { readMinutes } from '../lib/news';
-import { ClockIcon } from './icons';
 import { useT } from '../lib/i18n';
 import { newsFacets, modelTypes, opennessLabels, publicationLabels } from '../lib/news-facets.mjs';
 
 export function NewsCard({ item }: { item: NewsItem }) {
-  const mins = readMinutes(item.excerpt, item.title);
   const badge = config.categoryColor[item.category] || 'bg-stone-100 text-stone-800';
   const summaryText = item.summary || item.excerpt;
   const t = useT();
@@ -34,9 +31,6 @@ export function NewsCard({ item }: { item: NewsItem }) {
         <span>{item.lang === 'ko' ? '한국어' : item.lang === 'en' ? '영어' : '언어 미확인'}</span>
         <span>{publicationLabels[facets.publication] ?? '출처 유형 미확인'}</span>
         <time dateTime={item.publishedAt} title="원문 게시일 (한국시간)">{new Date(item.publishedAt).toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}</time>
-        <span className="flex items-center gap-1" title="표시된 제목·설명문 기준 예상 읽기 시간">
-          <ClockIcon className="h-3 w-3" /> {mins}{t('ui.min')}
-        </span>
         {item.tags.slice(0, 2).map((t) => (
           <span key={t}>#{t}</span>
         ))}

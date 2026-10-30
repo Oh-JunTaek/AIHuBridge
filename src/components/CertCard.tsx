@@ -1,7 +1,6 @@
 import { WayfindingIcon } from './WayfindingIcon';
 import type { Certification } from '../types';
 import { feeLabel } from '../lib/cert-rules.mjs';
-import { ClockIcon } from './icons';
 import { useT } from '../lib/i18n';
 
 export function CertCard({ c }: { c: Certification }) {
@@ -27,9 +26,7 @@ export function CertCard({ c }: { c: Certification }) {
 
       <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-600 dark:text-slate-300">
         <span>{c.difficulty}</span>
-        <span className="flex items-center gap-1">
-          <ClockIcon className="h-3 w-3" /> {c.validity || '—'}
-        </span>
+        {c.validity && <span>유효기간: {c.validity}</span>}
         <span>{c.language === 'ko' ? '한국어' : c.language === 'both' ? '한국어·영어' : c.language === 'en' ? '영어' : '언어 미확인'}</span>
       </div>
 

@@ -35,8 +35,8 @@ export default function Dashboard() {
           <NewsStatus result={result} loading={loading} onRetry={reload} showWarning={false} />
           {!loading && <TodayBrief items={items} />}
           {!loading && result?.status === 'success' && items.length === 0 && <p className="text-sm text-stone-500">최근 7일 소식이 없습니다. AI 소식의 게시 기간을 넓혀 보관 자료를 찾아보세요.</p>}
-          {!loading && items.length > 0 && <section className="mt-8"><h2 className="mb-3 text-sm font-semibold text-stone-600 dark:text-stone-300">{t('home.pick')}</h2><div className="grid gap-4 sm:grid-cols-2">{items.slice(0, 4).map((it) => <NewsCard key={it.id} item={it} />)}</div></section>}
-          {!loading && items.length > 4 && <section className="mt-6"><h2 className="mb-3 text-sm font-semibold text-stone-600 dark:text-stone-300">{t('home.recent')}</h2><div className="grid gap-3 sm:grid-cols-2">{items.slice(4, 6).map((it) => <div key={it.id} className="flex gap-2"><ClockIcon className="mt-0.5 h-4 w-4 shrink-0 text-stone-400" /><a href={it.url} target="_blank" rel="noopener noreferrer" className="line-clamp-2 text-sm text-stone-700 hover:text-blue-700 hover:underline dark:text-stone-200">[{it.source}] {it.title}</a></div>)}</div></section>}
+          {!loading && items.length > 1 && <section className="mt-8"><h2 className="mb-3 text-sm font-semibold text-stone-600 dark:text-stone-300">{t('home.recent')}</h2><div className="grid gap-4 sm:grid-cols-2">{items.slice(1, 5).map((it) => <NewsCard key={it.id} item={it} />)}</div></section>}
+          {!loading && items.length > 5 && <section className="mt-6"><div className="grid gap-3 sm:grid-cols-2">{items.slice(5, 6).map((it) => <div key={it.id} className="flex gap-2"><ClockIcon className="mt-0.5 h-4 w-4 shrink-0 text-stone-400" /><a href={it.url} target="_blank" rel="noopener noreferrer" className="line-clamp-2 text-sm text-stone-700 hover:text-blue-700 hover:underline dark:text-stone-200">[{it.source}] {it.title}</a></div>)}</div></section>}
         </div>
       </div>
     </div>

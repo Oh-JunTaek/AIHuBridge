@@ -42,9 +42,9 @@ export default function Certs() {
 
       <section aria-label="교육 탐색 조건" className="mb-5 rounded-xl border border-stone-200 p-4 dark:border-stone-700">
         <div className="grid gap-3 sm:grid-cols-3">
-          <label className="grid gap-1 text-sm">교육·기관 검색<input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="이름·기관·시험 코드" className="min-w-0 rounded-lg border border-stone-300 bg-transparent px-3 py-2 dark:border-stone-600" /></label>
+          <label className="grid gap-1 text-sm">교육·기관 검색<input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="강의명·교육기관 검색" className="min-w-0 rounded-lg border border-stone-300 bg-transparent px-3 py-2 dark:border-stone-600" /></label>
           <label className="grid gap-1 text-sm">제공 언어<select value={language} onChange={(event) => setLanguage(event.target.value)} className="rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900"><option value="">전체 언어</option><option value="ko">한국어 포함</option><option value="en">영어 포함</option><option value="unknown">미확인</option></select></label>
-          <label className="grid gap-1 text-sm">비용 조건<select value={cost} onChange={(event) => setCost(event.target.value)} className="rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900"><option value="">전체 비용</option><option value="learning-free">학습·준비 무료</option><option value="credential-free">수료증·평가 무료</option><option value="unknown">비용 미확인 포함</option></select></label>
+          <label className="grid gap-1 text-sm">비용 조건<select value={cost} onChange={(event) => setCost(event.target.value)} className="rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900"><option value="">전체 비용</option><option value="learning-free">학습·준비 무료</option><option value="credential-free">수료증·평가 무료</option><option value="unknown">비용 미확인</option></select></label>
         </div>
         <div className="mt-3 flex items-center justify-between gap-3 text-sm"><p role="status">조건에 맞는 항목 {shown.length}개</p><button type="button" className="rounded-lg px-3 py-2 text-amber-700 dark:text-amber-300" onClick={() => { setLanguage(''); setCost(''); setQuery(''); }}>조건 초기화</button></div>
       </section>

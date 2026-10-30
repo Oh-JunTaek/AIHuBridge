@@ -16,8 +16,8 @@ export function CalendarEventCard({ event, now }: { event: CalendarEvent; now: n
             <div className="space-y-1 text-sm text-stone-600 dark:text-stone-300">
               <p>{event.host} · {eventTypeLabels[event.type]}</p>
               <p className="text-xs">지역 구분: {{ domestic: '국내', overseas: '해외', unknown: '미확인' }[eventTerritory(event)]}{event.territoryBasis === 'community-location' ? ' · 주최 커뮤니티 위치 기준' : ' · 공개 도시·기관 표기 기준'}</p>
-              {event.applicationStart && <p>신청 시작: {format(event.applicationStart)}</p>}
-              <p>신청 마감: {event.applicationEnd ? <>{format(event.applicationEnd)} · <strong>{deadlineLabel(event.applicationEnd, now)?.label}</strong></> : '미확인 · 원문에서 확인'}</p>
+              {event.applicationStart && <p>신청 시작: {format(event.applicationStart)} (한국시간)</p>}
+              <p>신청 마감: {event.applicationEnd ? <>{format(event.applicationEnd)} (한국시간) · <strong>{deadlineLabel(event.applicationEnd, now)?.label}</strong></> : '미확인 · 원문에서 확인'}</p>
               {event.scheduleUnknown && <p className="font-semibold text-amber-700 dark:text-amber-300">변경 일정 미확인 · 아래 날짜는 변경 전 참고 일정입니다.</p>}
               <p>{event.scheduleUnknown ? '기존 행사 일정' : '행사 일정'}: {event.eventStart ? format(event.eventStart) + ' (한국시간)' : event.eventDate ? event.eventDate + (event.eventEndDate && event.eventEndDate !== event.eventDate ? ' ~ ' + event.eventEndDate : '') + ' (현지 날짜·시각 미확인)' : '미확인'}</p>
               {event.eventEnd && <p>행사 종료: {format(event.eventEnd)} (한국시간)</p>}
