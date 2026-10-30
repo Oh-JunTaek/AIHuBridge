@@ -32,7 +32,7 @@ export default function Qualifications() {
   const open = (id: string) => { const next = new URLSearchParams(params); next.set('exam', id); setParams(next, { replace: true }); };
 
   return <div className="space-page space-library qualifications-page mx-auto max-w-6xl px-4 py-6">
-    <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>AI 자격증</h1><p className="space-caption">나에게 맞는 시험을 찾아 준비해 보세요.</p></div></header>
+    <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>자격관</h1><p className="space-caption">컴퓨터 활용부터 AI까지, 나에게 맞는 자격시험을 찾아보세요.</p></div></header>
     <section className="qualification-filters" aria-label="자격증 검색과 필터">
       <div className="qualification-filter-heading"><div><span>자격 탐색</span><h2>나에게 맞는 자격 찾기</h2></div><p>시험 언어와 자격 종류를 비교해 보세요.</p></div>
       <div className="qualification-filter-grid">
@@ -43,7 +43,7 @@ export default function Qualifications() {
       </div>
       <div className="qualification-filter-footer"><p role="status">조건에 맞는 자격증 {results.length}개</p><button type="button" onClick={() => { setQuery(''); setTag(''); setClassification(''); setLanguage(''); }}>조건 초기화</button></div>
     </section>
-    <section className="qualification-results" aria-label="AI 자격증 목록">
+    <section className="qualification-results" aria-label="자격증 목록">
       <div className="results-heading"><div><span>학습관의 자격 안내</span><h2>도전할 자격증 살펴보기</h2></div><p>시험 조건은 공식 페이지에서 다시 확인하세요</p></div>
       {results.length === 0 && <p className="qualification-empty">조건에 맞는 자격증이 없습니다. 검색어나 필터를 변경해 보세요.</p>}
       <div className="qualification-list">{results.map((item) => <button type="button" className="qualification-card" key={item.id} onClick={() => open(item.id)}>

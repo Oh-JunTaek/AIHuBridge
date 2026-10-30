@@ -9,8 +9,8 @@ const exhibits = [
   { to: '/updates', title: 'AI 소식', description: 'AI의 새로운 소식과 연구를 살펴보세요.', Icon: CompassIcon, style: 'news' },
   { to: '/calendar', title: 'AI 캘린더', description: '관심 있는 AI 행사와 일정을 찾아보세요.', Icon: ClockIcon, style: 'calendar' },
   { to: '/path', title: '추천 커리큘럼', description: '기초부터 이어지는 학습 경로를 만나보세요.', Icon: BookIcon, style: 'learning' },
-  { to: '/certs', title: '교육·인증', description: '다양한 교육 과정과 인증 정보를 확인하세요.', Icon: BadgeIcon, style: 'certs' },
-  { to: '/qualifications', title: 'AI 자격증', description: '나에게 맞는 AI 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'certs' },
+  { to: '/certs', title: '수료관', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', Icon: BadgeIcon, style: 'certs' },
+  { to: '/qualifications', title: '자격관', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'certs' },
 ];
 
 export default function Home() {

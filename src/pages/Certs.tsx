@@ -1,16 +1,16 @@
 import { MobileFilter } from '../components/MobileFilter';
-import { StageSymbol } from '../components/StageSymbol';
 import { useEffect, useState } from 'react';
 import { certifications } from '../data/certifications';
 import { selectCertifications } from '../lib/cert-rules.mjs';
 import { CertCard } from '../components/CertCard';
 import { useT } from '../lib/i18n';
-import type { CertType } from '../types';
 import { Link } from 'react-router-dom';
+
+// 공식 과정별 수료증 발급을 확인한 항목만 수료관에 노출한다.
+const completionCourseIds = new Set(['dlai-prompting', 'hf-agents', 'google-ai-essentials', 'coursera-ai-for-everyone']);
 
 export default function Certs() {
   const t = useT();
-  const [tab, setTab] = useState<CertType>('course');
   const [language, setLanguage] = useState('');
   const [cost, setCost] = useState('');
   const [query, setQuery] = useState('');
@@ -19,17 +19,12 @@ export default function Certs() {
     const timer = window.setInterval(() => setNow(Date.now()), 60000);
     return () => window.clearInterval(timer);
   }, []);
-  const shown = selectCertifications(certifications, { type: tab, language, cost, query }, now);
-
-  const tabs: { id: CertType; label: string; symbol: 'foundation' | 'try' | 'certify' }[] = [
-    { id: 'course', label: '학습 과정', symbol: 'foundation' },
-    { id: 'micro', label: '역량 인증', symbol: 'certify' },
-  ];
+  const shown = selectCertifications(certifications.filter((course) => completionCourseIds.has(course.id)), { type: 'course', language, cost, query }, now);
 
   return (
     <div className="space-page space-library space-certs mx-auto max-w-6xl px-4 py-6">
       <header className="space-header mb-6 flex flex-wrap items-baseline justify-between gap-3">
-        <div><p className="space-label">학습관</p><h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('certs.title')}</h1><p className="space-caption">교육과 인증 정보를 한곳에서 살펴보세요.</p></div>
+        <div><p className="space-label">학습관</p><h1 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{t('certs.title')}</h1><p className="space-caption">수료증을 받을 수 있는 교육과정을 살펴보세요.</p></div>
         <Link to="/path" className="text-xs underline">
           {t('certs.back')}
         </Link>
@@ -37,27 +32,11 @@ export default function Certs() {
 
       <div className="reading-layout">
       <a className="results-skip" href="#reading-results">결과 바로 보기</a>
-      <aside className="reading-sidebar" aria-label="교육·인증 탐색">
+      <aside className="reading-sidebar" aria-label="수료 과정 탐색">
       <p className="reading-label">배움의 자료 살펴보기</p>
-      <MobileFilter summary={`${t('certs.tab.' + tab)} · ${[language, cost, query].filter(Boolean).length ? `추가 조건 ${[language, cost, query].filter(Boolean).length}개` : '전체 조건'}`}>
-      <nav aria-label="교육·인증 유형" className="mb-4 flex flex-wrap gap-2 text-sm">
-        {tabs.map((tb) => (
-          <button
-            key={tb.id}
-            onClick={() => setTab(tb.id)}
-            aria-pressed={tab === tb.id}
-            className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 font-medium ${
-              tab === tb.id
-                ? 'bg-blue-900 text-white'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300'
-            }`}
-          >
-            <StageSymbol kind={tb.symbol} /><span>{t('certs.tab.' + tb.id)}</span>
-          </button>
-        ))}
-      </nav>
+      <MobileFilter summary={`수료 과정 · ${[language, cost, query].filter(Boolean).length ? `추가 조건 ${[language, cost, query].filter(Boolean).length}개` : '전체 조건'}`}>
 
-      <Link to="/qualifications" className="qualification-catalog-link">자격시험은 AI 자격증에서 살펴보기 →</Link>
+      <Link to="/qualifications" className="qualification-catalog-link">자격시험은 자격관에서 살펴보기 →</Link>
 
       <p className="mb-4 text-xs text-stone-500 dark:text-stone-400">{t('certs.note')}</p>
 
@@ -71,9 +50,9 @@ export default function Certs() {
       </section>
       </MobileFilter>
       </aside>
-      <section id="reading-results" className="reading-results" aria-label="교육·인증 목록">
+      <section id="reading-results" className="reading-results" aria-label="수료 과정 목록">
       <div className="results-heading"><div><span>학습관의 자료실</span><h2>나에게 필요한 배움</h2></div><p>비용과 조건은 공식 페이지에서 확인하세요</p></div>
-      {!shown.length && <p className="py-6 text-sm">조건에 맞는 교육·인증이 없습니다. 다른 유형을 선택하거나 조건을 초기화해 보세요.</p>}
+      {!shown.length && <p className="py-6 text-sm">조건에 맞는 수료 과정이 없습니다. 검색어나 조건을 변경해 보세요.</p>}
 
       <div className="grid gap-4 sm:grid-cols-2">
         {shown.map((c) => (
