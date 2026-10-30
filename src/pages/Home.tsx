@@ -12,8 +12,8 @@ const exhibits = [
   { to: '/social', title: '기업 SNS', description: 'AI 기업과 관계자의 소식을 살펴보세요.', Icon: CompassIcon, style: 'social' },
   { to: '/path', title: '추천 커리큘럼', description: '기초부터 이어지는 학습 경로를 만나보세요.', Icon: BookIcon, style: 'learning' },
   { to: '/resources', title: '학습 자료실', description: '강의와 실습, 프로젝트를 찾아보세요.', Icon: BookIcon, style: 'resources' },
-  { to: '/certs', title: '수료관', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', Icon: BadgeIcon, style: 'completion' },
-  { to: '/qualifications', title: '자격관', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'qualifications' },
+  { to: '/certs', title: '수료증 취득 강의', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', Icon: BadgeIcon, style: 'completion' },
+  { to: '/qualifications', title: '자격증 도전', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'qualifications' },
 ] as const;
 
 export default function Home() {

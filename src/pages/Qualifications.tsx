@@ -32,7 +32,7 @@ export default function Qualifications() {
   const open = (id: string) => { const next = new URLSearchParams(params); next.set('exam', id); setParams(next, { replace: true }); };
 
   return <div className="space-page space-library qualifications-page mx-auto max-w-6xl px-4 py-6">
-    <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>자격관</h1><p className="space-caption">컴퓨터 활용부터 AI까지, 나에게 맞는 자격시험을 찾아보세요.</p></div></header>
+    <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>자격증 도전</h1><p className="space-caption">컴퓨터 활용부터 AI까지, 나에게 맞는 자격시험을 찾아보세요.</p></div></header>
     <section className="qualification-filters" aria-label="자격증 검색과 필터">
       <div className="qualification-filter-heading"><div><span>자격 탐색</span><h2>나에게 맞는 자격 찾기</h2></div><p>시험 언어와 자격 종류를 비교해 보세요.</p></div>
       <div className="qualification-filter-grid">

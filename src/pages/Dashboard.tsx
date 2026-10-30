@@ -27,12 +27,12 @@ export default function Dashboard() {
           <Link to="/social"><span>기업 SNS</span><WayfindingIcon /></Link>
           <Link to="/path"><span>추천 커리큘럼</span><WayfindingIcon /></Link>
           <Link to="/resources"><span>학습 자료실</span><WayfindingIcon /></Link>
-          <Link to="/certs"><span>수료관</span><WayfindingIcon /></Link>
-          <Link to="/qualifications"><span>자격관</span><WayfindingIcon /></Link>
+          <Link to="/certs"><span>수료증 취득 강의</span><WayfindingIcon /></Link>
+          <Link to="/qualifications"><span>자격증 도전</span><WayfindingIcon /></Link>
         </aside>
         <div className="dashboard-content">
           <div className="results-heading"><div><span>정보관의 소식</span><h2>최근 소식 살펴보기</h2></div><Link to="/updates">소식 모두 보기 <WayfindingIcon /></Link></div>
-          <NewsStatus result={result} loading={loading} onRetry={reload} />
+          <NewsStatus result={result} loading={loading} onRetry={reload} showWarning={false} />
           {!loading && <TodayBrief items={items} />}
           {!loading && result?.status === 'success' && items.length === 0 && <p className="text-sm text-stone-500">최근 7일 소식이 없습니다. AI 소식의 게시 기간을 넓혀 보관 자료를 찾아보세요.</p>}
           {!loading && items.length > 0 && <section className="mt-8"><h2 className="mb-3 text-sm font-semibold text-stone-600 dark:text-stone-300">{t('home.pick')}</h2><div className="grid gap-4 sm:grid-cols-2">{items.slice(0, 4).map((it) => <NewsCard key={it.id} item={it} />)}</div></section>}

@@ -30,7 +30,7 @@ export default function Updates() {
   const sources = useMemo(() => [...new Set(items.map((item) => item.source))].sort(), [items]);
   const t = useT();
 
-  const shown = useMemo(() => filterNews(items, { category: ['전체', 'models'].includes(active) ? undefined : active, modelsOnly: active === 'models', lang, source, query, origin, topicGroup: group, topic, openness, publication, paperKind, company, days: days === 'all' ? undefined : Number(days), now }),
+  const shown = useMemo(() => filterNews(items, { category: ['전체', 'models'].includes(active) ? undefined : active, modelsOnly: active === 'models', lang, source, query, origin, topicGroup: group, topic, openness, publication, paperKind, company, days: Number(days), now }),
     [items, active, lang, source, query, origin, group, topic, openness, publication, paperKind, company, days, now]);
   useEffect(() => setVisibleCount(24), [active, lang, source, query, origin, topic, openness, publication, paperKind, company, days]);
   const changeCategory = (category: string) => { setActive(category); setTopic(''); setOpenness(''); setPublication(''); setPaperKind(''); setCompany(''); };
@@ -51,7 +51,7 @@ export default function Updates() {
       <a className="results-skip" href="#reading-results">결과 바로 보기</a>
       <aside className="reading-sidebar" aria-label="소식 탐색">
       <p className="reading-label">관심 있는 소식 찾기</p>
-      <MobileFilter summary={`${active === '전체' ? '전체 분야' : active === 'models' ? '모델 소식' : t('category.' + active)} · ${origin === 'domestic' ? '국내 출처' : '전체 출처'} · ${days === 'all' ? '전체 기간' : `최근 ${days}일`}${[lang, source, query, topic, openness, publication, paperKind, company].filter(Boolean).length ? ` · 추가 조건 ${[lang, source, query, topic, openness, publication, paperKind, company].filter(Boolean).length}개` : ''}`}>
+      <MobileFilter summary={`${active === '전체' ? '전체 분야' : active === 'models' ? '모델 소식' : t('category.' + active)} · ${origin === 'domestic' ? '국내 출처' : '전체 출처'} · 최근 ${days}일${[lang, source, query, topic, openness, publication, paperKind, company].filter(Boolean).length ? ` · 추가 조건 ${[lang, source, query, topic, openness, publication, paperKind, company].filter(Boolean).length}개` : ''}`}>
       <nav aria-label="소식 분야" className="mb-5 flex flex-wrap gap-2 text-sm">
         {categories.map((c) => (
           <button
@@ -76,7 +76,7 @@ export default function Updates() {
       <section aria-label="소식 탐색 조건" className="mb-5 rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
         <p className="mb-3 text-xs text-stone-500 dark:text-stone-400">기본 최근 7일 · 일반 소식 30일, 모델 소식 90일, 논문 180일 보관. 기간을 바꾸면 이전 자료도 검색할 수 있습니다.</p>
         <div className="grid gap-3 sm:grid-cols-2">
-          <label className="grid gap-1 text-sm">게시 기간<select value={days} onChange={(event) => setDays(event.target.value)} className={selectStyle}><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="90">최근 90일</option><option value="180">최근 180일</option><option value="all">보관 중인 전체 기간</option></select></label>
+          <label className="grid gap-1 text-sm">게시 기간<select value={days} onChange={(event) => setDays(event.target.value)} className={selectStyle}><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="90">최근 90일</option><option value="180">최근 180일</option></select></label>
           <label className="grid gap-1 text-sm">검색어
             <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="제목·주제·출처 검색"
               className="min-w-0 rounded-lg border border-stone-300 bg-transparent px-3 py-2 dark:border-stone-600" />

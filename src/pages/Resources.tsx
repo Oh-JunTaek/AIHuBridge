@@ -11,7 +11,7 @@ export default function Resources() {
   const [query, setQuery] = useState('');
   const shown = useMemo(() => learningResources.filter((item) => (!kind || item.kinds.includes(kind)) && query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean).every((word) => `${item.name} ${item.provider} ${item.description}`.toLocaleLowerCase().includes(word))), [kind, query]);
   return <div className="space-page space-library resources-page mx-auto max-w-6xl px-4 py-6">
-    <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>학습 자료실</h1><p className="space-caption">강의부터 직접 해보는 실습과 프로젝트까지, 배움의 자료를 찾아보세요.</p></div><Link to="/certs" className="text-xs">수료관 보기 <WayfindingIcon /></Link></header>
+    <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>학습 자료실</h1><p className="space-caption">강의부터 직접 해보는 실습과 프로젝트까지, 배움의 자료를 찾아보세요.</p></div><Link to="/certs" className="text-xs">수료증 취득 강의 보기 <WayfindingIcon /></Link></header>
     <div className="reading-layout"><a className="results-skip" href="#resources-results">결과 바로 보기</a>
       <aside className="reading-sidebar" aria-label="학습 자료 탐색"><p className="reading-label">배움의 방식 찾기</p>
         <MobileFilter summary={`${kind || '모든 자료'} · ${query ? '검색 중' : '전체 검색'}`}>

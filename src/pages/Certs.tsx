@@ -6,7 +6,7 @@ import { CertCard } from '../components/CertCard';
 import { useT } from '../lib/i18n';
 import { Link } from 'react-router-dom';
 
-// 공식 과정별 수료증 발급을 확인한 항목만 수료관에 노출한다.
+// 공식 과정별 수료증 발급을 확인한 항목만 수료증 취득 강의에 노출한다.
 const completionCourseIds = new Set(['dlai-prompting', 'hf-agents', 'google-ai-essentials', 'coursera-ai-for-everyone']);
 
 export default function Certs() {
@@ -36,7 +36,7 @@ export default function Certs() {
       <p className="reading-label">배움의 자료 살펴보기</p>
       <MobileFilter summary={`수료 과정 · ${[language, cost, query].filter(Boolean).length ? `추가 조건 ${[language, cost, query].filter(Boolean).length}개` : '전체 조건'}`}>
 
-      <Link to="/qualifications" className="qualification-catalog-link">자격시험은 자격관에서 살펴보기 →</Link>
+      <Link to="/qualifications" className="qualification-catalog-link">자격시험은 자격증 도전에서 살펴보기 →</Link>
 
       <p className="mb-4 text-xs text-stone-500 dark:text-stone-400">{t('certs.note')}</p>
 
