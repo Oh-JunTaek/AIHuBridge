@@ -569,3 +569,33 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .qualification-layout .qualification-list { gap:0; border:1px solid #dbe6ee; border-radius:15px; overflow:hidden; background:white; } .qualification-layout .qualification-card { border:0; border-radius:0; border-bottom:1px solid #e3ebef; box-shadow:none; } .qualification-layout .qualification-card:last-child { border-bottom:0; } .qualification-layout .qualification-card:hover { transform:none; background:#f6fafc; }
 
 .security-toggle { margin:0 0 1rem; padding:.6rem .8rem; border:1px solid #c9dae5; border-radius:9px; background:#edf5f9; color:#315d78; font-size:.8rem; }
+
+/* 배너 이동 링크와 자격 탐색 */
+.landing-button { background:#294b70; color:#fff; box-shadow:0 4px 12px #173b6018; }
+.landing-button:hover { background:#365e84; }
+.landing-button .wayfinding-icon { color:#fff; }
+.landing-button .wayfinding-ring { display:none; }
+.space-header > a { background:transparent; box-shadow:none; }
+.qualification-layout .qualification-filters { padding:1.35rem; }
+.qualification-layout .qualification-filter-heading { display:block; margin-bottom:1.2rem; }
+.qualification-layout .qualification-filter-heading h2 { font-size:1.05rem; line-height:1.4; }
+.qualification-category > div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.45rem; }
+.qualification-category button { min-width:0; display:flex; gap:.35rem; justify-content:center; align-items:center; padding:.55rem .3rem; font-size:.76rem; white-space:nowrap; }
+.qualification-search { display:block; margin:0 0 1rem; }
+.qualification-search input { width:100%; min-height:48px; border:1px solid #dbe6ee; border-radius:12px; background:#ffffffed; color:#173b60; padding:.75rem 1rem; }
+.qualification-search input:focus-visible { outline:2px solid #3476a4; outline-offset:2px; }
+.qualification-layout .qualification-card { overflow:hidden; isolation:isolate; }
+.qualification-layout .qualification-card::before { content:''; position:absolute; inset:-60% -85%; z-index:-1; pointer-events:none; transform:translateX(-110%) rotate(18deg); background:linear-gradient(100deg,transparent 40%,var(--sheen,#caddea55) 50%,transparent 60%); }
+.qualification-layout .qualification-card.rate-low { --sheen:#eaa9a970; }
+.qualification-layout .qualification-card.rate-mid { --sheen:#efce8570; }
+.qualification-layout .qualification-card.rate-high { --sheen:#cbd6df90; }
+.qualification-layout .qualification-card.rate-unknown { --sheen:#c8deeb70; }
+.qualification-layout .qualification-card:hover { background:#fff; }
+.qualification-layout .qualification-card:hover::before,.qualification-layout .qualification-card:focus-visible::before { animation:qualification-sheen .65s ease-out; }
+@keyframes qualification-sheen { to { transform:translateX(110%) rotate(18deg); } }
+.qualification-meta { color:#8195a4; font-size:.72rem; font-weight:500; }
+.qualification-rate { display:block; margin-top:.55rem; color:#7f6b65; font-size:.71rem; }
+.qualification-guide { margin:-.35rem 0 .8rem; color:#748b9b; font-size:.72rem; line-height:1.5; }
+.qualification-rate-detail { margin-top:1.2rem; padding:1rem; background:#f5f9fb; border-radius:10px; color:#46677c; font-size:.82rem; line-height:1.6; }
+.qualification-rate-detail p { margin-top:.35rem; }.qualification-rate-detail a { display:inline-block; margin-top:.4rem; text-decoration:underline; }
+@media (prefers-reduced-motion:reduce) { .qualification-layout .qualification-card:hover::before,.qualification-layout .qualification-card:focus-visible::before { animation:none; } }
