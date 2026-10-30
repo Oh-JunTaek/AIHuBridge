@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useT } from '../lib/i18n';
 
 const groups = [
-  { id: 'learning', key: 'nav.learning', items: [{ to: '/path', key: 'nav.path' }, { to: '/certs', key: 'nav.certs' }] },
+  { id: 'learning', key: 'nav.learning', items: [{ to: '/path', key: 'nav.path' }, { to: '/certs', key: 'nav.certs' }, { to: '/qualifications', key: 'nav.qualifications' }] },
   { id: 'information', key: 'nav.information', items: [{ to: '/updates', key: 'nav.updates' }, { to: '/calendar', key: 'nav.calendar' }] },
 ];
 const activeStyle = 'bg-blue-100 text-blue-900 dark:bg-blue-900/40 dark:text-blue-100';
@@ -15,6 +15,7 @@ export function SiteNavigation() {
   const location = useLocation();
   const [open, setOpen] = useState<string | null>(null);
   const nav = useRef<HTMLElement>(null);
+  const pointer = useRef('');
 
   useEffect(() => { setOpen(null); }, [location]);
   useEffect(() => {
@@ -30,7 +31,7 @@ export function SiteNavigation() {
       onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setOpen(null); }}
       onKeyDown={(event) => {
         if (event.key === 'Escape' && open) {
-          nav.current?.querySelector<HTMLButtonElement>(`#nav-${open}-trigger`)?.focus();
+          nav.current?.querySelector<HTMLAnchorElement>(`#nav-${open}-trigger`)?.focus();
           setOpen(null);
         }
       }}>
@@ -43,9 +44,11 @@ export function SiteNavigation() {
             onPointerEnter={(event) => { if (event.pointerType === 'mouse') setOpen(group.id); }}
             onPointerLeave={(event) => { if (event.pointerType === 'mouse' && !(document.activeElement instanceof HTMLAnchorElement && event.currentTarget.contains(document.activeElement))) setOpen((current) => current === group.id ? null : current); }}>
             <div className={`nav-primary ${active ? 'is-active' : ''} ${expanded ? 'is-expanded' : ''}`}>
-              <NavLink to={group.items[0].to} onFocus={() => setOpen(group.id)} onClick={() => setOpen(null)} className={`nav-primary-link ${focusStyle}`}>{t(group.key)}</NavLink>
-              <button type="button" id={`nav-${group.id}-trigger`} aria-label={`${t(group.key)} 하위 메뉴`} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
-                onClick={() => setOpen(expanded ? null : group.id)} className={`nav-expand ${focusStyle}`}>메뉴</button>
+              <NavLink id={`nav-${group.id}-trigger`} to={group.items[0].to} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
+                onPointerDown={(event) => { pointer.current = event.pointerType; }}
+                onFocus={() => { if (pointer.current !== 'touch') setOpen(group.id); }}
+                onClick={(event) => { if (pointer.current === 'touch' && !expanded) { event.preventDefault(); setOpen(group.id); } else setOpen(null); pointer.current = ''; }}
+                className={`nav-primary-link ${focusStyle}`}>{t(group.key)}</NavLink>
             </div>
             <ul id={`nav-${group.id}-links`} hidden={!expanded}
               className="absolute left-0 right-0 top-full z-30 space-y-1 nav-popup rounded-xl border border-stone-200 bg-white p-2 shadow-lg dark:border-stone-700 dark:bg-stone-900 sm:right-auto sm:w-52 lg:left-auto lg:right-0">

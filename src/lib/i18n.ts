@@ -18,6 +18,7 @@ const ko: Dict = {
     information: '정보관',
     path: '추천 커리큘럼',
     certs: '교육·인증',
+    qualifications: 'AI 자격증',
     calendar: 'AI 캘린더',
   },
   footer: { copy: 'AI 소식·교육·일정을 한곳에서' },
@@ -53,7 +54,7 @@ const ko: Dict = {
   certs: {
     title: '교육·인증',
     back: '추천 커리큘럼으로 돌아가기',
-    note: '교육과 시험의 비용·조건은 공식 페이지에서 확인하세요. 개인 완료 기록은 제공하지 않습니다.',
+    note: '교육과 역량 인증의 비용·조건은 공식 페이지에서 확인하세요. 개인 완료 기록은 제공하지 않습니다.',
     footer: '비용과 조건은 변경될 수 있습니다. 각 카드의 검토일·공식 근거와 신청 화면을 확인하세요.',
     free: '무료',
     official: '공식 페이지',

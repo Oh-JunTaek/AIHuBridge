@@ -23,7 +23,6 @@ export default function Certs() {
 
   const tabs: { id: CertType; label: string; symbol: 'foundation' | 'try' | 'certify' }[] = [
     { id: 'course', label: '학습 과정', symbol: 'foundation' },
-    { id: 'exam', label: '자격시험', symbol: 'try' },
     { id: 'micro', label: '역량 인증', symbol: 'certify' },
   ];
 
@@ -57,6 +56,8 @@ export default function Certs() {
           </button>
         ))}
       </nav>
+
+      <Link to="/qualifications" className="qualification-catalog-link">자격시험은 AI 자격증에서 살펴보기 →</Link>
 
       <p className="mb-4 text-xs text-stone-500 dark:text-stone-400">{t('certs.note')}</p>
 

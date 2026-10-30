@@ -1,7 +1,27 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { SiteNavigation } from '../components/SiteNavigation';
 
 export default function Root() {
+  const { pathname } = useLocation();
+  const main = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const container = main.current;
+    if (!container || !window.matchMedia('(max-width: 760px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    const seen = new WeakSet<Element>();
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.remove('reveal-pending'); entry.target.classList.add('reveal-visible'); observer.unobserve(entry.target); }
+    }), { threshold: 0.05 });
+    const watch = () => container.querySelectorAll('.space-card, .reading-sidebar, .dashboard-guide, .calendar-board, .qualification-card, .qualification-filters, .exhibition').forEach((element) => {
+      if (seen.has(element)) return;
+      seen.add(element);
+      if (element.getBoundingClientRect().top > window.innerHeight) { element.classList.add('reveal-pending'); observer.observe(element); }
+    });
+    watch();
+    const changes = new MutationObserver(watch);
+    changes.observe(container, { childList: true, subtree: true });
+    return () => { changes.disconnect(); observer.disconnect(); container.querySelectorAll('.reveal-pending').forEach((element) => element.classList.remove('reveal-pending')); };
+  }, [pathname]);
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-700 dark:bg-stone-950 dark:text-stone-200 flex flex-col transition-colors">
@@ -20,8 +40,8 @@ export default function Root() {
         </div>
       </header>
 
-      <main id="main-content" tabIndex={-1} className="w-full flex-1 scroll-mt-36">
-        <Outlet />
+      <main ref={main} id="main-content" tabIndex={-1} className="w-full flex-1 scroll-mt-36">
+        <div key={pathname} className="page-entry"><Outlet /></div>
       </main>
 
       <button type="button" className="back-to-top" aria-label="페이지 맨 위로 이동" onClick={() => { document.getElementById('main-content')?.focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }}>

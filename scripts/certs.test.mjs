@@ -5,6 +5,7 @@ import { loadStaticData } from './lib/static-data.mjs';
 
 const { certifications } = await loadStaticData(new URL('../src/data/certifications.ts', import.meta.url));
 const { stages } = await loadStaticData(new URL('../src/data/path.ts', import.meta.url));
+const { qualifications } = await loadStaticData(new URL('../src/data/qualifications.ts', import.meta.url));
 
 test('실제 인증 자료의 비용·조건·공식 근거·검토일 무결성', () => {
   assert.ok(certifications.length > 0);
@@ -36,17 +37,27 @@ test('무료 영상 청강과 무료 수료증 필터를 구분', () => {
   assert.equal(learning.some((item) => item.id === 'google-ai-essentials'), false);
 });
 test('한국어 포함·미확인 비용·검색 조합과 빈 결과 처리', () => {
-  assert.ok(selectCertifications(certifications, { language: 'ko', query: 'Microsoft AI-901' }).length > 0);
+  assert.ok(selectCertifications(certifications, { language: 'ko', query: '파이썬' }).length > 0);
   assert.equal(selectCertifications(certifications, { query: '없는교육123' }).length, 0);
   assert.ok(selectCertifications(certifications, { cost: 'unknown' }).every((item) => item.learningFee.status === 'unknown' || item.credentialFee.status === 'unknown'));
 });
 test('학습 경로의 모든 참조 유지와 종료된 AI-900 안내 교체', () => {
-  const ids = new Set(certifications.map((item) => item.id));
+  const ids = new Set([...certifications, ...qualifications].map((item) => item.id));
   assert.ok(stages.every((stage) => stage.items.every((item) => ids.has(item.refId))));
-  const ai = certifications.find((item) => item.id === 'msft-ai-900');
-  assert.equal(ai.examCode, 'AI-901');
+  const ai = qualifications.find((item) => item.id === 'msft-ai-900');
+  assert.ok(ai.name.includes('AI-901'));
   assert.equal(ai.url.endsWith('/ai-901/'), true);
   assert.ok(stages.flatMap((stage) => stage.items).some((item) => item.label.includes('AI-901')));
+});
+test('시험과 수강 자료는 분리하고 자격 종류·언어·공식 링크를 유지', () => {
+  assert.ok(certifications.every((item) => item.type !== 'exam'));
+  assert.equal(new Set(qualifications.map((item) => item.id)).size, qualifications.length);
+  assert.ok(qualifications.every((item) => item.language.length && item.classification && item.fee && item.prerequisites && item.validity && /^https:\/\//.test(item.url)));
+  const nvidia = qualifications.find((item) => item.id === 'nvidia-nca-genl');
+  assert.deepEqual(nvidia.language, ['영어']);
+  assert.ok(nvidia.delivery.includes('한국 예약 가능 여부 확인'));
+  assert.ok(nvidia.fee.includes('125'));
+  assert.ok(qualifications.filter((item) => item.id.startsWith('ai-pot')).every((item) => item.classification.includes('국가공인 아님')));
 });
 
 test('수료증 미발급을 무료 발급이나 미확인과 혼동하지 않음', () => {

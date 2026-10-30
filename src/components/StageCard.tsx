@@ -3,6 +3,8 @@ import type { Stage, Level, PCategory, PathFilter } from '../data/path';
 import { getCert } from '../lib/certs';
 import { ClockIcon, ExternalLinkIcon } from './icons';
 import { useT } from '../lib/i18n';
+import { Link } from 'react-router-dom';
+import { qualifications } from '../data/qualifications';
 
 const levelColor: Record<Level, string> = {
   초급: 'bg-emerald-100 text-emerald-700',
@@ -75,7 +77,9 @@ export function StageCard({ stage, filter }: { stage: Stage; filter: PathFilter 
                 <span className="flex items-center gap-1" title={it.estMin === null ? '제공처가 고정 시간을 안내하지 않은 자율 학습 과정입니다.' : '학습 계획용 예상 시간입니다. 실제 소요 시간은 공식 페이지를 확인하세요.'}>
                   <ClockIcon className="h-3 w-3" /> {it.estMin === null ? '자율 학습' : <>약 {it.estMin}{t('ui.min')}</>}
                 </span>
-                {cert?.url ? (
+                {it.kind === 'cert' && qualifications.some((item) => item.id === it.refId) ? (
+                  <Link to={`/qualifications?exam=${encodeURIComponent(it.refId)}`} className="inline-flex h-9 w-9 items-center justify-center rounded text-stone-500 hover:bg-stone-100" aria-label={`${it.label} 자격증 상세 보기`}><ExternalLinkIcon className="h-4 w-4" /></Link>
+                ) : cert?.url ? (
                   <a
                     href={cert.url}
                     target="_blank"

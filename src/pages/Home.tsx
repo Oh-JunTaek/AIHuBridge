@@ -10,6 +10,7 @@ const exhibits = [
   { to: '/calendar', title: 'AI 캘린더', description: '관심 있는 AI 행사와 일정을 찾아보세요.', Icon: ClockIcon, style: 'calendar' },
   { to: '/path', title: '추천 커리큘럼', description: '기초부터 이어지는 학습 경로를 만나보세요.', Icon: BookIcon, style: 'learning' },
   { to: '/certs', title: '교육·인증', description: '다양한 교육 과정과 인증 정보를 확인하세요.', Icon: BadgeIcon, style: 'certs' },
+  { to: '/qualifications', title: 'AI 자격증', description: '나에게 맞는 AI 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'certs' },
 ];
 
 export default function Home() {

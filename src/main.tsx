@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Updates from './pages/Updates';
 import Path from './pages/Path';
 import Certs from './pages/Certs';
+import Qualifications from './pages/Qualifications';
 import Calendar from './pages/Calendar';
 import Dev from './pages/Dev';
 import NotFound from './pages/NotFound';
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
         { path: 'research', element: <LegacyUpdatesRedirect /> },
         { path: 'path', element: <Path /> },
         { path: 'certs', element: <Certs /> },
+        { path: 'qualifications', element: <Qualifications /> },
         { path: 'calendar', element: <Calendar /> },
         { path: 'dev', element: <Dev /> },
         { path: 'settings', element: <Navigate to="/" replace /> },

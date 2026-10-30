@@ -82,7 +82,9 @@ try {
 try {
   const { stages } = await loadStaticData(new URL('../src/data/path.ts', import.meta.url));
   const { certifications } = await loadStaticData(new URL('../src/data/certifications.ts', import.meta.url));
-  const ids = new Set(certifications.map((item) => item.id));
+  const { qualifications } = await loadStaticData(new URL('../src/data/qualifications.ts', import.meta.url));
+  const ids = new Set([...certifications, ...qualifications].map((item) => item.id));
+  check('자격시험 ID·필수 정보·공식 링크', new Set(qualifications.map((item) => item.id)).size === qualifications.length && qualifications.every((item) => item.id && item.name && item.provider && item.classification && item.language.length && item.fee && item.prerequisites && item.validity && /^https:\/\//.test(item.url) && item.preparation.every((resource) => /^https:\/\//.test(resource.url))), `${qualifications.length}개 항목`);
   const refs = stages.flatMap((stage) => stage.items.map((item) => item.refId));
   check('학습 경로 교육 참조 무결성', refs.length > 0 && refs.every((ref) => ids.has(ref)), `${refs.length}개 항목`);
 } catch (e) {
