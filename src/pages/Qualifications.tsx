@@ -4,6 +4,7 @@ import { qualifications } from '../data/qualifications';
 import { groupOf, groupResults } from '../lib/qualification-groups.mjs';
 import { MobileFilter } from '../components/MobileFilter';
 import { WayfindingIcon } from '../components/WayfindingIcon';
+import kdataSymbol from '../assets/kdata-symbol.png';
 
 const passRates: Record<string, { year: number; practical: number; written: number; url: string }> = { 'information-processing-engineer': { year: 2025, practical: 22.1, written: 65, url: 'https://www.q-net.or.kr/crf005.do?gId=&gSite=Q&id=crf00503s01&jmCd=1320&jmInfoDivCcd=B0&jmNm=' } };
 const currentRate = (id: string) => { const rate = passRates[id]; return rate?.year === new Date().getFullYear() - 1 ? rate : undefined; };
@@ -54,7 +55,8 @@ export default function Qualifications() {
       <div className="results-heading"><div><span>학습관의 자격 안내</span><h2>자격증</h2></div></div>
       <label className="qualification-search"><span className="sr-only">자격증·주관사 검색</span><input type="search" placeholder="자격증 이름 또는 주관사 검색" value={query} onChange={(e) => setQuery(e.target.value)} /></label>
       {results.length === 0 && <p className="qualification-empty">조건에 맞는 자격증이 없습니다. 검색어나 필터를 변경해 보세요.</p>}
-      <div className="qualification-list">{visibleResults.map((item) => <button type="button" className={`qualification-card rate-${rateClass(item.id)}`} key={item.id} onClick={() => open(item.id)}>
+      <div className="qualification-list">{visibleResults.map((item) => <button type="button" className={`qualification-card rate-${rateClass(item.id)}${item.provider === '한국데이터산업진흥원' ? ' has-provider-symbol' : ''}`} key={item.id} onClick={() => open(item.id)}>
+        {item.provider === '한국데이터산업진흥원' && <img className="qualification-provider-symbol" src={kdataSymbol} alt="" aria-hidden="true" />}
         <span className="qualification-card-top"><strong>{groupOf(item.id)?.name ?? item.name}</strong><span className="qualification-tags">{categoryOf(item).map((value) => <span key={value}>{value}</span>)}</span></span>
         <span className="qualification-description">{item.id.startsWith('computer-skills-') ? '스프레드시트와 데이터베이스 등 컴퓨터 활용 능력을 평가합니다.' : item.intro}</span>
         <span className="qualification-meta"><span>{item.provider}</span><span>{[...new Set((groupOf(item.id)?.ids.map((id) => qualifications.find((entry) => entry.id === id)).filter((entry) => entry && results.includes(entry)).map((entry) => displayClass(entry!.classification)) ?? [displayClass(item.classification)]))].join(' · ')}</span><span>{item.language.join(' · ')}</span>{currentRate(item.id) && <span>{currentRate(item.id)?.year}년 실기 합격률 {currentRate(item.id)?.practical}%</span>}{item.examFree === true && <span>시험 무료</span>}</span>
