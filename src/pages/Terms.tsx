@@ -21,7 +21,7 @@ export default function Terms() {
         </section>
         <section>
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">4. 문의</h2>
-          <p className="mt-2">서비스 관련 문의 및 정보 정정 요청의 운영 주체는 eunmastudio입니다. 공개 문의 주소는 추후 추가 예정입니다.</p>
+          <p className="mt-2">서비스 관련 문의 및 정보 정정 요청: <a href="mailto:eunmastudio@gmail.com" className="underline">eunmastudio@gmail.com</a> (eunmastudio)</p>
         </section>
       </div>
     </div>

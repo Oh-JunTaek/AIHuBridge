@@ -2,6 +2,13 @@
 
 확인일: 2026-10-26. 공개 여부·접근 정책·이용 안내를 확인하고 최소 정보만 제공합니다. 이 표가 모든 콘텐츠의 포괄적 재사용 허가를 의미하지 않습니다. 출처 정책 변경 시 재확인이 필요합니다.
 
+## 기업 SNS 및 학습 자료 (2026-10-30)
+
+- 기업 SNS는 [Bluesky 공개 API](https://docs.bsky.app/docs/api/app-bsky-feed-get-author-feed)를 브라우저에서 직접 조회한다. 계정별 최신 100건, 원문 링크·작성자·시각과 짧은 내용만 표시하고 게시물은 서버나 브라우저 저장소에 보관하지 않는다. 삭제된 글은 다음 조회에서 사라지며 삭제·정정 요청은 공개 문의 이메일로 접수 후 `suppressedPostUris`에 반영한다. API 실패는 계정별로 표시한다.
+- 계정: [Anthropic 공식](https://bsky.app/profile/anthropic.com), [Hugging Face 공식](https://bsky.app/profile/hf.co), [Thomas Wolf 개인](https://bsky.app/profile/thomwolf.bsky.social). Thomas Wolf의 소속과 계정은 [Hugging Face 프로필](https://huggingface.co/thomwolf)에서도 확인했다. 관계자의 개인 의견은 회사의 공식 입장으로 취급하지 않는다. 민감 라벨과 운영자 차단 목록을 존중하며 발표·예고·추측 자체는 제외하지 않는다.
+- [Bluesky 개발자 지침](https://bsky.network/docs/developer-guidelines/)의 공개 연락처·삭제 요청 대응에 따라 사용자 제공 문의 주소를 표시한다. 요청 제한과 각 계정의 상태는 변경될 수 있다. 이 연동은 자동 저장·일일 수집에 참여하지 않는다.
+- 학습 자료실은 기존 정적 교육 자료와 [OpenAI Academy](https://academy.openai.com/), [Claude Academy](https://academy.claude.com/), [Kaggle Pandas](https://www.kaggle.com/learn/pandas), [Google ML 실습](https://developers.google.com/machine-learning/crash-course/exercises)을 공식 링크로 연결한다. 한국어 지원과 실습 비용이 확인되지 않은 항목은 미확인으로 표기한다.
+
 ## AI 자격시험 자료
 
 AI 자격증 목록은 `src/data/qualifications.ts`에 시험별 주관기관 공식 안내 링크·확인일·응시료·언어·공인 구분을 정적으로 기록한다. 교육 수료증은 포함하지 않으며 공식 문구 발췌와 공식 자료 기반 설명을 구분한다. 한국 온라인 예약 가능 여부, 일부 시험의 조건·비용·유효기간은 미확인으로 표시하고 원문 확인을 안내한다. 개인 응시가 확인되지 않은 AICE Generative는 제외한다. 시험 일정 자동 수집과 캘린더 연동은 하지 않는다. 기존 교육 과정과 시험 자료는 별도로 관리하며 학습 경로의 자격 링크는 새 상세로 연결한다.
@@ -26,7 +33,7 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 
 자동 실행·배포 연결과 에이전트 변경 규칙은 [AUTOMATION.md](../operations/AUTOMATION.md)를 따른다. 교육·인증 가격·수료 조건과 학습 경로은 자동 수집 대상이 아니다.
 
-- 한국시간 07시 기준 하루 1회 예약 실행, AI 일정 출처당 한 번의 목록 요청. 브라우저는 정적 JSON만 요청합니다.
+- 한국시간 07시 기준 하루 1회 예약 실행, AI 일정 출처당 한 번의 목록 요청. 뉴스와 일정은 브라우저에서 정적 JSON을 요청하며, 기업 SNS는 위에 명시한 공개 API를 별도로 직접 조회합니다.
 - HTTP 15초 및 본문 4 MiB 제한. 출처별 실패 격리, 이전 유효 일정 보존, 전체 실패 시 오류 종료.
 - 날짜만 공개된 해외 일정은 마지막 날짜의 UTC-12 하루 끝까지 보수적으로 유지하고 이후 30일 보관한다. 이는 표시·보관 경계이며 실제 시각이나 시간대를 생성하지 않는다.
 - 취소·연기는 원문 상태를 표시해 유지하고 지난 행사·공고는 30일 보관한다. 날짜 미정·비AI·중복·샘플은 새로 만들지 않는다. 기존 일정의 날짜 미정 변경 공지는 변경 전 참고 날짜임을 명시한다. [자료 수명 기준](./CONTENT_LIFECYCLE.md)을 따른다.

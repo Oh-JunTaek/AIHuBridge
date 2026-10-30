@@ -54,6 +54,7 @@ export default function Root() {
         <div className="flex justify-center gap-3 mt-1">
           <NavLink to="terms" className="hover:text-amber-600">이용약관</NavLink>
           <NavLink to="privacy" className="hover:text-amber-600">개인정보 처리방침</NavLink>
+          <a href="mailto:eunmastudio@gmail.com" className="hover:text-amber-600">문의</a>
         </div>
       </footer>
     </div>

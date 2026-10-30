@@ -1,12 +1,16 @@
 import newsDesign from '../assets/exhibit-news-design.png';
 import learningDesign from '../assets/exhibit-learning-design.png';
-import certsDesign from '../assets/exhibit-certs-design.png';
-type ExhibitKind = 'news' | 'calendar' | 'learning' | 'certs';
+import dashboardDesign from '../assets/exhibit-dashboard.png';
+import resourcesDesign from '../assets/exhibit-resources.png';
+import completionDesign from '../assets/exhibit-completion.png';
+import qualificationsDesign from '../assets/exhibit-qualifications.png';
+import socialDesign from '../assets/exhibit-social.png';
+type ExhibitKind = 'news' | 'calendar' | 'learning' | 'dashboard' | 'resources' | 'completion' | 'qualifications' | 'social';
 
 export function ExhibitArt({ kind }: { kind: ExhibitKind }) {
   if (kind !== 'calendar') {
-    const design = { news: newsDesign, learning: learningDesign, certs: certsDesign }[kind];
-    return <div className={`reference-art reference-art-${kind}`} aria-hidden="true"><div className="reference-art-motion"><img src={design} alt="" /></div></div>;
+    const design = { news: newsDesign, learning: learningDesign, dashboard: dashboardDesign, resources: resourcesDesign, completion: completionDesign, qualifications: qualificationsDesign, social: socialDesign }[kind];
+    return <div className={`reference-art reference-art-${kind}`} aria-hidden="true"><div className="reference-art-motion"><img src={design} alt="" loading="lazy" decoding="async" /></div></div>;
   }
   if (kind === 'calendar') return <div className="art-calendar calendar-scene" aria-hidden="true">
     <div className="mini-calendar"><div className="mini-calendar-heading"><strong>AI 일정</strong><span>‹ &nbsp; ›</span></div><div className="mini-calendar-grid">{['일', '월', '화', '수', '목', '금', '토'].map(day => <b key={day}>{day}</b>)}{Array.from({ length: 28 }, (_, i) => <span key={i} className={[8, 15, 23].includes(i) ? 'marked' : ''}>{i + 1}</span>)}</div></div>

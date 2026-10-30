@@ -19,6 +19,8 @@ const ko: Dict = {
     path: '추천 커리큘럼',
     certs: '수료관',
     qualifications: '자격관',
+    resources: '학습 자료실',
+    social: '기업 SNS',
     calendar: 'AI 캘린더',
   },
   footer: { copy: 'AI 소식·교육·일정을 한곳에서' },

@@ -6,12 +6,15 @@ import { ExhibitArt } from '../components/ExhibitArt';
 import { BookIcon, BadgeIcon, ClockIcon, CompassIcon } from '../components/icons';
 
 const exhibits = [
+  { to: '/dashboard', title: '대시보드', description: '새로운 소식과 배움을 한눈에 만나보세요.', Icon: CompassIcon, style: 'dashboard' },
   { to: '/updates', title: 'AI 소식', description: 'AI의 새로운 소식과 연구를 살펴보세요.', Icon: CompassIcon, style: 'news' },
   { to: '/calendar', title: 'AI 캘린더', description: '관심 있는 AI 행사와 일정을 찾아보세요.', Icon: ClockIcon, style: 'calendar' },
+  { to: '/social', title: '기업 SNS', description: 'AI 기업과 관계자의 소식을 살펴보세요.', Icon: CompassIcon, style: 'social' },
   { to: '/path', title: '추천 커리큘럼', description: '기초부터 이어지는 학습 경로를 만나보세요.', Icon: BookIcon, style: 'learning' },
-  { to: '/certs', title: '수료관', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', Icon: BadgeIcon, style: 'certs' },
-  { to: '/qualifications', title: '자격관', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'certs' },
-];
+  { to: '/resources', title: '학습 자료실', description: '강의와 실습, 프로젝트를 찾아보세요.', Icon: BookIcon, style: 'resources' },
+  { to: '/certs', title: '수료관', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', Icon: BadgeIcon, style: 'completion' },
+  { to: '/qualifications', title: '자격관', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'qualifications' },
+] as const;
 
 export default function Home() {
   const carousel = useRef<HTMLDivElement>(null);
@@ -70,7 +73,7 @@ export default function Home() {
       <button className="carousel-side carousel-prev" type="button" aria-label="이전 전시 공간" onClick={() => moveCarousel(-1)}><WayfindingIcon direction="left" /></button>
       <div ref={carousel} className="exhibition-grid" role="region" aria-label="전시 공간 목록" tabIndex={0} onScroll={updateActive}>
         {[...exhibits, ...exhibits, ...exhibits].map(({ to, title, description, Icon, style }, index) => <Link className={`exhibit-card exhibit-${style} ${active === index ? 'is-centered' : ''}`} to={to} key={`${index}-${to}`} aria-hidden={index < exhibits.length || index >= exhibits.length * 2 ? true : undefined} tabIndex={index < exhibits.length || index >= exhibits.length * 2 ? -1 : undefined}>
-          <div className="exhibit-art"><ExhibitArt kind={style as 'news' | 'calendar' | 'learning' | 'certs'} /></div>
+          <div className="exhibit-art"><ExhibitArt kind={style} /></div>
           <div className="exhibit-copy"><Icon className="exhibit-icon" aria-hidden="true" /><h3>{title}</h3><p>{description}</p><WayfindingIcon className="exhibit-arrow" /></div>
         </Link>)}
       </div>

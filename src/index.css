@@ -536,3 +536,25 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
   @keyframes page-appear { from { opacity: .65; } to { opacity: 1; } }
   @keyframes content-appear { from { opacity: .08; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 }
+
+/* 학습 자료를 유형별로 둘러보는 서가 */
+.resource-type-list { display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:1.3rem; }
+.resource-type-list button { padding:.58rem .8rem; border-radius:9px; background:#eaf1f5; color:#345671; font-size:.83rem; transition:background .2s,color .2s; }
+.resource-type-list button[aria-pressed="true"] { background:#1e4b75; color:white; }
+.resource-type-list button:focus-visible, .resource-card a:focus-visible { outline:2px solid #3576a3; outline-offset:3px; }
+.resource-search { display:grid; gap:.45rem; font-size:.8rem; color:#536e82; }
+.resource-search input { min-width:0; width:100%; border:1px solid #cbdde8; border-radius:9px; background:white; padding:.7rem; }
+.resource-help { margin-top:1.2rem; color:#6c8293; font-size:.75rem; line-height:1.6; }
+.resource-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.resource-card { display:flex; flex-direction:column; align-items:flex-start; padding:1.35rem; border:1px solid #dce8ef; border-radius:16px; background:#ffffffed; box-shadow:0 12px 30px #4267870b; }
+.resource-badges { display:flex; flex-wrap:wrap; gap:.35rem; }.resource-badges span { color:#3b6c89; background:#e8f3f8; border-radius:5px; padding:.25rem .5rem; font-size:.7rem; font-weight:700; }
+.resource-card h3 { margin-top:.9rem; color:#173b60; font-size:1.04rem; font-weight:750; }.resource-provider { color:#7790a0; font-size:.76rem; margin-top:.25rem; }
+.resource-description { color:#4e6b80; font-size:.84rem; line-height:1.65; margin-top:.85rem; }.resource-meta { display:grid; gap:.35rem; margin-top:1rem; color:#71899b; font-size:.72rem; line-height:1.5; }
+.resource-card a { margin-top:auto; padding-top:1.2rem; color:#285a7d; font-size:.8rem; font-weight:700; }
+.reference-art-dashboard img,.reference-art-resources img,.reference-art-completion img,.reference-art-qualifications img { width:100%; height:100%; left:0; top:0; object-fit:cover; }
+@media (max-width:640px) { .resource-grid { grid-template-columns:1fr; } }
+.reference-art-social img { width:100%; height:100%; left:0; top:0; object-fit:cover; }
+.social-filter-grid { display:grid; grid-template-columns:1fr 1fr 1fr 2fr; gap:.8rem; }.social-filter-grid label { display:grid; gap:.4rem; font-size:.76rem; color:#4a6780; }.social-filter-grid input,.social-filter-grid select { width:100%; min-width:0; min-height:44px; border:1px solid #cfdee8; border-radius:9px; background:white; padding:.6rem; }
+.social-note { margin-top:1rem; color:#71889a; font-size:.75rem; line-height:1.6; }.social-error { padding:1rem; background:#fff1df; border-radius:10px; color:#835f32; font-size:.85rem; }.social-list { display:grid; gap:.85rem; }
+.social-card { padding:1.25rem; border:1px solid #dce8ef; border-radius:15px; background:white; }.social-card-meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.5rem; color:#6d879b; font-size:.72rem; }.social-author { margin-top:.8rem; color:#234e70; font-weight:700; font-size:.84rem; }.social-text { margin-top:.7rem; white-space:pre-wrap; overflow-wrap:anywhere; color:#47677d; line-height:1.65; font-size:.85rem; }.social-card a { display:inline-block; margin-top:1rem; color:#285a7d; font-weight:700; font-size:.8rem; }
+@media(max-width:640px) { .social-filter-grid { grid-template-columns:1fr 1fr; }.social-filter-grid label:last-child { grid-column:1 / -1; } }

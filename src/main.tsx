@@ -9,6 +9,8 @@ import Updates from './pages/Updates';
 import Path from './pages/Path';
 import Certs from './pages/Certs';
 import Qualifications from './pages/Qualifications';
+import Resources from './pages/Resources';
+import Social from './pages/Social';
 import Calendar from './pages/Calendar';
 import Dev from './pages/Dev';
 import NotFound from './pages/NotFound';
@@ -36,6 +38,8 @@ const router = createBrowserRouter(
         { path: 'path', element: <Path /> },
         { path: 'certs', element: <Certs /> },
         { path: 'qualifications', element: <Qualifications /> },
+        { path: 'resources', element: <Resources /> },
+        { path: 'social', element: <Social /> },
         { path: 'calendar', element: <Calendar /> },
         { path: 'dev', element: <Dev /> },
         { path: 'settings', element: <Navigate to="/" replace /> },

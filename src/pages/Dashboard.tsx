@@ -24,8 +24,11 @@ export default function Dashboard() {
           <span className="dashboard-kicker">AI 허브릿지 둘러보기</span><h2>관심 있는 공간으로</h2>
           <Link to="/updates"><span>AI 소식</span><WayfindingIcon /></Link>
           <Link to="/calendar"><span>AI 캘린더</span><WayfindingIcon /></Link>
+          <Link to="/social"><span>기업 SNS</span><WayfindingIcon /></Link>
           <Link to="/path"><span>추천 커리큘럼</span><WayfindingIcon /></Link>
+          <Link to="/resources"><span>학습 자료실</span><WayfindingIcon /></Link>
           <Link to="/certs"><span>수료관</span><WayfindingIcon /></Link>
+          <Link to="/qualifications"><span>자격관</span><WayfindingIcon /></Link>
         </aside>
         <div className="dashboard-content">
           <div className="results-heading"><div><span>정보관의 소식</span><h2>최근 소식 살펴보기</h2></div><Link to="/updates">소식 모두 보기 <WayfindingIcon /></Link></div>
