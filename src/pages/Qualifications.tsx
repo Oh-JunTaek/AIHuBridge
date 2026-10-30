@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { qualifications } from '../data/qualifications';
+import { groupOf, groupResults } from '../lib/qualification-groups.mjs';
 import { MobileFilter } from '../components/MobileFilter';
 import { WayfindingIcon } from '../components/WayfindingIcon';
 
@@ -29,7 +30,8 @@ export default function Qualifications() {
       && (!tag || categoryOf(item).includes(tag)) && (!classification || item.classification === classification)
       && (!language || item.language.includes(language));
   }).sort((a, b) => a.name.localeCompare(b.name, 'ko', { numeric: true })), [query, tag, classification, language]);
-  const visibleResults = results.filter((item) => item.id !== 'computer-skills-2' || !results.some((other) => other.id === 'computer-skills-1'));
+  const visibleResults = groupResults(results);
+  const selectedGroup = selected ? groupOf(selected.id) : undefined;
 
   useEffect(() => {
     if (selected && dialog.current && !dialog.current.open) dialog.current.showModal();
@@ -53,16 +55,16 @@ export default function Qualifications() {
       <label className="qualification-search"><span className="sr-only">자격증·주관사 검색</span><input type="search" placeholder="자격증 이름 또는 주관사 검색" value={query} onChange={(e) => setQuery(e.target.value)} /></label>
       {results.length === 0 && <p className="qualification-empty">조건에 맞는 자격증이 없습니다. 검색어나 필터를 변경해 보세요.</p>}
       <div className="qualification-list">{visibleResults.map((item) => <button type="button" className={`qualification-card rate-${rateClass(item.id)}`} key={item.id} onClick={() => open(item.id)}>
-        <span className="qualification-card-top"><strong>{item.id.startsWith('computer-skills-') ? '컴퓨터활용능력' : item.name}</strong><span className="qualification-tags">{categoryOf(item).map((value) => <span key={value}>{value}</span>)}</span></span>
+        <span className="qualification-card-top"><strong>{groupOf(item.id)?.name ?? item.name}</strong><span className="qualification-tags">{categoryOf(item).map((value) => <span key={value}>{value}</span>)}</span></span>
         <span className="qualification-description">{item.id.startsWith('computer-skills-') ? '스프레드시트와 데이터베이스 등 컴퓨터 활용 능력을 평가합니다.' : item.intro}</span>
-        <span className="qualification-meta"><span>{item.provider}</span><span>{displayClass(item.classification)}</span><span>{item.language.join(' · ')}</span>{item.examFree === true && <span>시험 무료</span>}</span>
-        {currentRate(item.id) && <span className="qualification-rate">{currentRate(item.id)?.year}년 실기 합격률 {currentRate(item.id)?.practical}%</span>}<span className="qualification-arrow" aria-hidden="true"><WayfindingIcon /></span>
+        <span className="qualification-meta"><span>{item.provider}</span><span>{[...new Set((groupOf(item.id)?.ids.map((id) => qualifications.find((entry) => entry.id === id)).filter((entry) => entry && results.includes(entry)).map((entry) => displayClass(entry!.classification)) ?? [displayClass(item.classification)]))].join(' · ')}</span><span>{item.language.join(' · ')}</span>{currentRate(item.id) && <span>{currentRate(item.id)?.year}년 실기 합격률 {currentRate(item.id)?.practical}%</span>}{item.examFree === true && <span>시험 무료</span>}</span>
+        <span className="qualification-arrow" aria-hidden="true"><WayfindingIcon /></span>
       </button>)}</div>
     </section></div>
     <dialog ref={dialog} className="qualification-dialog" aria-labelledby="qualification-dialog-title" onClose={close}>
       {selected && <div className="qualification-dialog-inner">
         <div className="qualification-dialog-heading"><div><span>자격증 상세 안내</span><h2 id="qualification-dialog-title">{selected.name}</h2><p>{selected.provider} · {displayClass(selected.classification)}</p></div><button type="button" className="qualification-close" aria-label="상세 안내 닫기" onClick={() => dialog.current?.close()}>×</button></div>
-        {selected.id.startsWith('computer-skills-') && <div className="qualification-levels" role="group" aria-label="급수 선택">{['computer-skills-1', 'computer-skills-2'].map((id, index) => <button key={id} type="button" aria-pressed={selected.id === id} onClick={() => open(id)}>{index + 1}급</button>)}</div>}<p className="qualification-dialog-intro">{selected.intro}</p>
+        {selectedGroup && <div className="qualification-levels" role="group" aria-label="급수 선택">{selectedGroup.ids.map((id) => { const level = qualifications.find((item) => item.id === id); return level && <button key={id} type="button" aria-pressed={selected.id === id} onClick={() => open(id)}>{level.name.replace(selectedGroup.name, '').trim()}</button>; })}</div>}<p className="qualification-dialog-intro">{selected.intro}</p>
         <dl className="qualification-details">
           <div><dt>시험 언어</dt><dd>{selected.language.join(' · ')}</dd></div>
           <div><dt>응시 방식</dt><dd>{selected.delivery}</dd></div>
