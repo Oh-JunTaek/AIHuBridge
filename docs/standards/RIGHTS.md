@@ -8,9 +8,12 @@
 | 뉴스·공식 발표·논문·교육·행사 자료 | 해당 제공처의 조건. [출처 관리표](./SOURCE_REGISTRY.md)와 각 항목의 원문·근거 링크 확인 |
 | 외부 상표·이미지·로고 | 각 권리자의 조건. 저장소에 포함됐다는 이유로 MIT 재사용 허가를 부여하지 않음 |
 
-자격증 카드 시안의 한국데이터산업진흥원 심볼은 [진흥원 공식 CI 소개](https://www.kdata.or.kr/kr/contents/ci/view.do)에서 가져왔다. 주관기관 식별을 위한 로컬 시안이며, 공개 배포 전 해당 용도와 투명도 적용에 대한 이용 조건을 확인한다. 다운로드 제공 자체를 재사용 허가로 간주하지 않는다.
 | 외부 소프트웨어 패키지 | 각 패키지에 동봉된 LICENSE·NOTICE 등. package-lock.json은 사용 버전 확인용이며 권리 고지를 대체하지 않음 |
 | 대한민국 경계 자료 | Natural Earth 공개 도메인. scripts/data/korea-boundary.json의 원본·이용 조건과 출처 관리표 참조 |
+
+자격증 카드의 로컬 시안은 [한국데이터산업진흥원](https://www.kdata.or.kr/kr/contents/ci/view.do), [한국생산성본부](https://www.kpc.or.kr/kpc/PTWHP005_about_008.do), [대한상공회의소](https://seoulcci.korcham.net/nCham/Service/Kcci/appl/Ci.asp), [한국산업인력공단](https://chungnam.hrdkorea.or.kr/3/2/2/1)의 공식 이미지를 사용한다. 공개 배포 전 주관기관 식별 용도와 투명도 적용의 이용 조건을 확인한다. 다운로드 제공 자체를 재사용 허가로 간주하지 않는다.
+
+AWS, Microsoft, ISC2 등은 제3자의 로고 사용에 별도 제한 또는 허락 조건을 두므로 아직 적용하지 않았다. Google Cloud, NVIDIA, KT·한국경제신문도 해당 용도와 로고 사용 조건을 확인한 뒤 적용 여부를 판단한다.
 
 외부 본문·영상·교안·이미지의 포괄적인 재배포 허가를 주장하지 않는다. 기존 공고·출처에 별도 이용허락 표시가 있으면 그 조건을 확인한다. 이 작업은 모든 외부 의존성의 라이선스를 전수 감사하거나 외부 저작물의 권리 관계를 확정한 것이 아니다.
 

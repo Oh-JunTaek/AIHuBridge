@@ -613,10 +613,10 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .qualification-layout .qualification-card:hover::before, .qualification-layout .qualification-card:focus-visible::before { animation:qualification-sheen 1.15s ease-in-out; }
 @media (prefers-reduced-motion:reduce) { .qualification-layout .qualification-card:hover::before, .qualification-layout .qualification-card:focus-visible::before { animation:none; } .qualification-layout .qualification-card:hover, .qualification-layout .qualification-card:focus-visible { transition:none; } }
 
-/* 주관기관을 알아볼 수 있도록 텍스트와 심볼의 공간을 분리한다. */
-.qualification-layout .qualification-card.has-provider-symbol { padding-right: 10.5rem; }
-.qualification-provider-symbol { position:absolute; right:2.25rem; top:50%; width:7rem; height:auto; transform:translateY(-50%); opacity:.34; pointer-events:none; }
+/* 분야 태그 위치는 유지하고 설명과 심볼을 같은 줄의 별도 공간에 둔다. */
+.qualification-card-middle { display:flex; align-items:center; gap:1rem; margin-top:.65rem; }
+.qualification-card-middle .qualification-description { flex:1; min-width:0; margin-top:0; }
+.qualification-provider-symbol { flex:none; width:7rem; max-height:2.5rem; object-fit:contain; opacity:.34; margin-right:16%; pointer-events:none; }
 @media (max-width: 480px) {
-  .qualification-layout .qualification-card.has-provider-symbol { padding-right:7rem; }
-  .qualification-provider-symbol { right:1rem; width:5rem; }
+  .qualification-provider-symbol { width:4.5rem; max-height:2rem; margin-right:0; }
 }
