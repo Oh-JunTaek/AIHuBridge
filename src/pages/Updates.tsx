@@ -19,6 +19,7 @@ export default function Updates() {
   const [lang, setLang] = useState('');
   const [source, setSource] = useState('');
   const [query, setQuery] = useState('');
+  const [securityOnly, setSecurityOnly] = useState(false);
   const [origin, setOrigin] = useState('');
   const [topic, setTopic] = useState('');
   const [openness, setOpenness] = useState('');
@@ -30,11 +31,11 @@ export default function Updates() {
   const sources = useMemo(() => [...new Set(items.map((item) => item.source))].sort(), [items]);
   const t = useT();
 
-  const shown = useMemo(() => filterNews(items, { category: ['전체', 'models'].includes(active) ? undefined : active, modelsOnly: active === 'models', lang, source, query, origin, topicGroup: group, topic, openness, publication, paperKind, company, days: Number(days), now }),
-    [items, active, lang, source, query, origin, group, topic, openness, publication, paperKind, company, days, now]);
-  useEffect(() => setVisibleCount(24), [active, lang, source, query, origin, topic, openness, publication, paperKind, company, days]);
+  const shown = useMemo(() => filterNews(items, { category: ['전체', 'models'].includes(active) ? undefined : active, modelsOnly: active === 'models', lang, source, query, origin, topicGroup: group, topic, openness, publication, paperKind, company, days: Number(days), now }).filter((item) => !securityOnly || /security|cyber|vulnerab|hack|breach|보안|해킹|취약점|침해/i.test(`${item.title} ${item.excerpt ?? ''}`)),
+    [items, active, lang, source, query, origin, group, topic, openness, publication, paperKind, company, days, now, securityOnly]);
+  useEffect(() => setVisibleCount(24), [active, lang, source, query, origin, topic, openness, publication, paperKind, company, days, securityOnly]);
   const changeCategory = (category: string) => { setActive(category); setTopic(''); setOpenness(''); setPublication(''); setPaperKind(''); setCompany(''); };
-  const clear = () => { changeCategory('전체'); setLang(''); setSource(''); setQuery(''); setOrigin(''); setCompany(''); setDays(String(NEWS_DEFAULT_DAYS)); };
+  const clear = () => { changeCategory('전체'); setLang(''); setSource(''); setQuery(''); setOrigin(''); setCompany(''); setSecurityOnly(false); setDays(String(NEWS_DEFAULT_DAYS)); };
   const selectStyle = 'min-w-0 rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900';
 
   return (
@@ -73,6 +74,7 @@ export default function Updates() {
         {[{value:'',label:'전체 출처'}, {value:'domestic',label:'국내 출처'}].map((option) => <button type="button" key={option.value} aria-pressed={origin === option.value} onClick={() => setOrigin(option.value)} className={`rounded-lg px-4 py-2 ${origin === option.value ? 'bg-blue-900 text-white' : 'bg-stone-100 dark:bg-stone-800'}`}>{option.label}</button>)}
       </div>
 
+      <button type="button" className="security-toggle" aria-pressed={securityOnly} onClick={() => setSecurityOnly(!securityOnly)}>보안 관련 소식</button>
       <section aria-label="소식 탐색 조건" className="mb-5 rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
         <p className="mb-3 text-xs text-stone-500 dark:text-stone-400">기본 최근 7일 · 일반 소식 30일, 모델 소식 90일, 논문 180일 보관. 기간을 바꾸면 이전 자료도 검색할 수 있습니다.</p>
         <div className="grid gap-3 sm:grid-cols-2">

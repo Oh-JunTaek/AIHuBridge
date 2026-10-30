@@ -174,8 +174,8 @@
 .landing-hero-content { position: relative; z-index: 1; width: min(100% - 3rem, 1440px); margin: auto; padding: 5rem 0; }
 .landing-hero h1 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.7rem); line-height: 1.14; font-weight: 800; letter-spacing: -.055em; }
 .landing-hero p { margin: 1.25rem 0 2rem; color: #425d7f; font-size: clamp(1rem, 1.5vw, 1.35rem); }
-.landing-button { display: inline-flex; align-items: center; gap: 2rem; border-radius: 999px; background: #346b96; color: white; font-weight: 700; padding: .85rem 1.5rem; }
-.landing-button:hover { background: #285a83; }
+.landing-button { display: inline-flex; align-items: center; gap: 2rem; border-radius: 999px; background: #a4cce5; color: #173b60; font-weight: 700; padding: .85rem 1.5rem; }
+.landing-button:hover { background: #8fbfdd; }
 .landing-button span { font-size: 1.3em; }
 .exhibition { max-width: 1500px; margin: auto; display: grid; grid-template-columns: minmax(210px, .9fr) 4fr; gap: 2rem; padding: 4rem 2rem 5rem; }
 .exhibition-intro { padding-top: .8rem; }
@@ -374,7 +374,7 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .dark a:hover .wayfinding-icon, .dark button:hover .wayfinding-icon { color: #fff; }
 .dashboard-guide a .wayfinding-icon { width: 1.5rem; height: 1.5rem; }
 .dashboard-hero-link, .dashboard-content .results-heading a, .space-header > a, .landing-button { display: inline-flex; align-items: center; gap: .55rem; }
-.landing-button .wayfinding-icon { color: #fff; }
+.landing-button .wayfinding-icon { color: #173b60; }
 .landing-button .wayfinding-ring { stroke: #91b3d2; }
 .exhibit-copy .exhibit-arrow { position: absolute; right: 1rem; bottom: 1rem; }
 .news-tray .wayfinding-icon { width: 1rem; height: 1rem; }
@@ -561,3 +561,11 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 
 /* 홈 버튼과 소식 필터의 선택 상태를 같은 차분한 파랑으로 맞춘다. */
 .space-news .reading-sidebar button[aria-pressed="true"] { background-color: #346b96; color: #fff; }
+
+@keyframes desktop-page-appear { from { opacity: .75; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) { .page-entry { animation: desktop-page-appear .22s ease-out both; } }
+.qualification-layout .qualification-filters { align-self:start; } .qualification-layout .qualification-filter-grid { display:grid; grid-template-columns:1fr; } .qualification-layout .qualification-results { margin-top:0; min-width:0; }
+.qualification-category > span { display:block; margin-bottom:.5rem; } .qualification-category > div { display:flex; flex-wrap:wrap; gap:.4rem; } .qualification-category button,.qualification-levels button { border:1px solid #c8dce8; border-radius:9px; padding:.55rem .7rem; color:#315d78; background:#f7fbfd; } .qualification-category button[aria-pressed=true],.qualification-levels button[aria-pressed=true] { background:#346b96; color:white; border-color:#346b96; } .qualification-levels { display:flex; gap:.5rem; margin-top:1rem; }
+.qualification-layout .qualification-list { gap:0; border:1px solid #dbe6ee; border-radius:15px; overflow:hidden; background:white; } .qualification-layout .qualification-card { border:0; border-radius:0; border-bottom:1px solid #e3ebef; box-shadow:none; } .qualification-layout .qualification-card:last-child { border-bottom:0; } .qualification-layout .qualification-card:hover { transform:none; background:#f6fafc; }
+
+.security-toggle { margin:0 0 1rem; padding:.6rem .8rem; border:1px solid #c9dae5; border-radius:9px; background:#edf5f9; color:#315d78; font-size:.8rem; }

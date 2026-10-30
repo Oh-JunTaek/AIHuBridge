@@ -18,5 +18,7 @@ export const learningResources: LearningResource[] = [
   { id:'claude-academy', name:'Claude Academy', provider:'Anthropic', kinds:['학습 플랫폼'], description:'AI 활용과 Claude, 개발 도구를 배우는 공식 과정과 튜토리얼을 제공합니다.', language:'한국어 지원 여부 확인 필요', cost:'과정 무료 · 진도 저장 및 배지에 Claude 계정 필요', url:'https://academy.claude.com/', checked:'2026-10-30' },
   { id:'kaggle-pandas', name:'Pandas', provider:'Kaggle', kinds:['강의', '실습'], description:'짧은 실습 문제를 풀며 데이터 읽기와 정리, 분류를 익힙니다.', language:'영어 · 한국어 지원 확인 필요', cost:'무료 · 실습 환경과 가입 조건은 제공처 확인', url:'https://www.kaggle.com/learn/pandas', checked:'2026-10-30' },
   { id:'google-ml-practice', name:'Machine Learning Crash Course 실습', provider:'Google for Developers', kinds:['강의', '실습'], description:'머신러닝의 기초를 시각화와 브라우저 실습으로 살펴봅니다.', language:'한국어 지원 여부 확인 필요', cost:'공식 제공 조건과 실습 환경 확인', url:'https://developers.google.com/machine-learning/crash-course/exercises', checked:'2026-10-30' },
+  { id:'ms-ai-security', name:'AI 보안 기본 사항', provider:'Microsoft Learn', kinds:['강의'], description:'AI 시스템의 보안 위협, 보안 제어와 보안 테스트의 기초를 배웁니다.', language:'한국어', cost:'학습 및 Azure 사용 조건은 제공처 확인', url:'https://learn.microsoft.com/ko-kr/training/paths/ai-security-fundamentals/', checked:'2026-10-30' },
+  { id:'ms-cybersecurity', name:'보안, 규정 준수 및 ID 학습', provider:'Microsoft Learn', kinds:['학습 플랫폼'], description:'사이버 보안 기초와 보안 학습 경로를 둘러봅니다.', language:'한국어', cost:'과정 및 실습별 이용 조건 확인', url:'https://learn.microsoft.com/ko-kr/training/topics/sci', checked:'2026-10-30' },
   ...existing,
 ];

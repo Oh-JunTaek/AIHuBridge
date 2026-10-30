@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { qualifications } from '../data/qualifications';
+import { MobileFilter } from '../components/MobileFilter';
 import { WayfindingIcon } from '../components/WayfindingIcon';
 
-const tags = [...new Set(qualifications.flatMap((item) => item.tags))];
+const tags = ['AI', '데이터', '클라우드', '보안', '컴퓨터 활용', '개발'];
+const categoryOf = (item: (typeof qualifications)[number]) => tags.filter((tag) => tag === 'AI' ? item.tags.some((value) => value !== 'AI 관련 기반' && /AI|ML|LLM|프롬프트/.test(value)) : tag === '개발' ? item.tags.includes('소프트웨어 개발') : item.tags.includes(tag));
+const displayClass = (value: string) => value === '등록민간자격 · 국가공인 아님' ? '민간자격' : value;
 const classes = [...new Set(qualifications.map((item) => item.classification))];
 const scheduleLink = (provider: string) => provider.includes('KT') ? 'https://aice.study/certi/examSchedule'
   : provider === '한국생산성본부' ? 'https://license.kpc.or.kr/nasec/rceptexmncnfirm/selectExprschdul.do'
@@ -20,9 +23,10 @@ export default function Qualifications() {
   const results = useMemo(() => qualifications.filter((item) => {
     const text = `${item.name} ${item.provider} ${item.tags.join(' ')}`.toLocaleLowerCase();
     return query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean).every((word) => text.includes(word))
-      && (!tag || item.tags.includes(tag)) && (!classification || item.classification === classification)
+      && (!tag || categoryOf(item).includes(tag)) && (!classification || item.classification === classification)
       && (!language || item.language.includes(language));
-  }), [query, tag, classification, language]);
+  }).sort((a, b) => a.name.localeCompare(b.name, 'ko', { numeric: true })), [query, tag, classification, language]);
+  const visibleResults = results.filter((item) => item.id !== 'computer-skills-2' || !results.some((other) => other.id === 'computer-skills-1'));
 
   useEffect(() => {
     if (selected && dialog.current && !dialog.current.open) dialog.current.showModal();
@@ -33,30 +37,30 @@ export default function Qualifications() {
 
   return <div className="space-page space-library qualifications-page mx-auto max-w-6xl px-4 py-6">
     <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>자격증 도전</h1><p className="space-caption">컴퓨터 활용부터 AI까지, 나에게 맞는 자격시험을 찾아보세요.</p></div></header>
-    <section className="qualification-filters" aria-label="자격증 검색과 필터">
+    <div className="reading-layout qualification-layout"><aside className="reading-sidebar qualification-filters" aria-label="자격증 검색과 필터"><MobileFilter summary={`${tag || '전체 분야'} · ${classification || '전체 자격'}`}>
       <div className="qualification-filter-heading"><div><span>자격 탐색</span><h2>나에게 맞는 자격 찾기</h2></div><p>시험 언어와 자격 종류를 비교해 보세요.</p></div>
       <div className="qualification-filter-grid">
         <label>자격증·주관사 검색<input type="search" placeholder="자격증 이름 또는 기관" value={query} onChange={(e) => setQuery(e.target.value)} /></label>
-        <label>분야<select value={tag} onChange={(e) => setTag(e.target.value)}><option value="">전체 분야</option>{tags.map((value) => <option key={value}>{value}</option>)}</select></label>
-        <label>자격 종류<select value={classification} onChange={(e) => setClassification(e.target.value)}><option value="">전체 종류</option>{classes.map((value) => <option key={value}>{value}</option>)}</select></label>
+        <div className="qualification-category"><span>분야</span><div>{tags.map((value, index) => <button type="button" key={value} aria-pressed={tag === value} onClick={() => setTag(tag === value ? '' : value)}><span aria-hidden="true">{['✦', '▤', '☁', '◇', '▣', '⌘'][index]}</span> {value}</button>)}</div></div>
+        <label>자격 종류<select value={classification} onChange={(e) => setClassification(e.target.value)}><option value="">전체 종류</option>{classes.map((value) => <option key={value} value={value}>{displayClass(value)}</option>)}</select></label>
         <label>시험 언어<select value={language} onChange={(e) => setLanguage(e.target.value)}><option value="">전체 언어</option><option>한국어</option><option>영어</option><option>일본어</option></select></label>
       </div>
-      <div className="qualification-filter-footer"><p role="status">조건에 맞는 자격증 {results.length}개</p><button type="button" onClick={() => { setQuery(''); setTag(''); setClassification(''); setLanguage(''); }}>조건 초기화</button></div>
-    </section>
+      <div className="qualification-filter-footer"><p role="status">조건에 맞는 자격증 {visibleResults.length}개</p><button type="button" onClick={() => { setQuery(''); setTag(''); setClassification(''); setLanguage(''); }}>조건 초기화</button></div>
+    </MobileFilter></aside>
     <section className="qualification-results" aria-label="자격증 목록">
-      <div className="results-heading"><div><span>학습관의 자격 안내</span><h2>도전할 자격증 살펴보기</h2></div><p>시험 조건은 공식 페이지에서 다시 확인하세요</p></div>
+      <div className="results-heading"><div><span>학습관의 자격 안내</span><h2>자격증</h2></div></div>
       {results.length === 0 && <p className="qualification-empty">조건에 맞는 자격증이 없습니다. 검색어나 필터를 변경해 보세요.</p>}
-      <div className="qualification-list">{results.map((item) => <button type="button" className="qualification-card" key={item.id} onClick={() => open(item.id)}>
-        <span className="qualification-card-top"><strong>{item.name}</strong><span className="qualification-tags">{item.tags.map((value) => <span key={value}>{value}</span>)}</span></span>
-        <span className="qualification-description">{item.officialExcerpt ? <>“{item.officialExcerpt}” <small>· 공식 소개 발췌</small></> : <>{item.intro} <small>· 공식 자료 기반 안내</small></>}</span>
-        <span className="qualification-meta"><span>{item.provider}</span><span>{item.classification}</span><span>{item.language.join(' · ')}</span>{item.examFree === true && <span>시험 무료</span>}</span>
+      <div className="qualification-list">{visibleResults.map((item) => <button type="button" className="qualification-card" key={item.id} onClick={() => open(item.id)}>
+        <span className="qualification-card-top"><strong>{item.id.startsWith('computer-skills-') ? '컴퓨터활용능력' : item.name}</strong><span className="qualification-tags">{categoryOf(item).map((value) => <span key={value}>{value}</span>)}</span></span>
+        <span className="qualification-description">{item.id.startsWith('computer-skills-') ? '스프레드시트와 데이터베이스 등 컴퓨터 활용 능력을 평가합니다.' : item.intro}</span>
+        <span className="qualification-meta"><span>{item.provider}</span><span>{displayClass(item.classification)}</span><span>{item.language.join(' · ')}</span>{item.examFree === true && <span>시험 무료</span>}</span>
         <span className="qualification-arrow" aria-hidden="true"><WayfindingIcon /></span>
       </button>)}</div>
-    </section>
+    </section></div>
     <dialog ref={dialog} className="qualification-dialog" aria-labelledby="qualification-dialog-title" onClose={close}>
       {selected && <div className="qualification-dialog-inner">
-        <div className="qualification-dialog-heading"><div><span>자격증 상세 안내</span><h2 id="qualification-dialog-title">{selected.name}</h2><p>{selected.provider} · {selected.classification}</p></div><button type="button" className="qualification-close" aria-label="상세 안내 닫기" onClick={() => dialog.current?.close()}>×</button></div>
-        <p className="qualification-dialog-intro">{selected.intro}</p>
+        <div className="qualification-dialog-heading"><div><span>자격증 상세 안내</span><h2 id="qualification-dialog-title">{selected.name}</h2><p>{selected.provider} · {displayClass(selected.classification)}</p></div><button type="button" className="qualification-close" aria-label="상세 안내 닫기" onClick={() => dialog.current?.close()}>×</button></div>
+        {selected.id.startsWith('computer-skills-') && <div className="qualification-levels" role="group" aria-label="급수 선택">{['computer-skills-1', 'computer-skills-2'].map((id, index) => <button key={id} type="button" aria-pressed={selected.id === id} onClick={() => open(id)}>{index + 1}급</button>)}</div>}<p className="qualification-dialog-intro">{selected.intro}</p>
         <dl className="qualification-details">
           <div><dt>시험 언어</dt><dd>{selected.language.join(' · ')}</dd></div>
           <div><dt>응시 방식</dt><dd>{selected.delivery}</dd></div>

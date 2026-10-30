@@ -2,6 +2,10 @@
 
 확인일: 2026-10-26. 공개 여부·접근 정책·이용 안내를 확인하고 최소 정보만 제공합니다. 이 표가 모든 콘텐츠의 포괄적 재사용 허가를 의미하지 않습니다. 출처 정책 변경 시 재확인이 필요합니다.
 
+## 보안 학습 및 시험 자료 (2026-10-30)
+
+- [Microsoft SC-900](https://learn.microsoft.com/ko-kr/credentials/certifications/security-compliance-and-identity-fundamentals/) 및 [ISC2 CC](https://www.isc2.org/certifications/cc), [ISC2 비용 및 언어 안내](https://www.isc2.org/frequently-asked-questions)를 확인했다. 국내 시험장 예약과 조건은 접수처에서 재확인한다. [AI 보안 기초](https://learn.microsoft.com/ko-kr/training/paths/ai-security-fundamentals/)와 [보안 학습](https://learn.microsoft.com/ko-kr/training/topics/sci)은 공식 링크로 연결한다. 소식의 보안 필터는 기존 자료의 제목·발췌 키워드 탐색이며 별도 보안 뉴스 수집이 아니다.
+
 ## 기업 SNS 및 학습 자료 (2026-10-30)
 
 - 기업 SNS는 [Bluesky 공개 API](https://docs.bsky.app/docs/api/app-bsky-feed-get-author-feed)를 브라우저에서 직접 조회한다. 계정별 최신 100건, 원문 링크·작성자·시각과 짧은 내용만 표시하고 게시물은 서버나 브라우저 저장소에 보관하지 않는다. 삭제된 글은 다음 조회에서 사라지며 삭제·정정 요청은 공개 문의 이메일로 접수 후 `suppressedPostUris`에 반영한다. API 실패는 계정별로 표시한다.
