@@ -71,7 +71,13 @@ export default function Home() {
       <div className="exhibition-carousel">
       <div className="carousel-stage">
       <button className="carousel-side carousel-prev" type="button" aria-label="이전 전시 공간" onClick={() => moveCarousel(-1)}><WayfindingIcon direction="left" /></button>
-      <div ref={carousel} className="exhibition-grid" role="region" aria-label="전시 공간 목록" tabIndex={0} onScroll={updateActive}>
+      <div ref={carousel} className="exhibition-grid" role="region" aria-label="전시 공간 목록" tabIndex={0} onScroll={updateActive} onKeyDown={(event) => {
+        if (event.target !== event.currentTarget) return;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          moveCarousel(event.key === 'ArrowLeft' ? -1 : 1);
+        }
+      }}>
         {[...exhibits, ...exhibits, ...exhibits].map(({ to, title, description, Icon, style }, index) => <Link className={`exhibit-card exhibit-${style} ${active === index ? 'is-centered' : ''}`} to={to} key={`${index}-${to}`} aria-hidden={index < exhibits.length || index >= exhibits.length * 2 ? true : undefined} tabIndex={index < exhibits.length || index >= exhibits.length * 2 ? -1 : undefined}>
           <div className="exhibit-art"><ExhibitArt kind={style} /></div>
           <div className="exhibit-copy"><Icon className="exhibit-icon" aria-hidden="true" /><h3>{title}</h3><p>{description}</p><WayfindingIcon className="exhibit-arrow" /></div>

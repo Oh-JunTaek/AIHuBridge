@@ -75,6 +75,8 @@ arXiv의 [RSS 안내](https://info.arxiv.org/help/rss.html)와 [API 메타데이
 
 ## 국내 출처 추가 검토와 정적 교육 근거 (2026-10-26)
 
+2026-10-31 한국지능정보사회진흥원(NIA)의 [AI허브 데이터 분석 교육 공고](https://www.nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29909&cbIdx=99835)에서 교육일과 신청 기간이 명시된 사례를 확인했다. 해당 공고는 이미 종료되었으며, 공지 목록의 안정적인 자동 수집 경로와 robots·재사용 조건은 확인되지 않아 수집 출처로 추가하지 않았다. 향후 실제 공고의 조건을 확인하고 날짜를 추출할 때 게시일을 신청 마감으로 추정하지 않는다.
+
 NAVER D2의 공식 Atom(https://d2.naver.com/d2.atom)은 20개 항목을 읽었다. 정책 확인은 완료되지 않았다(robots.txt 406). 자동 수집에는 아직 추가하지 않았으며, 기존 활성 출처와 허가·키 제외 원칙을 유지한다.
 
 교육·인증 자료는 src/data/certifications.ts의 learningFee / credentialFee / requirements / evidenceUrls / verifiedAt을 함께 관리한다. 검토일은 모든 필드의 확정 보장이 아니다. 미확인을 무료로 바꾸거나 무료 영상 청강을 무료 수료증으로 간주하지 않는다. 전수 재검토·정정 근거는 [교육 검토 결과](../archive/EDUCATION_ACCESSIBILITY_2026-10-26.md)를 따른다. 자동 수집 대상에 추가한 것은 아니다.

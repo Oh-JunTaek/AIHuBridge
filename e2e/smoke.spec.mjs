@@ -46,3 +46,27 @@ test('학습 자료 검색과 수료 강의 공식 링크를 유지한다', asyn
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).not.toBeVisible();
 });
+
+test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async ({ page }) => {
+  await page.goto('');
+  const carousel = page.getByRole('region', { name: '전시 공간 목록' });
+  await expect(carousel.getByRole('link')).toHaveCount(8);
+  await carousel.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(carousel.locator('.is-centered h3')).toHaveText('AI 캘린더');
+  await page.keyboard.press('ArrowLeft');
+  await expect(carousel.locator('.is-centered h3')).toHaveText('AI 소식');
+});
+
+test('상세 창은 닫기 효과를 마친 뒤 닫히며 포커스를 돌려준다', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('qualifications');
+  const card = page.getByRole('button', { name: /데이터분석 준전문가/ });
+  await card.click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveClass(/is-closing/);
+  await expect(dialog).not.toBeVisible();
+  await expect(card).toBeFocused();
+});

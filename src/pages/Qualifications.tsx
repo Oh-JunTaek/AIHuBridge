@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { qualifications } from '../data/qualifications';
 import { groupOf, groupResults } from '../lib/qualification-groups.mjs';
 import { MobileFilter } from '../components/MobileFilter';
 import { WayfindingIcon } from '../components/WayfindingIcon';
+import { useAnimatedDialog } from '../components/useAnimatedDialog';
 import kdataSymbol from '../assets/kdata-symbol.png';
 import kpcSymbol from '../assets/kpc-symbol.png';
 import korchamSymbol from '../assets/korcham-symbol.png';
@@ -35,8 +36,8 @@ export default function Qualifications() {
   const [classification, setClassification] = useState('');
   const [language, setLanguage] = useState('');
   const [params, setParams] = useSearchParams();
-  const dialog = useRef<HTMLDialogElement>(null);
   const selected = qualifications.find((item) => item.id === params.get('exam'));
+  const { ref: dialog, requestClose } = useAnimatedDialog(!!selected);
   const results = useMemo(() => qualifications.filter((item) => {
     const text = `${item.name} ${item.provider} ${item.tags.join(' ')}`.toLocaleLowerCase();
     return query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean).every((word) => text.includes(word))
@@ -46,10 +47,6 @@ export default function Qualifications() {
   const visibleResults = groupResults(results);
   const selectedGroup = selected ? groupOf(selected.id) : undefined;
 
-  useEffect(() => {
-    if (selected && dialog.current && !dialog.current.open) dialog.current.showModal();
-    if (!selected && dialog.current?.open) dialog.current.close();
-  }, [selected]);
   const close = () => { const next = new URLSearchParams(params); next.delete('exam'); setParams(next, { replace: true }); };
   const open = (id: string) => { const next = new URLSearchParams(params); next.set('exam', id); setParams(next, { replace: true }); };
 
@@ -74,9 +71,9 @@ export default function Qualifications() {
         <span className="qualification-arrow" aria-hidden="true"><WayfindingIcon /></span>
       </button>)}</div>
     </section></div>
-    <dialog ref={dialog} className="qualification-dialog" aria-labelledby="qualification-dialog-title" onClose={close}>
+    <dialog ref={dialog} className="qualification-dialog" aria-labelledby="qualification-dialog-title" onClose={close} onCancel={(event) => { event.preventDefault(); requestClose(); }}>
       {selected && <div className="qualification-dialog-inner">
-        <div className="qualification-dialog-heading"><div><span>자격증 상세 안내</span><h2 id="qualification-dialog-title">{selected.name}</h2><p>{selected.provider} · {displayClass(selected.classification)}</p></div><button type="button" className="qualification-close" aria-label="상세 안내 닫기" onClick={() => dialog.current?.close()}>×</button></div>
+        <div className="qualification-dialog-heading"><div><span>자격증 상세 안내</span><h2 id="qualification-dialog-title">{selected.name}</h2><p>{selected.provider} · {displayClass(selected.classification)}</p></div><button type="button" className="qualification-close" aria-label="상세 안내 닫기" onClick={requestClose}>×</button></div>
         {selectedGroup && <div className="qualification-levels" role="group" aria-label="급수 선택">{selectedGroup.ids.map((id) => { const level = qualifications.find((item) => item.id === id); return level && <button key={id} type="button" aria-pressed={selected.id === id} onClick={() => open(id)}>{level.name.replace(selectedGroup.name, '').trim()}</button>; })}</div>}<p className="qualification-dialog-intro">{selected.intro}</p>
         <dl className="qualification-details">
           <div><dt>시험 언어</dt><dd>{selected.language.join(' · ')}</dd></div>
