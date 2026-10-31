@@ -59,7 +59,7 @@ export default function Updates() {
             key={c}
             onClick={() => changeCategory(c)}
             aria-pressed={active === c}
-            className={`rounded-full px-3 py-1 font-medium ${
+            className={`rounded-full px-3 py-1 font-medium ${c !== '전체' && c !== 'models' && t('category.' + c).length >= 8 ? 'filter-wide' : ''} ${
               active === c
                 ? 'bg-blue-900 text-white'
                 : 'bg-stone-100 text-stone-600 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700'

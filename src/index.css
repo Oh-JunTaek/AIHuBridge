@@ -519,7 +519,10 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .qualification-card { position: relative; display: block; width: 100%; text-align: left; padding: 1.35rem 3rem 1.35rem 1.45rem; border: 1px solid #dbe6ee; border-radius: 15px; background: #fff; color: #183b5d; box-shadow: 0 8px 24px #325a7710; transition: border-color .2s, box-shadow .2s, transform .2s; }
 .qualification-card:hover { border-color: #a6c6da; box-shadow: 0 12px 28px #325a7720; transform: translateY(-2px); }.qualification-card:focus-visible { outline: 3px solid #4583aa; outline-offset: 2px; }
 .qualification-card-top { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: .55rem; }.qualification-card-top strong { font-size: 1rem; line-height: 1.4; }
-.qualification-tags { display: flex; flex-wrap: wrap; gap: .3rem; }.qualification-tags span { padding: .22rem .45rem; border-radius: 5px; color: #285d82; background: #e8f3fa; font-size: .67rem; font-weight: 700; }.qualification-tags span:nth-child(2n) { color: #88602a; background: #fcf0dd; }
+.qualification-tags { display: flex; flex-wrap: wrap; gap: .3rem; }.qualification-tags span { padding: .22rem .45rem; border-radius: 5px; color: #285d82; background: #e8f3fa; font-size: .67rem; font-weight: 700; }
+.qualification-tags [data-category="데이터"], .qualification-tags [data-category="컴퓨터 활용"] { color: #88602a; background: #fcf0dd; }
+.qualification-tags [data-category="클라우드"], .qualification-tags [data-category="개발"] { color: #58618a; background: #eff0fa; }
+.qualification-tags [data-category="보안"] { color: #8b5550; background: #faeeeb; }
 .qualification-description { display: block; margin-top: .65rem; color: #48677e; font-size: .83rem; line-height: 1.55; }.qualification-meta { display: flex; flex-wrap: wrap; gap: .35rem .8rem; margin-top: .9rem; color: #6c8497; font-size: .72rem; }.qualification-arrow { position: absolute; right: 1rem; bottom: 1rem; }.qualification-empty { padding: 2rem; color: #617b90; }
 .qualification-catalog-link { display: block; margin: -.3rem 0 1rem; color: #315f85; font-size: .8rem; line-height: 1.5; }
 .qualification-dialog { width: min(94vw, 680px); max-height: min(85dvh, 850px); margin: auto; padding: 0; border: 1px solid #d7e5ed; border-radius: 22px; color: #183b5d; background: #fffdfa; box-shadow: 0 28px 90px #12324e45; }.qualification-dialog::backdrop { background: #10283a99; }.qualification-dialog-inner { padding: clamp(1.25rem,4vw,2rem); }
@@ -614,6 +617,12 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .qualification-layout .qualification-filter-heading h2 { font-size:1.05rem; line-height:1.4; }
 .qualification-category > div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.45rem; }
 .qualification-category button { min-width:0; display:flex; gap:.35rem; justify-content:center; align-items:center; padding:.55rem .3rem; font-size:.76rem; white-space:nowrap; }
+/* 사이드바 선택지는 화면마다 같은 크기의 두 열로 배치한다. */
+.space-path .reading-sidebar [role="group"], .space-news .reading-sidebar nav[aria-label="소식 분야"], .space-news .reading-sidebar [role="group"][aria-label="출처 지역"], .resource-type-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.45rem; width:100%; }
+.space-path .reading-sidebar [role="group"] > span { grid-column:1 / -1; }
+.space-path .reading-sidebar [role="group"] button, .space-news .reading-sidebar nav[aria-label="소식 분야"] button, .space-news .reading-sidebar [role="group"][aria-label="출처 지역"] button, .resource-type-list button { min-width:0; min-height:2.4rem; padding:.55rem .3rem; border:1px solid #c8dce8; border-radius:9px; background:#f7fbfd; color:#315d78; font-size:.76rem; text-align:center; white-space:nowrap; }
+.space-path .reading-sidebar [role="group"] button[aria-pressed="true"], .space-news .reading-sidebar nav[aria-label="소식 분야"] button[aria-pressed="true"], .space-news .reading-sidebar [role="group"][aria-label="출처 지역"] button[aria-pressed="true"], .resource-type-list button[aria-pressed="true"] { background:#346b96; border-color:#346b96; color:#fff; }
+.reading-sidebar .filter-wide { grid-column:1 / -1; }
 .qualification-search { display:block; margin:0 0 1rem; }
 .qualification-search input { width:100%; min-height:48px; border:1px solid #dbe6ee; border-radius:12px; background:#ffffffed; color:#173b60; padding:.75rem 1rem; }
 .qualification-search input:focus-visible { outline:2px solid #3476a4; outline-offset:2px; }

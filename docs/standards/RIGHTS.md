@@ -14,6 +14,8 @@
 
 사용자가 제공한 AICE 로고도 로컬 시안에 포함한다. 로고 원본에 대한 사용 허락과 투명도 적용 가능 여부는 공개 배포 전에 확인한다.
 
+KSTQB는 [자격 보유자용 로고](https://www.kstqb.org/board_skin/board_view.asp?bbs_code=1&etc=&idx=250&key=0&page=1&word=)와 [인증 교육기관의 로고 사용](https://www.kstqb.org/about/about3.asp)을 별도로 안내한다. 자격 안내 카드의 KSTQB 기관 로고 사용 조건은 확인되지 않아 적용하지 않았다. 위 제한을 모든 식별 목적 사용에 대한 법적 결론으로 확대하지 않는다.
+
 AWS는 [상표 지침](https://aws.amazon.com/trademark-guidelines/)에서 제3자의 사실 설명을 텍스트로 안내하고 로고는 별도로 제한한다. Microsoft의 [콘텐츠 사용 안내](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions)는 보도용 이미지를 언론·산업 분석가의 편집 목적으로 구분하고 로고는 상표 지침을 따르게 한다. Google도 [브랜드 사용 지침](https://about.google/brand-resource-center/guidance/)에서 사용 맥락을 구분한다. AWS·Microsoft·Google Cloud·ISC2·NVIDIA의 로고는 자격 목록 카드에서의 허용 여부를 확인한 뒤 적용한다.
 
 외부 본문·영상·교안·이미지의 포괄적인 재배포 허가를 주장하지 않는다. 기존 공고·출처에 별도 이용허락 표시가 있으면 그 조건을 확인한다. 이 작업은 모든 외부 의존성의 라이선스를 전수 감사하거나 외부 저작물의 권리 관계를 확정한 것이 아니다.

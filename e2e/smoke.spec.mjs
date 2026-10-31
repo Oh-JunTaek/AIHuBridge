@@ -41,6 +41,31 @@ test('QA 자격과 학습 자료·수료 과정을 구분해 찾는다', async (
   await expect(page.getByRole('dialog').getByText(/수료증·평가 비용 · 유료/)).toBeVisible();
 });
 
+test('분야 태그 색상과 왼쪽 필터 열 너비가 일관된다', async ({ page }, testInfo) => {
+  await page.goto('qualifications');
+  if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
+  const tags = page.locator('.qualification-tags [data-category="QA"]');
+  const colors = await tags.evaluateAll((nodes) => nodes.map((node) => getComputedStyle(node).backgroundColor));
+  expect(colors.length).toBeGreaterThan(1);
+  expect(new Set(colors).size).toBe(1);
+  for (const [route, selector] of [
+    ['qualifications', '.qualification-category > div'],
+    ['path', '[aria-label="학습 난이도"]'],
+    ['updates', 'nav[aria-label="소식 분야"]'],
+    ['resources', '[aria-label="자료 유형"]'],
+  ]) {
+    await page.goto(route);
+    if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
+    const layout = await page.locator(selector).evaluate((node) => {
+      const buttons = [...node.querySelectorAll('button')];
+      return { grid: getComputedStyle(node).display, widths: buttons.slice(0, 2).map((button) => button.getBoundingClientRect().width), overflow: buttons.some((button) => button.scrollWidth > button.clientWidth + 1) };
+    });
+    expect(layout.grid).toBe('grid');
+    expect(Math.abs(layout.widths[0] - layout.widths[1])).toBeLessThan(1);
+    expect(layout.overflow).toBe(false);
+  }
+});
+
 test('소식의 상세 필터가 열리고 조건을 적용할 수 있다', async ({ page }, testInfo) => {
   await page.goto('updates');
   if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();

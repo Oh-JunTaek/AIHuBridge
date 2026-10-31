@@ -86,7 +86,7 @@ export default function Path() {
               key={c}
               onClick={() => applyCategory(c)}
               aria-pressed={filter.category === c}
-              className={`min-h-9 rounded px-2 py-1.5 ${
+              className={`min-h-9 rounded px-2 py-1.5 ${t('pathCategory.' + c).length >= 8 ? 'filter-wide' : ''} ${
                 filter.category === c ? 'bg-blue-900 text-white' : 'bg-stone-100 text-stone-600'
               }`}
             >
