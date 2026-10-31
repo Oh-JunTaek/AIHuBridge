@@ -1,0 +1,1 @@
+export function selectJourneyResources<T, R extends { id: string; slot?: string }>(references: R[], findResource: (id: string) => T | undefined, isAvailable: (item: T) => boolean): { ref: R; item: T }[];

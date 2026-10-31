@@ -4,6 +4,18 @@ import { qualifications } from '../src/data/qualifications.ts';
 import { learningResources } from '../src/data/learning-resources.ts';
 import { certifications } from '../src/data/certifications.ts';
 import { selectCertifications } from '../src/lib/cert-rules.mjs';
+import { journeys } from '../src/data/journeys.ts';
+
+test('학습 여정의 자료와 자격증은 실제 원본을 참조한다', () => {
+  for (const journey of journeys) {
+    expect(careers.some((career) => career.id === journey.careerId)).toBe(true);
+    for (const id of journey.qualificationIds) expect(qualifications.some((exam) => exam.id === id)).toBe(true);
+    for (const step of journey.steps) for (const reference of step.resources) {
+      expect(reference.reason).toBeTruthy();
+      expect(learningResources.some((resource) => resource.id === reference.id)).toBe(true);
+    }
+  }
+});
 
 test('직무 연결은 실제 자격과 검색 결과를 가리킨다', () => {
   for (const career of careers) {
@@ -30,6 +42,26 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
     await page.goto(route);
     await expect(page.getByRole('heading', { level: 1, name: new RegExp(heading) })).toBeVisible();
   }
+});
+
+test('목적은 필수이며 분야는 선택으로 여정을 바꾸고 국비 훈련은 직무 경로에 제공한다', async ({ page }) => {
+  await page.goto('path');
+  await expect(page.getByRole('region', { name: '선택한 학습 여정' })).toHaveCount(0);
+  await page.getByRole('button', { name: /새로운 직무에 도전/ }).click();
+  await expect(page.getByRole('heading', { name: '데이터 분석', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '소프트웨어 QA', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '소프트웨어 QA', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '데이터 분석', exact: true })).toHaveCount(0);
+  await expect(page.getByText('테스트 조건, 기대 결과와 실제 결과를 담은 테스트 보고서를 작성해 보세요.')).toBeVisible();
+  await expect(page.getByRole('heading', { name: '국민내일배움카드 훈련' })).toBeVisible();
+  await page.getByRole('button', { name: '데이터 분석', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '데이터 분석', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '소프트웨어 QA', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '데이터 분석', exact: true }).click();
+  await page.getByRole('button', { name: /직접 만들고 활용/ }).click();
+  await expect(page.getByText(/직접 만든 페이지나 연습용 웹사이트/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: '국민내일배움카드 훈련' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: /Playwright 테스트 작성/ })).toHaveAttribute('href', /resources\?query=/);
 });
 
 test('이동 표식과 제목은 함께 반응하고 모션 축소 설정을 따른다', async ({ page }) => {
@@ -100,7 +132,6 @@ test('분야 태그 색상과 왼쪽 필터 열 너비가 일관된다', async (
   expect(new Set(colors).size).toBe(1);
   for (const [route, selector] of [
     ['qualifications', '.qualification-category > div'],
-    ['path', '[aria-label="학습 난이도"]'],
     ['updates', 'nav[aria-label="소식 분야"]'],
     ['resources', '[aria-label="자료 유형"]'],
   ]) {

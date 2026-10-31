@@ -4,7 +4,7 @@ import { feeLabel, isCertification, isEducationAvailable, selectCertifications }
 import { loadStaticData } from './lib/static-data.mjs';
 
 const { certifications } = await loadStaticData(new URL('../src/data/certifications.ts', import.meta.url));
-const { stages } = await loadStaticData(new URL('../src/data/path.ts', import.meta.url));
+const { journeys } = await loadStaticData(new URL('../src/data/journeys.ts', import.meta.url));
 const { qualifications } = await loadStaticData(new URL('../src/data/qualifications.ts', import.meta.url));
 
 test('실제 인증 자료의 비용·조건·공식 근거·검토일 무결성', () => {
@@ -50,13 +50,12 @@ test('한국어 포함·미확인 비용·검색 조합과 빈 결과 처리', (
   assert.ok(selectCertifications(certifications, { query: 'QA' }).some((item) => item.id === 'coursera-software-testing'));
   assert.ok(selectCertifications(certifications, { cost: 'unknown' }).every((item) => item.learningFee.status === 'unknown' || item.credentialFee.status === 'unknown'));
 });
-test('학습 경로의 모든 참조 유지와 종료된 AI-900 안내 교체', () => {
-  const ids = new Set([...certifications, ...qualifications].map((item) => item.id));
-  assert.ok(stages.every((stage) => stage.items.every((item) => ids.has(item.refId))));
+test('학습 여정의 자격 참조와 종료된 AI-900 안내 교체', () => {
+  const ids = new Set(qualifications.map((item) => item.id));
+  assert.ok(journeys.every((journey) => journey.qualificationIds.every((id) => ids.has(id))));
   const ai = qualifications.find((item) => item.id === 'msft-ai-900');
   assert.ok(ai.name.includes('AI-901'));
   assert.equal(ai.url.endsWith('/ai-901/'), true);
-  assert.ok(stages.flatMap((stage) => stage.items).some((item) => item.label.includes('AI-901')));
 });
 test('시험과 수강 자료는 분리하고 자격 종류·언어·공식 링크를 유지', () => {
   assert.ok(certifications.every((item) => item.type !== 'exam'));

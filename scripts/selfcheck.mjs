@@ -80,13 +80,12 @@ try {
 
 // 모든 학습 단계의 참조가 실제 인증·교육 항목에 연결되는지 검사한다.
 try {
-  const { stages } = await loadStaticData(new URL('../src/data/path.ts', import.meta.url));
-  const { certifications } = await loadStaticData(new URL('../src/data/certifications.ts', import.meta.url));
+  const { journeys } = await loadStaticData(new URL('../src/data/journeys.ts', import.meta.url));
   const { qualifications } = await loadStaticData(new URL('../src/data/qualifications.ts', import.meta.url));
-  const ids = new Set([...certifications, ...qualifications].map((item) => item.id));
+  const ids = new Set(qualifications.map((item) => item.id));
   check('자격시험 ID·필수 정보·공식 링크', new Set(qualifications.map((item) => item.id)).size === qualifications.length && qualifications.every((item) => item.id && item.name && item.provider && item.classification && item.language.length && item.fee && item.prerequisites && item.validity && /^https:\/\//.test(item.url) && item.preparation.every((resource) => /^https:\/\//.test(resource.url))), `${qualifications.length}개 항목`);
-  const refs = stages.flatMap((stage) => stage.items.map((item) => item.refId));
-  check('학습 경로 교육 참조 무결성', refs.length > 0 && refs.every((ref) => ids.has(ref)), `${refs.length}개 항목`);
+  const refs = journeys.flatMap((journey) => journey.qualificationIds);
+  check('학습 여정 자격 참조·추천 근거', refs.length > 0 && refs.every((ref) => ids.has(ref)) && journeys.every((journey) => journey.steps.length > 0 && journey.steps.every((step) => step.objective && step.resources.every((resource) => resource.id && resource.reason))), `${refs.length}개 자격 연결`);
 } catch (e) {
   check('path.ts', false, e.message);
 }
