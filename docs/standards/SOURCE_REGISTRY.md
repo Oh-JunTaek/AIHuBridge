@@ -2,6 +2,11 @@
 
 확인일: 2026-10-26. 공개 여부·접근 정책·이용 안내를 확인하고 최소 정보만 제공합니다. 이 표가 모든 콘텐츠의 포괄적 재사용 허가를 의미하지 않습니다. 출처 정책 변경 시 재확인이 필요합니다.
 
+## 국민내일배움카드 직무 훈련 (2026-10-31)
+
+- 고용24 [훈련 통합검색](https://www.work24.go.kr/hr/a/a/1100/trnnCrsInf.do?action=trnnCrsIn&area=&crseTracseSe=&currentMenuId=EBG020000000308&gvrnInstt=&menuPurpSecd=&ncs=&programMenuIdentification=EBG020000001862&redirectUrl=%2Fa%2Fa%2F1100%2FtrnnCrsInfPost.do&selectNCSKeyword=&topArea=), [카드 발급 안내](https://m.work24.go.kr/hr/h/a/1100/selectIssuGudn.do), [K-디지털 기초역량훈련 안내](https://www.work24.go.kr/cm/c/f/1100/selecSystInfo.do?systClId=SC0000004&systCnntId=CI00001760&systId=SI00000356)를 연결한다. 개인별 발급·수강·본인 부담 조건과 수료증·자격 발급은 추정하지 않는다.
+- 고용24 개별 회차 [AI 엔지니어 입문](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl1.do?crseTracseSe=500037441805&cstmConsTme=&focusId=&tracseId=AIG20260000544634&tracseReqstsCd=&tracseTme=14&trainstCstmrId=C0105), [파이썬 응용 프로젝트](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?crseTracseSe=C0105&tracseId=AIG20240000499162&tracseTme=83&trainstCstmrId=500034091717), [AI 기초 데이터 분석](https://m.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?crseTracseSe=C0105&tracseId=AIG20260000545336&tracseTme=32&trainstCstmrId=500034225481)의 제목·훈련기관·유형·훈련기간만 확인일과 함께 정적 예시로 표시한다. 한국시간 시작일이 지나면 자동으로 숨기고, 모집 상태는 표시하지 않는다. 실제 개강·모집·자비 부담은 원문·훈련기관에서 재확인한다. 자동 수집이나 과정 전문 복제는 하지 않는다.
+
 ## QA·소프트웨어 테스팅 (2026-10-31)
 
 - 국내 정기시험의 [KSTQB CTBL](https://www.kstqb.org/sw/sw2.asp), [ISTQB CTFL](https://www.kstqb.org/sw/sw3.asp), [CT-AI](https://www.kstqb.org/sw/sw3_6.asp), [CT-GenAI](https://www.kstqb.org/sw/sw3_9.asp) 공식 안내의 언어·응시료·응시 조건·갱신을 확인했다. CT-AI는 AI 기반 시스템 테스트를, CT-GenAI는 테스트 업무의 생성형 AI 활용을 다루며 두 시험 모두 CTFL이 필요하다. CTBL은 등록민간자격, ISTQB 항목은 해외 기관 인증으로 구분한다. 시험 일정은 수집하지 않으며 시험장과 회차는 접수처에서 재확인한다.

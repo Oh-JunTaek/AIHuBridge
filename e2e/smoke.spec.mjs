@@ -137,6 +137,21 @@ test('직무에서 학습 자료와 자격 상세로 연결하고 채용행사 �
   await expect(page.getByRole('heading', { name: '직무를 찾을 수 없습니다' })).toBeVisible();
 });
 
+test('국민내일배움카드 과정은 직무와 시작일에 맞게 안내한다', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-10-31T03:00:00Z'));
+  await page.goto('careers/data-analyst');
+  const training = page.locator('.funded-training');
+  await expect(training.getByRole('link', { name: /입문자를 위한 파이썬/ })).toHaveAttribute('href', /work24\.go\.kr/);
+  await expect(training.getByText(/실시간 모집 정보가 아닙니다/)).toBeVisible();
+  await page.goto('careers/qa');
+  await expect(training.getByText(/현재 소개할 회차는 없습니다/)).toBeVisible();
+  await expect(training.getByText(/소프트웨어 테스트, QA/)).toBeVisible();
+  await page.clock.setFixedTime(new Date('2026-11-05T03:00:00Z'));
+  await page.goto('careers/data-analyst');
+  await expect(training.getByText(/현재 소개할 회차는 없습니다/)).toBeVisible();
+  await expect(training.getByRole('link', { name: /고용24에서 훈련 찾기/ })).toHaveAttribute('href', /work24\.go\.kr/);
+});
+
 test('상위 메뉴에서 각 공간 소개와 하위 페이지로 이동한다', async ({ page }) => {
   await page.goto('dashboard');
   const nav = page.getByRole('navigation', { name: '주요 메뉴' });
