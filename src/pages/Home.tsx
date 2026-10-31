@@ -14,6 +14,7 @@ const exhibits = [
   { to: '/resources', title: '학습 자료실', description: '강의와 실습, 프로젝트를 찾아보세요.', Icon: BookIcon, style: 'resources' },
   { to: '/certs', title: '수료증 취득 강의', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', Icon: BadgeIcon, style: 'completion' },
   { to: '/qualifications', title: '자격증 도전', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'qualifications' },
+  { to: '/careers', title: '직무 둘러보기', description: '관심 있는 일과 필요한 배움을 만나보세요.', Icon: CompassIcon, style: 'career' },
   { to: '/learning', title: '학습관', description: '나에게 맞는 배움의 공간을 둘러보세요.', Icon: BookIcon, style: 'resources' },
   { to: '/information', title: '정보관', description: 'AI 소식과 행사, 기업의 이야기를 만나보세요.', Icon: CompassIcon, style: 'dashboard' },
 ] as const;

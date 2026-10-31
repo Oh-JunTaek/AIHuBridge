@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useT } from '../lib/i18n';
 
 const groups = [
-  { id: 'learning', to: '/learning', key: 'nav.learning', items: [{ to: '/path', key: 'nav.path' }, { to: '/resources', key: 'nav.resources' }, { to: '/certs', key: 'nav.certs' }, { to: '/qualifications', key: 'nav.qualifications' }] },
+  { id: 'learning', to: '/learning', key: 'nav.learning', items: [{ to: '/careers', key: 'nav.careers' }, { to: '/path', key: 'nav.path' }, { to: '/resources', key: 'nav.resources' }, { to: '/certs', key: 'nav.certs' }, { to: '/qualifications', key: 'nav.qualifications' }] },
   { id: 'information', to: '/information', key: 'nav.information', items: [{ to: '/updates', key: 'nav.updates' }, { to: '/calendar', key: 'nav.calendar' }, { to: '/social', key: 'nav.social' }] },
 ];
 const activeStyle = 'bg-blue-100 text-blue-900 dark:bg-blue-900/40 dark:text-blue-100';

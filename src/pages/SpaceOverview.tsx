@@ -9,6 +9,7 @@ const spaces = {
     description: '처음 만나는 개념부터 실습과 자격증까지, 나에게 맞는 배움을 찾아보세요.',
     heading: '어디서부터 시작해 볼까요?',
     items: [
+      { to: '/careers', title: '직무 둘러보기', description: '관심 있는 일과 그에 필요한 배움을 만나보세요.', kind: 'career' },
       { to: '/path', title: '추천 커리큘럼', description: '기초부터 차근차근 이어지는 학습 경로를 만나보세요.', kind: 'learning' },
       { to: '/resources', title: '학습 자료실', description: '강의와 실습, 프로젝트 등 다양한 배움의 자료를 찾아보세요.', kind: 'resources' },
       { to: '/certs', title: '수료증 취득 강의', description: '배움을 마친 뒤 수료증을 받을 수 있는 강의를 살펴보세요.', kind: 'completion' },

@@ -15,6 +15,7 @@ const ko: Dict = {
     briefing: '홈',
     updates: 'AI 소식',
     learning: '학습관',
+    careers: '직무 둘러보기',
     information: '정보관',
     path: '추천 커리큘럼',
     certs: '수료증 취득 강의',

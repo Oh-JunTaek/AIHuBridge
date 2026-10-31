@@ -5,9 +5,10 @@ import resourcesDesign from '../assets/exhibit-resources.webp';
 import completionDesign from '../assets/exhibit-completion.webp';
 import qualificationsDesign from '../assets/exhibit-qualifications.webp';
 import socialDesign from '../assets/exhibit-social.webp';
-type ExhibitKind = 'news' | 'calendar' | 'learning' | 'dashboard' | 'resources' | 'completion' | 'qualifications' | 'social';
+type ExhibitKind = 'news' | 'calendar' | 'learning' | 'dashboard' | 'resources' | 'completion' | 'qualifications' | 'social' | 'career';
 
 export function ExhibitArt({ kind }: { kind: ExhibitKind }) {
+  if (kind === 'career') return <div className="career-art" aria-hidden="true"><div className="career-art-orbit"/><div className="career-art-card"><span>MY NEXT STEP</span><i/><i/><i/></div><div className="career-art-circle">✦</div><div className="career-art-path">AI · DATA · QA</div></div>;
   if (kind !== 'calendar') {
     const design = { news: newsDesign, learning: learningDesign, dashboard: dashboardDesign, resources: resourcesDesign, completion: completionDesign, qualifications: qualificationsDesign, social: socialDesign }[kind];
     return <div className={`reference-art reference-art-${kind}`} aria-hidden="true"><div className="reference-art-motion"><img src={design} alt="" loading="lazy" decoding="async" /></div></div>;

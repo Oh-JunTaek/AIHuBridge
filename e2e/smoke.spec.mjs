@@ -1,11 +1,30 @@
 import { test, expect } from '@playwright/test';
+import { careers } from '../src/data/careers.ts';
+import { qualifications } from '../src/data/qualifications.ts';
+import { learningResources } from '../src/data/learning-resources.ts';
+import { certifications } from '../src/data/certifications.ts';
+import { selectCertifications } from '../src/lib/cert-rules.mjs';
+
+test('직무 연결은 실제 자격과 검색 결과를 가리킨다', () => {
+  for (const career of careers) {
+    for (const item of career.qualifications) expect(qualifications.some((exam) => exam.id === item.id)).toBe(true);
+    for (const item of career.resources) {
+      const url = new URL(item.url, 'https://example.test');
+      const query = url.searchParams.get('query') ?? '';
+      const words = query.toLocaleLowerCase().split(/\s+/).filter(Boolean);
+      if (url.pathname === '/resources') expect(learningResources.some((resource) => words.every((word) => `${resource.name} ${resource.provider} ${resource.description}`.toLocaleLowerCase().includes(word)))).toBe(true);
+      else if (url.pathname === '/certs') expect(selectCertifications(certifications.filter((course) => course.completionCertificateVerified), { type: 'course', query }).length).toBeGreaterThan(0);
+      else throw new Error(`지원하지 않는 자료 경로: ${url.pathname}`);
+    }
+  }
+});
 
 test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   const routes = [
     ['', 'AI의 세계로'], ['dashboard', 'AI 소식 한눈에'], ['updates', 'AI 소식'],
     ['calendar', 'AI 캘린더'], ['social', '기업 SNS'], ['path', '추천 커리큘럼'],
     ['resources', '학습 자료실'], ['certs', '수료증 취득 강의'], ['qualifications', '자격증 도전'],
-    ['learning', '학습관'], ['information', '정보관'],
+    ['learning', '학습관'], ['information', '정보관'], ['careers', '직무 둘러보기'],
   ];
   for (const [route, heading] of routes) {
     await page.goto(route);
@@ -94,12 +113,28 @@ test('학습 자료 검색과 수료 강의 공식 링크를 유지한다', asyn
 test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async ({ page }) => {
   await page.goto('');
   const carousel = page.getByRole('region', { name: '전시 공간 목록' });
-  await expect(carousel.getByRole('link')).toHaveCount(10);
+  await expect(carousel.getByRole('link')).toHaveCount(11);
   await carousel.focus();
   await page.keyboard.press('ArrowRight');
   await expect(carousel.locator('.is-centered h3')).toHaveText('AI 캘린더');
   await page.keyboard.press('ArrowLeft');
   await expect(carousel.locator('.is-centered h3')).toHaveText('AI 소식');
+});
+
+test('직무에서 학습 자료와 자격 상세로 연결하고 채용행사 출처를 안내한다', async ({ page }, testInfo) => {
+  await page.goto('careers');
+  await expect(page.getByRole('link', { name: /고용24 채용행사 찾아보기/ })).toHaveAttribute('href', 'https://www.work24.go.kr/');
+  await page.getByRole('link', { name: /소프트웨어 QA·테스터/ }).click();
+  await expect(page.getByRole('heading', { name: '소프트웨어 QA·테스터' })).toBeVisible();
+  await page.getByRole('link', { name: /QA 기초 자료 살펴보기/ }).click();
+  if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
+  await expect(page.getByLabel('자료·기관 검색')).toHaveValue('QA');
+  await expect(page.getByRole('button', { name: /Playwright 테스트 작성/ })).toBeVisible();
+  await page.goto('careers/qa');
+  await page.getByRole('link', { name: /ISTQB CTFL 기초 자격/ }).click();
+  await expect(page.getByRole('dialog').getByRole('heading', { name: /CTFL/ })).toBeVisible();
+  await page.goto('careers/없는직무');
+  await expect(page.getByRole('heading', { name: '직무를 찾을 수 없습니다' })).toBeVisible();
 });
 
 test('상위 메뉴에서 각 공간 소개와 하위 페이지로 이동한다', async ({ page }) => {

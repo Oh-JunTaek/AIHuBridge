@@ -15,6 +15,7 @@ import Calendar from './pages/Calendar';
 import Dev from './pages/Dev';
 import NotFound from './pages/NotFound';
 import SpaceOverview from './pages/SpaceOverview';
+import Careers from './pages/Careers';
 
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
@@ -35,6 +36,8 @@ const router = createBrowserRouter(
         { index: true, element: <Home /> },
         { path: 'dashboard', element: <Dashboard /> },
         { path: 'learning', element: <SpaceOverview kind="learning" /> },
+        { path: 'careers', element: <Careers /> },
+        { path: 'careers/:careerId', element: <Careers /> },
         { path: 'information', element: <SpaceOverview kind="information" /> },
         { path: 'updates', element: <Updates /> },
         { path: 'research', element: <LegacyUpdatesRedirect /> },

@@ -6,13 +6,14 @@ import { CertCard, CertDetail } from '../components/CertCard';
 import { LearningDialog } from '../components/LearningDialog';
 import type { Certification } from '../types';
 import { useT } from '../lib/i18n';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 export default function Certs() {
   const t = useT();
   const [language, setLanguage] = useState('');
   const [cost, setCost] = useState('');
-  const [query, setQuery] = useState('');
+  const [params] = useSearchParams();
+  const [query, setQuery] = useState(() => params.get('query') ?? '');
   const [selected, setSelected] = useState<Certification | null>(null);
   const [now, setNow] = useState(Date.now);
   useEffect(() => {
