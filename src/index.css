@@ -380,7 +380,9 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .dashboard-guide a:hover .passage-mark-line, .dashboard-guide a:focus-visible .passage-mark-line, .exhibit-card:hover .passage-mark-line, .exhibit-card:focus-visible .passage-mark-line { transform:scaleX(1); }
 .dashboard-guide a:focus-visible, .exhibit-card:focus-visible { outline:2px solid #397aa4; outline-offset:2px; }
 .exhibit-copy h3 { margin-top:0; }
-@media (prefers-reduced-motion:reduce) { .passage-mark, .passage-mark-line { transition:none; }.dashboard-guide a:hover .passage-mark, .dashboard-guide a:focus-visible .passage-mark, .exhibit-card:hover .passage-mark, .exhibit-card:focus-visible .passage-mark { transform:none; } }
+.dashboard-guide a > span, .exhibit-copy h3 { transform-origin:left center; transition:transform .25s ease; }
+.dashboard-guide a:hover > span, .dashboard-guide a:focus-visible > span, .exhibit-card:hover .exhibit-copy h3, .exhibit-card:focus-visible .exhibit-copy h3 { transform:scale(1.035); }
+@media (prefers-reduced-motion:reduce) { .passage-mark, .passage-mark-line, .dashboard-guide a > span, .exhibit-copy h3 { transition:none; }.dashboard-guide a:hover .passage-mark, .dashboard-guide a:focus-visible .passage-mark, .exhibit-card:hover .passage-mark, .exhibit-card:focus-visible .passage-mark, .dashboard-guide a:hover > span, .dashboard-guide a:focus-visible > span, .exhibit-card:hover .exhibit-copy h3, .exhibit-card:focus-visible .exhibit-copy h3 { transform:none; } }
 .dashboard-hero-link, .dashboard-content .results-heading a, .space-header > a, .landing-button { display: inline-flex; align-items: center; gap: .55rem; }
 .landing-button .wayfinding-icon { color: #173b60; }
 .landing-button .wayfinding-ring { stroke: #91b3d2; }
@@ -454,8 +456,10 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .exhibition-grid .exhibit-card { scroll-snap-align: center; transform: scale(.94); opacity: .85; transition: transform .45s ease, opacity .45s ease, box-shadow .25s; }
 .exhibition-grid .exhibit-card.is-centered { transform: scale(1); opacity: 1; box-shadow: 0 18px 40px #36587c20; }
 .exhibition-grid .exhibit-card:hover, .exhibition-grid .exhibit-card:focus-visible { transform: scale(1); opacity: 1; }
+.exhibition-grid .exhibit-card.is-centered:hover, .exhibition-grid .exhibit-card.is-centered:focus-visible { transform: scale(1.035); }
 @media (max-width: 760px) { .exhibition-grid { grid-auto-columns: 75%; padding-inline: 12.5%; scroll-padding-inline: 12.5%; mask-image: linear-gradient(to right,transparent,#000 8%,#000 92%,transparent); } .carousel-side { flex-basis: 35px; } }
 @media (prefers-reduced-motion: reduce) { .exhibition-grid .exhibit-card, .exhibition-grid .exhibit-card.is-centered { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .exhibition-grid .exhibit-card.is-centered:hover, .exhibition-grid .exhibit-card.is-centered:focus-visible { transform: scale(1); } }
 /* 카드 폭은 좌우 여백과 독립적으로 계산한다. */
 .exhibition-grid { --exhibit-width: clamp(200px, 27vw, 320px); grid-auto-columns: var(--exhibit-width); padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); scroll-padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); }
 @media (max-width: 760px) { .exhibition-grid { --exhibit-width: clamp(175px, 56vw, 280px); grid-auto-columns: var(--exhibit-width); padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); scroll-padding-inline: max(0px, calc((100% - var(--exhibit-width)) / 2)); } }

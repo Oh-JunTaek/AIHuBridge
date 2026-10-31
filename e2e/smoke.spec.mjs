@@ -32,6 +32,24 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   }
 });
 
+test('이동 표식과 제목은 함께 반응하고 모션 축소 설정을 따른다', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('dashboard');
+  const link = page.getByRole('complementary', { name: '대시보드 빠른 이동' }).getByRole('link', { name: 'AI 소식', exact: true });
+  await link.hover();
+  await expect.poll(() => link.locator('span').evaluate((element) => getComputedStyle(element).transform)).toBe('matrix(1.035, 0, 0, 1.035, 0, 0)');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(link.locator('span')).toHaveCSS('transform', 'none');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('');
+  const card = page.locator('.exhibit-card.is-centered');
+  await expect(card).toHaveCount(1);
+  await card.hover();
+  await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transform)).toBe('matrix(1.035, 0, 0, 1.035, 0, 0)');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(card).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+});
+
 test('개인정보 문의 안내와 이미지 대체 텍스트를 제공한다', async ({ page }) => {
   await page.goto('privacy');
   await expect(page.getByText(/보낸 사람의 주소와 문의 내용/)).toBeVisible();
