@@ -14,6 +14,7 @@ import Social from './pages/Social';
 import Calendar from './pages/Calendar';
 import Dev from './pages/Dev';
 import NotFound from './pages/NotFound';
+import SpaceOverview from './pages/SpaceOverview';
 
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
@@ -33,6 +34,8 @@ const router = createBrowserRouter(
       children: [
         { index: true, element: <Home /> },
         { path: 'dashboard', element: <Dashboard /> },
+        { path: 'learning', element: <SpaceOverview kind="learning" /> },
+        { path: 'information', element: <SpaceOverview kind="information" /> },
         { path: 'updates', element: <Updates /> },
         { path: 'research', element: <LegacyUpdatesRedirect /> },
         { path: 'path', element: <Path /> },

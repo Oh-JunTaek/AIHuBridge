@@ -5,6 +5,7 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
     ['', 'AI의 세계로'], ['dashboard', 'AI 소식 한눈에'], ['updates', 'AI 소식'],
     ['calendar', 'AI 캘린더'], ['social', '기업 SNS'], ['path', '추천 커리큘럼'],
     ['resources', '학습 자료실'], ['certs', '수료증 취득 강의'], ['qualifications', '자격증 도전'],
+    ['learning', '학습관'], ['information', '정보관'],
   ];
   for (const [route, heading] of routes) {
     await page.goto(route);
@@ -50,12 +51,28 @@ test('학습 자료 검색과 수료 강의 공식 링크를 유지한다', asyn
 test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async ({ page }) => {
   await page.goto('');
   const carousel = page.getByRole('region', { name: '전시 공간 목록' });
-  await expect(carousel.getByRole('link')).toHaveCount(8);
+  await expect(carousel.getByRole('link')).toHaveCount(10);
   await carousel.focus();
   await page.keyboard.press('ArrowRight');
   await expect(carousel.locator('.is-centered h3')).toHaveText('AI 캘린더');
   await page.keyboard.press('ArrowLeft');
   await expect(carousel.locator('.is-centered h3')).toHaveText('AI 소식');
+});
+
+test('상위 메뉴에서 각 공간 소개와 하위 페이지로 이동한다', async ({ page }) => {
+  await page.goto('dashboard');
+  const nav = page.getByRole('navigation', { name: '주요 메뉴' });
+  await nav.getByRole('link', { name: '학습관', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1, name: '학습관' })).toBeVisible();
+  await expect(page.locator('main').getByRole('link', { name: /추천 커리큘럼/ })).toHaveAttribute('href', /\/path$/);
+  await page.locator('main').getByRole('link', { name: /학습 자료실/ }).click();
+  await expect(page.getByRole('heading', { level: 1, name: '학습 자료실' })).toBeVisible();
+  await nav.getByRole('link', { name: '정보관', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1, name: '정보관' })).toBeVisible();
+  await page.locator('main').getByRole('link', { name: /AI 캘린더/ }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'AI 캘린더' })).toBeVisible();
+  await nav.getByRole('link', { name: '홈', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1, name: /AI의 세계로/ })).toBeVisible();
 });
 
 test('상세 창은 닫기 효과를 마친 뒤 닫히며 포커스를 돌려준다', async ({ page }) => {

@@ -3,8 +3,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useT } from '../lib/i18n';
 
 const groups = [
-  { id: 'learning', key: 'nav.learning', items: [{ to: '/path', key: 'nav.path' }, { to: '/resources', key: 'nav.resources' }, { to: '/certs', key: 'nav.certs' }, { to: '/qualifications', key: 'nav.qualifications' }] },
-  { id: 'information', key: 'nav.information', items: [{ to: '/updates', key: 'nav.updates' }, { to: '/calendar', key: 'nav.calendar' }, { to: '/social', key: 'nav.social' }] },
+  { id: 'learning', to: '/learning', key: 'nav.learning', items: [{ to: '/path', key: 'nav.path' }, { to: '/resources', key: 'nav.resources' }, { to: '/certs', key: 'nav.certs' }, { to: '/qualifications', key: 'nav.qualifications' }] },
+  { id: 'information', to: '/information', key: 'nav.information', items: [{ to: '/updates', key: 'nav.updates' }, { to: '/calendar', key: 'nav.calendar' }, { to: '/social', key: 'nav.social' }] },
 ];
 const activeStyle = 'bg-blue-100 text-blue-900 dark:bg-blue-900/40 dark:text-blue-100';
 const idleStyle = 'text-stone-600 hover:bg-stone-200/60 dark:text-stone-300 dark:hover:bg-stone-800';
@@ -15,7 +15,6 @@ export function SiteNavigation() {
   const location = useLocation();
   const [open, setOpen] = useState<string | null>(null);
   const nav = useRef<HTMLElement>(null);
-  const pointer = useRef('');
 
   useEffect(() => { setOpen(null); }, [location]);
   useEffect(() => {
@@ -35,19 +34,19 @@ export function SiteNavigation() {
           setOpen(null);
         }
       }}>
+      <NavLink to="/" end className={({ isActive }) => `nav-top-link flex min-h-10 items-center px-3 py-2 text-sm font-semibold ${focusStyle} ${isActive ? 'is-active' : ''}`}>홈</NavLink>
       <NavLink to="/dashboard" className={({ isActive }) => `nav-top-link flex min-h-10 items-center px-3 py-2 text-sm font-semibold ${focusStyle} ${isActive ? 'is-active' : ''}`}>대시보드</NavLink>
       {groups.map((group) => {
         const expanded = open === group.id;
-        const active = group.items.some((item) => location.pathname === item.to || location.pathname.startsWith(item.to + '/'));
+        const active = location.pathname === group.to || group.items.some((item) => location.pathname === item.to || location.pathname.startsWith(item.to + '/'));
         return (
           <div key={group.id} className="nav-group sm:relative"
             onPointerEnter={(event) => { if (event.pointerType === 'mouse') setOpen(group.id); }}
             onPointerLeave={(event) => { if (event.pointerType === 'mouse' && !(document.activeElement instanceof HTMLAnchorElement && event.currentTarget.contains(document.activeElement))) setOpen((current) => current === group.id ? null : current); }}>
             <div className={`nav-primary ${active ? 'is-active' : ''} ${expanded ? 'is-expanded' : ''}`}>
-              <NavLink id={`nav-${group.id}-trigger`} to={group.items[0].to} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
-                onPointerDown={(event) => { pointer.current = event.pointerType; }}
-                onFocus={() => { if (pointer.current !== 'touch') setOpen(group.id); }}
-                onClick={(event) => { if (pointer.current === 'touch' && !expanded) { event.preventDefault(); setOpen(group.id); } else setOpen(null); pointer.current = ''; }}
+              <NavLink id={`nav-${group.id}-trigger`} to={group.to} aria-expanded={expanded} aria-controls={`nav-${group.id}-links`}
+                onFocus={() => setOpen(group.id)}
+                onClick={() => setOpen(null)}
                 className={`nav-primary-link ${focusStyle}`}>{t(group.key)}</NavLink>
             </div>
             <ul id={`nav-${group.id}-links`} hidden={!expanded}

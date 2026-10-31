@@ -587,6 +587,28 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .landing-button .wayfinding-icon { color:#fff; }
 .landing-button .wayfinding-ring { display:none; }
 .space-header > a { background:transparent; box-shadow:none; }
+
+/* 공간 안내: 기존 전시 이미지와 색감을 이어 주는 입구 카드 */
+.space-overview { padding: 1.3rem 0 2rem; }
+.space-overview-heading { margin-bottom: 1.5rem; }
+.space-overview-heading > span { color: #577c9a; font-size: .76rem; font-weight: 700; }
+.space-overview-heading h2 { margin-top: .4rem; color: #173b60; font-size: clamp(1.35rem, 2vw, 1.8rem); font-weight: 700; letter-spacing: -.035em; }
+.space-overview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.space-overview-card { display: grid; grid-template-columns: minmax(145px, 40%) 1fr; min-height: 190px; overflow: hidden; border: 1px solid #d5e3ed; border-radius: 20px; background: rgba(255,255,255,.92); color: #173b60; box-shadow: 0 12px 35px #254b6e0c; transition: transform .25s ease, box-shadow .25s ease; }
+.space-library .space-overview-card { border-color: #e7ddce; }
+.space-overview-card:hover, .space-overview-card:focus-visible { transform: translateY(-3px); box-shadow: 0 18px 40px #254b6e1c; }
+.space-overview-card:focus-visible { outline: 3px solid #4f86ad; outline-offset: 3px; }
+.space-overview-art { height: 100%; min-height: 190px; aspect-ratio: auto; }
+.space-overview-art .reference-art-learning img, .space-overview-art .reference-art-news img { width: 250%; left: -75%; transform: translateY(-9%); }
+.space-overview-copy { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; padding: 1.3rem; }
+.space-overview-number { color: #829bb0; font-size: .68rem; font-weight: 700; letter-spacing: .08em; }
+.space-overview-copy h3 { margin-top: .5rem; font-size: 1rem; font-weight: 750; line-height: 1.35; }
+.space-overview-copy p { margin-top: .55rem; color: #58738a; font-size: .78rem; line-height: 1.6; word-break: keep-all; }
+.space-overview-link { display: inline-flex; align-items: center; gap: .35rem; margin-top: auto; padding-top: .8rem; color: #356b91; font-size: .72rem; font-weight: 700; }
+.space-overview-link .wayfinding-icon { width: 1.25rem; height: 1.25rem; }
+@media (max-width: 760px) { .space-overview-grid { grid-template-columns: 1fr; } .space-overview-card { min-height: 150px; grid-template-columns: minmax(115px, 38%) 1fr; } .space-overview-art { min-height: 150px; } .space-overview-copy { padding: 1rem; } }
+@media (max-width: 380px) { nav[aria-label='주요 메뉴'] .nav-top-link, nav[aria-label='주요 메뉴'] .nav-primary-link { padding-inline: .45rem; font-size: .8rem; } }
+@media (prefers-reduced-motion: reduce) { .space-overview-card { transition: none; } .space-overview-card:hover, .space-overview-card:focus-visible { transform: none; } }
 .qualification-layout .qualification-filters { padding:1.35rem; }
 .qualification-layout .qualification-filter-heading { display:block; margin-bottom:1.2rem; }
 .qualification-layout .qualification-filter-heading h2 { font-size:1.05rem; line-height:1.4; }
