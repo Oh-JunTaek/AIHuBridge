@@ -48,5 +48,5 @@ export function selectCertifications(items, { type, language = '', cost = '', qu
     && (!cost || (cost === 'learning-free' ? item.learningFee.status === 'free'
       : cost === 'credential-free' ? item.credentialFee.status === 'free'
       : item.learningFee.status === 'unknown' || item.credentialFee.status === 'unknown'))
-    && words.every((word) => `${item.name} ${item.provider} ${item.examCode ?? ''}`.toLocaleLowerCase().includes(word)));
+    && words.every((word) => `${item.name} ${item.provider} ${item.examCode ?? ''} ${item.note ?? ''}`.toLocaleLowerCase().includes(word)));
 }

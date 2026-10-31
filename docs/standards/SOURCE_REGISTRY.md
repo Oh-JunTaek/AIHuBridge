@@ -2,6 +2,11 @@
 
 확인일: 2026-10-26. 공개 여부·접근 정책·이용 안내를 확인하고 최소 정보만 제공합니다. 이 표가 모든 콘텐츠의 포괄적 재사용 허가를 의미하지 않습니다. 출처 정책 변경 시 재확인이 필요합니다.
 
+## QA·소프트웨어 테스팅 (2026-10-31)
+
+- 국내 정기시험의 [KSTQB CTBL](https://www.kstqb.org/sw/sw2.asp), [ISTQB CTFL](https://www.kstqb.org/sw/sw3.asp), [CT-AI](https://www.kstqb.org/sw/sw3_6.asp), [CT-GenAI](https://www.kstqb.org/sw/sw3_9.asp) 공식 안내의 언어·응시료·응시 조건·갱신을 확인했다. CT-AI는 AI 기반 시스템 테스트를, CT-GenAI는 테스트 업무의 생성형 AI 활용을 다루며 두 시험 모두 CTFL이 필요하다. CTBL은 등록민간자격, ISTQB 항목은 해외 기관 인증으로 구분한다. 시험 일정은 수집하지 않으며 시험장과 회차는 접수처에서 재확인한다.
+- [University of Minnesota의 Introduction to Software Testing](https://www.coursera.org/learn/introduction-software-testing/)은 영어 강의·과제와 수료증을 안내하며 수료증이 포함된 수강 경험은 유료라고 명시한다. 구체적 수강 금액·한국어 자막은 확인하지 못했다. [Playwright 공식 테스트 작성 안내](https://playwright.dev/docs/writing-tests)와 KSTQB 공식 시험 범위·샘플 문제는 학습 자료로 원문 링크만 연결한다. 교육 수료증과 시험 자격을 구분하며 기관 로고·교재를 복제하지 않는다.
+
 ## 보안 학습 및 시험 자료 (2026-10-30)
 
 - [Microsoft SC-900](https://learn.microsoft.com/ko-kr/credentials/certifications/security-compliance-and-identity-fundamentals/) 및 [ISC2 CC](https://www.isc2.org/certifications/cc), [ISC2 비용 및 언어 안내](https://www.isc2.org/frequently-asked-questions)를 확인했다. 국내 시험장 예약과 조건은 접수처에서 재확인한다. [AI 보안 기초](https://learn.microsoft.com/ko-kr/training/paths/ai-security-fundamentals/)와 [보안 학습](https://learn.microsoft.com/ko-kr/training/topics/sci)은 공식 링크로 연결한다. 소식의 보안 필터는 기존 자료의 제목·발췌 키워드 탐색이며 별도 보안 뉴스 수집이 아니다.

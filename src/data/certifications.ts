@@ -3,6 +3,15 @@ import type { Certification } from '../types';
 // 비용·수료·선행 요건은 정적 검토 자료다. 근거 URL과 검토일을 함께 유지한다.
 export const certifications: Certification[] = [
   {
+    id: 'coursera-software-testing', name: 'Introduction to Software Testing', provider: 'University of Minnesota · Coursera', type: 'course', language: 'en', difficulty: '중급',
+    url: 'https://www.coursera.org/learn/introduction-software-testing/', verifiedAt: '2026-10-31', completionCertificateVerified: true,
+    learningFee: { status: 'conditional', note: '수료증·평가가 포함된 과정은 유료입니다. 무료 체험 및 별도 지원 조건은 제공처에서 확인하세요.' },
+    credentialFee: { status: 'paid', note: '수료증은 유료 수강 경험에 포함됩니다. 금액과 구독 조건은 신청 화면에서 확인하세요.' },
+    requirements: 'Java 또는 유사한 객체지향 언어와 소프트웨어 개발 생명주기에 대한 기초 지식이 권장됩니다. 수료를 위해 과제 등 제공처 조건을 충족해야 합니다.',
+    note: 'QA와 소프트웨어 테스팅의 원리, 테스트 설계와 자동화를 배우는 영어 강의입니다.',
+    evidenceUrls: ['https://www.coursera.org/learn/introduction-software-testing/'],
+  },
+  {
     "id": "boost-ai-basics",
     "name": "모두를 위한 인공지능 기초",
     "provider": "네이버 커넥트재단 · 부스트코스",

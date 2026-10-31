@@ -7,7 +7,7 @@ import type { ResourceKind, LearningResource } from '../data/learning-resources'
 import { LearningVisual } from '../components/LearningVisual';
 import { LearningDialog } from '../components/LearningDialog';
 
-const kinds: ResourceKind[] = ['강의', '실습', '프로젝트', '학습 플랫폼', '역량 평가'];
+const kinds: ResourceKind[] = ['강의', '학습 자료', '실습', '프로젝트', '학습 플랫폼', '역량 평가'];
 export default function Resources() {
   const [kind, setKind] = useState<ResourceKind | ''>('');
   const [query, setQuery] = useState('');

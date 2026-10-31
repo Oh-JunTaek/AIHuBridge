@@ -23,6 +23,24 @@ test('자격증 카드의 상세 창과 공식 링크가 열린다', async ({ pa
   await expect(dialog).not.toBeVisible();
 });
 
+test('QA 자격과 학습 자료·수료 과정을 구분해 찾는다', async ({ page }, testInfo) => {
+  await page.goto('qualifications');
+  if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
+  await page.getByRole('button', { name: 'QA', exact: true }).click();
+  await page.getByRole('button', { name: /ISTQB Certified Tester AI Testing/ }).click();
+  await expect(page.getByRole('dialog').getByText(/CTFL 자격 보유 필수/)).toBeVisible();
+  await page.keyboard.press('Escape');
+  await page.goto('resources');
+  if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
+  await page.getByLabel('자료·기관 검색').fill('QA');
+  await expect(page.getByRole('button', { name: /Playwright 테스트 작성/ })).toBeVisible();
+  await page.goto('certs');
+  if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
+  await page.getByLabel('교육·기관 검색').fill('QA');
+  await page.getByRole('button', { name: /Introduction to Software Testing/ }).click();
+  await expect(page.getByRole('dialog').getByText(/수료증·평가 비용 · 유료/)).toBeVisible();
+});
+
 test('소식의 상세 필터가 열리고 조건을 적용할 수 있다', async ({ page }, testInfo) => {
   await page.goto('updates');
   if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();

@@ -22,7 +22,7 @@ const providerSymbols: Record<string, string> = {
 const passRates: Record<string, { year: number; practical: number; written: number; url: string }> = { 'information-processing-engineer': { year: 2025, practical: 22.1, written: 65, url: 'https://www.q-net.or.kr/crf005.do?gId=&gSite=Q&id=crf00503s01&jmCd=1320&jmInfoDivCcd=B0&jmNm=' } };
 const currentRate = (id: string) => { const rate = passRates[id]; return rate?.year === new Date().getFullYear() - 1 ? rate : undefined; };
 const rateClass = (id: string) => { const rate = currentRate(id); return !rate ? 'unknown' : rate.practical <= 25 ? 'low' : rate.practical <= 50 ? 'mid' : 'high'; };
-const tags = ['AI', '데이터', '클라우드', '보안', '컴퓨터 활용', '개발'];
+const tags = ['AI', '데이터', '클라우드', '보안', '컴퓨터 활용', '개발', 'QA'];
 const categoryOf = (item: (typeof qualifications)[number]) => tags.filter((tag) => tag === 'AI' ? item.tags.some((value) => value !== 'AI 관련 기반' && /AI|ML|LLM|프롬프트/.test(value)) : tag === '개발' ? item.tags.includes('소프트웨어 개발') : item.tags.includes(tag));
 const displayClass = (value: string) => value === '등록민간자격 · 국가공인 아님' ? '민간자격' : value;
 const classes = [...new Set(qualifications.map((item) => item.classification))];
@@ -54,7 +54,7 @@ export default function Qualifications() {
     <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>자격증 도전</h1><p className="space-caption">컴퓨터 활용부터 AI까지, 나에게 맞는 자격시험을 찾아보세요.</p></div></header>
     <div className="reading-layout qualification-layout"><aside className="reading-sidebar qualification-filters" aria-label="자격증 검색과 필터"><MobileFilter summary={`${tag || '전체 분야'} · ${classification || '전체 자격'}`}>
       <div className="qualification-filter-grid">
-        <div className="qualification-category"><span>분야</span><div>{tags.map((value, index) => <button type="button" key={value} aria-pressed={tag === value} onClick={() => setTag(tag === value ? '' : value)}><span aria-hidden="true">{['✦', '▤', '☁', '◇', '▣', '⌘'][index]}</span> {value}</button>)}</div></div>
+        <div className="qualification-category"><span>분야</span><div>{tags.map((value, index) => <button type="button" key={value} aria-pressed={tag === value} onClick={() => setTag(tag === value ? '' : value)}><span aria-hidden="true">{['✦', '▤', '☁', '◇', '▣', '⌘', '✓'][index]}</span> {value}</button>)}</div></div>
         <label>자격 종류<select value={classification} onChange={(e) => setClassification(e.target.value)}><option value="">전체 종류</option>{classes.map((value) => <option key={value} value={value}>{displayClass(value)}</option>)}</select></label>
         <label>시험 언어<select value={language} onChange={(e) => setLanguage(e.target.value)}><option value="">전체 언어</option><option>한국어</option><option>영어</option><option>일본어</option></select></label>
       </div>
