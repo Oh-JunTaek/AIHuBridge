@@ -373,6 +373,14 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .dark .wayfinding-ring { stroke: #7396ae; }
 .dark a:hover .wayfinding-icon, .dark button:hover .wayfinding-icon { color: #fff; }
 .dashboard-guide a .wayfinding-icon { width: 1.5rem; height: 1.5rem; }
+/* 원형 장식 없이 가는 선이 공간으로 이어지는 이동 표식 */
+.passage-mark { display:block; flex:none; width:1.65rem; height:.9rem; color:#6995af; stroke:currentColor; stroke-width:1.3; stroke-linecap:round; stroke-linejoin:round; transition:color .25s ease, transform .25s ease; }
+.passage-mark-line { transform-origin:right center; transform:scaleX(.68); transition:transform .25s ease; }
+.dashboard-guide a:hover .passage-mark, .dashboard-guide a:focus-visible .passage-mark, .exhibit-card:hover .passage-mark, .exhibit-card:focus-visible .passage-mark { color:#225c86; transform:translateX(3px); }
+.dashboard-guide a:hover .passage-mark-line, .dashboard-guide a:focus-visible .passage-mark-line, .exhibit-card:hover .passage-mark-line, .exhibit-card:focus-visible .passage-mark-line { transform:scaleX(1); }
+.dashboard-guide a:focus-visible, .exhibit-card:focus-visible { outline:2px solid #397aa4; outline-offset:2px; }
+.exhibit-copy h3 { margin-top:0; }
+@media (prefers-reduced-motion:reduce) { .passage-mark, .passage-mark-line { transition:none; }.dashboard-guide a:hover .passage-mark, .dashboard-guide a:focus-visible .passage-mark, .exhibit-card:hover .passage-mark, .exhibit-card:focus-visible .passage-mark { transform:none; } }
 .dashboard-hero-link, .dashboard-content .results-heading a, .space-header > a, .landing-button { display: inline-flex; align-items: center; gap: .55rem; }
 .landing-button .wayfinding-icon { color: #173b60; }
 .landing-button .wayfinding-ring { stroke: #91b3d2; }

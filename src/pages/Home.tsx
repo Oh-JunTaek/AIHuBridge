@@ -3,20 +3,20 @@ import { middleCarouselIndex } from '../lib/carousel.mjs';
 import { WayfindingIcon } from '../components/WayfindingIcon';
 import { Link } from 'react-router-dom';
 import { ExhibitArt } from '../components/ExhibitArt';
-import { BookIcon, BadgeIcon, ClockIcon, CompassIcon } from '../components/icons';
+import { PassageMark } from '../components/PassageMark';
 
 const exhibits = [
-  { to: '/dashboard', title: '대시보드', description: '새로운 소식과 배움을 한눈에 만나보세요.', Icon: CompassIcon, style: 'dashboard' },
-  { to: '/updates', title: 'AI 소식', description: 'AI의 새로운 소식과 연구를 살펴보세요.', Icon: CompassIcon, style: 'news' },
-  { to: '/calendar', title: 'AI 캘린더', description: '관심 있는 AI 행사와 일정을 찾아보세요.', Icon: ClockIcon, style: 'calendar' },
-  { to: '/social', title: '기업 SNS', description: 'AI 기업과 관계자의 소식을 살펴보세요.', Icon: CompassIcon, style: 'social' },
-  { to: '/path', title: '추천 커리큘럼', description: '기초부터 이어지는 학습 경로를 만나보세요.', Icon: BookIcon, style: 'learning' },
-  { to: '/resources', title: '학습 자료실', description: '강의와 실습, 프로젝트를 찾아보세요.', Icon: BookIcon, style: 'resources' },
-  { to: '/certs', title: '수료증 취득 강의', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', Icon: BadgeIcon, style: 'completion' },
-  { to: '/qualifications', title: '자격증 도전', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', Icon: BadgeIcon, style: 'qualifications' },
-  { to: '/careers', title: '직무 둘러보기', description: '관심 있는 일과 필요한 배움을 만나보세요.', Icon: CompassIcon, style: 'career' },
-  { to: '/learning', title: '학습관', description: '나에게 맞는 배움의 공간을 둘러보세요.', Icon: BookIcon, style: 'resources' },
-  { to: '/information', title: '정보관', description: 'AI 소식과 행사, 기업의 이야기를 만나보세요.', Icon: CompassIcon, style: 'dashboard' },
+  { to: '/dashboard', title: '대시보드', description: '새로운 소식과 배움을 한눈에 만나보세요.', style: 'dashboard' },
+  { to: '/updates', title: 'AI 소식', description: 'AI의 새로운 소식과 연구를 살펴보세요.', style: 'news' },
+  { to: '/calendar', title: 'AI 캘린더', description: '관심 있는 AI 행사와 일정을 찾아보세요.', style: 'calendar' },
+  { to: '/social', title: '기업 SNS', description: 'AI 기업과 관계자의 소식을 살펴보세요.', style: 'social' },
+  { to: '/path', title: '추천 커리큘럼', description: '기초부터 이어지는 학습 경로를 만나보세요.', style: 'learning' },
+  { to: '/resources', title: '학습 자료실', description: '강의와 실습, 프로젝트를 찾아보세요.', style: 'resources' },
+  { to: '/certs', title: '수료증 취득 강의', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', style: 'completion' },
+  { to: '/qualifications', title: '자격증 도전', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', style: 'qualifications' },
+  { to: '/careers', title: '직무 둘러보기', description: '관심 있는 일과 필요한 배움을 만나보세요.', style: 'career' },
+  { to: '/learning', title: '학습관', description: '나에게 맞는 배움의 공간을 둘러보세요.', style: 'resources' },
+  { to: '/information', title: '정보관', description: 'AI 소식과 행사, 기업의 이야기를 만나보세요.', style: 'dashboard' },
 ] as const;
 
 export default function Home() {
@@ -81,9 +81,9 @@ export default function Home() {
           moveCarousel(event.key === 'ArrowLeft' ? -1 : 1);
         }
       }}>
-        {[...exhibits, ...exhibits, ...exhibits].map(({ to, title, description, Icon, style }, index) => <Link className={`exhibit-card exhibit-${style} ${active === index ? 'is-centered' : ''}`} to={to} key={`${index}-${to}`} aria-hidden={index < exhibits.length || index >= exhibits.length * 2 ? true : undefined} tabIndex={index < exhibits.length || index >= exhibits.length * 2 ? -1 : undefined}>
+        {[...exhibits, ...exhibits, ...exhibits].map(({ to, title, description, style }, index) => <Link className={`exhibit-card exhibit-${style} ${active === index ? 'is-centered' : ''}`} to={to} key={`${index}-${to}`} aria-hidden={index < exhibits.length || index >= exhibits.length * 2 ? true : undefined} tabIndex={index < exhibits.length || index >= exhibits.length * 2 ? -1 : undefined}>
           <div className="exhibit-art"><ExhibitArt kind={style} /></div>
-          <div className="exhibit-copy"><Icon className="exhibit-icon" aria-hidden="true" /><h3>{title}</h3><p>{description}</p><WayfindingIcon className="exhibit-arrow" /></div>
+          <div className="exhibit-copy"><h3>{title}</h3><p>{description}</p><PassageMark className="exhibit-arrow" /></div>
         </Link>)}
       </div>
       <button className="carousel-side carousel-next" type="button" aria-label="다음 전시 공간" onClick={() => moveCarousel(1)}><WayfindingIcon /></button>
