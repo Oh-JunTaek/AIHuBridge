@@ -3,11 +3,12 @@ export default function Privacy() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12 text-sm text-stone-600 dark:text-stone-300">
       <h1 className="mb-6 text-2xl font-bold text-stone-800 dark:text-stone-100">개인정보 및 저장 정보 안내</h1>
-      <p className="mb-6 text-xs">적용일: 2026년 10월 25일</p>
+      <p className="mb-6 text-xs">안내 수정일: 2026년 10월 31일</p>
       <div className="space-y-6">
         <section>
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">1. 서비스가 저장하는 항목</h2>
           <p className="mt-2">본 서비스는 로그인·회원가입·개인 학습 기록 기능을 제공하지 않습니다. 현재 화면 설정이나 개인 기록을 브라우저에 저장하지 않습니다. 이전 버전의 저장값은 읽거나 사용하지 않으며, 브라우저의 사이트 데이터 삭제 기능으로 지울 수 있습니다.</p>
+          <p className="mt-2">사이트 앱 코드에서 별도의 쿠키를 설정하지 않습니다. 외부 서비스의 저장 및 처리 방식은 해당 서비스의 안내를 확인해 주세요.</p>
         </section>
         <section>
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">2. 웹사이트 접속과 외부 요청</h2>
@@ -19,7 +20,7 @@ export default function Privacy() {
           <h2 className="font-semibold text-stone-800 dark:text-stone-100">3. 수집 콘텐츠</h2>
           <p className="mt-2">AI 소식과 AI 일정은 운영 작업에서 수집한 정적 자료를 제공합니다. 탐색 조건은 브라우저에 저장하거나 제공처로 전송하지 않습니다.</p>
         </section>
-        <section><h2 className="font-semibold text-stone-800 dark:text-stone-100">4. 운영 주체</h2><p className="mt-2">서비스 운영 및 정보 정정: eunmastudio · <a href="mailto:eunmastudio@gmail.com" className="underline">eunmastudio@gmail.com</a></p></section>
+        <section><h2 className="font-semibold text-stone-800 dark:text-stone-100">4. 이메일 문의와 개인정보 요청</h2><p className="mt-2">문의자가 이메일을 보내면 보낸 사람의 주소와 문의 내용이 운영자의 이메일 서비스에 전달됩니다. 이메일 서비스의 개인정보 처리 방식은 해당 제공자의 안내를 확인해 주세요.</p><p className="mt-2">문의 내용이나 개인정보에 관한 열람·정정·삭제 요청은 아래 주소로 보내실 수 있습니다.</p><p className="mt-2">운영: eunmastudio · <a href="mailto:eunmastudio@gmail.com" className="underline">eunmastudio@gmail.com</a></p></section>
       </div>
     </div>
   );

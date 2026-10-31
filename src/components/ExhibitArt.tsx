@@ -1,4 +1,3 @@
-import newsDesign from '../assets/exhibit-news-design.webp';
 import learningDesign from '../assets/exhibit-learning-design.webp';
 import dashboardDesign from '../assets/exhibit-dashboard.webp';
 import resourcesDesign from '../assets/exhibit-resources.webp';
@@ -9,8 +8,9 @@ type ExhibitKind = 'news' | 'calendar' | 'learning' | 'dashboard' | 'resources' 
 
 export function ExhibitArt({ kind }: { kind: ExhibitKind }) {
   if (kind === 'career') return <div className="career-art" aria-hidden="true"><div className="career-art-orbit"/><div className="career-art-card"><span>MY NEXT STEP</span><i/><i/><i/></div><div className="career-art-circle">✦</div><div className="career-art-path">AI · DATA · QA</div></div>;
+  if (kind === 'news') return <div className="news-art" aria-hidden="true"><div className="news-art-orbit"/><div className="news-art-spark">✦</div><div className="news-art-window"><div className="news-art-bar"><i/><i/><i/></div><div className="news-art-head">AI <span>NEWS</span></div><div className="news-art-feature"><b>✧</b><div><i/><i/><i/></div></div><div className="news-art-lines"><i/><i/><i/></div></div><div className="news-art-note"><span>INSIGHT</span><i/><i/></div></div>;
   if (kind !== 'calendar') {
-    const design = { news: newsDesign, learning: learningDesign, dashboard: dashboardDesign, resources: resourcesDesign, completion: completionDesign, qualifications: qualificationsDesign, social: socialDesign }[kind];
+    const design = { learning: learningDesign, dashboard: dashboardDesign, resources: resourcesDesign, completion: completionDesign, qualifications: qualificationsDesign, social: socialDesign }[kind];
     return <div className={`reference-art reference-art-${kind}`} aria-hidden="true"><div className="reference-art-motion"><img src={design} alt="" loading="lazy" decoding="async" /></div></div>;
   }
   if (kind === 'calendar') return <div className="art-calendar calendar-scene" aria-hidden="true">

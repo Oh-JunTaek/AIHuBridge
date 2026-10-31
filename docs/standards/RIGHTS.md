@@ -10,9 +10,7 @@
 | 외부 소프트웨어 패키지 | 각 패키지에 동봉된 LICENSE·NOTICE 등. package-lock.json은 사용 버전 확인용이며 권리 고지를 대체하지 않음 |
 | 대한민국 경계 자료 | Natural Earth 공개 도메인. scripts/data/korea-boundary.json의 원본·이용 조건과 출처 관리표 참조 |
 
-자격증 카드의 로컬 시안은 [한국데이터산업진흥원](https://www.kdata.or.kr/kr/contents/ci/view.do), [한국생산성본부](https://www.kpc.or.kr/kpc/PTWHP005_about_008.do), [대한상공회의소](https://seoulcci.korcham.net/nCham/Service/Kcci/appl/Ci.asp), [한국산업인력공단](https://chungnam.hrdkorea.or.kr/3/2/2/1)의 공식 이미지를 사용한다. 공개 배포 전 주관기관 식별 용도와 투명도 적용의 이용 조건을 확인한다. 다운로드 제공 자체를 재사용 허가로 간주하지 않는다.
-
-사용자가 제공한 AICE 로고도 로컬 시안에 포함한다. 로고 원본에 대한 사용 허락과 투명도 적용 가능 여부는 공개 배포 전에 확인한다.
+2026-10-31 사용자 결정에 따라 자격증 카드에서 한국데이터산업진흥원·한국생산성본부·대한상공회의소·한국산업인력공단·AICE의 권리 미확인 로고 사용을 중단하고 자체 도형으로 대체했다. 홈 AI 소식 그림에 들어간 기업 상표도 자체 그림으로 대체했다. 기존 원본 파일의 저장소 보관은 공개 표시를 뜻하지 않으며 재사용 허가를 뜻하지 않는다.
 
 KSTQB는 [자격 보유자용 로고](https://www.kstqb.org/board_skin/board_view.asp?bbs_code=1&etc=&idx=250&key=0&page=1&word=)와 [인증 교육기관의 로고 사용](https://www.kstqb.org/about/about3.asp)을 별도로 안내한다. 자격 안내 카드의 KSTQB 기관 로고 사용 조건은 확인되지 않아 적용하지 않았다. 위 제한을 모든 식별 목적 사용에 대한 법적 결론으로 확대하지 않는다.
 

@@ -32,6 +32,19 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   }
 });
 
+test('개인정보 문의 안내와 이미지 대체 텍스트를 제공한다', async ({ page }) => {
+  await page.goto('privacy');
+  await expect(page.getByText(/보낸 사람의 주소와 문의 내용/)).toBeVisible();
+  await expect(page.getByText(/열람·정정·삭제 요청/)).toBeVisible();
+  for (const route of ['', 'qualifications', 'resources', 'certs']) {
+    await page.goto(route);
+    expect(await page.locator('img:not([alt])').count()).toBe(0);
+  }
+  await page.goto('qualifications');
+  await expect(page.locator('.qualification-emblem').first()).toHaveAttribute('aria-hidden', 'true');
+  await expect(page.locator('.qualification-card img')).toHaveCount(0);
+});
+
 test('자격증 카드의 상세 창과 공식 링크가 열린다', async ({ page }) => {
   await page.goto('qualifications');
   await page.getByRole('button', { name: /데이터분석 준전문가/ }).click();

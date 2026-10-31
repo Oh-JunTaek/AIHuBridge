@@ -658,10 +658,25 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 /* 분야 태그 위치는 유지하고 설명과 심볼을 같은 줄의 별도 공간에 둔다. */
 .qualification-card-middle { display:flex; align-items:center; gap:1rem; margin-top:.65rem; }
 .qualification-card-middle .qualification-description { flex:1; min-width:0; margin-top:0; }
-.qualification-provider-symbol { flex:none; width:7rem; max-height:2.5rem; object-fit:contain; opacity:.34; margin-right:16%; pointer-events:none; }
+.qualification-emblem { position:relative; flex:none; width:4.3rem; height:2.6rem; margin-right:18%; opacity:.38; pointer-events:none; }
+.qualification-emblem i { position:absolute; width:1.65rem; height:1.65rem; border:1px solid #78a8c4; border-radius:.35rem; transform:rotate(45deg); }
+.qualification-emblem i:nth-child(1) { left:.35rem; top:.5rem; }.qualification-emblem i:nth-child(2) { left:1.1rem; top:.5rem; background:#deedf6; }.qualification-emblem i:nth-child(3) { left:1.85rem; top:.5rem; }
 @media (max-width: 480px) {
-  .qualification-provider-symbol { width:4.5rem; max-height:2rem; margin-right:0; }
+  .qualification-emblem { width:3.9rem; margin-right:0; }
 }
+
+/* 기업 상표를 사용하지 않는 자체 소식 전시 그림 */
+.news-art { position:absolute; inset:0; overflow:hidden; background:linear-gradient(128deg,#e8f3fc,#c8e0f6 55%,#edf6fc); }
+.news-art-orbit { position:absolute; width:105%; height:95%; left:-15%; top:-30%; border:1px solid #ffffffb3; border-radius:50%; transform:rotate(-22deg); }
+.news-art-spark { position:absolute; left:18%; top:23%; color:#dfa953; font-size:1.6rem; }
+.news-art-window { position:absolute; width:53%; height:94%; right:9%; top:20%; padding:8% 7%; background:#fbfdff; border:3px solid #accbe0; border-radius:12px; box-shadow:0 12px 24px #608dbb38; transform:rotate(7deg); transition:transform .7s ease; }
+.news-art-bar { display:flex; gap:4px; }.news-art-bar i { width:5px; height:5px; border-radius:50%; background:#a7c8e0; }
+.news-art-head { margin:10% 0 8%; color:#244f7e; font-size:clamp(.65rem,1.3vw,1.1rem); font-weight:800; letter-spacing:.05em; }.news-art-head span { font-weight:400; }
+.news-art-feature { display:flex; gap:8%; align-items:center; }.news-art-feature b { display:grid; place-items:center; width:32%; aspect-ratio:1; border-radius:5px; color:#fff; background:linear-gradient(135deg,#73b0db,#305a91); font-size:1.3rem; }.news-art-feature div { flex:1; }
+.news-art-feature i,.news-art-lines i,.news-art-note i { display:block; height:4px; margin:6px 0; border-radius:4px; background:#cbdeed; }.news-art-feature i:nth-child(2),.news-art-lines i:nth-child(2),.news-art-note i:last-child { width:75%; }
+.news-art-lines { margin-top:9%; }.news-art-note { position:absolute; left:9%; bottom:12%; width:31%; padding:4%; color:#517a9b; background:#fffffff0; border-radius:9px; box-shadow:0 8px 20px #6487a22e; transform:rotate(-7deg); transition:transform .7s ease; }.news-art-note span { font-size:.55rem; font-weight:800; letter-spacing:.12em; }
+.exhibit-card:hover .news-art-window,.exhibit-card:focus-visible .news-art-window { transform:rotate(4deg) translateY(-4px); }.exhibit-card:hover .news-art-note,.exhibit-card:focus-visible .news-art-note { transform:rotate(-4deg) translateY(-4px); }
+@media (prefers-reduced-motion:reduce) { .news-art-window,.news-art-note { transition:none; }.exhibit-card:hover .news-art-window,.exhibit-card:focus-visible .news-art-window { transform:rotate(7deg); }.exhibit-card:hover .news-art-note,.exhibit-card:focus-visible .news-art-note { transform:rotate(-7deg); } }
 
 /* 학습 자료와 수료 과정은 자격증 목록과 같은 밀도로 표시한다. */
 .learning-list { border:1px solid #dbe6ee; border-radius:15px; overflow:hidden; background:#fff; }

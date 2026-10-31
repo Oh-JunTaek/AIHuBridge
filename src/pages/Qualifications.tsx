@@ -5,20 +5,6 @@ import { groupOf, groupResults } from '../lib/qualification-groups.mjs';
 import { MobileFilter } from '../components/MobileFilter';
 import { WayfindingIcon } from '../components/WayfindingIcon';
 import { useAnimatedDialog } from '../components/useAnimatedDialog';
-import kdataSymbol from '../assets/kdata-symbol.png';
-import kpcSymbol from '../assets/kpc-symbol.png';
-import korchamSymbol from '../assets/korcham-symbol.png';
-import hrdkSymbol from '../assets/hrdk-symbol.svg';
-import aiceSymbol from '../assets/aice-symbol.png';
-
-const providerSymbols: Record<string, string> = {
-  '한국데이터산업진흥원': kdataSymbol,
-  '한국생산성본부': kpcSymbol,
-  '대한상공회의소': korchamSymbol,
-  '한국산업인력공단': hrdkSymbol,
-  'KT · 한국경제신문': aiceSymbol,
-};
-
 const passRates: Record<string, { year: number; practical: number; written: number; url: string }> = { 'information-processing-engineer': { year: 2025, practical: 22.1, written: 65, url: 'https://www.q-net.or.kr/crf005.do?gId=&gSite=Q&id=crf00503s01&jmCd=1320&jmInfoDivCcd=B0&jmNm=' } };
 const currentRate = (id: string) => { const rate = passRates[id]; return rate?.year === new Date().getFullYear() - 1 ? rate : undefined; };
 const rateClass = (id: string) => { const rate = currentRate(id); return !rate ? 'unknown' : rate.practical <= 25 ? 'low' : rate.practical <= 50 ? 'mid' : 'high'; };
@@ -64,9 +50,9 @@ export default function Qualifications() {
       <div className="results-heading"><div><span>학습관의 자격 안내</span><h2>자격증</h2></div></div>
       <label className="qualification-search"><span className="sr-only">자격증·주관사 검색</span><input type="search" placeholder="자격증 이름 또는 주관사 검색" value={query} onChange={(e) => setQuery(e.target.value)} /></label>
       {results.length === 0 && <p className="qualification-empty">조건에 맞는 자격증이 없습니다. 검색어나 필터를 변경해 보세요.</p>}
-      <div className="qualification-list">{visibleResults.map((item) => <button type="button" className={`qualification-card rate-${rateClass(item.id)}${providerSymbols[item.provider] ? ' has-provider-symbol' : ''}`} key={item.id} onClick={() => open(item.id)}>
+      <div className="qualification-list">{visibleResults.map((item) => <button type="button" className={`qualification-card rate-${rateClass(item.id)}`} key={item.id} onClick={() => open(item.id)}>
         <span className="qualification-card-top"><strong>{groupOf(item.id)?.name ?? item.name}</strong><span className="qualification-tags">{categoryOf(item).map((value) => <span key={value} data-category={value}>{value}</span>)}</span></span>
-        <span className="qualification-card-middle"><span className="qualification-description">{item.id.startsWith('computer-skills-') ? '스프레드시트와 데이터베이스 등 컴퓨터 활용 능력을 평가합니다.' : item.intro}</span>{providerSymbols[item.provider] && <img className="qualification-provider-symbol" src={providerSymbols[item.provider]} alt="" aria-hidden="true" />}</span>
+        <span className="qualification-card-middle"><span className="qualification-description">{item.id.startsWith('computer-skills-') ? '스프레드시트와 데이터베이스 등 컴퓨터 활용 능력을 평가합니다.' : item.intro}</span><span className="qualification-emblem" aria-hidden="true"><i /><i /><i /></span></span>
         <span className="qualification-meta"><span>{item.provider}</span><span>{[...new Set((groupOf(item.id)?.ids.map((id) => qualifications.find((entry) => entry.id === id)).filter((entry) => entry && results.includes(entry)).map((entry) => displayClass(entry!.classification)) ?? [displayClass(item.classification)]))].join(' · ')}</span><span>{item.language.join(' · ')}</span>{currentRate(item.id) && <span>{currentRate(item.id)?.year}년 실기 합격률 {currentRate(item.id)?.practical}%</span>}{item.examFree === true && <span>시험 무료</span>}</span>
         <span className="qualification-arrow" aria-hidden="true"><WayfindingIcon /></span>
       </button>)}</div>
