@@ -7,8 +7,9 @@ import { selectCertifications } from '../src/lib/cert-rules.mjs';
 import { journeys } from '../src/data/journeys.ts';
 
 test('학습 여정의 자료와 자격증은 실제 원본을 참조한다', () => {
+  expect(new Set(journeys.map((journey) => journey.id)).size).toBe(journeys.length);
   for (const journey of journeys) {
-    expect(careers.some((career) => career.id === journey.careerId)).toBe(true);
+    if (journey.careerId) expect(careers.some((career) => career.id === journey.careerId)).toBe(true);
     for (const id of journey.qualificationIds) expect(qualifications.some((exam) => exam.id === id)).toBe(true);
     for (const step of journey.steps) for (const reference of step.resources) {
       expect(reference.reason).toBeTruthy();
@@ -44,24 +45,38 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   }
 });
 
+test('모든 커리큘럼 상세 주소를 직접 열 수 있다', async ({ page }) => {
+  for (const journey of journeys) {
+    await page.goto(`path/${journey.id}`);
+    await expect(page.getByRole('heading', { level: 1, name: journey.title, exact: true })).toBeVisible();
+    await expect(page.getByRole('link', { name: /커리큘럼 목록으로/ })).toBeVisible();
+  }
+});
+
 test('목적은 필수이며 분야는 선택으로 여정을 바꾸고 국비 훈련은 직무 경로에 제공한다', async ({ page }) => {
   await page.goto('path');
   await expect(page.getByRole('region', { name: '선택한 학습 여정' })).toHaveCount(0);
   await page.getByRole('button', { name: /새로운 직무에 도전/ }).click();
-  await expect(page.getByRole('heading', { name: '데이터 분석', exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: '소프트웨어 QA', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: '소프트웨어 QA', exact: true }).click();
-  await expect(page.getByRole('heading', { name: '데이터 분석', exact: true })).toHaveCount(0);
-  await expect(page.getByText('테스트 조건, 기대 결과와 실제 결과를 담은 테스트 보고서를 작성해 보세요.')).toBeVisible();
+  await expect(page.getByRole('link', { name: /데이터 분석 첫걸음/ })).toBeVisible();
+  await page.getByRole('button', { name: 'QA', exact: true }).click();
+  await expect(page.getByRole('link', { name: /데이터 분석 첫걸음/ })).toHaveCount(0);
+  await expect(page.locator('.journey-catalog-card')).toHaveCount(3);
+  await page.getByRole('link', { name: /소프트웨어 QA 첫걸음/ }).click();
+  await expect(page.getByRole('heading', { level: 1, name: '소프트웨어 QA 첫걸음' })).toBeVisible();
+  await expect(page.getByText(/테스트 조건, 기대 결과와 실제 결과/)).toBeVisible();
   await expect(page.getByRole('heading', { name: '국민내일배움카드 훈련' })).toBeVisible();
-  await page.getByRole('button', { name: '데이터 분석', exact: true }).click();
-  await expect(page.getByRole('heading', { name: '데이터 분석', exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: '소프트웨어 QA', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: '데이터 분석', exact: true }).click();
+  await page.getByRole('link', { name: /커리큘럼 목록으로/ }).click();
+  await expect(page.getByRole('button', { name: 'QA', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '데이터', exact: true }).click();
+  await expect(page.getByRole('link', { name: /데이터 분석 첫걸음/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: /소프트웨어 QA 첫걸음/ })).toBeVisible();
+  await page.getByRole('button', { name: '데이터', exact: true }).click();
   await page.getByRole('button', { name: /직접 만들고 활용/ }).click();
-  await expect(page.getByText(/직접 만든 페이지나 연습용 웹사이트/)).toBeVisible();
+  await page.getByRole('link', { name: /웹 테스트 자동화 시작하기/ }).click();
   await expect(page.getByRole('heading', { name: '국민내일배움카드 훈련' })).toHaveCount(0);
   await expect(page.getByRole('link', { name: /Playwright 테스트 작성/ })).toHaveAttribute('href', /resources\?query=/);
+  await page.goto('path/unknown');
+  await expect(page.getByRole('heading', { name: '학습 여정을 찾을 수 없습니다' })).toBeVisible();
 });
 
 test('이동 표식과 제목은 함께 반응하고 모션 축소 설정을 따른다', async ({ page }) => {

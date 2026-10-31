@@ -42,6 +42,7 @@ const router = createBrowserRouter(
         { path: 'updates', element: <Updates /> },
         { path: 'research', element: <LegacyUpdatesRedirect /> },
         { path: 'path', element: <Path /> },
+        { path: 'path/:journeyId', element: <Path /> },
         { path: 'certs', element: <Certs /> },
         { path: 'qualifications', element: <Qualifications /> },
         { path: 'resources', element: <Resources /> },
