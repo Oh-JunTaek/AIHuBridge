@@ -48,35 +48,68 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
 test('모든 커리큘럼 상세 주소를 직접 열 수 있다', async ({ page }) => {
   for (const journey of journeys) {
     await page.goto(`path/${journey.id}`);
-    await expect(page.getByRole('heading', { level: 1, name: journey.title, exact: true })).toBeVisible();
-    await expect(page.getByRole('link', { name: /커리큘럼 목록으로/ })).toBeVisible();
+    const dialog = page.getByRole('dialog');
+    await expect(dialog.getByRole('heading', { name: journey.title, exact: true })).toBeVisible();
+    await expect(dialog.getByRole('button', { name: '커리큘럼 상세 닫기' })).toBeVisible();
   }
 });
 
-test('목적은 필수이며 분야는 선택으로 여정을 바꾸고 국비 훈련은 직무 경로에 제공한다', async ({ page }) => {
+test('목적과 분야 선택을 유지하며 상세 창을 열고 닫는다', async ({ page }, testInfo) => {
   await page.goto('path');
   await expect(page.getByRole('region', { name: '선택한 학습 여정' })).toHaveCount(0);
   await page.getByRole('button', { name: /새로운 직무에 도전/ }).click();
-  await expect(page.getByRole('link', { name: /데이터 분석 첫걸음/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /데이터 분석 기초/ })).toBeVisible();
+  if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
   await page.getByRole('button', { name: 'QA', exact: true }).click();
-  await expect(page.getByRole('link', { name: /데이터 분석 첫걸음/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /데이터 분석 기초/ })).toHaveCount(0);
   await expect(page.locator('.journey-catalog-card')).toHaveCount(3);
-  await page.getByRole('link', { name: /소프트웨어 QA 첫걸음/ }).click();
-  await expect(page.getByRole('heading', { level: 1, name: '소프트웨어 QA 첫걸음' })).toBeVisible();
-  await expect(page.getByText(/테스트 조건, 기대 결과와 실제 결과/)).toBeVisible();
-  await expect(page.getByRole('heading', { name: '국민내일배움카드 훈련' })).toBeVisible();
-  await page.getByRole('link', { name: /커리큘럼 목록으로/ }).click();
+  const opener = page.getByRole('button', { name: /소프트웨어 QA 기초/ });
+  await opener.click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.getByRole('heading', { name: '소프트웨어 QA 기초' })).toBeVisible();
+  await expect(dialog.getByText(/테스트 조건, 기대 결과와 실제 결과/)).toBeVisible();
+  await expect(dialog.getByRole('heading', { name: '국민내일배움카드 훈련' })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(dialog).not.toBeVisible();
+  await expect(opener).toBeFocused();
   await expect(page.getByRole('button', { name: 'QA', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: '데이터', exact: true }).click();
-  await expect(page.getByRole('link', { name: /데이터 분석 첫걸음/ })).toBeVisible();
-  await expect(page.getByRole('link', { name: /소프트웨어 QA 첫걸음/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /데이터 분석 기초/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /소프트웨어 QA 기초/ })).toBeVisible();
   await page.getByRole('button', { name: '데이터', exact: true }).click();
   await page.getByRole('button', { name: /직접 만들고 활용/ }).click();
-  await page.getByRole('link', { name: /웹 테스트 자동화 시작하기/ }).click();
+  await page.getByRole('button', { name: /웹 테스트 자동화 시작하기/ }).click();
   await expect(page.getByRole('heading', { name: '국민내일배움카드 훈련' })).toHaveCount(0);
   await expect(page.getByRole('link', { name: /Playwright 테스트 작성/ })).toHaveAttribute('href', /resources\?query=/);
   await page.goto('path/unknown');
   await expect(page.getByRole('heading', { name: '학습 여정을 찾을 수 없습니다' })).toBeVisible();
+});
+
+test('전체 커리큘럼은 모든 여정을 표시하고 바깥을 눌러 상세 창을 닫는다', async ({ page }) => {
+  await page.goto('path');
+  await page.getByRole('button', { name: /전체 커리큘럼 둘러보기/ }).click();
+  await expect(page.locator('.journey-catalog-card')).toHaveCount(journeys.length);
+  const opener = page.getByRole('button', { name: /데이터 분석 기초/ });
+  await opener.click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.mouse.click(2, 2);
+  await expect(page.getByRole('dialog')).not.toBeVisible();
+  await expect(opener).toBeFocused();
+});
+
+test('커리큘럼 상세는 닫힘 애니메이션 후 포커스와 목록 위치를 유지한다', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('path?purpose=explore');
+  const opener = page.getByRole('button', { name: /AI 에이전트 살펴보기/ });
+  await opener.click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  const before = await page.evaluate(() => window.scrollY);
+  await dialog.getByRole('button', { name: '커리큘럼 상세 닫기' }).click();
+  await expect(dialog).toHaveClass(/is-closing/);
+  await expect(dialog).not.toBeVisible();
+  await expect(opener).toBeFocused();
+  expect(Math.abs(await page.evaluate(() => window.scrollY) - before)).toBeLessThan(5);
 });
 
 test('이동 표식과 제목은 함께 반응하고 모션 축소 설정을 따른다', async ({ page }) => {
