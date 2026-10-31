@@ -16,6 +16,7 @@ import Dev from './pages/Dev';
 import NotFound from './pages/NotFound';
 import SpaceOverview from './pages/SpaceOverview';
 import Careers from './pages/Careers';
+import { resetJourneyFiltersOnReload } from './lib/journey-reload.mjs';
 
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
@@ -25,6 +26,11 @@ function LegacyUpdatesRedirect() {
   const { search, hash } = useLocation();
   return <Navigate to={{ pathname: '/updates', search, hash }} replace />;
 }
+
+// 라우터가 주소를 읽기 전 새로고침된 목록의 탐색 조건만 초기화한다.
+const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+const resetUrl = resetJourneyFiltersOnReload(window.location.href, import.meta.env.BASE_URL, navigation?.type);
+if (resetUrl) window.history.replaceState(window.history.state, '', resetUrl);
 
 const router = createBrowserRouter(
   [

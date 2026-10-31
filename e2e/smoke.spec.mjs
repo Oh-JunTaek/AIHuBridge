@@ -75,8 +75,13 @@ test('목적과 분야 선택을 유지하며 상세 창을 열고 닫는다', a
   await expect(page.getByRole('button', { name: 'QA', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: '데이터', exact: true }).click();
   await expect(page.getByRole('button', { name: /데이터 분석 기초/ })).toBeVisible();
-  await expect(page.getByRole('button', { name: /소프트웨어 QA 기초/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /소프트웨어 QA 기초/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'QA', exact: true })).toHaveAttribute('aria-pressed', 'false');
+  expect(new URL(page.url()).searchParams.getAll('topic')).toEqual(['data']);
   await page.getByRole('button', { name: '데이터', exact: true }).click();
+  await expect(page.getByRole('button', { name: '전체', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: /소프트웨어 QA 기초/ })).toBeVisible();
+  await page.getByRole('button', { name: 'QA', exact: true }).click();
   await page.getByRole('button', { name: /직접 만들고 활용/ }).click();
   await page.getByRole('button', { name: /웹 테스트 자동화 시작하기/ }).click();
   await expect(page.getByRole('heading', { name: '국민내일배움카드 훈련' })).toHaveCount(0);
@@ -110,6 +115,32 @@ test('커리큘럼 상세는 닫힘 애니메이션 후 포커스와 목록 위�
   await expect(dialog).not.toBeVisible();
   await expect(opener).toBeFocused();
   expect(Math.abs(await page.evaluate(() => window.scrollY) - before)).toBeLessThan(5);
+});
+
+test('목록 새로고침은 목적 선택으로 돌아가고 상세 새로고침은 유지한다', async ({ page }) => {
+  await page.goto('path?purpose=career&topic=qa');
+  await expect(page.getByRole('button', { name: /소프트웨어 QA 기초/ })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('heading', { name: '어떤 배움을 시작하고 싶나요?' })).toBeVisible();
+  expect(new URL(page.url()).searchParams.has('purpose')).toBe(false);
+  expect(new URL(page.url()).searchParams.has('topic')).toBe(false);
+  await page.getByRole('button', { name: /새로운 직무에 도전/ }).click();
+  await page.getByRole('button', { name: /소프트웨어 QA 기초/ }).click();
+  await page.reload();
+  await expect(page.getByRole('dialog').getByRole('heading', { name: '소프트웨어 QA 기초' })).toBeVisible();
+});
+
+test('분야 변경 시 결과가 부드럽게 나타나며 모션 축소 설정을 따른다', async ({ page }, testInfo) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('path?purpose=explore');
+  if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
+  await page.getByRole('button', { name: 'QA', exact: true }).click();
+  await expect(page.locator('.journey-catalog')).toHaveCSS('animation-name', 'journey-filter-appear');
+  await expect(page.getByRole('button', { name: /소프트웨어 QA 기초/ })).toBeVisible();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.getByRole('button', { name: '데이터', exact: true }).click();
+  await expect(page.locator('.journey-catalog')).toHaveCSS('animation-name', 'none');
+  await expect(page.getByRole('button', { name: /데이터 분석 기초/ })).toBeVisible();
 });
 
 test('이동 표식과 제목은 함께 반응하고 모션 축소 설정을 따른다', async ({ page }) => {
