@@ -4,6 +4,8 @@
 
 ## 국민내일배움카드 직무 훈련 (2026-10-31)
 
+2026-11-01 고용24의 [생성형AI 사업개발자 과정 8회차](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl1.do?crseTracseSe=C0061&tracseId=AIG20240000459185&tracseTme=8&trainstCstmrId=500020045827)의 기관명·K-디지털 트레이닝 유형·훈련기간을 확인해 AI 직무의 정적 예시로 추가했다. 모집·수강 자격·실제 부담액은 추정하지 않으며 공식 원문에서 확인한다.
+
 - 고용24 [훈련 통합검색](https://www.work24.go.kr/hr/a/a/1100/trnnCrsInf.do?action=trnnCrsIn&area=&crseTracseSe=&currentMenuId=EBG020000000308&gvrnInstt=&menuPurpSecd=&ncs=&programMenuIdentification=EBG020000001862&redirectUrl=%2Fa%2Fa%2F1100%2FtrnnCrsInfPost.do&selectNCSKeyword=&topArea=), [카드 발급 안내](https://m.work24.go.kr/hr/h/a/1100/selectIssuGudn.do), [K-디지털 기초역량훈련 안내](https://www.work24.go.kr/cm/c/f/1100/selecSystInfo.do?systClId=SC0000004&systCnntId=CI00001760&systId=SI00000356)를 연결한다. 개인별 발급·수강·본인 부담 조건과 수료증·자격 발급은 추정하지 않는다.
 - 고용24 개별 회차 [AI 엔지니어 입문](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl1.do?crseTracseSe=500037441805&cstmConsTme=&focusId=&tracseId=AIG20260000544634&tracseReqstsCd=&tracseTme=14&trainstCstmrId=C0105), [파이썬 응용 프로젝트](https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?crseTracseSe=C0105&tracseId=AIG20240000499162&tracseTme=83&trainstCstmrId=500034091717), [AI 기초 데이터 분석](https://m.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?crseTracseSe=C0105&tracseId=AIG20260000545336&tracseTme=32&trainstCstmrId=500034225481)의 제목·훈련기관·유형·훈련기간만 확인일과 함께 정적 예시로 표시한다. 한국시간 시작일이 지나면 자동으로 숨기고, 모집 상태는 표시하지 않는다. 실제 개강·모집·자비 부담은 원문·훈련기관에서 재확인한다. 자동 수집이나 과정 전문 복제는 하지 않는다.
 
@@ -70,10 +72,15 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 | Google 뉴스 한국어 | news-sources.mjs의 기존 한국어 AI RSS 검색 주소 | 20건, 제목·날짜·링크 |
 | 긱뉴스 | https://news.hada.io/rss/news | 20건, AI 관련 제목·날짜·링크만 |
 | AI타임스 | https://cdn.aitimes.com/rss/gn_rss_allArticle.xml | 20건, 제목·날짜·링크만 |
+| 과학기술정보통신부 보도자료 | https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=94 | 20건, AI 관련 제목·날짜·링크만 |
 
 긱뉴스 RSS는 [공식 홈페이지](https://news.hada.io/)의 RSS 링크와 [이용약관](https://news.hada.io/terms)을 확인했습니다. AI타임스는 [공식 홈페이지](https://www.aitimes.com/) HTML의 rel=alternate가 연결한 RSS입니다. 신규 국내 두 출처의 설명·본문은 재게시하지 않으며 RSS 제공을 전문 재사용 허가로 간주하지 않습니다. 국내 구분은 한국·한국어 편집 출처 기준이며 기사 사건의 발생 국가를 판별한 결과가 아닙니다.
 
 2026-11-01 국내 출처별 회당 한도를 20건으로 조정했다. 실제 신규 건수는 RSS 제공량·AI 관련성·발행일·중복에 따라 달라지며, 고정된 국내 비율을 보장하지 않는다. 정책브리핑은 [RSS 서비스 중단 공지](https://www.korea.kr/etc/noticeView.do?newsId=132038885&pWise=main&pWiseSub=O1)를 확인해 자동 출처에 추가하지 않았다.
+
+같은 날 과학기술정보통신부의 [공식 RSS 안내](https://www.msit.go.kr/contents/cont.do?mId=173&mPid=147&sCode=user)와 robots.txt의 RSS 경로 접근 제한이 없음을 확인했다. AI 관련 자료만 고르고 제목·날짜·원문 링크만 사용하며 공공기관 출처로 구분한다. 날짜만 있는 RSS의 발행일은 한국시간 자정으로 해석한다. 최초 로컬 요청에서 14건의 유효 자료를 확인했으나 원격 예약 수집의 성공을 뜻하지 않는다. KISA RSS는 접근 요청이 실패해 추가하지 않았다.
+
+커리큘럼 대체 후보인 [Microsoft Learn Python 기초](https://learn.microsoft.com/ko-kr/training/paths/get-started-with-python-fundamentals/)와 [AI 입문 모듈](https://learn.microsoft.com/ko-kr/training/modules/a-guide-to-artificial-intelligence/)의 학습 주제를 2026-11-01 공식 페이지에서 확인했다. 비용·개발 도구·계정 조건은 원문에서 확인한다.
 
 arXiv의 [RSS 안내](https://info.arxiv.org/help/rss.html)와 [API 메타데이터·호출 조건](https://info.arxiv.org/help/api/tou.html)을 확인했습니다. RSS가 비거나 유효 날짜가 없거나 요청이 실패하면 3초 뒤 export.arxiv.org/api/query의 공식 Atom 최근 제출 40건을 조회합니다. 기관당 3초 간격·단일 연결을 유지합니다. CC0 메타데이터와 원문 링크·원문 분야만 사용하며 PDF 복제 허가나 동료평가·획기성을 가정하지 않습니다. 게시 후 180일 이내 논문을 분야별로 회당 최대 24건 선택하고 기존 자료는 기한 내 누적 보관합니다.
 

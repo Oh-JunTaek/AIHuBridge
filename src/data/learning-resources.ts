@@ -14,6 +14,8 @@ const existing: LearningResource[] = certifications.filter((item) => isEducation
 }));
 
 export const learningResources: LearningResource[] = [
+  { id:'ms-python-fundamentals', name:'Python 프로그래밍 시작: 기본 사항', provider:'Microsoft Learn', kinds:['강의'], description:'파이썬의 입력과 출력, 데이터와 조건문을 배우는 기초 학습 경로입니다.', language:'한국어 · 일부 자료는 원문 확인', cost:'학습 및 개발 도구 이용 조건은 제공처 확인', url:'https://learn.microsoft.com/ko-kr/training/paths/get-started-with-python-fundamentals/', checked:'2026-11-01' },
+  { id:'ms-ai-introduction', name:'인공 지능에 대한 가이드', provider:'Microsoft Learn', kinds:['강의'], description:'인공지능과 머신러닝의 기본 개념을 소개하는 학습 모듈입니다.', language:'한국어 · 일부 자료는 원문 확인', cost:'학습 및 서비스 이용 조건은 제공처 확인', url:'https://learn.microsoft.com/ko-kr/training/modules/a-guide-to-artificial-intelligence/', checked:'2026-11-01' },
   { id:'kstqb-qa-foundation', name:'CTFL 공식 실러버스와 샘플 문제', provider:'KSTQB · ISTQB', kinds:['학습 자료'], description:'QA와 소프트웨어 테스팅 기초, 공식 출제 범위와 샘플 문제를 살펴봅니다.', language:'한국어·영어 · 자료별 확인', cost:'공식 학습 자료 무료 · 자격시험 응시료 별도', url:'https://www.kstqb.org/sw/sw3.asp', checked:'2026-10-31' },
   { id:'playwright-qa', name:'Playwright 테스트 작성', provider:'Playwright', kinds:['실습'], description:'QA 웹 자동화 테스트를 작성하고 실행하는 공식 실습 안내입니다.', language:'영어 · 한국어 지원 여부 확인 필요', cost:'공식 문서 무료 · 실습용 개발 환경 필요', url:'https://playwright.dev/docs/writing-tests', checked:'2026-10-31' },
   { id:'kstqb-ai-testing', name:'AI Testing 공식 시험 범위와 샘플 문제', provider:'KSTQB · ISTQB', kinds:['학습 자료'], description:'AI 기반 시스템의 QA 및 테스트 기법을 공식 실러버스로 살펴봅니다.', language:'한국어·영어 · 자료별 확인', cost:'공식 학습 자료 무료 · 자격시험 응시료 별도', url:'https://www.kstqb.org/sw/sw3_6.asp', checked:'2026-10-31' },

@@ -267,6 +267,11 @@ test('직무에서 학습 자료와 자격 상세로 연결하고 채용행사 �
   await expect(page.getByRole('link', { name: /고용24 채용행사 찾아보기/ })).toHaveAttribute('href', 'https://www.work24.go.kr/');
   await page.getByRole('link', { name: /소프트웨어 QA·테스터/ }).click();
   await expect(page.getByRole('heading', { name: '소프트웨어 QA·테스터' })).toBeVisible();
+  await page.getByRole('link', { name: /소프트웨어 QA 기초/ }).click();
+  await expect(page.getByRole('dialog').getByRole('heading', { name: '소프트웨어 QA 기초' })).toBeVisible();
+  await expect(page.getByRole('dialog').getByRole('heading', { name: '국민내일배움카드 훈련' })).toBeVisible();
+  await page.getByRole('dialog').getByRole('link', { name: /관련 직무 살펴보기/ }).click();
+  await expect(page.getByRole('heading', { name: '소프트웨어 QA·테스터' })).toBeVisible();
   await page.getByRole('link', { name: /QA 기초 자료 살펴보기/ }).click();
   if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
   await expect(page.getByLabel('자료·기관 검색')).toHaveValue('QA');
@@ -291,6 +296,7 @@ test('국민내일배움카드 과정은 직무와 시작일에 맞게 안내한
   await page.goto('careers/data-analyst');
   await expect(training.getByText(/현재 소개할 회차는 없습니다/)).toBeVisible();
   await expect(training.getByRole('link', { name: /고용24에서 훈련 찾기/ })).toHaveAttribute('href', /work24\.go\.kr/);
+  await expect(training.getByRole('link', { name: /K-디지털 훈련과정 찾기/ })).toHaveAttribute('href', /trnnCrsInf2\.do/);
 });
 
 test('상위 메뉴에서 각 공간 소개와 하위 페이지로 이동한다', async ({ page }) => {

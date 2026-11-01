@@ -54,12 +54,15 @@ try {
   check('meta.json 존재', !!m.fetchedAt && m.total === newsCount, `fetched ${m.total} @ ${m.fetchedAt}`);
   if (m.sourceResults) {
     const ids = newsSources.map((source) => source.id);
+    // 새 출처를 등록한 직후에는 다음 수집 전까지 기존 스냅샷에 그 출처가 없을 수 있다.
+    const snapshotIds = Array.isArray(m.sourceResults) ? m.sourceResults.map((result) => result.id) : [];
     check('뉴스 출처별 수집 상태와 건수', Array.isArray(m.sourceResults)
-      && m.sourceResults.length === ids.length
-      && new Set(m.sourceResults.map((result) => result.id)).size === ids.length
+      && snapshotIds.length > 0
+      && new Set(snapshotIds).size === snapshotIds.length
       && m.sourceResults.every((result) => ids.includes(result.id) && ['success', 'failed'].includes(result.status))
-      && newsItems.every((item) => ids.includes(item.sourceId))
-      && ids.every((id) => m.counts[id] === newsItems.filter((item) => item.sourceId === id).length));
+      && newsItems.every((item) => snapshotIds.includes(item.sourceId))
+      && snapshotIds.every((id) => m.counts[id] === newsItems.filter((item) => item.sourceId === id).length)
+      && ids.filter((id) => !snapshotIds.includes(id)).every((id) => m.counts[id] === undefined));
   }
 } catch (e) {
   check('meta.json', false, '미수집 — npm run refresh 먼저 실행');

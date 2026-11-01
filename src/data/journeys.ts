@@ -17,7 +17,7 @@ export const purposes: { id: Purpose; title: string; description: string }[] = [
 export const journeys: Journey[] = [
   { id:'data-first', topic:'data', title:'데이터 분석 기초', beginner:true, description:'데이터를 읽고 질문에 맞는 분석을 시작합니다.', startingPoint:'처음부터', outcome:'표를 살펴보고 분석 질문 정하기', purposes:['career','create','apply','explore'], careerId:'data-analyst', certQuery:'데이터', qualificationIds:['adsp','sqld'], steps:[
     { title:'데이터 관찰하기', objective:'표를 보고 질문을 정하고 데이터의 의미를 살펴봅니다.', resources:[], activity:'관심 있는 표에서 질문 하나를 정하고 비교할 항목을 골라보세요.' },
-    { title:'파이썬 익히기', objective:'데이터 도구에 필요한 프로그래밍 기초를 배웁니다.', resources:[{ id:'boost-python-everybody', reason:'데이터 분석을 배우기 전에 파이썬의 기초를 살펴볼 수 있습니다.' }] },
+    { title:'파이썬 익히기', objective:'데이터 도구에 필요한 프로그래밍 기초를 배웁니다.', resources:[{ id:'boost-python-everybody', slot:'python-basics', reason:'데이터 분석을 배우기 전에 파이썬의 기초를 살펴볼 수 있습니다.' }, { id:'ms-python-fundamentals', slot:'python-basics', reason:'파이썬 입력·데이터·조건문을 배우는 대체 학습 경로입니다.' }] },
     { title:'데이터 분석 시작하기', objective:'파이썬으로 데이터를 다루고 분석하는 흐름을 배웁니다.', resources:[{ id:'boost-data-science', reason:'파이썬 데이터 분석과 시각화의 기초를 다룹니다.' }] },
     { title:'결과 설명하기', objective:'관찰한 내용을 다른 사람이 이해할 수 있게 정리합니다.', resources:[], activity:'질문과 관찰 내용을 간단한 표나 그래프와 함께 정리해 보세요.' },
   ] },
@@ -44,7 +44,7 @@ export const journeys: Journey[] = [
   ] },
   { id:'ai-first', topic:'ai', title:'AI 개념과 활용', beginner:true, description:'인공지능의 기본 개념과 쓰임을 차근차근 살펴봅니다.', startingPoint:'처음부터', outcome:'AI가 할 수 있는 일과 한계 설명하기', purposes:['career','create','apply','explore'], careerId:'ai-engineer', certQuery:'AI', qualificationIds:['aice-associate'], steps:[
     { title:'AI가 쓰이는 곳 찾기', objective:'생활과 업무에서 만나는 AI의 사례를 살펴봅니다.', resources:[], activity:'자주 사용하는 서비스에서 AI가 도움을 주는 부분을 찾아보세요.' },
-    { title:'AI 기초 배우기', objective:'인공지능의 개념과 활용을 이해합니다.', resources:[{ id:'boost-ai-basics', reason:'인공지능 개념을 살펴보는 기초 강의입니다.' }] },
+    { title:'AI 기초 배우기', objective:'인공지능의 개념과 활용을 이해합니다.', resources:[{ id:'boost-ai-basics', slot:'ai-basics', reason:'인공지능 개념을 살펴보는 기초 강의입니다.' }, { id:'ms-ai-introduction', slot:'ai-basics', reason:'AI와 머신러닝의 기본 개념을 소개하는 대체 학습 모듈입니다.' }] },
     { title:'활용과 한계 생각하기', objective:'AI의 답을 검토하고 적절한 활용 방식을 생각합니다.', resources:[{ id:'openai-academy', reason:'AI 활용을 소개하는 공식 학습 공간에서 관련 자료를 더 살펴볼 수 있습니다.' }], activity:'AI가 제안한 내용과 확인이 필요한 내용을 구분해 보세요.' },
   ] },
   { id:'ai-workflow', topic:'ai', title:'생성형 AI 업무 활용', beginner:true, description:'요청을 구체화하고 결과를 검토하는 연습을 합니다.', startingPoint:'AI를 처음 사용한다면', outcome:'검토 가능한 작업 요청과 결과 정리', purposes:['apply','create','explore'], certQuery:'AI', qualificationIds:[], steps:[
@@ -54,7 +54,7 @@ export const journeys: Journey[] = [
   ] },
   { id:'python-first', topic:'coding', title:'파이썬 코딩 기초', beginner:true, description:'코드의 기본을 익히고 작은 문제를 풀어봅니다.', startingPoint:'처음부터', outcome:'간단한 파이썬 코드 읽고 바꾸기', purposes:['career','create','apply','explore'], careerId:'ai-engineer', qualificationIds:[], steps:[
     { title:'프로그래밍 살펴보기', objective:'문제를 순서대로 나누어 표현하는 방법을 생각합니다.', resources:[], activity:'반복하는 작업 하나를 골라 필요한 순서를 적어보세요.' },
-    { title:'파이썬 기초 배우기', objective:'파이썬의 기본 개념을 차근차근 학습합니다.', resources:[{ id:'boost-python-everybody', reason:'프로그래밍과 파이썬의 기초를 다루는 과정입니다.' }] },
+    { title:'파이썬 기초 배우기', objective:'파이썬의 기본 개념을 차근차근 학습합니다.', resources:[{ id:'boost-python-everybody', slot:'python-basics', reason:'프로그래밍과 파이썬의 기초를 다루는 과정입니다.' }, { id:'ms-python-fundamentals', slot:'python-basics', reason:'파이썬 입력·데이터·조건문을 배우는 대체 학습 경로입니다.' }] },
     { title:'작게 응용하기', objective:'배운 문법을 이용해 짧은 코드를 만들어 봅니다.', resources:[], activity:'간단한 입력을 받아 결과를 출력하는 프로그램을 작성해 보세요.' },
   ] },
   { id:'ml-first', topic:'ai', title:'머신러닝 기초 실습', description:'데이터를 활용하는 머신러닝의 기본을 살펴봅니다.', startingPoint:'파이썬과 데이터 기초가 있다면', outcome:'실습에서 입력과 결과 비교하기', purposes:['career','create'], careerId:'ai-engineer', qualificationIds:['aice-associate'], steps:[

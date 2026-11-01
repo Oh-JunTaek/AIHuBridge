@@ -10,4 +10,5 @@ export const newsSources = [
   { id: 'koreagnews', name: 'Google 뉴스 AI (한국)', url: 'https://news.google.com/rss/search?q=AI&hl=ko&gl=KR&ceid=KR:ko', category: '언론', lang: 'ko', origin: 'domestic', kind: 'media', limit: 20 },
   { id: 'geeknews', name: '긱뉴스', url: 'https://news.hada.io/rss/news', category: '언론', lang: 'ko', origin: 'domestic', kind: 'community', aiOnly: true, titleOnly: true, limit: 20 },
   { id: 'aitimes', name: 'AI타임스', url: 'https://cdn.aitimes.com/rss/gn_rss_allArticle.xml', category: '언론', lang: 'ko', origin: 'domestic', kind: 'media', titleOnly: true, limit: 20 },
+  { id: 'msit', name: '과학기술정보통신부 보도자료', url: 'https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=94', category: '정책/규제', lang: 'ko', origin: 'domestic', kind: 'government', aiOnly: true, titleOnly: true, limit: 20 },
 ];

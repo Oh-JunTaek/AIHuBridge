@@ -126,3 +126,15 @@ test('국내 출처는 더 많은 AI 소식을 수집하면서 본문을 저장�
     assert.ok(result.items.every((item) => !item.excerpt && !item.summary), source.id);
   }
 });
+
+test('공공기관 RSS는 AI 관련 소식만 보존하고 한국 날짜를 한국시간으로 해석한다', async () => {
+  const source = newsSources.find((item) => item.id === 'msit');
+  const result = await collect(async () => ({ items: [
+    raw({ title:'인공지능 정책 발표', pubDate:'2026.10.24', link:'https://example.kr/ai' }),
+    raw({ title:'우주 과학 발표', contentSnippet:'우주 연구', link:'https://example.kr/space' }),
+  ] }), { sources: [source] });
+  assert.equal(result.items.length, 1);
+  assert.equal(result.items[0].publishedAt, '2026-10-23T15:00:00.000Z');
+  assert.equal(result.items[0].category, '정책/규제');
+  assert.equal(result.items[0].excerpt, '');
+});

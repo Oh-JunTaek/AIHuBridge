@@ -21,10 +21,12 @@ export function articleUrl(value) {
   } catch { return null; }
 }
 
-function publication(item, now) {
-  for (const value of [item.isoDate, item.pubDate]) {
+function publication(item, now, source) {
+  for (const value of source.id === 'msit' ? [item.pubDate, item.isoDate] : [item.isoDate, item.pubDate]) {
     if (typeof value !== 'string' || !value.trim()) continue;
-    const time = Date.parse(value);
+    // 과기정통부의 날짜만 있는 한국어 RSS는 실행 서버의 시간대에 의존하지 않는다.
+    const domesticDate = source.id === 'msit' ? value.trim().match(/^(\d{4})\.(\d{2})\.(\d{2})\.?$/) : null;
+    const time = Date.parse(domesticDate ? `${domesticDate[1]}-${domesticDate[2]}-${domesticDate[3]}T00:00:00+09:00` : value);
     if (Number.isFinite(time) && time <= now + 300000) return new Date(time).toISOString();
   }
   return null;
@@ -34,7 +36,7 @@ function normalizeArticle(item, source, now) {
   if (!item || typeof item !== 'object') return null;
   const title = text(item.title);
   const url = articleUrl(item.link);
-  const publishedAt = publication(item, now);
+  const publishedAt = publication(item, now, source);
   // 날짜를 수집 시각으로 대체하거나 일반 제목의 뒷부분을 언론사로 간주해 자르지 않는다.
   if (!title || !url || !publishedAt) return null;
   // HTML 본문 대신 RSS 파서의 평문 설명만 사용한다.

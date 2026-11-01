@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { careers } from '../data/careers';
 import { WayfindingIcon } from '../components/WayfindingIcon';
 import { FundedTraining } from '../components/FundedTraining';
+import { journeys } from '../data/journeys';
 
 export default function Careers() {
   const { careerId } = useParams();
@@ -12,7 +13,7 @@ export default function Careers() {
       <Link className="career-back" to="/careers">← 직무 목록</Link>
       <div className="career-detail-head"><span>{career.area}</span><h2 id="career-title">{career.title}</h2><p>{career.summary}</p></div>
       <div className="career-detail-grid"><div><section><h3>어떤 일을 할까요?</h3><ul>{career.tasks.map((task) => <li key={task}>{task}</li>)}</ul></section><section><h3>이런 역량을 살펴보세요</h3><div className="career-skills">{career.skills.map((skill) => <span key={skill}>{skill}</span>)}</div></section><section className="career-try"><span>작게 시작하기</span><p>{career.tryIt}</p></section></div>
-      <aside className="career-related"><h3>배움으로 이어가기</h3><p>관심 있는 자료부터 살펴보세요.</p>{career.resources.map((item) => <Link key={item.url} to={item.url}>{item.label}<WayfindingIcon /></Link>)}<h3>관련 자격증</h3><p>자격증은 선택 사항이며 채용 요건은 회사마다 다릅니다.</p>{career.qualifications.map((item) => <Link key={item.id} to={`/qualifications?exam=${item.id}`}>{item.label}<WayfindingIcon /></Link>)}</aside></div>
+      <aside className="career-related"><h3>관련 커리큘럼</h3><p>목적에 맞는 배움의 흐름을 살펴보세요.</p>{journeys.filter((item) => item.careerId === career.id && item.purposes.includes('career')).map((item) => <Link key={item.id} to={`/path?purpose=career&journey=${encodeURIComponent(item.id)}`}>{item.title}<WayfindingIcon /></Link>)}<h3>배움으로 이어가기</h3><p>관심 있는 자료부터 살펴보세요.</p>{career.resources.map((item) => <Link key={item.url} to={item.url}>{item.label}<WayfindingIcon /></Link>)}<h3>관련 자격증</h3><p>자격증은 선택 사항이며 채용 요건은 회사마다 다릅니다.</p>{career.qualifications.map((item) => <Link key={item.id} to={`/qualifications?exam=${item.id}`}>{item.label}<WayfindingIcon /></Link>)}</aside></div>
       <p className="career-source">직무 내용은 업무의 한 예이며 회사와 직무에 따라 달라질 수 있습니다. <a href={career.source} target="_blank" rel="noopener noreferrer">{career.sourceLabel} 보기 <WayfindingIcon direction="external" /></a></p>
       <FundedTraining careerId={career.id} />
     </section> : <>

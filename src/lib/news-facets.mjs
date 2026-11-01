@@ -2,7 +2,7 @@ import { newsSources } from './news-sources.mjs';
 
 export const modelTypes = { language: '언어 모델', audio: '음성·음악 모델', image: '이미지 모델', video: '영상 모델', multimodal: '멀티모달', code: '코딩 모델', robotics: '로봇·월드 모델', embedding: '임베딩·검색 모델', timeseries: '시계열·예측 모델', other: '기타 모델' };
 export const opennessLabels = { open: '오픈소스 언급', weights: '가중치 공개 언급', closed: '비공개 언급', unknown: '미확인·혼합' };
-export const publicationLabels = { developer: '기업 공식 채널', community: '커뮤니티·플랫폼', media: '언론·매체', paper: '논문 저장소' };
+export const publicationLabels = { developer: '기업 공식 채널', community: '커뮤니티·플랫폼', media: '언론·매체', paper: '논문 저장소', government: '공공기관 공식 채널' };
 export const topicGroups = {
   models: modelTypes,
   papers: { language: '언어·추론', vision: '시각·이미지·영상', audio: '음성·오디오', learning: '학습·최적화', agents: '에이전트·로봇', safety: '안전·평가' },
