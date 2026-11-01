@@ -29,7 +29,7 @@ function officialUrl(value) {
 export function parseTrainingResponse(payload, career, checked) {
   const root = payload?.HRDNet ?? payload?.hrdNet ?? (payload && Object.hasOwn(payload, 'scn_cnt') ? payload : null);
   if (!root || !/^\d+$/.test(String(root.scn_cnt ?? ''))) throw new Work24Error('schema_error', undefined, safeResponseShape(payload, payload?.hrdNet ? 'hrdNet' : 'HRDNet', 'scn_cnt'));
-  const raw = root.srchList?.scn_list;
+  const raw = Array.isArray(root.srchList) ? root.srchList : root.srchList?.scn_list;
   const rows = raw == null ? [] : Array.isArray(raw) ? raw : [raw];
   if (Number(root.scn_cnt) > 0 && rows.length === 0) throw new Work24Error('missing_rows');
   return rows.flatMap((row) => {
