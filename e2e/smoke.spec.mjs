@@ -5,6 +5,7 @@ import { learningResources } from '../src/data/learning-resources.ts';
 import { certifications } from '../src/data/certifications.ts';
 import { selectCertifications } from '../src/lib/cert-rules.mjs';
 import { journeys } from '../src/data/journeys.ts';
+import { selectJourneyResources } from '../src/lib/journey-rules.mjs';
 
 test('학습 여정의 자료와 자격증은 실제 원본을 참조한다', () => {
   expect(new Set(journeys.map((journey) => journey.id)).size).toBe(journeys.length);
@@ -15,6 +16,21 @@ test('학습 여정의 자료와 자격증은 실제 원본을 참조한다', ()
       expect(reference.reason).toBeTruthy();
       expect(learningResources.some((resource) => resource.id === reference.id)).toBe(true);
     }
+  }
+});
+
+test('실제 여정의 대체 자료는 기본 자료가 없을 때만 같은 단계에 표시된다', () => {
+  const alternatives = journeys.flatMap((journey) => journey.steps)
+    .filter((step) => step.resources.some((ref, index, all) => ref.slot && all.findIndex((item) => item.slot === ref.slot) < index));
+  expect(alternatives.length).toBeGreaterThanOrEqual(8);
+  for (const step of alternatives) {
+    const slot = step.resources.find((ref, index, all) => ref.slot && all.findIndex((item) => item.slot === ref.slot) < index).slot;
+    const candidates = step.resources.filter((ref) => ref.slot === slot);
+    const find = (id) => learningResources.find((resource) => resource.id === id);
+    const normal = selectJourneyResources(step.resources, find, () => true);
+    const fallback = selectJourneyResources(step.resources, find, (item) => item.id !== candidates[0].id);
+    expect(normal.find(({ ref }) => ref.slot === slot)?.item.id).toBe(candidates[0].id);
+    expect(fallback.find(({ ref }) => ref.slot === slot)?.item.id).toBe(candidates[1].id);
   }
 });
 
@@ -238,7 +254,7 @@ test('학습 자료 검색과 수료 강의 공식 링크를 유지한다', asyn
   await page.goto('resources');
   if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
   await page.getByLabel('자료·기관 검색').fill('Pandas');
-  await page.getByRole('button', { name: /Pandas/ }).click();
+  await page.locator('.learning-list-card').filter({ has: page.getByText('Pandas', { exact: true }) }).click();
   await expect(page.getByRole('dialog').getByRole('heading', { name: 'Pandas', exact: true })).toBeVisible();
   await expect(page.getByRole('dialog').getByRole('link', { name: /Pandas 공식 페이지/ })).toHaveAttribute('href', /kaggle\.com/);
   await page.getByRole('dialog').getByRole('button', { name: '상세 안내 닫기' }).click();

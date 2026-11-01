@@ -18,23 +18,23 @@ export const journeys: Journey[] = [
   { id:'data-first', topic:'data', title:'데이터 분석 기초', beginner:true, description:'데이터를 읽고 질문에 맞는 분석을 시작합니다.', startingPoint:'처음부터', outcome:'표를 살펴보고 분석 질문 정하기', purposes:['career','create','apply','explore'], careerId:'data-analyst', certQuery:'데이터', qualificationIds:['adsp','sqld'], steps:[
     { title:'데이터 관찰하기', objective:'표를 보고 질문을 정하고 데이터의 의미를 살펴봅니다.', resources:[], activity:'관심 있는 표에서 질문 하나를 정하고 비교할 항목을 골라보세요.' },
     { title:'파이썬 익히기', objective:'데이터 도구에 필요한 프로그래밍 기초를 배웁니다.', resources:[{ id:'boost-python-everybody', slot:'python-basics', reason:'데이터 분석을 배우기 전에 파이썬의 기초를 살펴볼 수 있습니다.' }, { id:'ms-python-fundamentals', slot:'python-basics', reason:'파이썬 입력·데이터·조건문을 배우는 대체 학습 경로입니다.' }] },
-    { title:'데이터 분석 시작하기', objective:'파이썬으로 데이터를 다루고 분석하는 흐름을 배웁니다.', resources:[{ id:'boost-data-science', reason:'파이썬 데이터 분석과 시각화의 기초를 다룹니다.' }] },
+    { title:'데이터 분석 시작하기', objective:'파이썬으로 데이터를 다루고 분석하는 흐름을 배웁니다.', resources:[{ id:'boost-data-science', slot:'analysis', reason:'파이썬 데이터 분석과 시각화의 기초를 다룹니다.' }, { id:'ms-python-data-analysis', slot:'analysis', reason:'파이썬과 Jupyter 기초가 있다면 데이터 탐색과 시각화를 배우는 대체 자료입니다.' }] },
     { title:'결과 설명하기', objective:'관찰한 내용을 다른 사람이 이해할 수 있게 정리합니다.', resources:[], activity:'질문과 관찰 내용을 간단한 표나 그래프와 함께 정리해 보세요.' },
   ] },
   { id:'data-project', topic:'data', title:'데이터로 작은 보고서 만들기', description:'데이터 정리부터 그래프와 설명까지 연결해 봅니다.', startingPoint:'파이썬 기초를 안다면', outcome:'질문과 그래프가 담긴 보고서', purposes:['career','create','apply'], careerId:'data-analyst', certQuery:'데이터', qualificationIds:['adsp'], steps:[
     { title:'질문과 데이터 정하기', objective:'답해 보고 싶은 질문과 이용 가능한 데이터를 고릅니다.', resources:[], activity:'공개 데이터의 출처와 이용 조건을 확인하고 질문 하나를 적어보세요.' },
-    { title:'데이터 정리 연습하기', objective:'파이썬으로 데이터를 읽고 정리하는 방법을 연습합니다.', resources:[{ id:'kaggle-pandas', reason:'Pandas로 데이터를 읽고 정리하는 실습을 살펴볼 수 있습니다.' }] },
-    { title:'분석 결과 만들기', objective:'기초 분석과 시각화 흐름을 복습합니다.', resources:[{ id:'boost-data-science', reason:'데이터 분석과 시각화 학습을 보완할 수 있습니다.' }] },
+    { title:'데이터 정리 연습하기', objective:'파이썬으로 데이터를 읽고 정리하는 방법을 연습합니다.', resources:[{ id:'kaggle-pandas', slot:'data-preparation', reason:'Pandas로 데이터를 읽고 정리하는 실습을 살펴볼 수 있습니다.' }, { id:'pandas-read-write', slot:'data-preparation', reason:'공식 문서에서 CSV 등 표 데이터를 읽고 저장하는 방법을 살펴봅니다. 영어 자료입니다.' }] },
+    { title:'분석 결과 만들기', objective:'기초 분석과 시각화 흐름을 복습합니다.', resources:[{ id:'boost-data-science', slot:'analysis', reason:'데이터 분석과 시각화 학습을 보완할 수 있습니다.' }, { id:'ms-python-data-analysis', slot:'analysis', reason:'파이썬과 Jupyter 기초가 있다면 데이터 분석과 시각화를 복습할 수 있습니다.' }] },
     { title:'보고서 완성하기', objective:'분석 과정과 결과의 한계를 설명합니다.', resources:[], activity:'그래프와 함께 질문·자료 출처·관찰 결과를 한 장으로 정리해 보세요.' },
   ] },
   { id:'qa-first', topic:'qa', title:'소프트웨어 QA 기초', beginner:true, description:'서비스를 관찰하고 테스트를 설계하는 기초를 배웁니다.', startingPoint:'처음부터', outcome:'테스트 조건과 결과 정리', purposes:['career','apply','explore'], careerId:'qa', certQuery:'QA', qualificationIds:['istqb-ctfl'], steps:[
     { title:'서비스 관찰하기', objective:'사용자가 겪을 수 있는 정상·오류 상황을 생각합니다.', resources:[], activity:'로그인 화면의 정상 입력과 오류 상황을 나누어 적어보세요.' },
-    { title:'테스트 기초 알아보기', objective:'테스트 개념과 설계 범위를 살펴봅니다.', resources:[{ id:'kstqb-qa-foundation', reason:'테스트 기초의 공식 실러버스와 예시 문제를 살펴볼 수 있습니다.' }] },
+    { title:'테스트 기초 알아보기', objective:'테스트 개념과 설계 범위를 살펴봅니다.', resources:[{ id:'kstqb-qa-foundation', slot:'testing-basics', reason:'테스트 기초의 공식 실러버스와 예시 문제를 살펴볼 수 있습니다.' }, { id:'kstqb-ctbl-basics', slot:'testing-basics', reason:'입문자를 위한 CTBL의 테스팅 기초 자료입니다. CTFL과 다른 자격의 자료입니다.' }] },
     { title:'문제 설명하기', objective:'다른 사람이 문제를 재현할 수 있도록 정리합니다.', resources:[], activity:'테스트 조건, 기대 결과와 실제 결과를 짧은 보고서로 작성해 보세요.' },
   ] },
   { id:'qa-automation', topic:'qa', title:'웹 테스트 자동화 시작하기', description:'웹 테스트 작성의 기초를 실습합니다.', startingPoint:'자바스크립트 기초가 있다면', outcome:'간단한 웹 테스트 작성', purposes:['career','create'], careerId:'qa', certQuery:'QA', qualificationIds:['istqb-ctfl'], steps:[
     { title:'테스트 관점 정하기', objective:'확인할 사용자 동작과 기대 결과를 구분합니다.', resources:[{ id:'kstqb-qa-foundation', reason:'테스트 기초 개념을 살펴보는 참고 자료입니다.' }] },
-    { title:'테스트 작성하기', objective:'웹 테스트의 구성과 실행 방법을 익힙니다.', resources:[{ id:'playwright-qa', reason:'Playwright 공식 안내로 웹 테스트 작성 방법을 살펴봅니다.' }] },
+    { title:'테스트 작성하기', objective:'웹 테스트의 구성과 실행 방법을 익힙니다.', resources:[{ id:'playwright-qa', slot:'web-testing', reason:'Playwright 공식 안내로 웹 테스트 작성 방법을 살펴봅니다.' }, { id:'selenium-first-script', slot:'web-testing', reason:'다른 도구인 Selenium의 공식 영어 자료로 브라우저 테스트 작성을 살펴봅니다.' }] },
     { title:'결과 기록하기', objective:'정상 동작과 오류 상황을 확인하고 결과를 정리합니다.', resources:[], activity:'연습용 웹사이트의 한 가지 동작을 테스트하고 실행 결과를 기록해 보세요.' },
   ] },
   { id:'qa-ai-testing', topic:'qa', title:'AI 시스템 테스트 이해하기', description:'AI 시스템을 검증할 때 고려할 점을 살펴봅니다.', startingPoint:'소프트웨어 테스트와 AI 기초가 있다면', outcome:'AI 시스템의 테스트 관점 정리', purposes:['career','create'], careerId:'qa', qualificationIds:['istqb-ct-ai'], steps:[
@@ -49,7 +49,7 @@ export const journeys: Journey[] = [
   ] },
   { id:'ai-workflow', topic:'ai', title:'생성형 AI 업무 활용', beginner:true, description:'요청을 구체화하고 결과를 검토하는 연습을 합니다.', startingPoint:'AI를 처음 사용한다면', outcome:'검토 가능한 작업 요청과 결과 정리', purposes:['apply','create','explore'], certQuery:'AI', qualificationIds:[], steps:[
     { title:'도움받을 작업 고르기', objective:'AI가 도울 수 있는 작업과 사람이 확인할 부분을 구분합니다.', resources:[{ id:'openai-academy', reason:'업무에서 AI를 활용하는 학습 자료를 찾아볼 수 있습니다.' }] },
-    { title:'요청을 구체화하기', objective:'목적과 맥락, 원하는 결과를 분명하게 전달합니다.', resources:[{ id:'dlai-prompting', reason:'AI에 요청하는 방법을 배우는 강의입니다. 언어와 이용 조건을 확인하세요.' }] },
+    { title:'요청을 구체화하기', objective:'목적과 맥락, 원하는 결과를 분명하게 전달합니다.', resources:[{ id:'dlai-prompting', slot:'prompting', reason:'AI에 요청하는 방법을 배우는 강의입니다. 언어와 이용 조건을 확인하세요.' }, { id:'ms-ai-fluency', slot:'prompting', reason:'프롬프트와 비판적 검토를 다루는 대체 경로입니다. 일부는 Copilot 중심입니다.' }] },
     { title:'결과 검토하기', objective:'출처와 정확성을 확인하고 결과를 수정합니다.', resources:[], activity:'민감한 정보 대신 공개 예시를 사용해 요청을 작성하고 결과를 직접 검토해 보세요.' },
   ] },
   { id:'python-first', topic:'coding', title:'파이썬 코딩 기초', beginner:true, description:'코드의 기본을 익히고 작은 문제를 풀어봅니다.', startingPoint:'처음부터', outcome:'간단한 파이썬 코드 읽고 바꾸기', purposes:['career','create','apply','explore'], careerId:'ai-engineer', qualificationIds:[], steps:[
@@ -64,7 +64,7 @@ export const journeys: Journey[] = [
   ] },
   { id:'llm-first', topic:'ai', title:'언어 모델의 원리 살펴보기', description:'자연어 처리와 언어 모델의 기본 개념을 배웁니다.', startingPoint:'파이썬과 딥러닝 기초가 있다면', outcome:'언어 모델의 역할과 한계 정리', purposes:['career','create'], careerId:'ai-engineer', qualificationIds:[], steps:[
     { title:'기초 복습하기', objective:'머신러닝 학습에 필요한 파이썬 기초를 점검합니다.', resources:[{ id:'boost-ml-python', reason:'머신러닝을 위한 파이썬을 복습할 수 있습니다.' }] },
-    { title:'언어 모델 배우기', objective:'자연어 처리와 언어 모델의 개념 및 사용 방법을 살펴봅니다.', resources:[{ id:'hf-llm-course', reason:'언어 모델과 자연어 처리를 소개하는 공식 학습 과정입니다.' }] },
+    { title:'언어 모델 배우기', objective:'자연어 처리와 언어 모델의 개념 및 사용 방법을 살펴봅니다.', resources:[{ id:'hf-llm-course', slot:'llm-concepts', reason:'언어 모델과 자연어 처리를 소개하는 공식 학습 과정입니다.' }, { id:'google-llm-intro', slot:'llm-concepts', reason:'머신러닝·신경망 기초를 전제로 언어 모델과 한계를 소개하는 대체 자료입니다.' }] },
     { title:'배운 내용 정리하기', objective:'언어 모델의 기능과 한계를 자신의 말로 설명합니다.', resources:[], activity:'학습 자료를 참고해 언어 모델이 할 수 있는 일과 검토가 필요한 한계를 정리해 보세요.' },
   ] },
   { id:'agents-first', topic:'ai', title:'AI 에이전트 살펴보기', description:'AI 에이전트의 구성과 실습 과정을 살펴봅니다.', startingPoint:'파이썬과 언어 모델 기초가 있다면', outcome:'에이전트의 목표·도구·검토 과정 정리', purposes:['career','create'], careerId:'ai-engineer', certQuery:'Agents', qualificationIds:[], steps:[
@@ -74,7 +74,7 @@ export const journeys: Journey[] = [
   ] },
   { id:'security-first', topic:'security', title:'정보보안 기초', beginner:true, description:'계정과 데이터를 지키는 기본 원리를 살펴봅니다.', startingPoint:'처음부터', outcome:'계정 보안 점검 항목 만들기', purposes:['career','apply','explore'], careerId:'security', qualificationIds:['isc2-cc','sc-900'], steps:[
     { title:'보호할 것 생각하기', objective:'계정과 데이터에 생길 수 있는 위험을 생각합니다.', resources:[], activity:'사용 중인 서비스의 다중 인증과 계정 복구 방법을 점검해 보세요.' },
-    { title:'보안 원리 살펴보기', objective:'보안과 접근 권한의 기초 학습 자료를 찾아봅니다.', resources:[{ id:'ms-cybersecurity', reason:'보안·규정 준수·ID를 다루는 공식 학습 자료 모음입니다.' }] },
+    { title:'보안 원리 살펴보기', objective:'보안과 접근 권한의 기초 학습 자료를 찾아봅니다.', resources:[{ id:'ms-cybersecurity', slot:'security-basics', reason:'보안·규정 준수·ID를 다루는 공식 학습 자료 모음입니다.' }, { id:'ms-security-concepts', slot:'security-basics', reason:'암호화와 제로 트러스트 등 보안 기초를 배우는 대체 자료입니다.' }] },
     { title:'안전한 습관 정리하기', objective:'일상에서 적용할 수 있는 점검 항목을 정리합니다.', resources:[], activity:'비밀번호 관리와 계정 복구를 포함한 점검 목록을 작성해 보세요.' },
   ] },
   { id:'ai-security', topic:'security', title:'AI 시스템의 보안 이해하기', description:'AI 시스템의 위협과 보안 제어를 살펴봅니다.', startingPoint:'AI와 보안 기초가 있다면', outcome:'AI 시스템의 보안 고려 사항 정리', purposes:['career','create','apply'], careerId:'security', qualificationIds:['isc2-cc','sc-900'], steps:[
