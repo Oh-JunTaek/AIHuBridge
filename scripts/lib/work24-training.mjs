@@ -27,7 +27,7 @@ function officialUrl(value) {
 }
 
 export function parseTrainingResponse(payload, career, checked) {
-  const root = payload?.HRDNet ?? payload?.hrdNet;
+  const root = payload?.HRDNet ?? payload?.hrdNet ?? (payload && Object.hasOwn(payload, 'scn_cnt') ? payload : null);
   if (!root || !/^\d+$/.test(String(root.scn_cnt ?? ''))) throw new Work24Error('schema_error', undefined, safeResponseShape(payload, payload?.hrdNet ? 'hrdNet' : 'HRDNet', 'scn_cnt'));
   const raw = root.srchList?.scn_list;
   const rows = raw == null ? [] : Array.isArray(raw) ? raw : [raw];
@@ -63,7 +63,7 @@ export async function collectTraining(key, today, fetcher = fetch) {
     if (!response.ok) throw new Work24Error('http_error', response.status);
     try { payload = await response.json(); } catch { throw new Work24Error('invalid_response'); }
     const rows = parseTrainingResponse(payload, career, today);
-    if (Number((payload.HRDNet ?? payload.hrdNet).scn_cnt) > 0 && rows.length === 0) throw new Work24Error('missing_fields');
+    if (Number((payload.HRDNet ?? payload.hrdNet ?? payload).scn_cnt) > 0 && rows.length === 0) throw new Work24Error('missing_fields');
     for (const course of rows) {
       const existing = courses.get(course.id);
       if (existing && !existing.careers.includes(career)) existing.careers.push(career);

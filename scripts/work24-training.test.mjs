@@ -14,6 +14,10 @@ test('훈련 일자와 공식 링크를 보존하고 URL의 인증값을 제거�
   assert.doesNotMatch(course.url, /authKey|DO_NOT_PUBLISH/);
 });
 
+test('고용24가 최상위에 훈련 목록을 반환하는 JSON도 처리한다', () => {
+  assert.deepEqual(parseTrainingResponse(response.HRDNet, 'data-analyst', '2026-11-01'), parseTrainingResponse(response, 'data-analyst', '2026-11-01'));
+});
+
 test('허용하지 않은 출처와 확인되지 않은 날짜는 제외한다', () => {
   assert.deepEqual(parseTrainingResponse({ HRDNet: { scn_cnt:'1', srchList: { scn_list: [{ ...item, titleLink:'https://example.com/' }] } } }, 'qa', '2026-11-01'), []);
   assert.deepEqual(parseTrainingResponse({ HRDNet: { scn_cnt:'1', srchList: { scn_list: [{ ...item, traStartDate:'불명' }] } } }, 'qa', '2026-11-01'), []);
