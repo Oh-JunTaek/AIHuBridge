@@ -1,5 +1,5 @@
 import { parseStringPromise } from 'xml2js';
-import { Work24Error, safeResponseShape } from './work24-errors.mjs';
+import { Work24Error, safeResponseShape, safeResponseCategory } from './work24-errors.mjs';
 
 const origin = 'https://www.work24.go.kr';
 const queries = [
@@ -27,7 +27,7 @@ async function request(path, key, params, format, fetcher) {
 
 export function parseJobs(data) {
   const root = data?.jobsList;
-  if (!root || !/^\d+$/.test(String(root.total ?? ''))) throw new Work24Error('schema_error', undefined, safeResponseShape(data, 'jobsList', 'total'));
+  if (!root || !/^\d+$/.test(String(root.total ?? ''))) throw new Work24Error('schema_error', undefined, safeResponseShape(data, 'jobsList', 'total'), safeResponseCategory(data));
   const rows = list(root.jobList);
   if (Number(root.total) > 0 && !rows.length) throw new Work24Error('missing_rows');
   return rows.flatMap((item) => {
@@ -66,7 +66,7 @@ function parseDate(value) {
 
 export function parseEvents(data, today) {
   const root = data?.empEventList;
-  if (!root || !/^\d+$/.test(String(root.total ?? ''))) throw new Work24Error('schema_error', undefined, safeResponseShape(data, 'empEventList', 'total'));
+  if (!root || !/^\d+$/.test(String(root.total ?? ''))) throw new Work24Error('schema_error', undefined, safeResponseShape(data, 'empEventList', 'total'), safeResponseCategory(data));
   const rows = list(root.empEvent);
   if (Number(root.total) > 0 && !rows.length) throw new Work24Error('missing_rows');
   return rows.flatMap((row) => {
