@@ -295,7 +295,7 @@ test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async 
 
 test('직무에서 학습 자료와 자격 상세로 연결하고 채용행사 출처를 안내한다', async ({ page }, testInfo) => {
   await page.goto('careers');
-  await expect(page.getByRole('link', { name: /고용24 채용행사 찾아보기/ })).toHaveAttribute('href', 'https://www.work24.go.kr/');
+  await expect(page.getByRole('link', { name: /고용24 채용행사 찾아보기/ })).toHaveAttribute('href', /work24\.go\.kr\/wk\/a\/f\/1100\/retrieveEmpEventList/);
   await page.getByRole('link', { name: /소프트웨어 QA·테스터/ }).click();
   await expect(page.getByRole('heading', { name: '소프트웨어 QA·테스터' })).toBeVisible();
   await page.getByRole('link', { name: /소프트웨어 QA 기초/ }).click();
@@ -332,18 +332,38 @@ test('국민내일배움카드 과정은 직무와 시작일에 맞게 안내한
 
 test('고용24 수집 자료는 해당 직무의 시작 전 과정만 표시한다', async ({ page }) => {
   await page.clock.setFixedTime(new Date('2026-11-01T03:00:00Z'));
+  await page.route('**/data/work24-codes.json', (route) => route.fulfill({ json: { fetchedAt:'2026-11-01T00:00:00Z', data:{ ncs:[{code:'20', name:'정보통신'}] } } }));
   await page.route('**/data/funded-training.json', (route) => route.fulfill({ json: {
     fetchedAt: '2026-11-01T00:00:00Z', courses: [
-      { id:'qa-1', title:'테스트 실습 과정', provider:'훈련기관', category:'국민내일배움카드 훈련', start:'2026-11-10', end:'2026-12-10', checked:'2026-11-01', careers:['qa'], url:'https://www.work24.go.kr/' },
+      { id:'qa-1', title:'테스트 실습 과정', provider:'훈련기관', category:'국민내일배움카드 훈련', ncsCode:'20010101', start:'2026-11-10', end:'2026-12-10', checked:'2026-11-01', careers:['qa'], url:'https://www.work24.go.kr/' },
       { id:'past', title:'이미 시작한 과정', provider:'훈련기관', category:'훈련', start:'2026-10-01', end:'2026-12-10', checked:'2026-11-01', careers:['qa'], url:'https://www.work24.go.kr/' },
     ],
   } }));
   await page.goto('careers/qa');
   const training = page.locator('.funded-training');
   await expect(training.getByRole('link', { name: /테스트 실습 과정/ })).toBeVisible();
+  await expect(training.getByText(/NCS 정보통신/)).toBeVisible();
   await expect(training.getByText('이미 시작한 과정')).toHaveCount(0);
   await page.goto('careers/data-analyst');
   await expect(training.getByText('테스트 실습 과정')).toHaveCount(0);
+});
+
+test('고용24 직업 검색과 채용행사는 출처를 밝히고 종료 행사를 숨긴다', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-11-01T03:00:00Z'));
+  await page.route('**/data/work24-jobs.json', (route) => route.fulfill({ json:{ fetchedAt:'2026-11-01T00:00:00Z', data:{ qa:{ query:'테스터', items:[{ name:'소프트웨어 테스터', code:'1' }] } } } }));
+  await page.route('**/data/work24-duties.json', (route) => route.fulfill({ json:{ fetchedAt:'2026-11-01T00:00:00Z', data:{ qa:{ query:'테스트', items:[{ name:'소프트웨어 테스트', category:'정보기술' }] } } } }));
+  await page.route('**/data/work24-events.json', (route) => route.fulfill({ json:{ fetchedAt:'2026-11-01T00:00:00Z', data:[
+    { id:'1', name:'취업박람회', area:'서울', start:'2026-11-03', end:'2026-11-04' },
+    { id:'2', name:'종료된 행사', area:'서울', start:'2026-10-01', end:'2026-10-02' },
+  ] } }));
+  await page.goto('careers/qa');
+  const reference = page.getByRole('region', { name:'고용24 관련 직업 및 역량' });
+  await expect(reference.getByText(/소프트웨어 테스터/)).toBeVisible();
+  await expect(reference.getByText(/NCS 관련 분야/)).toBeVisible();
+  await page.goto('careers');
+  await expect(page.getByText('취업박람회', { exact:true })).toBeVisible();
+  await expect(page.getByText('종료된 행사', { exact:true })).toHaveCount(0);
+  await expect(page.getByText(/고용24 제공/)).toBeVisible();
 });
 
 test('상위 메뉴에서 각 공간 소개와 하위 페이지로 이동한다', async ({ page }) => {

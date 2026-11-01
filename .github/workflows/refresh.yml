@@ -40,6 +40,14 @@ jobs:
         env:
           WORK24_API_KEY: ${{ secrets.WORK24_API_KEY }}
         run: node scripts/fetch-funded-training.mjs
+      - name: 고용24 직업·직무·공통코드·채용행사 수집
+        continue-on-error: true
+        env:
+          WORK24_JOB_API_KEY: ${{ secrets.WORK24_JOB_API_KEY }}
+          WORK24_DUTY_API_KEY: ${{ secrets.WORK24_DUTY_API_KEY }}
+          WORK24_CODES_API_KEY: ${{ secrets.WORK24_CODES_API_KEY }}
+          WORK24_RECRUITMENT_API_KEY: ${{ secrets.WORK24_RECRUITMENT_API_KEY }}
+        run: node scripts/fetch-work24-careers.mjs
       - name: 수집 로직 회귀 검사
         run: npm test
       - name: 데이터·타입·빌드 검증
@@ -54,7 +62,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data/news.json public/data/meta.json public/data/calendar.json public/data/calendar-meta.json public/data/funded-training.json
+          git add public/data/news.json public/data/meta.json public/data/calendar.json public/data/calendar-meta.json public/data/funded-training.json public/data/work24-jobs.json public/data/work24-duties.json public/data/work24-codes.json public/data/work24-events.json
           if ! git diff --staged --quiet; then
             git commit -m "data: 자동 뉴스 수집 갱신 $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
             git push

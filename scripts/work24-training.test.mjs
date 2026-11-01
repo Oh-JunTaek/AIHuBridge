@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { collectTraining, parseTrainingResponse } from './lib/work24-training.mjs';
 
-const item = { title: '데이터 분석', subTitle: '훈련기관', trprId: 'AIG123', trprDegr: '1', traStartDate: '20261120', traEndDate: '20261220', titleLink: 'https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG123&tracseTme=1&authKey=DO_NOT_PUBLISH' };
+const item = { title: '데이터 분석', subTitle: '훈련기관', trprId: 'AIG123', trprDegr: '1', ncsCd:'20010101', traStartDate: '20261120', traEndDate: '20261220', titleLink: 'https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG123&tracseTme=1&authKey=DO_NOT_PUBLISH' };
 const response = { HRDNet: { scn_cnt: '1', srchList: { scn_list: [item] } } };
 
 test('훈련 일자와 공식 링크를 보존하고 URL의 인증값을 제거한다', () => {
@@ -10,6 +10,7 @@ test('훈련 일자와 공식 링크를 보존하고 URL의 인증값을 제거�
   assert.equal(course.start, '2026-11-20');
   assert.equal(course.end, '2026-12-20');
   assert.equal(course.provider, '훈련기관');
+  assert.equal(course.ncsCode, '20010101');
   assert.doesNotMatch(course.url, /authKey|DO_NOT_PUBLISH/);
 });
 

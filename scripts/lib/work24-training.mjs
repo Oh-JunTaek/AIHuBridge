@@ -39,7 +39,8 @@ export function parseTrainingResponse(payload, career, checked) {
     const title = String(row.title ?? '').trim();
     const provider = String(row.subTitle ?? '').trim();
     if (!id || !round || !title || !provider || !start || !end || end < start || !url) return [];
-    return [{ id: `${id}-${round}`, title, provider, category: '국민내일배움카드 훈련', start, end, checked, careers: [career], url }];
+    const ncsCode = /^\d{2,8}$/.test(String(row.ncsCd ?? '')) ? String(row.ncsCd) : undefined;
+    return [{ id: `${id}-${round}`, title, provider, category: '국민내일배움카드 훈련', start, end, checked, careers: [career], url, ...(ncsCode ? { ncsCode } : {}) }];
   });
 }
 
