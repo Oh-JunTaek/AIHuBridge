@@ -330,6 +330,22 @@ test('국민내일배움카드 과정은 직무와 시작일에 맞게 안내한
   await expect(training.getByRole('link', { name: /K-디지털 훈련과정 찾기/ })).toHaveAttribute('href', /trnnCrsInf2\.do/);
 });
 
+test('고용24 수집 자료는 해당 직무의 시작 전 과정만 표시한다', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-11-01T03:00:00Z'));
+  await page.route('**/data/funded-training.json', (route) => route.fulfill({ json: {
+    fetchedAt: '2026-11-01T00:00:00Z', courses: [
+      { id:'qa-1', title:'테스트 실습 과정', provider:'훈련기관', category:'국민내일배움카드 훈련', start:'2026-11-10', end:'2026-12-10', checked:'2026-11-01', careers:['qa'], url:'https://www.work24.go.kr/' },
+      { id:'past', title:'이미 시작한 과정', provider:'훈련기관', category:'훈련', start:'2026-10-01', end:'2026-12-10', checked:'2026-11-01', careers:['qa'], url:'https://www.work24.go.kr/' },
+    ],
+  } }));
+  await page.goto('careers/qa');
+  const training = page.locator('.funded-training');
+  await expect(training.getByRole('link', { name: /테스트 실습 과정/ })).toBeVisible();
+  await expect(training.getByText('이미 시작한 과정')).toHaveCount(0);
+  await page.goto('careers/data-analyst');
+  await expect(training.getByText('테스트 실습 과정')).toHaveCount(0);
+});
+
 test('상위 메뉴에서 각 공간 소개와 하위 페이지로 이동한다', async ({ page }) => {
   await page.goto('dashboard');
   const nav = page.getByRole('navigation', { name: '주요 메뉴' });

@@ -7,6 +7,8 @@ export const fundedTraining = [
   { id:'ai-data-32', title:'처음부터 제대로 배우는 AI 기초 (feat. 직무별 현업 데이터 분석 실습)', provider:'윈스펙원격평생교육원', category:'K-디지털 기초역량훈련', start:'2026-11-04', end:'2026-12-04', checked:'2026-10-31', careers:['ai-engineer','data-analyst'], url:'https://m.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?crseTracseSe=C0105&tracseId=AIG20260000545336&tracseTme=32&trainstCstmrId=500034225481' },
 ] as const;
 
-export function availableTraining(today: string, careerId?: string) {
-  return fundedTraining.filter((course) => course.start >= today && (!careerId || (course.careers as readonly string[]).includes(careerId)));
+export type TrainingCourse = { id: string; title: string; provider: string; category: string; start: string; end: string; checked: string; careers: readonly string[]; url: string };
+
+export function availableTraining(today: string, careerId?: string, courses: readonly TrainingCourse[] = fundedTraining) {
+  return courses.filter((course) => course.start >= today && (!careerId || course.careers.includes(careerId)));
 }

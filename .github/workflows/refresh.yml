@@ -3,7 +3,7 @@ name: News Refresh
 # 이 이름은 deploy.yml의 workflow_run과 연결되어 있으므로 함께 변경해야 한다.
 # 뉴스·AI 일정을 수집하고 성공한 실행을 배포 워크플로로 연결한다.
 # - GitHub 자신의 저장소에서 동작하므로 개인 계정 키 불필요 (GITHUB_TOKEN 자동)
-# - 외부 서비스 계정/키 미보관 (AGENTS.md rule 3 준수)
+# - 고용24 인증키는 저장소의 Actions 비밀값에서만 읽는다.
 
 on:
   # UTC 기준. 매일 KST(UTC+9) 07:00 한 번 실행한다.
@@ -35,6 +35,11 @@ jobs:
       - run: npm ci
       - name: RSS 수집 (npm run refresh)
         run: npm run refresh
+      - name: 고용24 훈련과정 수집
+        continue-on-error: true
+        env:
+          WORK24_API_KEY: ${{ secrets.WORK24_API_KEY }}
+        run: node scripts/fetch-funded-training.mjs
       - name: 수집 로직 회귀 검사
         run: npm test
       - name: 데이터·타입·빌드 검증
@@ -49,7 +54,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data/news.json public/data/meta.json public/data/calendar.json public/data/calendar-meta.json
+          git add public/data/news.json public/data/meta.json public/data/calendar.json public/data/calendar-meta.json public/data/funded-training.json
           if ! git diff --staged --quiet; then
             git commit -m "data: 자동 뉴스 수집 갱신 $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
             git push

@@ -1,13 +1,23 @@
-import { availableTraining, trainingSearchUrl } from '../data/funded-training';
+import { availableTraining, trainingSearchUrl, type TrainingCourse } from '../data/funded-training';
 import { WayfindingIcon } from './WayfindingIcon';
-import { useId } from 'react';
+import { useEffect, useId, useState } from 'react';
 
 const searchTerms: Record<string, string> = { qa:'소프트웨어 테스트, QA', 'data-analyst':'데이터 분석, SQL', 'ai-engineer':'인공지능, 파이썬', security:'정보보안, 네트워크' };
 
 export function FundedTraining({ careerId }: { careerId?: string }) {
   const headingId = useId();
+  const [collected, setCollected] = useState<TrainingCourse[] | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(`${import.meta.env.BASE_URL}data/funded-training.json`, { signal: controller.signal })
+      .then((response) => response.ok ? response.json() : null)
+      .then((data: { fetchedAt?: string | null; courses?: TrainingCourse[] } | null) => {
+        if (data?.fetchedAt && Array.isArray(data.courses)) setCollected(data.courses);
+      }).catch(() => { /* 기존 수동 확인 자료를 유지한다. */ });
+    return () => controller.abort();
+  }, []);
   const today = new Intl.DateTimeFormat('en-CA', { timeZone:'Asia/Seoul', year:'numeric', month:'2-digit', day:'2-digit' }).format(new Date());
-  const courses = availableTraining(today, careerId);
+  const courses = availableTraining(today, careerId, collected ?? undefined).slice(0, 8);
   return <section className="funded-training" aria-labelledby={headingId}>
     <div className="funded-training-header"><div><span>배움을 시작하는 또 하나의 방법</span><h2 id={headingId}>국민내일배움카드 훈련</h2><p>고용24에서 AI·IT 등 직무에 필요한 훈련과정을 찾아볼 수 있어요.</p></div><a href={trainingSearchUrl} target="_blank" rel="noopener noreferrer">고용24에서 훈련 찾기 <WayfindingIcon direction="external" /></a></div>
     <div className="funded-training-guide"><p>카드 발급 가능 여부와 훈련 지원 조건은 개인별로 다릅니다. 과정마다 수강 조건·일정·본인 부담금이 다르므로 고용24와 훈련기관에서 확인하세요.</p><a href="https://m.work24.go.kr/hr/h/a/1100/selectIssuGudn.do" target="_blank" rel="noopener noreferrer">카드 발급 안내 <WayfindingIcon direction="external" /></a><a href="https://www.work24.go.kr/cm/c/f/1100/selecSystInfo.do?systClId=SC0000004&systCnntId=CI00001760&systId=SI00000356" target="_blank" rel="noopener noreferrer">K-디지털 기초역량훈련 안내 <WayfindingIcon direction="external" /></a><a href="https://www.work24.go.kr/hr/a/a/1100/trnnCrsInf2.do" target="_blank" rel="noopener noreferrer">K-디지털 훈련과정 찾기 <WayfindingIcon direction="external" /></a></div>
