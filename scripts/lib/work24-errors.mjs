@@ -10,17 +10,28 @@ const reasons = Object.freeze({
   missing_fields: '필수 항목 또는 공식 링크 확인 실패',
   page_limit: '페이지 조회 한도 초과',
 });
+const visibleKeys = ['HRDNet', 'hrdNet', 'jobsList', 'empEventList', 'response', 'Response', 'result', 'RESULT', 'error', 'Error', 'errorCode', 'resultCode', 'message', 'scn_cnt', 'total'];
+
+export function safeResponseShape(payload, expectedRoot, countField) {
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return '응답=객체 아님';
+  const root = payload[expectedRoot];
+  const keys = visibleKeys.filter((key) => Object.hasOwn(payload, key));
+  const count = root && typeof root === 'object' ? root[countField] : undefined;
+  const countType = count === undefined ? '없음' : /^\d+$/.test(String(count)) ? '숫자' : '비숫자';
+  return `최상위=${keys.join(',') || '기타'}, 기대항목=${root ? '있음' : '없음'}, 건수=${countType}`;
+}
 
 export class Work24Error extends Error {
-  constructor(code, status) {
+  constructor(code, status, shape) {
     super(reasons[code] ?? '확인되지 않은 오류');
     this.name = 'Work24Error';
     this.code = Object.hasOwn(reasons, code) ? code : 'unknown';
     this.status = Number.isInteger(status) && status >= 100 && status <= 599 ? status : undefined;
+    this.shape = typeof shape === 'string' && /^최상위=(?:[A-Za-z_,]+|기타), 기대항목=(?:있음|없음), 건수=(?:없음|숫자|비숫자)$|^응답=객체 아님$/.test(shape) ? shape : undefined;
   }
 }
 
 export function safeWork24Error(error) {
   if (!(error instanceof Work24Error)) return '확인되지 않은 오류';
-  return `${reasons[error.code] ?? '확인되지 않은 오류'}${error.status ? ` (HTTP ${error.status})` : ''}`;
+  return `${reasons[error.code] ?? '확인되지 않은 오류'}${error.status ? ` (HTTP ${error.status})` : ''}${error.shape ? ` [${error.shape}]` : ''}`;
 }

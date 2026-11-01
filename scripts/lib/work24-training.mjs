@@ -1,4 +1,4 @@
-import { Work24Error } from './work24-errors.mjs';
+import { Work24Error, safeResponseShape } from './work24-errors.mjs';
 
 const endpoint = 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do';
 const searches = [
@@ -28,7 +28,7 @@ function officialUrl(value) {
 
 export function parseTrainingResponse(payload, career, checked) {
   const root = payload?.HRDNet ?? payload?.hrdNet;
-  if (!root || !/^\d+$/.test(String(root.scn_cnt ?? ''))) throw new Work24Error('schema_error');
+  if (!root || !/^\d+$/.test(String(root.scn_cnt ?? ''))) throw new Work24Error('schema_error', undefined, safeResponseShape(payload, payload?.hrdNet ? 'hrdNet' : 'HRDNet', 'scn_cnt'));
   const raw = root.srchList?.scn_list;
   const rows = raw == null ? [] : Array.isArray(raw) ? raw : [raw];
   if (Number(root.scn_cnt) > 0 && rows.length === 0) throw new Work24Error('missing_rows');
