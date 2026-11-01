@@ -1,1 +1,84 @@
-{"fetchedAt":null,"data":{}}
+{
+  "fetchedAt": "2026-11-01T03:47:55.382Z",
+  "data": {
+    "qa": {
+      "query": "소프트웨어 테스트",
+      "items": []
+    },
+    "data-analyst": {
+      "query": "데이터 분석",
+      "items": [
+        {
+          "name": "개인신용분석",
+          "category": "신용분석"
+        },
+        {
+          "name": "개인신용분석",
+          "category": "신용분석"
+        },
+        {
+          "name": "개인신용분석",
+          "category": "신용분석"
+        },
+        {
+          "name": "개인신용분석",
+          "category": "신용분석"
+        },
+        {
+          "name": "리스크관리",
+          "category": "금융영업지원"
+        }
+      ]
+    },
+    "ai-engineer": {
+      "query": "인공지능",
+      "items": [
+        {
+          "name": "인공지능서비스기획",
+          "category": "인공지능"
+        },
+        {
+          "name": "인공지능서비스구현",
+          "category": "인공지능"
+        },
+        {
+          "name": "인공지능서비스구현",
+          "category": "인공지능"
+        },
+        {
+          "name": "인공지능서비스기획",
+          "category": "인공지능"
+        },
+        {
+          "name": "인공지능서비스기획",
+          "category": "인공지능"
+        }
+      ]
+    },
+    "security": {
+      "query": "정보보안",
+      "items": [
+        {
+          "name": "실감형통신서비스",
+          "category": "통신서비스"
+        },
+        {
+          "name": "영상정보보안·운영",
+          "category": "정보보호"
+        },
+        {
+          "name": "보안엔지니어링",
+          "category": "정보기술개발"
+        },
+        {
+          "name": "영상정보보안·운영",
+          "category": "정보보호"
+        },
+        {
+          "name": "보안엔지니어링",
+          "category": "정보기술개발"
+        }
+      ]
+    }
+  }
+}
