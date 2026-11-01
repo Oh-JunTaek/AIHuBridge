@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { articleUrl, collectNews } from './lib/news-collector.mjs';
 import { isNewsArray, requestNews, selectNews } from '../src/lib/news-data.mjs';
+import { newsSources } from '../src/lib/news-sources.mjs';
 
 const now = Date.parse('2026-10-25T12:00:00Z');
 const sources = [
@@ -111,4 +112,17 @@ test('회당 신규 수집은 기존 출처별 8건 한도를 유지', async () 
   assert.equal(result.items.length, 8);
   assert.equal(result.items[0].url, 'https://example.org/11');
   assert.equal(result.items[7].url, 'https://example.org/4');
+});
+
+test('국내 출처는 더 많은 AI 소식을 수집하면서 본문을 저장하지 않는다', async () => {
+  const domestic = newsSources.filter((source) => source.origin === 'domestic');
+  for (const source of domestic) {
+    const feed = Array.from({ length: 25 }, (_, index) => raw({
+      title: `AI 소식 ${index}`, link: `https://example.kr/${index}`,
+      pubDate: new Date(now - index * 60000).toISOString(),
+    }));
+    const result = await collect(async () => ({ items: feed }), { sources: [source] });
+    assert.equal(result.items.length, 20, source.id);
+    assert.ok(result.items.every((item) => !item.excerpt && !item.summary), source.id);
+  }
 });
