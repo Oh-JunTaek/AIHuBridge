@@ -48,6 +48,21 @@ test('직무 연결은 실제 자격과 검색 결과를 가리킨다', () => {
   }
 });
 
+test('기업 SNS는 최근 7일의 Bluesky와 Mastodon 게시물만 표시한다', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-11-01T12:00:00Z'));
+  await page.route('https://public.api.bsky.app/**', (route) => route.fulfill({ json:{ feed:[] }, headers:{ 'access-control-allow-origin':'*' } }));
+  await page.route('https://mastodon.social/api/v1/accounts/**', (route) => route.fulfill({ json:[
+    { url:'https://mastodon.social/@MozillaAI/12345', visibility:'public', sensitive:false, created_at:'2026-10-31T12:00:00Z', content:'<p>최근 공식 소식</p>', account:{ id:'111910184138509793', display_name:'Mozilla.ai' } },
+    { url:'https://mastodon.social/@MozillaAI/12344', visibility:'public', sensitive:false, created_at:'2026-10-20T12:00:00Z', content:'<p>오래된 소식</p>', account:{ id:'111910184138509793', display_name:'Mozilla.ai' } },
+  ], headers:{ 'access-control-allow-origin':'*' } }));
+  await page.goto('social');
+  await expect(page.getByText('최근 공식 소식')).toBeVisible();
+  await expect(page.getByText('오래된 소식')).toHaveCount(0);
+  await expect(page.getByLabel('게시 기간')).toHaveValue('7');
+  await expect(page.getByLabel('게시 기간').locator('option')).toHaveCount(3);
+  await expect(page.getByText(/Mozilla.ai · 기업 공식 · Mastodon/)).toBeVisible();
+});
+
 test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   const routes = [
     ['', 'AI의 세계로'], ['dashboard', 'AI 소식 한눈에'], ['updates', 'AI 소식'],
