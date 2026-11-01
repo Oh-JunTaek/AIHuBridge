@@ -1,4 +1,5 @@
 import { parseStringPromise } from 'xml2js';
+import { Work24Error } from './work24-errors.mjs';
 
 const origin = 'https://www.work24.go.kr';
 const queries = [
@@ -11,23 +12,24 @@ const list = (value) => value == null ? [] : Array.isArray(value) ? value : [val
 const clean = (value, max = 300) => typeof value === 'string' ? value.replace(/\s+/g, ' ').trim().slice(0, max) : '';
 
 async function request(path, key, params, format, fetcher) {
-  if (!key) throw new Error('인증키가 없습니다');
+  if (!key) throw new Work24Error('missing_key');
   const url = new URL(path, origin);
   url.search = new URLSearchParams({ authKey: key, ...params }).toString();
-  try {
-    const response = await fetcher(url, { signal: AbortSignal.timeout(15000) });
-    if (!response.ok) throw new Error();
-    const text = await response.text();
-    if (text.length > 4 * 1024 * 1024 || /<!DOCTYPE|<!ENTITY/i.test(text)) throw new Error();
-    return format === 'xml' ? await parseStringPromise(text, { explicitArray: false, trim: true }) : JSON.parse(text);
-  } catch { throw new Error('고용24 요청 또는 응답 처리 실패'); }
+  let response, body;
+  try { response = await fetcher(url, { signal: AbortSignal.timeout(15000) }); }
+  catch { throw new Work24Error('network_error'); }
+  if (!response.ok) throw new Work24Error('http_error', response.status);
+  try { body = await response.text(); } catch { throw new Work24Error('network_error'); }
+  if (body.length > 4 * 1024 * 1024 || /<!DOCTYPE|<!ENTITY/i.test(body)) throw new Work24Error('unsafe_response');
+  try { return format === 'xml' ? await parseStringPromise(body, { explicitArray: false, trim: true }) : JSON.parse(body); }
+  catch { throw new Work24Error('invalid_response'); }
 }
 
 export function parseJobs(data) {
   const root = data?.jobsList;
-  if (!root || !/^\d+$/.test(String(root.total ?? ''))) throw new Error('직업정보 응답 형식 오류');
+  if (!root || !/^\d+$/.test(String(root.total ?? ''))) throw new Work24Error('schema_error');
   const rows = list(root.jobList);
-  if (Number(root.total) > 0 && !rows.length) throw new Error('직업정보 목록 누락');
+  if (Number(root.total) > 0 && !rows.length) throw new Work24Error('missing_rows');
   return rows.flatMap((item) => {
     const name = clean(item.jobNm, 100), code = clean(item.jobCd, 40);
     return name && code ? [{ name, code }] : [];
@@ -35,7 +37,7 @@ export function parseJobs(data) {
 }
 
 export function parseDuties(data) {
-  if (!data || typeof data.result !== 'object' || data.result === null || Array.isArray(data.result)) throw new Error('직무정보 응답 형식 오류');
+  if (!data || typeof data.result !== 'object' || data.result === null || Array.isArray(data.result)) throw new Work24Error('schema_error');
   return Object.values(data.result).flatMap((entry) => {
     if (!entry || typeof entry !== 'object') return [];
     const name = clean(entry.job_sdvn, 100);
@@ -45,9 +47,9 @@ export function parseDuties(data) {
 
 export function parseCodes(data) {
   const root = data?.HRDNet;
-  if (!root || !/^\d+$/.test(String(root.scn_cnt ?? ''))) throw new Error('공통코드 응답 형식 오류');
+  if (!root || !/^\d+$/.test(String(root.scn_cnt ?? ''))) throw new Work24Error('schema_error');
   const rows = list(root.srchList?.scn_list);
-  if (Number(root.scn_cnt) > 0 && !rows.length) throw new Error('공통코드 목록 누락');
+  if (Number(root.scn_cnt) > 0 && !rows.length) throw new Work24Error('missing_rows');
   return rows.flatMap((item) => {
     const code = clean(item.rsltCode, 30), name = clean(item.rsltName, 100);
     return code && name && item.useYn !== 'N' ? [{ code, name }] : [];
@@ -64,9 +66,9 @@ function parseDate(value) {
 
 export function parseEvents(data, today) {
   const root = data?.empEventList;
-  if (!root || !/^\d+$/.test(String(root.total ?? ''))) throw new Error('채용행사 응답 형식 오류');
+  if (!root || !/^\d+$/.test(String(root.total ?? ''))) throw new Work24Error('schema_error');
   const rows = list(root.empEvent);
-  if (Number(root.total) > 0 && !rows.length) throw new Error('채용행사 목록 누락');
+  if (Number(root.total) > 0 && !rows.length) throw new Work24Error('missing_rows');
   return rows.flatMap((row) => {
     const id = clean(row.eventNo, 40), name = clean(row.eventNm, 180), area = clean(row.area, 80);
     const dates = String(row.eventTerm ?? '').match(/\d{4}[.\-/]\d{2}[.\-/]\d{2}|\b\d{8}\b/g) ?? [];
@@ -110,7 +112,7 @@ export async function collectEvents(key, today, fetcher = fetch) {
     const rows = parseEvents(xml, today);
     for (const event of rows) result.set(event.id, event);
     if (page * 100 >= Number(xml.empEventList.total)) break;
-    if (page === 10) throw new Error('채용행사 페이지 제한 초과');
+    if (page === 10) throw new Work24Error('page_limit');
   }
   return [...result.values()].sort((a, b) => a.start.localeCompare(b.start));
 }

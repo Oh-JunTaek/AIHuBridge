@@ -1,3 +1,5 @@
+import { Work24Error } from './work24-errors.mjs';
+
 const endpoint = 'https://www.work24.go.kr/cm/openApi/call/hr/callOpenApiSvcInfo310L01.do';
 const searches = [
   ['데이터', 'data-analyst'], ['인공지능', 'ai-engineer'],
@@ -26,10 +28,10 @@ function officialUrl(value) {
 
 export function parseTrainingResponse(payload, career, checked) {
   const root = payload?.HRDNet ?? payload?.hrdNet;
-  if (!root || !/^\d+$/.test(String(root.scn_cnt ?? ''))) throw new Error('고용24 응답 형식 또는 조회 결과를 확인할 수 없습니다');
+  if (!root || !/^\d+$/.test(String(root.scn_cnt ?? ''))) throw new Work24Error('schema_error');
   const raw = root.srchList?.scn_list;
   const rows = raw == null ? [] : Array.isArray(raw) ? raw : [raw];
-  if (Number(root.scn_cnt) > 0 && rows.length === 0) throw new Error('고용24 응답에 과정 목록이 없습니다');
+  if (Number(root.scn_cnt) > 0 && rows.length === 0) throw new Work24Error('missing_rows');
   return rows.flatMap((row) => {
     let start, end;
     try { start = date(row.traStartDate); end = date(row.traEndDate); } catch { return []; }
@@ -45,7 +47,7 @@ export function parseTrainingResponse(payload, career, checked) {
 }
 
 export async function collectTraining(key, today, fetcher = fetch) {
-  if (!key) throw new Error('고용24 인증키가 설정되지 않았습니다');
+  if (!key) throw new Work24Error('missing_key');
   const end = new Date(`${today}T00:00:00Z`);
   end.setUTCDate(end.getUTCDate() + 90);
   const through = end.toISOString().slice(0, 10).replaceAll('-', '');
@@ -57,11 +59,11 @@ export async function collectTraining(key, today, fetcher = fetch) {
     let response, payload;
     try {
       response = await fetcher(url, { signal: AbortSignal.timeout(15000) });
-      if (!response.ok) throw new Error();
-      payload = await response.json();
-    } catch { throw new Error('고용24 훈련과정 요청 실패'); }
+    } catch { throw new Work24Error('network_error'); }
+    if (!response.ok) throw new Work24Error('http_error', response.status);
+    try { payload = await response.json(); } catch { throw new Work24Error('invalid_response'); }
     const rows = parseTrainingResponse(payload, career, today);
-    if (Number((payload.HRDNet ?? payload.hrdNet).scn_cnt) > 0 && rows.length === 0) throw new Error('고용24 과정 상세 링크 또는 필드를 확인할 수 없습니다');
+    if (Number((payload.HRDNet ?? payload.hrdNet).scn_cnt) > 0 && rows.length === 0) throw new Work24Error('missing_fields');
     for (const course of rows) {
       const existing = courses.get(course.id);
       if (existing && !existing.careers.includes(career)) existing.careers.push(career);

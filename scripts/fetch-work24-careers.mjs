@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { writeJson } from './lib/data-files.mjs';
 import { collectJobs, collectDuties, collectCodes, collectEvents } from './lib/work24-careers.mjs';
+import { safeWork24Error } from './lib/work24-errors.mjs';
 
 const today = new Intl.DateTimeFormat('en-CA', { timeZone:'Asia/Seoul', year:'numeric', month:'2-digit', day:'2-digit' }).format(new Date());
 const tasks = [
@@ -16,9 +17,9 @@ for (const [name, key, collect] of tasks) {
     const data = await collect(key);
     writeJson(fileURLToPath(new URL(`../public/data/work24-${name}.json`, import.meta.url)), { fetchedAt: new Date().toISOString(), data });
     console.log(`고용24 ${name}: 갱신 완료`);
-  } catch {
+  } catch (error) {
     // 응답이나 요청 URL은 인증키를 포함할 수 있어 출력하지 않는다.
-    console.error(`고용24 ${name}: 수집 실패, 기존 자료 유지`);
+    console.error(`고용24 ${name}: 수집 실패 (${safeWork24Error(error)}), 기존 자료 유지`);
     failed = true;
   }
 }

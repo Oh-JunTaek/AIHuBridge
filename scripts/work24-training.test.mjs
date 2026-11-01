@@ -24,6 +24,6 @@ test('직무별 검색 중복을 합치고 실패는 기존 자료 교체를 막
   const courses = await collectTraining('secret', '2026-11-01', fetcher);
   assert.equal(courses.length, 1);
   assert.deepEqual(courses[0].careers, ['data-analyst', 'ai-engineer', 'qa', 'security']);
-  await assert.rejects(collectTraining('secret', '2026-11-01', async () => { throw new Error('secret'); }), /요청 실패/);
-  await assert.rejects(collectTraining('secret', '2026-11-01', async () => ({ ok:true, json:async () => ({ error:'bad' }) })), /응답 형식/);
+  await assert.rejects(collectTraining('secret', '2026-11-01', async () => { throw new Error('secret'); }), /네트워크 또는 시간 초과/);
+  await assert.rejects(collectTraining('secret', '2026-11-01', async () => ({ ok:true, json:async () => ({ error:'bad' }) })), /예상과 다른 응답 구조/);
 });
