@@ -1,0 +1,56 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, copyFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { dataFiles, readDataSnapshot } from './lib/data-branch.mjs';
+
+test('데이터 브랜치 스냅샷은 필요한 모든 파일을 읽고 JSON으로 확인한다', () => {
+  const paths = [];
+  const result = readDataSnapshot((path) => { paths.push(path); return '{}'; });
+  assert.equal(result.length, 9);
+  assert.deepEqual(paths, dataFiles.map((name) => `public/data/${name}`));
+  assert.throws(() => readDataSnapshot((path) => path.endsWith('calendar.json') ? 'not json' : '{}'));
+  assert.throws(() => readDataSnapshot(() => { throw new Error('missing'); }));
+});
+
+test('별도 데이터 브랜치가 없을 때와 있을 때 실제 Git 저장소에서 자료를 복원한다', { skip: process.platform === 'win32' && process.env.TEST_DATA_BRANCH_GIT !== '1' }, () => {
+  const root = mkdtempSync(join(tmpdir(), 'aihubridge-data-'));
+  const remote = join(root, 'remote.git'), work = join(root, 'work');
+  mkdirSync(work);
+  const git = (cwd, ...args) => execFileSync('git', args, { cwd, stdio:'pipe', encoding:'utf8' });
+  git(root, 'init', '--bare', remote);
+  git(work, 'init', '-b', 'master');
+  git(work, 'config', 'user.name', 'Test');
+  git(work, 'config', 'user.email', 'test@example.invalid');
+  git(work, 'remote', 'add', 'origin', remote);
+  mkdirSync(join(work, 'public', 'data'), { recursive:true });
+  for (const name of dataFiles) writeFileSync(join(work, 'public', 'data', name), '{"version":"initial"}');
+  git(work, 'add', 'public/data');
+  git(work, 'commit', '-m', 'initial');
+  git(work, 'push', 'origin', 'master');
+  const restore = resolve('scripts/load-data-branch.mjs');
+  execFileSync(process.execPath, [restore], { cwd:work, stdio:'pipe' });
+  assert.equal(JSON.parse(readFileSync(join(work, 'public/data/news.json'), 'utf8')).version, 'initial');
+  git(work, 'switch', '-c', 'data-refresh');
+  writeFileSync(join(work, 'public/data/news.json'), '{"version":"collected"}');
+  git(work, 'add', 'public/data/news.json');
+  git(work, 'commit', '-m', 'data');
+  git(work, 'push', 'origin', 'data-refresh');
+  git(work, 'switch', 'master');
+  execFileSync(process.execPath, [restore], { cwd:work, stdio:'pipe' });
+  assert.equal(JSON.parse(readFileSync(join(work, 'public/data/news.json'), 'utf8')).version, 'collected');
+  assert.equal(git(work, 'branch', '--show-current').trim(), 'master');
+  const masterBefore = git(work, 'rev-parse', 'origin/master').trim();
+  const dataTree = join(root, 'data-worktree');
+  git(work, 'worktree', 'add', '--detach', dataTree, 'refs/remotes/origin/data-refresh');
+  writeFileSync(join(work, 'public/data/news.json'), '{"version":"new"}');
+  for (const name of dataFiles) copyFileSync(join(work, 'public/data', name), join(dataTree, 'public/data', name));
+  git(dataTree, 'add', 'public/data');
+  git(dataTree, 'commit', '-m', 'new data');
+  git(dataTree, 'push', 'origin', 'HEAD:refs/heads/data-refresh');
+  assert.equal(git(work, 'ls-remote', 'origin', 'refs/heads/master').split(/\s+/)[0], masterBefore);
+  execFileSync(process.execPath, [restore], { cwd:work, stdio:'pipe' });
+  assert.equal(JSON.parse(readFileSync(join(work, 'public/data/news.json'), 'utf8')).version, 'new');
+});

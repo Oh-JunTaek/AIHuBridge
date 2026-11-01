@@ -49,6 +49,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: 마지막 정상 데이터 불러오기
+        run: node scripts/load-data-branch.mjs
+
       - name: Validate TypeScript
         run: npm run lint
 

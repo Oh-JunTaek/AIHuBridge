@@ -12,7 +12,7 @@ test('고용24 진단에는 허용된 분류와 HTTP 상태만 출력한다', ()
 
 test('응답 구조 진단은 미리 허용된 키 이름만 포함한다', () => {
   const shape = safeResponseShape({ response: { authKey:'secret' }, secret:'private' }, 'HRDNet', 'scn_cnt');
-  assert.equal(shape, '최상위=response, 기대항목=없음, 건수=없음');
+  assert.equal(shape, '최상위=response, 기대항목=없음, 건수=없음, 유형=기타, 내부=기타');
   assert.doesNotMatch(safeWork24Error(new Work24Error('schema_error', undefined, shape)), /secret|private/);
   assert.doesNotMatch(safeWork24Error(new Work24Error('schema_error', undefined, 'secret')), /secret/);
 });

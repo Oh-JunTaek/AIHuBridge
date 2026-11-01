@@ -33,6 +33,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - run: npm ci
+      - name: 마지막 정상 데이터 불러오기
+        run: node scripts/load-data-branch.mjs
       - name: RSS 수집 (npm run refresh)
         run: npm run refresh
       - name: 고용24 훈련과정 수집
@@ -58,16 +60,23 @@ jobs:
       - name: 수집 결과 검증 (0건이면 푸시 중단)
         run: |
           node --input-type=commonjs -e "const m=require('./public/data/meta.json');const t=m.total;console.log('수집 건수: '+t);if(!t||t===0){console.error('뉴스 0건 -> 커밋·푸시 건너뜀');process.exit(1)}"
-      - name: 자동 커밋 & 푸시 (데이터 변경 시)
+      - name: 데이터 브랜치 갱신
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data/news.json public/data/meta.json public/data/calendar.json public/data/calendar-meta.json public/data/funded-training.json public/data/work24-jobs.json public/data/work24-duties.json public/data/work24-codes.json public/data/work24-events.json
-          if ! git diff --staged --quiet; then
-            git commit -m "data: 자동 뉴스 수집 갱신 $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-            git push
+          data_tree="$RUNNER_TEMP/aihubridge-data"
+          if git show-ref --verify --quiet refs/remotes/origin/data-refresh; then
+            git worktree add --detach "$data_tree" refs/remotes/origin/data-refresh
           else
-            echo '변경 없음 - 푸시를 건너뜁니다'
+            git worktree add --detach "$data_tree" HEAD
           fi
+          for name in news.json meta.json calendar.json calendar-meta.json funded-training.json work24-jobs.json work24-duties.json work24-codes.json work24-events.json; do
+            cp "public/data/$name" "$data_tree/public/data/$name"
+          done
+          git -C "$data_tree" add public/data/news.json public/data/meta.json public/data/calendar.json public/data/calendar-meta.json public/data/funded-training.json public/data/work24-jobs.json public/data/work24-duties.json public/data/work24-codes.json public/data/work24-events.json
+          if ! git -C "$data_tree" diff --staged --quiet; then
+            git -C "$data_tree" commit -m "data: 자동 정보 수집 갱신 $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          fi
+          git -C "$data_tree" push origin HEAD:refs/heads/data-refresh
       - name: 갱신 결과 요약
         run: node scripts/refresh-summary.mjs

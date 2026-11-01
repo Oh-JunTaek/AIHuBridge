@@ -10,7 +10,7 @@ const reasons = Object.freeze({
   missing_fields: '필수 항목 또는 공식 링크 확인 실패',
   page_limit: '페이지 조회 한도 초과',
 });
-const visibleKeys = ['HRDNet', 'hrdNet', 'jobsList', 'empEventList', 'response', 'Response', 'result', 'RESULT', 'error', 'Error', 'errorCode', 'resultCode', 'message', 'scn_cnt', 'total'];
+const visibleKeys = ['HRDNet', 'hrdNet', 'jobsList', 'jobList', 'empEventList', 'empEvent', 'empEventInfo', 'empEventRoot', 'eventList', 'response', 'Response', 'result', 'RESULT', 'error', 'Error', 'OpenAPI_ServiceResponse', 'ServiceResult', 'header', 'body', 'errorCode', 'resultCode', 'message', 'scn_cnt', 'total'];
 
 export function safeResponseShape(payload, expectedRoot, countField) {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return '응답=객체 아님';
@@ -18,7 +18,9 @@ export function safeResponseShape(payload, expectedRoot, countField) {
   const keys = visibleKeys.filter((key) => Object.hasOwn(payload, key));
   const count = root && typeof root === 'object' ? root[countField] : undefined;
   const countType = count === undefined ? '없음' : /^\d+$/.test(String(count)) ? '숫자' : '비숫자';
-  return `최상위=${keys.join(',') || '기타'}, 기대항목=${root ? '있음' : '없음'}, 건수=${countType}`;
+  const nested = root && typeof root === 'object' ? visibleKeys.filter((key) => Object.hasOwn(root, key)) : [];
+  const kind = Array.isArray(root) ? '배열' : root === '' ? '빈값' : root && typeof root === 'object' ? '객체' : '기타';
+  return `최상위=${keys.join(',') || '기타'}, 기대항목=${root ? '있음' : '없음'}, 건수=${countType}, 유형=${kind}, 내부=${nested.join(',') || '기타'}`;
 }
 
 export class Work24Error extends Error {
@@ -27,7 +29,7 @@ export class Work24Error extends Error {
     this.name = 'Work24Error';
     this.code = Object.hasOwn(reasons, code) ? code : 'unknown';
     this.status = Number.isInteger(status) && status >= 100 && status <= 599 ? status : undefined;
-    this.shape = typeof shape === 'string' && /^최상위=(?:[A-Za-z_,]+|기타), 기대항목=(?:있음|없음), 건수=(?:없음|숫자|비숫자)$|^응답=객체 아님$/.test(shape) ? shape : undefined;
+    this.shape = typeof shape === 'string' && /^최상위=(?:[A-Za-z_,]+|기타), 기대항목=(?:있음|없음), 건수=(?:없음|숫자|비숫자), 유형=(?:배열|빈값|객체|기타), 내부=(?:[A-Za-z_,]+|기타)$|^응답=객체 아님$/.test(shape) ? shape : undefined;
   }
 }
 
