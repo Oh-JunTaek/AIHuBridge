@@ -8,8 +8,8 @@ import { Work24Events, Work24Occupation } from '../components/Work24Career';
 export default function Careers() {
   const { careerId } = useParams();
   const career = careers.find((item) => item.id === careerId);
-  return <div className="space-page space-library career-page mx-auto max-w-6xl px-4 py-6">
-    <header className="space-header"><div><p className="space-label">학습관 · 배움이 향하는 곳</p><h1>직무 둘러보기</h1><p className="space-caption">관심 있는 일을 알아보고, 필요한 배움과 연결해 보세요.</p></div></header>
+  return <div className="space-page space-plaza career-page mx-auto max-w-6xl px-4 py-6">
+    <header className="space-header"><div><p className="space-label">정보관 · 새로운 기회를 만나는 곳</p><h1>채용관</h1><p className="space-caption">관심 있는 직무와 채용행사, 필요한 훈련을 함께 살펴보세요.</p></div></header>
     {careerId && !career ? <section className="career-detail"><h2>직무를 찾을 수 없습니다</h2><Link to="/careers">직무 목록으로 돌아가기 <WayfindingIcon /></Link></section> : career ? <section className="career-detail" aria-labelledby="career-title">
       <Link className="career-back" to="/careers">← 직무 목록</Link>
       <div className="career-detail-head"><span>{career.area}</span><h2 id="career-title">{career.title}</h2><p>{career.summary}</p></div>

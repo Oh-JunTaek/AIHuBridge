@@ -26,6 +26,7 @@ export default function Dashboard() {
           <Link to="/updates"><span>AI 소식</span><PassageMark /></Link>
           <Link to="/calendar"><span>AI 캘린더</span><PassageMark /></Link>
           <Link to="/social"><span>기업 SNS</span><PassageMark /></Link>
+          <Link to="/careers"><span>채용관</span><PassageMark /></Link>
           <Link to="/path"><span>추천 커리큘럼</span><PassageMark /></Link>
           <Link to="/resources"><span>학습 자료실</span><PassageMark /></Link>
           <Link to="/certs"><span>수료증 취득 강의</span><PassageMark /></Link>
