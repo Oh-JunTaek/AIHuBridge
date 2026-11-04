@@ -315,6 +315,8 @@ test('직무에서 학습 자료와 자격 상세로 연결하고 채용행사 �
 });
 
 test('국민내일배움카드 과정은 직무와 시작일에 맞게 안내한다', async ({ page }) => {
+  // 이 검사는 수동 예시의 만료 규칙을 확인한다. 실제 수집 결과는 별도 검사에서 다룬다.
+  await page.route('**/data/funded-training.json', (route) => route.fulfill({ json:{ fetchedAt:null, courses:[] } }));
   await page.clock.setFixedTime(new Date('2026-10-31T03:00:00Z'));
   await page.goto('careers/data-analyst');
   const training = page.locator('.funded-training');
