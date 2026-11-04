@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-04T01:45:43.623Z",
+  "fetchedAt": "2026-11-04T11:37:03.118Z",
   "courses": [
     {
       "id": "AIG20263001506664-3",
@@ -14,62 +14,6 @@
       ],
       "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20263001506664&tracseTme=3&crseTracseSe=C0061&trainstCstmrId=500020053631",
       "ncsCode": "20010206"
-    },
-    {
-      "id": "AIG20240000458999-8",
-      "title": "융합_데이터 기반 차세대 디지털 헬스케어 AI 솔루션",
-      "provider": "아시아경제 교육센터",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-04-27",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20240000458999&tracseTme=8&crseTracseSe=C0061&trainstCstmrId=500020049185",
-      "ncsCode": "20010105"
-    },
-    {
-      "id": "AIG20250000501596-3",
-      "title": "심화_생성형AI를 통한 데이터분석 RPA 자동화 서비스 플랫폼 개발과정",
-      "provider": "두드림컴퓨터아카데미",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-01-06",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000501596&tracseTme=3&crseTracseSe=C0061&trainstCstmrId=500033915491",
-      "ncsCode": "20010202"
-    },
-    {
-      "id": "AIG20240000498248-19",
-      "title": "심화_심층 데이터 분석을 통한 서비스 솔루션 개발자 과정",
-      "provider": "휴먼AI교육센터_국비지원교육",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2026-12-17",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20240000498248&tracseTme=19&crseTracseSe=C0061&trainstCstmrId=500034264417",
-      "ncsCode": "20010105"
-    },
-    {
-      "id": "AIG20250000501516-5",
-      "title": "생성형AI 모델 개발 및 빅데이터분석 전문가(LLM & LMM 활용)",
-      "provider": "휴먼AI교육센터_국비지원교육",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-03-02",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000501516&tracseTme=5&crseTracseSe=C0061&trainstCstmrId=500034264417",
-      "ncsCode": "20010105"
     },
     {
       "id": "AIG20260000545336-32",
@@ -825,20 +769,6 @@
       "ncsCode": "20010703"
     },
     {
-      "id": "AIG20250000534171-1",
-      "title": "파이썬 활용 빅데이터 시각화 분석 전문가 양성과정",
-      "provider": "(주)삼성에이엑스아이",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2026-12-07",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000534171&tracseTme=1&crseTracseSe=C0061&trainstCstmrId=500020026271",
-      "ncsCode": "20010105"
-    },
-    {
       "id": "ACG20263001422215-43",
       "title": "데이터시대, 정보보호를 위한 가이드라인",
       "provider": "에듀윌원격국비교육원",
@@ -1249,34 +1179,6 @@
       "ncsCode": "20010105"
     },
     {
-      "id": "AIG20240000459042-14",
-      "title": "챗GPT를 활용한 자바(JAVA) 스프링 및 데이터 분석 시스템기반 웹 플랫폼 구축 과정",
-      "provider": "에스디(SD)부트캠프평생교육원",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-05-14",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20240000459042&tracseTme=14&crseTracseSe=C0061&trainstCstmrId=500034091717",
-      "ncsCode": "20010209"
-    },
-    {
-      "id": "AIG20240000459311-19",
-      "title": "심화_심층 데이터 분석을 통한 개인 맞춤형 예측 자동화 서비스 솔루션 개발 과정 (Hadoop, Tableau, TensorFlow)",
-      "provider": "(주)삼성에이엑스아이",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-01-06",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20240000459311&tracseTme=19&crseTracseSe=C0061&trainstCstmrId=500020026271",
-      "ncsCode": "20010202"
-    },
-    {
       "id": "AIG20260000543158-32",
       "title": "공공데이터를 이용하는 서울시 교통량 예측 시스템 개발",
       "provider": "강남 그린컴퓨터아카데미",
@@ -1305,20 +1207,6 @@
       "ncsCode": "02020302"
     },
     {
-      "id": "AIG20240000498248-18",
-      "title": "심화_심층 데이터 분석을 통한 서비스 솔루션 개발자 과정",
-      "provider": "휴먼AI교육센터_국비지원교육",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-01-06",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20240000498248&tracseTme=18&crseTracseSe=C0061&trainstCstmrId=500034264417",
-      "ncsCode": "20010105"
-    },
-    {
       "id": "AIG20240000467536-2",
       "title": "마케터, 기획자를 위한 실전 데이터 분석(GA)",
       "provider": "메가스터디에이아이캠퍼스",
@@ -1331,49 +1219,6 @@
       ],
       "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20240000467536&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020028586",
       "ncsCode": "20010105"
-    },
-    {
-      "id": "AIG20250000501415-6",
-      "title": "(머신러닝+딥러닝 활용)제조 데이터를 활용한 빅데이터 플랫폼 구축과정",
-      "provider": "두드림IT교육원",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-05-18",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000501415&tracseTme=6&crseTracseSe=C0061&trainstCstmrId=500020013381",
-      "ncsCode": "20010209"
-    },
-    {
-      "id": "AIG20250000501352-12",
-      "title": "인공지능(AI),빅데이터 활용 웹솔루션 개발자 양성(Python, Java)",
-      "provider": "휴먼AI교육센터_내일배움카드교육",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-03-05",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst",
-        "ai-engineer"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000501352&tracseTme=12&crseTracseSe=C0061&trainstCstmrId=500034772319",
-      "ncsCode": "20010202"
-    },
-    {
-      "id": "AIG20260000546504-4",
-      "title": "[AI융복합과정] 『메가PICK』데이터 분석! 파이썬 데이터 리터러시 실무",
-      "provider": "더조은컴퓨터아카데미 종로",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2026-12-21",
-      "checked": "2026-11-04",
-      "careers": [
-        "data-analyst"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20260000546504&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500020027870",
-      "ncsCode": "20010202"
     },
     {
       "id": "AIG20260000545491-27",
@@ -1416,6 +1261,162 @@
       ],
       "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000539889&tracseTme=94&crseTracseSe=C0105&trainstCstmrId=500033918310",
       "ncsCode": "19030601"
+    },
+    {
+      "id": "ACG20263001341105-68",
+      "title": "R을 활용한 빅데이터 및 통계분석",
+      "provider": "에듀윌원격국비교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-01",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001341105&tracseTme=68&crseTracseSe=C0031&trainstCstmrId=500042836001",
+      "ncsCode": "20010105"
+    },
+    {
+      "id": "ACG20263001493020-1",
+      "title": "인공지능활용능력향상을 위한 데이터 처리",
+      "provider": "미래솔 원격평생교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst",
+        "ai-engineer"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001493020&tracseTme=1&crseTracseSe=C0031&trainstCstmrId=500044307675",
+      "ncsCode": "20010706"
+    },
+    {
+      "id": "ACG20263001463784-2",
+      "title": "보통 직장인을 위한 데이터 리터러시",
+      "provider": "러닝플러스 주식회사",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001463784&tracseTme=2&crseTracseSe=C0031&trainstCstmrId=500020021711",
+      "ncsCode": "20010107"
+    },
+    {
+      "id": "ACG20263001488818-2",
+      "title": "모두를 위한 데이터 분석 with Excel",
+      "provider": "윈스펙원격평생교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001488818&tracseTme=2&crseTracseSe=C0031&trainstCstmrId=500034225481",
+      "ncsCode": "02020302"
+    },
+    {
+      "id": "ACG20263001399621-13",
+      "title": "[핵집] 빅데이터분석기사 실기(개정판)",
+      "provider": "그린온라인캠프원격평생교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001399621&tracseTme=13&crseTracseSe=C0031&trainstCstmrId=500044312613",
+      "ncsCode": "20010105"
+    },
+    {
+      "id": "ACG20263001344539-18",
+      "title": "epass Tableau 활용 데이터 시각화",
+      "provider": "케이지에듀원 원격평생교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001344539&tracseTme=18&crseTracseSe=C0031&trainstCstmrId=500020015894",
+      "ncsCode": "20010105"
+    },
+    {
+      "id": "ACG20263001279024-23",
+      "title": "[핵집] 빅데이터분석기사 실기(개정판)",
+      "provider": "마이에듀",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001279024&tracseTme=23&crseTracseSe=C0031&trainstCstmrId=500020060316",
+      "ncsCode": "20010105"
+    },
+    {
+      "id": "ACG20263001391984-23",
+      "title": "미래의 예측! 빅데이터 활용과 한 눈에 보는 인포그래픽",
+      "provider": "러닝플러스 주식회사",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001391984&tracseTme=23&crseTracseSe=C0031&trainstCstmrId=500020021711",
+      "ncsCode": "20010105"
+    },
+    {
+      "id": "ACG20263001251618-27",
+      "title": "R을 활용한 빅데이터 및 통계분석",
+      "provider": "그린온라인캠프원격평생교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001251618&tracseTme=27&crseTracseSe=C0031&trainstCstmrId=500044312613",
+      "ncsCode": "20010105"
+    },
+    {
+      "id": "ACG20263001251247-28",
+      "title": "AI시대, 전직원이 활용할 수 있는 빅데이터 브랜드 마케팅",
+      "provider": "그린온라인캠프원격평생교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001251247&tracseTme=28&crseTracseSe=C0031&trainstCstmrId=500044312613",
+      "ncsCode": "20010502"
+    },
+    {
+      "id": "ACG20253001133967-44",
+      "title": "인공지능활용능력향상을 위한 데이터 처리",
+      "provider": "케이지에듀원 원격평생교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-03",
+      "checked": "2026-11-04",
+      "careers": [
+        "data-analyst",
+        "ai-engineer"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20253001133967&tracseTme=44&crseTracseSe=C0031&trainstCstmrId=500020015894",
+      "ncsCode": "20010706"
     },
     {
       "id": "AIG20260000545842-35",
@@ -1978,20 +1979,6 @@
       "ncsCode": "20010702"
     },
     {
-      "id": "AIG20240000498225-17",
-      "title": "심화_인공지능(AI) 서비스 기반 웹 개발자 심화 프로젝트",
-      "provider": "휴먼AI교육센터_내일배움카드교육",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2026-12-16",
-      "checked": "2026-11-04",
-      "careers": [
-        "ai-engineer"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20240000498225&tracseTme=17&crseTracseSe=C0061&trainstCstmrId=500034772319",
-      "ncsCode": "20010202"
-    },
-    {
       "id": "AIG20240000499217-94",
       "title": "파이썬으로 배우는 딥러닝 & 인공지능 기초",
       "provider": "미라클평생교육원",
@@ -2018,20 +2005,6 @@
       ],
       "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001324709&tracseTme=68&crseTracseSe=C0031&trainstCstmrId=500042836001",
       "ncsCode": "20010702"
-    },
-    {
-      "id": "ACG20263001493020-1",
-      "title": "인공지능활용능력향상을 위한 데이터 처리",
-      "provider": "미래솔 원격평생교육원",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2026-12-03",
-      "checked": "2026-11-04",
-      "careers": [
-        "ai-engineer"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001493020&tracseTme=1&crseTracseSe=C0031&trainstCstmrId=500044307675",
-      "ncsCode": "20010706"
     },
     {
       "id": "ACG20263001463752-3",
@@ -2102,20 +2075,6 @@
       ],
       "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20253001149520&tracseTme=42&crseTracseSe=C0031&trainstCstmrId=500044312613",
       "ncsCode": "20010702"
-    },
-    {
-      "id": "ACG20253001133967-44",
-      "title": "인공지능활용능력향상을 위한 데이터 처리",
-      "provider": "케이지에듀원 원격평생교육원",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2026-12-03",
-      "checked": "2026-11-04",
-      "careers": [
-        "ai-engineer"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20253001133967&tracseTme=44&crseTracseSe=C0031&trainstCstmrId=500020015894",
-      "ncsCode": "20010706"
     },
     {
       "id": "ACG20263001321313-85",
@@ -2594,6 +2553,34 @@
       "ncsCode": "20010703"
     },
     {
+      "id": "ACG20253001137161-646",
+      "title": "인공지능활용능력향상을 위한 데이터 처리",
+      "provider": "(주) 올윈에듀",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2026-12-04",
+      "checked": "2026-11-04",
+      "careers": [
+        "ai-engineer"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20253001137161&tracseTme=646&crseTracseSe=C0031&trainstCstmrId=500020024074",
+      "ncsCode": "20010706"
+    },
+    {
+      "id": "ACG20263001417797-77",
+      "title": "[AICE] 인공지능활용능력향상을 위한 패키지 교육",
+      "provider": "에듀퓨어",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-04",
+      "end": "2027-01-02",
+      "checked": "2026-11-04",
+      "careers": [
+        "ai-engineer"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001417797&tracseTme=77&crseTracseSe=C0031&trainstCstmrId=500020034527",
+      "ncsCode": "20010705"
+    },
+    {
       "id": "ACG20263001356663-18",
       "title": "TOGETHER!! 디지털 융합의 시대, 정보보안 이해하기",
       "provider": "마이에듀",
@@ -2732,20 +2719,6 @@
       ],
       "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=ACG20263001336637&tracseTme=147&crseTracseSe=C0031&trainstCstmrId=500020034527",
       "ncsCode": "20010601"
-    },
-    {
-      "id": "AIG20250000518614-1",
-      "title": "[정보시스템구축(개발,운영)]ICT기반 클라우드 인프라 보안 전문가",
-      "provider": "두드림IT교육원",
-      "category": "국민내일배움카드 훈련",
-      "start": "2026-11-04",
-      "end": "2027-04-19",
-      "checked": "2026-11-04",
-      "careers": [
-        "security"
-      ],
-      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000518614&tracseTme=1&crseTracseSe=C0061&trainstCstmrId=500020013381",
-      "ncsCode": "20010206"
     },
     {
       "id": "AVA20263001406473-4",
@@ -2913,6 +2886,20 @@
         "security"
       ],
       "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000521517&tracseTme=1&crseTracseSe=C0061&trainstCstmrId=500020027870",
+      "ncsCode": "20010206"
+    },
+    {
+      "id": "AIG20250000518614-1",
+      "title": "[정보시스템구축(개발,운영)]ICT기반 클라우드 인프라 보안 전문가",
+      "provider": "두드림IT교육원",
+      "category": "국민내일배움카드 훈련",
+      "start": "2026-11-05",
+      "end": "2027-04-20",
+      "checked": "2026-11-04",
+      "careers": [
+        "security"
+      ],
+      "url": "https://www.work24.go.kr/hr/a/a/3100/selectTracseDetl.do?tracseId=AIG20250000518614&tracseTme=1&crseTracseSe=C0061&trainstCstmrId=500020013381",
       "ncsCode": "20010206"
     },
     {
