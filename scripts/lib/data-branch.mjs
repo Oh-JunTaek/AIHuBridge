@@ -16,7 +16,10 @@ export function restoreDataBranch() {
   let found;
   try { found = execFileSync('git', ['ls-remote', '--heads', 'origin', 'data-refresh'], { encoding:'utf8', stdio:['ignore', 'pipe', 'pipe'] }).trim(); }
   catch { throw new Error('데이터 브랜치 조회 실패'); }
-  if (!found) { console.log('데이터 브랜치가 없어 기존 자료로 시작합니다.'); return; }
+  if (!found) {
+    if (process.env.DATA_BRANCH_REQUIRED === '1') throw new Error('필수 데이터 브랜치가 없습니다');
+    console.log('데이터 브랜치가 없어 기존 자료로 시작합니다.'); return;
+  }
   execFileSync('git', ['fetch', '--no-tags', 'origin', '+refs/heads/data-refresh:refs/remotes/origin/data-refresh'], { stdio:'inherit' });
   const files = readDataSnapshot((path) => execFileSync('git', ['show', `refs/remotes/origin/data-refresh:${path}`], { encoding:'utf8', stdio:['ignore', 'pipe', 'pipe'], maxBuffer: 16 * 1024 * 1024 }));
   for (const { name, text } of files) {

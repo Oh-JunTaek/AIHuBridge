@@ -29,17 +29,19 @@ export function safeResponseCategory(payload) {
   function visit(value, depth) {
     if (!value || typeof value !== 'object' || depth > 4) return;
     for (const [key, child] of Object.entries(value).slice(0, 100)) {
-      if (typeof child === 'string' && /^(message|msg|error|errormsg|errmsg|resultmsg|returnauthmsg)$/i.test(key)) messages.push(child);
+      if (typeof child === 'string' && /^(message|msg|error|err|errormsg|errormessage|errmsg|resultmsg|resultmessage|returnauthmsg|returnmessage|returnreason|description|desc|detail)$/i.test(key)) messages.push(child);
       else if (typeof child === 'object') visit(child, depth + 1);
     }
   }
   visit(payload, 0);
   if (!messages.length) return '메시지 없음';
   const value = messages.join(' ');
-  if (/인증|auth|api.?key|인증키/i.test(value)) return '인증 관련';
-  if (/권한|승인|permission|접근.*제한/i.test(value)) return '권한 관련';
-  if (/결과.{0,15}없|검색.{0,15}없|자료.{0,15}없|데이터.{0,15}없|no\s+(data|result)/i.test(value)) return '결과 없음';
+  if (/인증|auth|api.?key|인증키|service.?key|발급.{0,10}키/i.test(value)) return '인증 관련';
+  if (/권한|승인|permission|접근.*제한|허용되지|등록되지|미등록/i.test(value)) return '권한 관련';
+  if (/결과.{0,25}(없|않)|검색.{0,25}(없|않)|자료.{0,25}(없|않)|데이터.{0,25}(없|않)|no\s+(data|result)/i.test(value)) return '결과 없음';
   if (/parameter|파라미터|필수|입력/i.test(value)) return '요청 조건 관련';
+  if (/점검|일시적|서버|service unavailable|temporarily/i.test(value)) return '서버 상태 관련';
+  if (/종료|중단|중지|지원하지 않|제공하지 않/i.test(value)) return '서비스 상태 관련';
   return '기타 메시지';
 }
 
@@ -50,7 +52,7 @@ export class Work24Error extends Error {
     this.code = Object.hasOwn(reasons, code) ? code : 'unknown';
     this.status = Number.isInteger(status) && status >= 100 && status <= 599 ? status : undefined;
     this.shape = typeof shape === 'string' && /^최상위=(?:[A-Za-z_,]+|기타), 기대항목=(?:있음|없음), 건수=(?:없음|숫자|비숫자), 유형=(?:배열|빈값|객체|기타), 내부=(?:[A-Za-z_,]+|기타)$|^응답=객체 아님$/.test(shape) ? shape : undefined;
-    this.category = ['메시지 없음', '인증 관련', '권한 관련', '결과 없음', '요청 조건 관련', '기타 메시지'].includes(category) ? category : undefined;
+    this.category = ['메시지 없음', '인증 관련', '권한 관련', '결과 없음', '요청 조건 관련', '서버 상태 관련', '서비스 상태 관련', '기타 메시지'].includes(category) ? category : undefined;
   }
 }
 

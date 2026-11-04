@@ -13,6 +13,8 @@ test('고용24 진단에는 허용된 분류와 HTTP 상태만 출력한다', ()
 test('원문 메시지와 키를 노출하지 않고 고정된 분류만 반환한다', () => {
   assert.equal(safeResponseCategory({ jobsList:{ message:'인증키 secret 오류' } }), '인증 관련');
   assert.equal(safeResponseCategory({ jobsList:{ message:'검색 결과가 없습니다' } }), '결과 없음');
+  assert.equal(safeResponseCategory({ jobsList:{ message:'조회한 자료가 존재하지 않습니다' } }), '결과 없음');
+  assert.equal(safeResponseCategory({ error:{ returnMessage:'서비스가 종료되었습니다' } }), '서비스 상태 관련');
   assert.equal(safeResponseCategory({ error:{ message:'secret' } }), '기타 메시지');
   assert.doesNotMatch(safeWork24Error(new Work24Error('schema_error', undefined, undefined, 'secret')), /secret/);
 });

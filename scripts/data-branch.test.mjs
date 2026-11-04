@@ -32,6 +32,7 @@ test('별도 데이터 브랜치가 없을 때와 있을 때 실제 Git 저장�
   git(work, 'push', 'origin', 'master');
   const restore = resolve('scripts/load-data-branch.mjs');
   execFileSync(process.execPath, [restore], { cwd:work, stdio:'pipe' });
+  assert.throws(() => execFileSync(process.execPath, [restore], { cwd:work, stdio:'pipe', env:{...process.env, DATA_BRANCH_REQUIRED:'1'} }));
   assert.equal(JSON.parse(readFileSync(join(work, 'public/data/news.json'), 'utf8')).version, 'initial');
   git(work, 'switch', '-c', 'data-refresh');
   writeFileSync(join(work, 'public/data/news.json'), '{"version":"collected"}');

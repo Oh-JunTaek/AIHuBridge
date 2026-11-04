@@ -50,6 +50,8 @@ jobs:
         run: npm ci
 
       - name: 마지막 정상 데이터 불러오기
+        env:
+          DATA_BRANCH_REQUIRED: '1'
         run: node scripts/load-data-branch.mjs
 
       - name: Validate TypeScript
