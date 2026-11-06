@@ -1,43 +1,43 @@
 {
-  "fetchedAt": "2026-11-05T01:52:44.005Z",
-  "total": 748,
+  "fetchedAt": "2026-11-06T01:52:44.520Z",
+  "total": 840,
   "status": "success",
   "sourceResults": [
     {
       "id": "openai",
       "status": "success",
       "count": 16,
-      "retained": 26,
+      "retained": 32,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "huggingface",
       "status": "success",
       "count": 16,
-      "retained": 11,
+      "retained": 13,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "deepmind",
       "status": "success",
       "count": 16,
-      "retained": 2,
+      "retained": 3,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "mistral",
       "status": "success",
-      "count": 5,
+      "count": 6,
       "retained": 0,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "github",
@@ -46,52 +46,52 @@
       "retained": 0,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "techcrunch",
       "status": "success",
       "count": 8,
-      "retained": 55,
+      "retained": 63,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "arxiv",
       "status": "success",
       "count": 24,
-      "retained": 120,
+      "retained": 144,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "koreagnews",
       "status": "success",
       "count": 20,
-      "retained": 171,
+      "retained": 191,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "geeknews",
       "status": "success",
       "count": 10,
-      "retained": 90,
+      "retained": 100,
       "rejected": 10,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "aitimes",
       "status": "success",
       "count": 20,
-      "retained": 115,
+      "retained": 135,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     },
     {
       "id": "msit",
@@ -100,26 +100,26 @@
       "retained": 5,
       "rejected": 37,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-05T01:52:44.005Z"
+      "lastSuccessAt": "2026-11-06T01:52:44.520Z"
     }
   ],
   "unavailableSources": [],
   "counts": {
-    "openai": 42,
-    "huggingface": 27,
-    "deepmind": 18,
-    "mistral": 5,
+    "openai": 48,
+    "huggingface": 29,
+    "deepmind": 19,
+    "mistral": 6,
     "github": 5,
-    "techcrunch": 63,
-    "arxiv": 144,
-    "koreagnews": 191,
-    "geeknews": 100,
-    "aitimes": 135,
+    "techcrunch": 71,
+    "arxiv": 168,
+    "koreagnews": 211,
+    "geeknews": 110,
+    "aitimes": 155,
     "msit": 18
   },
   "summaryTiers": {
-    "rule": 264,
-    "excerpt": 484
+    "rule": 303,
+    "excerpt": 537
   },
   "summaryMethod": "rss-extract"
 }
