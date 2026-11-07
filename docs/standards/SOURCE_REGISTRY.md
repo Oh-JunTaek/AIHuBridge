@@ -59,6 +59,17 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 
 ## 뉴스·공식 발표·논문 출처
 
+### 한국 관련 소식 보완 (2026-11-07)
+
+- [카카오 기술 블로그 공식 RSS](https://tech.kakao.com/blog/feed/)를 국내 기업 공식 채널로 추가했다. 기존 캘린더도 같은 공개 피드를 사용하며 소식에는 AI 관련 제목·날짜·원문 링크만 저장한다. 설명문·이미지는 저장하지 않는다. 공개 RSS가 본문 전체 재사용 허가라는 뜻은 아니다.
+- 기존 Google 뉴스 한국어 RSS에 한국·국내 기업 키워드 검색을 별도로 추가했다. 검색 결과의 제목에서 뒤쪽 매체명을 제외한 부분에 한국 관련 키워드와 AI 관련 단서가 모두 있어야 하며, 원래 제목과 링크만 저장한다. 기존 URL 중복 제거·발행일 검증·보관·출처 실패 정책을 함께 적용한다. 한국 관련 검색은 기사에 한국이 언급됐다는 탐색 단서이며 사건 발생 국가나 언론사 국적을 검증한 결과가 아니다. 기존 ‘국내 출처’는 한국어판·한국어 편집 출처를 포함한다.
+- 국내 기업·모델 필터의 NAVER·카카오·삼성전자·LG AI연구원·SK텔레콤·업스테이지와 HyperCLOVA·Kanana 표기는 제목·설명의 키워드 규칙이다. 기업의 공식 입장 또는 모델의 실제 유형·중요도를 검증한 결과는 아니다. 원문에 없는 정보는 추정하지 않는다.
+- RSS 1회 시험(2026-11-07): 기존 Google 한국판 20건·추가 한국 관련 검색 20건·카카오 4건 수집, 세 출처 합산 URL 중복 제거 후 43건. 이는 시험 시점의 관측이며 전체 수집·배포, 향후 건수나 국내 기사 비율 보장을 뜻하지 않는다.
+
+### AI 도구함 (2026-11-07)
+
+도구함은 정적 소개와 공식 링크로 제공한다. 서비스가 도구 계정을 만들거나 사용자 입력을 수집·전송하지 않는다. 무료 조건·계정 요구는 각 제공처 정책에 따라 바뀔 수 있으며 수동 재검토한다. 확인 근거: [NotebookLM 표준](https://support.google.com/gemininotebook/answer/16213268), [Perplexity 무료](https://www.perplexity.ai/help-center/en/articles/11187416-which-perplexity-subscription-plan-is-right-for-you), [Consensus 무료](https://help.consensus.app/en/articles/10087865-subscription-plans), [DeepL 무료 쓰기](https://support.deepl.com/hc/en-us/articles/6318834492700-About-DeepL-Write), [Canva 무료 AI 기능](https://www.canva.com/help/using-canva-ai/), [GitHub Copilot 무료](https://docs.github.com/en/copilot/get-started/plans). 기능·사용량이 조건부인 도구를 무제한 무료라고 표시하지 않는다.
+
 수집 URL과 출처 ID·언어·분야·지역·한도는 src/lib/news-sources.mjs 한 곳에서 관리하며 화면과 수집기가 함께 사용합니다. 생성형 모델이나 외부 서비스 키는 사용하지 않습니다.
 
 | 출처 | 공식 제공 주소 | 한도·취급 |

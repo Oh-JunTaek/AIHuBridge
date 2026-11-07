@@ -118,7 +118,7 @@ test('국내 출처는 더 많은 AI 소식을 수집하면서 본문을 저장�
   const domestic = newsSources.filter((source) => source.origin === 'domestic');
   for (const source of domestic) {
     const feed = Array.from({ length: 25 }, (_, index) => raw({
-      title: `AI 소식 ${index}`, link: `https://example.kr/${index}`,
+      title: `한국 AI 소식 ${index}`, link: `https://example.kr/${index}`,
       pubDate: new Date(now - index * 60000).toISOString(),
     }));
     const result = await collect(async () => ({ items: feed }), { sources: [source] });

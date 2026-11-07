@@ -282,6 +282,20 @@ test('학습 자료 검색과 수료 강의 공식 링크를 유지한다', asyn
   await expect(page.getByRole('dialog')).not.toBeVisible();
 });
 
+test('AI 도구함은 분야와 검색을 조합하고 공식 무료 조건을 안내한다', async ({ page }) => {
+  await page.goto('tools');
+  await expect(page.getByRole('heading', { name: 'AI 도구함', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'NotebookLM', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '논문·검색', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Consensus', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'NotebookLM', exact: true })).toHaveCount(0);
+  await page.getByLabel('도구·용도 검색').fill('Consensus');
+  await expect(page.getByRole('heading', { name: 'Perplexity', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: '무료 조건 확인 (새 탭)' })).toHaveAttribute('href', /help\.consensus\.app/);
+  await page.getByRole('button', { name: '조건 초기화' }).click();
+  await expect(page.getByRole('heading', { name: 'NotebookLM', exact: true })).toBeVisible();
+});
+
 test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async ({ page }) => {
   await page.goto('');
   const carousel = page.getByRole('region', { name: '전시 공간 목록' });

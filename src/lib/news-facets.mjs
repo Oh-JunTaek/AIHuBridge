@@ -12,10 +12,10 @@ export const topicGroups = {
   media: { report: '연구·조사 보도', interview: '인터뷰', opinion: '기고·칼럼', launch: '신제품·발표 보도' },
 };
 export const paperKinds = { survey: '서베이·리뷰', benchmark: '벤치마크·평가', dataset: '데이터셋', method: '방법·모델 제안' };
-export const companies = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'NVIDIA', 'Mistral', 'Amazon', 'Alibaba', 'Hugging Face', 'xAI'];
+export const companies = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 'NVIDIA', 'Mistral', 'Amazon', 'Alibaba', 'Hugging Face', 'xAI', 'NAVER', '카카오', '삼성전자', 'LG AI연구원', 'SK텔레콤', '업스테이지'];
 const patterns = {
   models: {
-    language: /\b(?:LLM|language model|GPT[-\d\s]|Claude|Llama|Qwen|Gemma|Gemini|Mistral Large)\b|언어\s*모델|클로드|큐웬|제미나이|젬마|라마\s*\d/i,
+    language: /\b(?:LLM|language model|GPT[-\d\s]|Claude|Llama|Qwen|Gemma|Gemini|Mistral Large|HyperCLOVA|Kanana)\b|언어\s*모델|클로드|큐웬|제미나이|젬마|라마\s*\d|하이퍼클로바|카나나/i,
     audio: /speech|audio|text.to.speech|\bTTS\b|\bASR\b|Whisper|Voxtral|Lyria|음성|오디오|음악\s*모델/i,
     image: /image|text.to.image|diffusion|\bFLUX\b|Imagen|Nano Banana|이미지|그림\s*생성/i,
     video: /video|\bVeo\b|\bSora\b|영상|동영상/i,
@@ -47,7 +47,7 @@ export function newsSource(item) {
 export function newsFacets(item) {
   const source = newsSource(item);
   const text = `${item.title} ${item.excerpt ?? ''} ${item.summary ?? ''} ${(item.tags ?? []).join(' ')} ${(item.paperCategories ?? []).join(' ')}`;
-  const modelContext = /\bmodel\b|모델|\bLLM\b|GPT[-\d]|Claude|Gemini|Llama|Qwen|Gemma|Whisper|Voxtral|Veo|Sora|Lyria|FLUX|Mistral Large|Timestral|text.to.speech|클로드|제미나이|젬마|큐웬|음성\s*(?:인식|합성)/i.test(text);
+  const modelContext = /\bmodel\b|모델|\bLLM\b|GPT[-\d]|Claude|Gemini|Llama|Qwen|Gemma|Whisper|Voxtral|Veo|Sora|Lyria|FLUX|Mistral Large|Timestral|HyperCLOVA|Kanana|하이퍼클로바|카나나|text.to.speech|클로드|제미나이|젬마|큐웬|음성\s*(?:인식|합성)/i.test(text);
   const topics = Object.fromEntries(Object.entries(patterns).map(([group, entries]) => [group,
     group === 'models' && !modelContext ? [] : Object.entries(entries).filter(([, regex]) => regex.test(text)).map(([key]) => key)]));
   if (modelContext && !topics.models.length) topics.models.push('other');
@@ -60,4 +60,4 @@ export function newsFacets(item) {
     companies: companies.filter((name) => companyPatterns[name].test(text + (source?.kind === 'developer' ? ' ' + source.name : ''))),
     origin: source?.origin ?? 'unknown', publication: source?.kind ?? 'unknown' };
 }
-const companyPatterns = { OpenAI: /OpenAI|오픈AI|오픈에이아이/i, Google: /Google|구글|DeepMind|딥마인드/i, Anthropic: /Anthropic|앤트로픽/i, Microsoft: /Microsoft|마이크로소프트/i, Meta: /\bMeta\b|메타/i, NVIDIA: /NVIDIA|엔비디아/i, Mistral: /Mistral|미스트랄/i, Amazon: /Amazon|\bAWS\b|아마존/i, Alibaba: /Alibaba|알리바바/i, 'Hugging Face': /Hugging Face|허깅페이스/i, xAI: /\bxAI\b|x에이아이/i };
+const companyPatterns = { OpenAI: /OpenAI|오픈AI|오픈에이아이/i, Google: /Google|구글|DeepMind|딥마인드/i, Anthropic: /Anthropic|앤트로픽/i, Microsoft: /Microsoft|마이크로소프트/i, Meta: /\bMeta\b|메타/i, NVIDIA: /NVIDIA|엔비디아/i, Mistral: /Mistral|미스트랄/i, Amazon: /Amazon|\bAWS\b|아마존/i, Alibaba: /Alibaba|알리바바/i, 'Hugging Face': /Hugging Face|허깅페이스/i, xAI: /\bxAI\b|x에이아이/i, NAVER: /\bNAVER\b|네이버|하이퍼클로바|HyperCLOVA/i, '카카오': /카카오|\bkakao\b|카나나|\bKanana\b/i, '삼성전자': /삼성전자|\bSamsung Electronics\b/i, 'LG AI연구원': /LG\s*AI\s*(?:연구원|Research)/i, 'SK텔레콤': /SK\s*텔레콤|SK\s*Telecom/i, '업스테이지': /업스테이지|\bUpstage\b/i };

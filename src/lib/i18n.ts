@@ -21,6 +21,7 @@ const ko: Dict = {
     certs: '수료증 취득 강의',
     qualifications: '자격증 도전',
     resources: '학습 자료실',
+    tools: 'AI 도구함',
     social: '기업 SNS',
     calendar: 'AI 캘린더',
   },

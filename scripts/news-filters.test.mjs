@@ -97,3 +97,38 @@ test('AI 전용 선별에서 비AI 0건은 정상, AI 항목의 잘못된 날짜
   assert.equal(result.meta.sourceResults[0].count, 0);
   await assert.rejects(collectNews({ sources: [source], readFeed: async () => ({ items: [{ ...valid, pubDate: null }] }) }), /전체 출처/);
 });
+
+test('국내 공식 피드에서 한국어 AI 모델을 수집하고 국내·기업·모델 필터에 연결', async () => {
+  const source = newsSources.find((item) => item.id === 'kakao-tech');
+  const feed = [
+    { title: '카나나 언어 모델 공개', link: 'https://tech.kakao.com/posts/ai', pubDate: '2026-10-25T00:00:00Z', contentSnippet: '상세 본문' },
+    { title: '데이터베이스 운영', link: 'https://tech.kakao.com/posts/db', pubDate: '2026-10-25T00:00:00Z', contentSnippet: '서버 운영' },
+  ];
+  const result = await collectNews({ sources: [source], now, readFeed: async () => ({ items: feed }) });
+  assert.equal(result.items.length, 1);
+  assert.equal(result.items[0].excerpt, '');
+  assert.equal(result.items[0].summary, null);
+  assert.equal(selectNews(result.items, { now, origin: 'domestic', company: '카카오', modelsOnly: true, topicGroup: 'models', topic: 'language' }).length, 1);
+  assert.equal(selectNews(result.items, { now, origin: 'overseas' }).length, 0);
+});
+
+test('국내 기업명은 일반적인 다른 단어와 혼동하지 않음', () => {
+  const domestic = newsFacets(article({ title: '네이버 HyperCLOVA X 언어 모델 발표', sourceId: 'aitimes' }));
+  assert.ok(domestic.companies.includes('NAVER'));
+  assert.ok(domestic.topics.models.includes('language'));
+  assert.equal(newsFacets(article({ title: '검색 서비스를 네비게이션합니다', sourceId: 'aitimes' })).companies.includes('NAVER'), false);
+});
+
+test('한국 관련 검색은 원문 제목의 국내 키워드를 확인하고 관련 없는 결과는 제외', async () => {
+  const source = newsSources.find((item) => item.id === 'koreagnews-local');
+  const base = { pubDate: '2026-10-25T00:00:00Z', contentSnippet: '원문 설명' };
+  const result = await collectNews({ sources: [source], now, readFeed: async () => ({ items: [
+    { ...base, title: '한국 AI 연구 소식', link: 'https://example.kr/1' },
+    { ...base, title: '해외 AI 일반 소식', link: 'https://example.kr/2' },
+    { ...base, title: '해외 AI 일반 소식 - 한국경제', link: 'https://example.kr/3' },
+    { ...base, title: '한국 일반 증시 소식', link: 'https://example.kr/4' },
+  ] }) });
+  assert.equal(result.items.length, 1);
+  assert.equal(result.items[0].title, '한국 AI 연구 소식');
+  assert.equal(result.items[0].excerpt, '');
+});

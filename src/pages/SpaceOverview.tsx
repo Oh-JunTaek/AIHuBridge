@@ -11,6 +11,7 @@ const spaces = {
     items: [
       { to: '/path', title: '추천 커리큘럼', description: '기초부터 차근차근 이어지는 학습 경로를 만나보세요.', kind: 'learning' },
       { to: '/resources', title: '학습 자료실', description: '강의와 실습, 프로젝트 등 다양한 배움의 자료를 찾아보세요.', kind: 'resources' },
+      { to: '/tools', title: 'AI 도구함', description: '학습과 작업에 도움이 되는 무료 AI 도구를 찾아보세요.', kind: 'resources' },
       { to: '/certs', title: '수료증 취득 강의', description: '배움을 마친 뒤 수료증을 받을 수 있는 강의를 살펴보세요.', kind: 'completion' },
       { to: '/qualifications', title: '자격증 도전', description: '컴퓨터 활용부터 AI까지, 자격시험과 준비 자료를 알아보세요.', kind: 'qualifications' },
     ],

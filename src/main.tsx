@@ -10,6 +10,7 @@ import Path from './pages/Path';
 import Certs from './pages/Certs';
 import Qualifications from './pages/Qualifications';
 import Resources from './pages/Resources';
+import AiTools from './pages/AiTools';
 import Social from './pages/Social';
 import Calendar from './pages/Calendar';
 import Dev from './pages/Dev';
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
         { path: 'certs', element: <Certs /> },
         { path: 'qualifications', element: <Qualifications /> },
         { path: 'resources', element: <Resources /> },
+        { path: 'tools', element: <AiTools /> },
         { path: 'social', element: <Social /> },
         { path: 'calendar', element: <Calendar /> },
         { path: 'dev', element: <Dev /> },

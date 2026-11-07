@@ -6,7 +6,8 @@ import { keepNews } from '../../src/lib/content-retention.mjs';
 
 const keywords = ['GPT', 'Gemini', 'Claude', 'Llama', 'Open Source', '오픈소스', 'NVIDIA', 'Microsoft', 'Google', 'AWS', 'Meta', 'DeepLearning', 'Hugging Face', '연구', '정책', '규제', '안전'];
 const text = (value) => String(value ?? '').replace(/\s+/g, ' ').trim();
-const aiRelevant = (item) => /\bAI\b|OpenAI|LLM|Gemini|GPT|Claude|인공지능|생성형|머신러닝|딥러닝|음성\s*모델|영상\s*모델/i.test(`${item?.title ?? ''} ${item?.contentSnippet ?? ''}`);
+// 기술 블로그의 일반 개발 글을 걸러내되 국내 모델 명칭도 탐색한다.
+const aiRelevant = (item) => /\bAI\b|OpenAI|\bLLM\b|Gemini|GPT|Claude|인공지능|생성형|머신러닝|딥러닝|대규모\s*언어\s*모델|언어\s*모델|멀티모달|음성\s*모델|영상\s*모델|하이퍼클로바|HyperCLOVA|카나나|Kanana/i.test(`${item?.title ?? ''} ${item?.contentSnippet ?? ''}`);
 
 export function articleUrl(value) {
   try {
@@ -69,7 +70,12 @@ export async function collectNews({ readFeed, previous = [], previousMeta = {}, 
     try {
       const feed = await readFeed(source.url);
       if (!Array.isArray(feed?.items)) throw new Error('RSS 항목 배열이 없습니다');
-      const candidates = source.aiOnly ? feed.items.filter(aiRelevant) : feed.items;
+      const candidates = feed.items.filter((item) => {
+        // Google 뉴스 제목의 마지막 매체명은 표시에는 보존하되 키워드 판정에서 제외한다.
+        const matchTitle = source.aiTitleOnly ? text(item?.title).replace(/\s+-\s+[^-]+$/, '') : text(item?.title);
+        return (!source.aiOnly || aiRelevant(item)) && (!source.aiTitleOnly || aiRelevant({ title: matchTitle }))
+          && (!source.titleKeywords || source.titleKeywords.some((word) => matchTitle.toLocaleLowerCase().includes(word.toLocaleLowerCase())));
+      });
       const valid = candidates.map((item) => normalizeArticle(item, source, now)).filter(Boolean);
       if (candidates.length && !valid.length) throw new Error('발행일·제목·URL이 유효한 기사가 없습니다');
       let unique = [...new Map(valid.map((item) => [item.url, item])).values()]
