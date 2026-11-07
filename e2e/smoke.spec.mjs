@@ -282,18 +282,26 @@ test('학습 자료 검색과 수료 강의 공식 링크를 유지한다', asyn
   await expect(page.getByRole('dialog')).not.toBeVisible();
 });
 
-test('AI 도구함은 분야와 검색을 조합하고 공식 무료 조건을 안내한다', async ({ page }) => {
+test('AI 도구함은 분야와 검색을 조합하고 활용 링크를 제공한다', async ({ page }) => {
   await page.goto('tools');
   await expect(page.getByRole('heading', { name: 'AI 도구함', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'NotebookLM', exact: true })).toBeVisible();
+  await expect(page.getByRole('article')).toHaveCount(10);
+  await expect(page.getByText('무료 조건 확인 (새 탭)')).toHaveCount(0);
+  await expect(page.getByText('자료 기반 학습', { exact: true })).toBeVisible();
+  await expect(page.getByText('자료 질문', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: '논문·검색', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Consensus', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'NotebookLM', exact: true })).toHaveCount(0);
   await page.getByLabel('도구·용도 검색').fill('Consensus');
   await expect(page.getByRole('heading', { name: 'Perplexity', exact: true })).toHaveCount(0);
-  await expect(page.getByRole('link', { name: '무료 조건 확인 (새 탭)' })).toHaveAttribute('href', /help\.consensus\.app/);
+  await expect(page.getByRole('link', { name: 'Consensus 활용해보기 (새 탭)' })).toHaveAttribute('href', /consensus\.app/);
   await page.getByRole('button', { name: '조건 초기화' }).click();
   await expect(page.getByRole('heading', { name: 'NotebookLM', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '음성·회의', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '클로바노트', exact: true })).toBeVisible();
+  await page.getByLabel('도구·용도 검색').fill('한국어 요약');
+  await expect(page.getByRole('article')).toHaveCount(1);
 });
 
 test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async ({ page }) => {

@@ -1,14 +1,14 @@
 import { useMemo, useState } from 'react';
 import { aiTools, type ToolKind } from '../data/ai-tools';
 
-const kinds: ToolKind[] = ['학습·자료', '논문·검색', '번역·글쓰기', '디자인', '코딩'];
+const kinds: ToolKind[] = ['학습·자료', '논문·검색', '번역·글쓰기', '디자인', '코딩', '음성·회의', '시각화'];
 
 export default function AiTools() {
   const [kind, setKind] = useState<ToolKind | ''>('');
   const [query, setQuery] = useState('');
   const shown = useMemo(() => {
     const words = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
-    return aiTools.filter((item) => (!kind || item.kinds.includes(kind)) && words.every((word) => `${item.name} ${item.provider} ${item.description} ${item.example} ${item.kinds.join(' ')}`.toLocaleLowerCase().includes(word)));
+    return aiTools.filter((item) => (!kind || item.kinds.includes(kind)) && words.every((word) => `${item.name} ${item.provider} ${item.description} ${item.example} ${item.role} ${item.skills.join(' ')} ${item.kinds.join(' ')}`.toLocaleLowerCase().includes(word)));
   }, [kind, query]);
   return <div className="space-page space-library mx-auto max-w-6xl px-4 py-6">
     <header className="space-header mb-6"><div><p className="space-label">학습관</p><h1>AI 도구함</h1><p className="space-caption">공부와 작업에 활용할 수 있는 AI 도구를 찾아보세요.</p></div></header>
@@ -20,11 +20,13 @@ export default function AiTools() {
         <p className="resource-help">무료 이용 범위와 한도는 변경될 수 있습니다. 개인정보나 민감한 자료를 입력하기 전 제공처의 정책을 확인하세요.</p>
       </aside>
       <section id="tools-results" className="reading-results" aria-label="AI 도구 목록"><div className="results-heading"><div><span>가볍게 시작하는 AI</span><h2>필요할 때 꺼내 쓰는 도구</h2></div><p role="status">{shown.length}개의 도구</p></div>
-        <div className="grid gap-4 md:grid-cols-2">{shown.map((tool) => <article key={tool.id} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-          <div className="flex flex-wrap items-start justify-between gap-2"><div><p className="text-xs font-semibold text-blue-700">{tool.provider}</p><h3 className="mt-1 text-lg font-bold text-stone-900">{tool.name}</h3></div><span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800">{tool.free}</span></div>
-          <p className="mt-3 text-sm leading-6 text-stone-700">{tool.description}</p><p className="mt-2 text-sm text-stone-600"><strong>이렇게 활용해요</strong> · {tool.example}</p>
-          <p className="mt-3 text-xs leading-5 text-stone-600">{tool.limits} {tool.account}</p><p className="mt-2 text-xs text-stone-500">{tool.kinds.join(' · ')} · 조건 확인 {tool.checked}</p>
-          <div className="mt-4 flex flex-wrap gap-4 text-sm"><a className="font-semibold text-blue-800 underline" href={tool.url} target="_blank" rel="noopener noreferrer">도구 열기 (새 탭)</a><a className="text-stone-600 underline" href={tool.evidence} target="_blank" rel="noopener noreferrer">무료 조건 확인 (새 탭)</a></div>
+        <div className="grid gap-4 md:grid-cols-2">{shown.map((tool) => <article key={tool.id} className="flex flex-col rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+          <div className="flex flex-wrap items-start justify-between gap-2"><div><p className="text-xs font-semibold text-blue-700">{tool.provider}</p><h3 className="mt-1 text-lg font-bold text-stone-900">{tool.name}</h3></div><span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800">{tool.role}</span></div>
+          <p className="mt-3 text-sm leading-6 text-stone-700">{tool.description}</p>
+          <div className="mt-4 rounded-xl border border-sky-100 bg-sky-50/70 px-4 py-3"><p className="text-xs font-bold text-blue-800">이렇게 활용해요</p><p className="mt-1 text-sm leading-6 text-stone-700">{tool.example}</p></div>
+          <div className="mt-4 flex flex-wrap gap-2" aria-label="주요 기능">{tool.skills.map((skill) => <span key={skill} className="inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-medium text-stone-700"><span aria-hidden="true" className="flex h-4 w-4 items-center justify-center rounded-full bg-blue-100 text-[10px] font-bold text-blue-700">✦</span><span>{skill}</span></span>)}</div>
+          <p className="mt-4 text-xs leading-5 text-stone-600">{tool.limits} {tool.account}</p>
+          <div className="mt-auto pt-4 text-sm"><a className="font-semibold text-blue-800 underline" href={tool.url} target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} 활용해보기 (새 탭)`}>활용해보기 <span aria-hidden="true">↗</span></a></div>
         </article>)}</div>
         {!shown.length && <p className="qualification-empty">조건에 맞는 도구가 없습니다. 검색어나 분야를 바꿔보세요.</p>}
       </section>

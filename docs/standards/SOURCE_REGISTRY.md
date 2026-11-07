@@ -70,6 +70,10 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 
 도구함은 정적 소개와 공식 링크로 제공한다. 서비스가 도구 계정을 만들거나 사용자 입력을 수집·전송하지 않는다. 무료 조건·계정 요구는 각 제공처 정책에 따라 바뀔 수 있으며 수동 재검토한다. 확인 근거: [NotebookLM 표준](https://support.google.com/gemininotebook/answer/16213268), [Perplexity 무료](https://www.perplexity.ai/help-center/en/articles/11187416-which-perplexity-subscription-plan-is-right-for-you), [Consensus 무료](https://help.consensus.app/en/articles/10087865-subscription-plans), [DeepL 무료 쓰기](https://support.deepl.com/hc/en-us/articles/6318834492700-About-DeepL-Write), [Canva 무료 AI 기능](https://www.canva.com/help/using-canva-ai/), [GitHub Copilot 무료](https://docs.github.com/en/copilot/get-started/plans). 기능·사용량이 조건부인 도구를 무제한 무료라고 표시하지 않는다.
 
+2026-11-07 추가: [클로바노트 사용 시간](https://help.naver.com/service/24269/contents/12814?osType=COMMONOS)·[한국어 AI 요약](https://help.naver.com/service/24269/contents/20568?lang=ko&osType=PC)·[계정 조건](https://help.naver.com/service/24269/contents/12810?lang=ko), [Elicit 무료 요금제](https://elicit.com/pricing), [Napkin AI 무료 크레딧·내보내기](https://help.napkin.ai/en/articles/15955724-credits-plans), [ElevenLabs 무료 요금제](https://elevenlabs.io/pricing)·[상업적 이용](https://elevenlabs.io/docs/overview/capabilities/text-to-speech). 각 카드의 조건은 간략 안내이며 정확한 사용량·언어·출력물 이용 조건은 제공처에서 재확인한다. 공식 근거와 확인일은 `src/data/ai-tools.ts`에 유지하고 화면에 반복 표시하지 않는다. 사용자가 정한 방식대로 수동 갱신하며 자동 갱신을 의미하지 않는다.
+
+도구 로고는 공통의 연한 배경 이미지로 사용하지 않는다. 제공처별 조건 확인이 필요하며 [GitHub 브랜드 기준](https://brand.github.com/foundations/logo)은 허가 없는 사용과 로고 변경을 제한한다. 태그의 작은 원형 표식은 서비스 자체의 일반 기능 표시이며 기업 로고가 아니다.
+
 수집 URL과 출처 ID·언어·분야·지역·한도는 src/lib/news-sources.mjs 한 곳에서 관리하며 화면과 수집기가 함께 사용합니다. 생성형 모델이나 외부 서비스 키는 사용하지 않습니다.
 
 | 출처 | 공식 제공 주소 | 한도·취급 |
