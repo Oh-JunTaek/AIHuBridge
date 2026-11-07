@@ -287,6 +287,9 @@ test('AI 도구함은 분야와 검색을 조합하고 활용 링크를 제공�
   await expect(page.getByRole('heading', { name: 'AI 도구함', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'NotebookLM', exact: true })).toBeVisible();
   await expect(page.getByRole('article')).toHaveCount(10);
+  const elevenLabsIcon = page.getByRole('article').filter({ has: page.getByRole('heading', { name: 'ElevenLabs', exact: true }) }).locator('img');
+  await expect(elevenLabsIcon).toHaveAttribute('src', /brand\/elevenlabs-symbol\.svg$/);
+  await expect(elevenLabsIcon).toHaveJSProperty('naturalWidth', 876);
   await expect(page.getByText('무료 조건 확인 (새 탭)')).toHaveCount(0);
   await expect(page.getByText('자료 기반 학습', { exact: true })).toBeVisible();
   await expect(page.getByText('자료 질문', { exact: true })).toBeVisible();

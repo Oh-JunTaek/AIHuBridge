@@ -72,7 +72,7 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 
 2026-11-07 추가: [클로바노트 사용 시간](https://help.naver.com/service/24269/contents/12814?osType=COMMONOS)·[한국어 AI 요약](https://help.naver.com/service/24269/contents/20568?lang=ko&osType=PC)·[계정 조건](https://help.naver.com/service/24269/contents/12810?lang=ko), [Elicit 무료 요금제](https://elicit.com/pricing), [Napkin AI 무료 크레딧·내보내기](https://help.napkin.ai/en/articles/15955724-credits-plans), [ElevenLabs 무료 요금제](https://elevenlabs.io/pricing)·[상업적 이용](https://elevenlabs.io/docs/overview/capabilities/text-to-speech). 각 카드의 조건은 간략 안내이며 정확한 사용량·언어·출력물 이용 조건은 제공처에서 재확인한다. 공식 근거와 확인일은 `src/data/ai-tools.ts`에 유지하고 화면에 반복 표시하지 않는다. 사용자가 정한 방식대로 수동 갱신하며 자동 갱신을 의미하지 않는다.
 
-도구 로고는 공통의 연한 배경 이미지로 사용하지 않는다. 제공처별 조건 확인이 필요하며 [GitHub 브랜드 기준](https://brand.github.com/foundations/logo)은 허가 없는 사용과 로고 변경을 제한한다. 태그의 작은 원형 표식은 서비스 자체의 일반 기능 표시이며 기업 로고가 아니다.
+도구 로고는 제공처의 조건을 개별 확인해 도구 식별 용도로만 사용한다. ElevenLabs는 [공식 외부 사용 안내와 심볼](https://elevenlabs.io/brand)을 제공하므로 원본 SVG를 변형 없이 여백과 함께 도구명 옆에 표시한다. 브랜드 권리는 제공처에 있으며 서비스의 제휴·보증을 뜻하지 않는다. Google 제품 아이콘은 [사용 신청 안내](https://partnermarketinghub.withgoogle.com/brands/google/branding-guidelines/how-to-show-googles-brand/)에 따라 승인 전에는 넣지 않는다. [GitHub 브랜드 기준](https://brand.github.com/foundations/logo)도 사전 허가를 요구한다. Perplexity는 [로고 가이드](https://live.standards.site/perplexity/logo)를 제공하지만 이 화면의 사용 허가 범위는 확인되지 않았다. Consensus·DeepL·Canva·클로바노트·Elicit·Napkin AI는 이 화면에서의 로고 사용 허가를 확인하지 못해 보류한다. 단순히 파비콘이 공개된 사실을 재사용 허가로 간주하지 않는다. 태그의 원형 표식은 서비스 자체의 일반 기능 표시다.
 
 수집 URL과 출처 ID·언어·분야·지역·한도는 src/lib/news-sources.mjs 한 곳에서 관리하며 화면과 수집기가 함께 사용합니다. 생성형 모델이나 외부 서비스 키는 사용하지 않습니다.
 
