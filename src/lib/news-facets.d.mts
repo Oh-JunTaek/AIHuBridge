@@ -7,4 +7,5 @@ export const topicGroups: Record<string, Record<string, string>>;
 export const paperKinds: Record<string, string>;
 export const companies: string[];
 export function newsSource(item: NewsItem): NewsSource | undefined;
+export function isModelRelease(item: NewsItem): boolean;
 export function newsFacets(item: NewsItem): { topics: Record<string, string[]>; openness: string; paperKinds: string[]; companies: string[]; origin: string; publication: string };

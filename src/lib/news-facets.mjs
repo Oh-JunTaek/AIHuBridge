@@ -1,6 +1,6 @@
 import { newsSources } from './news-sources.mjs';
 
-export const modelTypes = { language: '언어 모델', audio: '음성·음악 모델', image: '이미지 모델', video: '영상 모델', multimodal: '멀티모달', code: '코딩 모델', robotics: '로봇·월드 모델', embedding: '임베딩·검색 모델', timeseries: '시계열·예측 모델', other: '기타 모델' };
+export const modelTypes = { language: '언어 모델', reasoning: '추론·판단 모델', audio: '음성·음악 모델', image: '이미지 모델', video: '영상 모델', multimodal: '멀티모달', code: '코딩 모델', robotics: '로봇·월드 모델', embedding: '임베딩·검색 모델', timeseries: '시계열·예측 모델', other: '기타 모델' };
 export const opennessLabels = { open: '오픈소스 언급', weights: '가중치 공개 언급', closed: '비공개 언급', unknown: '미확인·혼합' };
 export const publicationLabels = { developer: '기업 공식 채널', community: '커뮤니티·플랫폼', media: '언론·매체', paper: '논문 저장소', government: '공공기관 공식 채널' };
 export const topicGroups = {
@@ -16,6 +16,7 @@ export const companies = ['OpenAI', 'Google', 'Anthropic', 'Microsoft', 'Meta', 
 const patterns = {
   models: {
     language: /\b(?:LLM|language model|GPT[-\d\s]|Claude|Llama|Qwen|Gemma|Gemini|Mistral Large|HyperCLOVA|Kanana)\b|언어\s*모델|클로드|큐웬|제미나이|젬마|라마\s*\d|하이퍼클로바|카나나/i,
+    reasoning: /reasoning|decision.making|classification model|추론|판단\s*모델|분류\s*모델/i,
     audio: /speech|audio|text.to.speech|\bTTS\b|\bASR\b|Whisper|Voxtral|Lyria|음성|오디오|음악\s*모델/i,
     image: /image|text.to.image|diffusion|\bFLUX\b|Imagen|Nano Banana|이미지|그림\s*생성/i,
     video: /video|\bVeo\b|\bSora\b|영상|동영상/i,
@@ -38,6 +39,14 @@ const patterns = {
   software: { model: /\bmodel\b|모델/i, framework: /framework|library|PyTorch|TensorFlow|프레임워크|라이브러리/i, data: /dataset|데이터셋/i, tool: /tool|\bSDK\b|도구|서비스/i },
   media: { report: /study|research|survey|report|연구|조사|보고서/i, interview: /interview|인터뷰/i, opinion: /opinion|column|기고|칼럼/i, launch: /launch|introduc|releas|출시|공개|발표/i },
 };
+// 제목의 모델 대상과 출시 근거를 모두 요구한다. 일반 활용·비교·제품 출시는 제외한다.
+export function isModelRelease(item) {
+  const title = (item.title ?? '').replace(/\s+-\s+[^-]+$/, '');
+  const target = /(?:\b(?:AI|LLM|language|reasoning|decision|classification|audio|speech|voice|music|image|video|vision|multimodal|coding|robotics|world|embedding|forecast(?:ing)?)\b[\s\w-]{0,35}\bmodels?\b)|(?:\bmodels?\b[\s\w-]{0,20}\b(?:AI|language|reasoning|audio|speech|image|video|multimodal)\b)|(?:인공지능|생성형|언어|추론|판단|분류|음성|오디오|음악|이미지|영상|동영상|멀티모달|코딩|로봇|월드|임베딩|예측|시계열|AI)\s*(?:생성|인식|판단|분류|기반|거대|대형|신규|새로운|신형|차세대|AI|\s)*\s*모델|\b(?:GPT[- ]?\d[\w.-]*|Claude\s+\d[\w. -]*|Gemini\s+\d[\w. -]*|Llama\s*\d[\w. -]*|Qwen\s*\d[\w. -]*|Gemma\s*\d[\w. -]*|Veo\s*\d[\w. -]*|Sora\s*\d[\w. -]*|FLUX[. -]?\d[\w. -]*|HyperCLOVA[\w -]*|Kanana[\w -]*)\b|하이퍼클로바|카나나/i.test(title);
+  const launched = /\b(?:introduc(?:e|es|ing)|launch(?:es|ed|ing)?|releas(?:e|es|ed|ing)|announc(?:e|es|ed|ing)|unveil(?:s|ed|ing)?|debut(?:s|ed)?|new|first)\b|출시|공개|발표|선보|선봬|내놨|내놓|첫\s*(?:AI|인공지능|모델)|새로운|신규|신형|차세대/i.test(title);
+  const excluded = /business model|pricing model|\b(?:teaser|release status|cloud expands?|now available|added to|integrat(?:es|ed|ion))\b|\b(?:cancell?\w*|scraps?|shelv\w*|postpon\w*|plans? to|consider\w*|rumou?rs?|reportedly|expected to|ahead of|shares? (?:jump|rise|fall))\b|출시\s*(?:예정|전망|취소|연기)|공개\s*(?:예정|전망|취소|연기)|출시를?\s*(?:검토|예고|취소|연기)|논문.{0,20}발표|(?:으로|로)\s*만든.{0,20}기능|(?:new|launch(?:es|ed)?|introduc(?:e|es|ing))\s+(?:a\s+)?(?:feature|app|service|tool)\b|수익\s*모델|사업\s*모델|비즈니스\s*모델|활용법|사용법|사용\s*후기|비교|요금|가격|비용|benchmark|벤치마크|평가|how to|tutorial|review|versus|\bvs\.?\b|available (?:on|in|via)\b|\bAPI\s+(?:access|pricing)\b/i.test(title);
+  return target && launched && !excluded;
+}
 const kinds = { survey: /\bsurvey\b|systematic review|서베이|문헌\s*고찰/i, benchmark: /benchmark|evaluation|벤치마크|평가/i, dataset: /dataset|data set|데이터셋/i, method: /we (?:introduce|propose|present)|framework|novel|제안|새로운\s*방법/i };
 
 export function newsSource(item) {

@@ -76,6 +76,26 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   }
 });
 
+test('모델 소식은 신규 모델 발표만 보여준다', async ({ page }, testInfo) => {
+  await page.clock.setFixedTime(new Date('2026-11-08T00:00:00Z'));
+  const base = { source: 'AI타임스', sourceId: 'aitimes', category: '언론', lang: 'ko', publishedAt: '2026-11-07T00:00:00Z', excerpt: '', summary: null, tags: [], readMinutes: 1 };
+  const items = [
+    { ...base, id: 'one', url: 'https://example.org/1', title: '새로운 판단 모델 공개' },
+    { ...base, id: 'two', url: 'https://example.org/2', title: 'LLM 검색 비용을 줄인 방법' },
+    { ...base, id: 'three', url: 'https://example.org/3', title: 'AI 창업의 수익 모델은 숙제' },
+  ];
+  await page.route('**/data/news.json', (route) => route.fulfill({ json: items }));
+  await page.route('**/data/meta.json', (route) => route.fulfill({ json: { total: 3, fetchedAt: '2026-11-07T23:00:00Z' } }));
+  await page.goto('updates');
+  await expect(page.getByText('LLM 검색 비용을 줄인 방법')).toBeVisible();
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: /탐색 조건/ }).click();
+  await page.getByRole('button', { name: '모델 소식', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '새로 나온 AI 모델' })).toBeVisible();
+  await expect(page.getByText('새로운 판단 모델 공개')).toBeVisible();
+  await expect(page.getByText('LLM 검색 비용을 줄인 방법')).toHaveCount(0);
+  await expect(page.getByText('AI 창업의 수익 모델은 숙제')).toHaveCount(0);
+});
+
 test('모든 커리큘럼 상세 주소를 직접 열 수 있다', async ({ page }) => {
   for (const journey of journeys) {
     await page.goto(`path/${journey.id}`);

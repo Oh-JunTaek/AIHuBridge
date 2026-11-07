@@ -59,6 +59,11 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 
 ## 뉴스·공식 발표·논문 출처
 
+### 신규 모델 출시 검색 (2026-11-08)
+
+- 기존 Google 뉴스 검색 RSS에 [한국어 모델 출시 검색](https://news.google.com/rss/search?q=%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%20%EB%AA%A8%EB%8D%B8%20%EC%B6%9C%EC%8B%9C%20OR%20%EA%B3%B5%EA%B0%9C%20OR%20%EB%B0%9C%ED%91%9C&hl=ko&gl=KR&ceid=KR:ko)과 [영어 모델 출시 검색](https://news.google.com/rss/search?q=AI%20model%20launch%20OR%20release%20OR%20introduces&hl=en-US&gl=US&ceid=US:en)을 추가한다. 각 출처 회당 최대 20건, 제목·게시일·원문 링크만 보존한다. 원문의 실제 발표 여부와 권리는 별도이며 뉴스 검색 결과가 전체 모델 출시 목록임을 보증하지 않는다. 국내·해외는 기존대로 한국어판과 영어판 출처 기준이다.
+- 모델 소식 화면과 신규 출처는 제목의 AI 모델 표현과 출시 근거를 함께 찾고 예정·취소·비교 등 일부 표현을 제외한다. 원문을 읽거나 모델 종류·라이선스를 검증하는 것은 아니며 누락과 오분류가 가능하다. 기존 자료 보관 기간과 일반 소식의 수집 범위는 바꾸지 않는다.
+
 ### 한국 관련 소식 보완 (2026-11-07)
 
 - [카카오 기술 블로그 공식 RSS](https://tech.kakao.com/blog/feed/)를 국내 기업 공식 채널로 추가했다. 기존 캘린더도 같은 공개 피드를 사용하며 소식에는 AI 관련 제목·날짜·원문 링크만 저장한다. 설명문·이미지는 저장하지 않는다. 공개 RSS가 본문 전체 재사용 허가라는 뜻은 아니다.

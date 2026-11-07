@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { newsFacets } from '../src/lib/news-facets.mjs';
+import { isModelRelease, newsFacets } from '../src/lib/news-facets.mjs';
 import { selectNews } from '../src/lib/news-data.mjs';
 import { readNewsFeed, arxivRecent } from './lib/news-feeds.mjs';
 import { newsSources } from '../src/lib/news-sources.mjs';
@@ -49,6 +49,55 @@ test('모델 소식의 개발사 발표·공개 방식·유형 필터를 함께 
   const item = article({ title: 'Introducing an open-source audio model' });
   assert.equal(selectNews([item], { now, modelsOnly: true, publication: 'developer', topicGroup: 'models', topic: 'audio', openness: 'open' }).length, 1);
   assert.equal(selectNews([item], { now, modelsOnly: true, openness: 'closed' }).length, 0);
+});
+
+test('모델 출시 근거가 있는 제목만 선별하고 유형별 필터와 조합한다', () => {
+  const releases = [
+    ['OpenAI introduces GPT-5.6', 'language'],
+    ['새로운 이미지 생성 모델 공개', 'image'],
+    ['새 음성 모델 출시', 'audio'],
+    ['Introducing a new video model', 'video'],
+    ['새로운 추론 모델 발표', 'reasoning'],
+    ['신규 판단 모델 공개', 'reasoning'],
+    ['카나나 언어 모델 공개', 'language'],
+  ];
+  for (const [title, topic] of releases) {
+    const item = article({ title });
+    assert.equal(isModelRelease(item), true, title);
+    assert.equal(selectNews([item], { now, modelsOnly: true, topicGroup: 'models', topic }).length, 1, title);
+  }
+  const unrelated = [
+    'DoorDash가 정확도를 유지하면서 LLM 검색 비용을 98% 줄인 방법',
+    "AI로 6주 만에 만든 '1인 창업'…수익 모델은 여전히 숙제 - 동행일보",
+    'GPT-5.6으로 만든 새로운 기능 출시',
+    '새로운 언어 모델 가격 비교',
+    '언어 모델을 활용하는 방법',
+    '신규 AI 서비스 출시',
+    'A benchmark for language models',
+    'New business model for AI products',
+    'OpenAI cancels release of AI model GPT-6.1',
+    'Anthropic considers releasing new AI model',
+    'Qwen 4: Confirmed Facts, Latest Teaser and Release Status',
+    'AI Cloud Expands with New Qwen 3.8 Model Launch',
+    'Tencent shares jump after AI model launch',
+    '신규 AI 모델 출시 예정',
+    '의료특화 AI모델 논문 EMNLP 발표',
+  ];
+  for (const title of unrelated) assert.equal(isModelRelease(article({ title })), false, title);
+  assert.equal(isModelRelease(article({ title: '기술 소식', excerpt: '새로운 AI 모델 공개' })), false);
+});
+
+test('모델 출시 전용 검색은 유효한 제목만 저장하고 본문을 복제하지 않는다', async () => {
+  const source = newsSources.find((item) => item.id === 'model-release-ko');
+  const feed = [
+    { title: '카카오, 판단 모델 오픈소스 공개 - 매체', link: 'https://example.kr/1', pubDate: '2026-10-25T00:00:00Z', contentSnippet: '본문' },
+    { title: 'AI 스타트업 수익 모델 공개 - 매체', link: 'https://example.kr/2', pubDate: '2026-10-25T00:00:00Z', contentSnippet: '본문' },
+    { title: '새로운 이미지 모델 출시 예정 - 매체', link: 'https://example.kr/3', pubDate: '2026-10-25T00:00:00Z' },
+  ];
+  const result = await collectNews({ sources: [source], now, readFeed: async () => ({ items: feed }) });
+  assert.equal(result.items.length, 1);
+  assert.equal(result.items[0].excerpt, '');
+  assert.equal(result.items[0].sourceId, source.id);
 });
 
 test('arXiv 휴일 빈 RSS는 3초 간격 후 공식 최근 제출 Atom으로 보완', async () => {

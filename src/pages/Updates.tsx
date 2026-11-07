@@ -120,7 +120,8 @@ export default function Updates() {
       </MobileFilter>
       </aside>
       <section id="reading-results" className="reading-results" aria-label="AI 소식 목록">
-      <div className="results-heading"><div><span>정보관의 소식</span><h2>지금 살펴볼 이야기</h2></div><p>원문을 직접 확인할 수 있습니다</p></div>
+      <div className="results-heading"><div><span>정보관의 소식</span><h2>{active === 'models' ? '새로 나온 AI 모델' : '지금 살펴볼 이야기'}</h2></div><p>원문을 직접 확인할 수 있습니다</p></div>
+      {active === 'models' && <p className="mt-3 text-sm text-stone-600">모델 출시·발표를 제목의 표현으로 선별합니다. 자동 분류라 일부 발표가 빠지거나 다른 소식이 포함될 수 있습니다.</p>}
       <NewsStatus result={result} loading={loading} onRetry={reload} />
       {!loading && result?.status === 'success' && shown.length === 0 && (
         <p className="text-sm text-stone-500 dark:text-stone-400">{t('updates.empty')}</p>

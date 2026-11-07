@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { newsSources } from '../../src/lib/news-sources.mjs';
 import { isNewsItem } from '../../src/lib/news-data.mjs';
-import { newsFacets } from '../../src/lib/news-facets.mjs';
+import { isModelRelease, newsFacets } from '../../src/lib/news-facets.mjs';
 import { keepNews } from '../../src/lib/content-retention.mjs';
 
 const keywords = ['GPT', 'Gemini', 'Claude', 'Llama', 'Open Source', '오픈소스', 'NVIDIA', 'Microsoft', 'Google', 'AWS', 'Meta', 'DeepLearning', 'Hugging Face', '연구', '정책', '규제', '안전'];
@@ -73,7 +73,7 @@ export async function collectNews({ readFeed, previous = [], previousMeta = {}, 
       const candidates = feed.items.filter((item) => {
         // Google 뉴스 제목의 마지막 매체명은 표시에는 보존하되 키워드 판정에서 제외한다.
         const matchTitle = source.aiTitleOnly ? text(item?.title).replace(/\s+-\s+[^-]+$/, '') : text(item?.title);
-        return (!source.aiOnly || aiRelevant(item)) && (!source.aiTitleOnly || aiRelevant({ title: matchTitle }))
+        return (!source.aiOnly || aiRelevant(item)) && (!source.aiTitleOnly || aiRelevant({ title: matchTitle })) && (!source.modelReleaseOnly || isModelRelease({ title: matchTitle }))
           && (!source.titleKeywords || source.titleKeywords.some((word) => matchTitle.toLocaleLowerCase().includes(word.toLocaleLowerCase())));
       });
       const valid = candidates.map((item) => normalizeArticle(item, source, now)).filter(Boolean);

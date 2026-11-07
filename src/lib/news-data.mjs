@@ -1,4 +1,4 @@
-import { newsFacets } from './news-facets.mjs';
+import { isModelRelease, newsFacets } from './news-facets.mjs';
 import { keepNews, DAY } from './content-retention.mjs';
 const text = (value) => typeof value === 'string' && value.trim().length > 0;
 const date = (value) => typeof value === 'string' && Number.isFinite(Date.parse(value));
@@ -33,7 +33,7 @@ export function selectNews(items, { category, tag, lang, source, query = '', lim
     && (!category || item.category === category)
     && (!tag || item.tags.includes(tag)) && (!lang || (item.lang ?? 'unknown') === lang)
     && (!source || item.source === source)
-    && (!origin || facets.origin === origin) && (!modelsOnly || facets.topics.models.length > 0)
+    && (!origin || facets.origin === origin) && (!modelsOnly || isModelRelease(item))
     && (!topic || (topicGroup && facets.topics[topicGroup]?.includes(topic)))
     && (!openness || facets.openness === openness) && (!publication || facets.publication === publication)
     && (!paperKind || facets.paperKinds.includes(paperKind)) && (!company || facets.companies.includes(company))
