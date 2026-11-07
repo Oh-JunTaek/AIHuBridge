@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { isModelRelease, newsFacets } from '../src/lib/news-facets.mjs';
+import { newsInterests } from '../src/lib/news-interests.mjs';
 import { selectNews } from '../src/lib/news-data.mjs';
 import { readNewsFeed, arxivRecent } from './lib/news-feeds.mjs';
 import { newsSources } from '../src/lib/news-sources.mjs';
@@ -49,6 +50,32 @@ test('모델 소식의 개발사 발표·공개 방식·유형 필터를 함께 
   const item = article({ title: 'Introducing an open-source audio model' });
   assert.equal(selectNews([item], { now, modelsOnly: true, publication: 'developer', topicGroup: 'models', topic: 'audio', openness: 'open' }).length, 1);
   assert.equal(selectNews([item], { now, modelsOnly: true, openness: 'closed' }).length, 0);
+});
+
+test('공통 관심 분야는 상위 분류와 조합하고 복수 분야 자료는 각각 검색된다', () => {
+  const paper = article({ id: 'paper', url: 'https://example.org/paper', sourceId: 'arxiv', category: '연구/논문', title: 'Image and video generation using multimodal AI', paperCategories: ['cs.CV'] });
+  const model = article({ id: 'model', url: 'https://example.org/model', title: 'Introducing a new image model' });
+  const video = article({ id: 'video', url: 'https://example.org/video', title: 'Introducing a new video model' });
+  const all = [paper, model, video];
+  assert.ok(['image', 'video', 'multimodal'].every((key) => newsInterests(paper).includes(key)));
+  assert.deepEqual(selectNews(all, { now, category: '연구/논문', interest: 'image' }), [paper]);
+  assert.deepEqual(selectNews(all, { now, category: '연구/논문', interest: 'video' }), [paper]);
+  assert.deepEqual(selectNews(all, { now, modelsOnly: true, interest: 'image' }), [model]);
+  assert.deepEqual(selectNews(all, { now, modelsOnly: true, interest: 'video' }), [video]);
+  assert.deepEqual(selectNews(all, { now, interest: 'audio' }), []);
+  assert.deepEqual(newsInterests(article({ title: 'General AI research', paperCategories: ['cs.CV'] })), []);
+  assert.ok(newsInterests(article({ title: 'General AI research', paperCategories: ['cs.CL'] })).includes('language'));
+});
+
+test('AI 관심 분야별 명시적 단서만 탐색 태그로 사용한다', () => {
+  const examples = {
+    language: 'LLM 기반 학습', image: 'Image generation study', video: 'Video generation study',
+    audio: '음성 생성 기술', multimodal: '멀티모달 연구', reasoning: 'AI 추론 연구',
+    agents: 'AI 에이전트 연구', code: '코드 생성 연구', search: '임베딩 연구',
+    timeseries: '시계열 예측 연구', safety: 'AI 보안 연구',
+  };
+  for (const [key, title] of Object.entries(examples)) assert.ok(newsInterests(article({ title })).includes(key), title);
+  assert.deepEqual(newsInterests(article({ title: 'AI 기업 투자 뉴스', excerpt: '', summary: null })), []);
 });
 
 test('모델 출시 근거가 있는 제목만 선별하고 유형별 필터와 조합한다', () => {

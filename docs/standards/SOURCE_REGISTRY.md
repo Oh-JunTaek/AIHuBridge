@@ -59,6 +59,10 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 
 ## 뉴스·공식 발표·논문 출처
 
+### AI 관심 분야 분류 (2026-11-08)
+
+소식과 논문을 가로지르는 11개 관심 분야는 제목·기존 설명·일부 원문 논문 분류 코드를 기준으로 브라우저에서 계산한다. 공통 관심 분야의 정의는 `src/lib/news-interests.mjs`이며 수집 JSON에 태그를 추가하거나 별도 모델·외부 API를 호출하지 않는다. 한 자료에 여러 분야가 적용될 수 있고, 근거가 없으면 미분류로 둔다. cs.CV는 이미지·영상이 혼재할 수 있어 코드만으로 양쪽 중 하나를 추정하지 않는다. 분류는 탐색 단서이며 정확성·완전성을 보장하지 않는다. 분야 구성은 사용자의 선택이며 [Stanford AI Index 기술 동향](https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance)의 언어·이미지·영상·음성·추론·로봇·에이전트 구분을 참고했다.
+
 ### 신규 모델 출시 검색 (2026-11-08)
 
 - 기존 Google 뉴스 검색 RSS에 [한국어 모델 출시 검색](https://news.google.com/rss/search?q=%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%20%EB%AA%A8%EB%8D%B8%20%EC%B6%9C%EC%8B%9C%20OR%20%EA%B3%B5%EA%B0%9C%20OR%20%EB%B0%9C%ED%91%9C&hl=ko&gl=KR&ceid=KR:ko)과 [영어 모델 출시 검색](https://news.google.com/rss/search?q=AI%20model%20launch%20OR%20release%20OR%20introduces&hl=en-US&gl=US&ceid=US:en)을 추가한다. 각 출처 회당 최대 20건, 제목·게시일·원문 링크만 보존한다. 원문의 실제 발표 여부와 권리는 별도이며 뉴스 검색 결과가 전체 모델 출시 목록임을 보증하지 않는다. 국내·해외는 기존대로 한국어판과 영어판 출처 기준이다.

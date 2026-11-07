@@ -2,12 +2,14 @@ import type { NewsItem } from '../types';
 import { config } from '../lib/config';
 import { useT } from '../lib/i18n';
 import { newsFacets, modelTypes, opennessLabels, publicationLabels } from '../lib/news-facets.mjs';
+import { interestLabels, newsInterests } from '../lib/news-interests.mjs';
 
-export function NewsCard({ item }: { item: NewsItem }) {
+export function NewsCard({ item, showInterests = false }: { item: NewsItem; showInterests?: boolean }) {
   const badge = config.categoryColor[item.category] || 'bg-stone-100 text-stone-800';
   const summaryText = item.summary || item.excerpt;
   const t = useT();
   const facets = newsFacets(item);
+  const interests = showInterests ? newsInterests(item) : [];
 
   return (
     <article className="space-card group flex flex-col gap-2 rounded-xl border border-stone-200 bg-white dark:bg-stone-800 dark:border-stone-700 p-4 shadow-xs transition hover:shadow-md">
@@ -26,6 +28,7 @@ export function NewsCard({ item }: { item: NewsItem }) {
       </a>
       {summaryText && <p className="mt-1 line-clamp-2 text-sm text-stone-600 dark:text-stone-300">{summaryText}</p>}
       {facets.topics.models.length > 0 && <p className="text-xs text-stone-500 dark:text-stone-400">{facets.topics.models.map((type) => modelTypes[type]).join(' · ')} · {opennessLabels[facets.openness]}</p>}
+      {interests.length > 0 && <div className="news-interest-tags" aria-label="AI 관심 분야">{interests.map((key) => <span key={key}>{interestLabels[key]}</span>)}</div>}
       <footer className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-stone-500 dark:text-stone-400">
         <span className="font-medium text-stone-600 dark:text-stone-300">{item.source}</span>
         <span>{item.lang === 'ko' ? '한국어' : item.lang === 'en' ? '영어' : '언어 미확인'}</span>

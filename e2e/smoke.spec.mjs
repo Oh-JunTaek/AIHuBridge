@@ -96,6 +96,41 @@ test('모델 소식은 신규 모델 발표만 보여준다', async ({ page }, t
   await expect(page.getByText('AI 창업의 수익 모델은 숙제')).toHaveCount(0);
 });
 
+test('AI 관심 분야는 소식 분류와 조합되고 겹치는 분야에서 각각 표시된다', async ({ page }, testInfo) => {
+  await page.clock.setFixedTime(new Date('2026-11-08T00:00:00Z'));
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  const base = { source: 'AI타임스', sourceId: 'aitimes', lang: 'ko', publishedAt: '2026-11-07T00:00:00Z', excerpt: '', summary: null, tags: [], readMinutes: 1 };
+  const items = [
+    { ...base, id: 'paper', url: 'https://example.org/paper', category: '연구/논문', title: 'Image and video generation 연구' },
+    { ...base, id: 'model', url: 'https://example.org/model', category: '언론', title: '새로운 이미지 모델 공개' },
+    { ...base, id: 'other', url: 'https://example.org/other', category: '연구/논문', title: 'Audio generation 연구' },
+  ];
+  await page.route('**/data/news.json', (route) => route.fulfill({ json: items }));
+  await page.route('**/data/meta.json', (route) => route.fulfill({ json: { total: 3, fetchedAt: '2026-11-07T23:00:00Z' } }));
+  await page.goto('updates');
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: /탐색 조건/ }).click();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  const interests = page.getByRole('group', { name: 'AI 관심 분야', exact: true });
+  await expect(interests.getByRole('button', { name: '전체', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '연구·논문', exact: true }).click();
+  await interests.getByRole('button', { name: '이미지', exact: true }).click();
+  await expect(page.getByText('Image and video generation 연구')).toBeVisible();
+  await expect(page.getByText('Audio generation 연구')).toHaveCount(0);
+  await expect(page.getByText('새로운 이미지 모델 공개')).toHaveCount(0);
+  await expect(page.locator('.news-interest-result')).toHaveCSS('animation-name', 'news-interest-enter');
+  await interests.getByRole('button', { name: '영상', exact: true }).click();
+  await expect(page.getByText('Image and video generation 연구')).toBeVisible();
+  await page.getByRole('button', { name: '모델 소식', exact: true }).click();
+  await expect(interests.getByRole('button', { name: '영상', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByText('Image and video generation 연구')).toHaveCount(0);
+  await interests.getByRole('button', { name: '이미지', exact: true }).click();
+  await expect(page.getByText('새로운 이미지 모델 공개')).toBeVisible();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('.news-interest-result')).toHaveCSS('animation-name', 'none');
+  await page.getByRole('button', { name: '조건 초기화', exact: true }).click();
+  await expect(interests.getByRole('button', { name: '전체', exact: true })).toHaveAttribute('aria-pressed', 'true');
+});
+
 test('모든 커리큘럼 상세 주소를 직접 열 수 있다', async ({ page }) => {
   for (const journey of journeys) {
     await page.goto(`path/${journey.id}`);

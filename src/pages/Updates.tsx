@@ -8,6 +8,7 @@ import { NewsCard } from '../components/NewsCard';
 import { useT } from '../lib/i18n';
 import { topicGroups, opennessLabels, publicationLabels, paperKinds, companies } from '../lib/news-facets.mjs';
 import { NEWS_DEFAULT_DAYS } from '../lib/content-retention.mjs';
+import { interestLabels } from '../lib/news-interests.mjs';
 
 export default function Updates() {
   const { result, loading, reload, now } = useNews();
@@ -16,6 +17,8 @@ export default function Updates() {
 
   const categories = ['전체', 'models', '업계/제품', '연구/논문', '정책/규제', '오픈소스', '언론'];
   const [active, setActive] = useState('전체');
+  const [interest, setInterest] = useState('');
+  const [interestChanged, setInterestChanged] = useState(false);
   const [lang, setLang] = useState('');
   const [source, setSource] = useState('');
   const [query, setQuery] = useState('');
@@ -31,11 +34,11 @@ export default function Updates() {
   const sources = useMemo(() => [...new Set(items.map((item) => item.source))].sort(), [items]);
   const t = useT();
 
-  const shown = useMemo(() => filterNews(items, { category: ['전체', 'models'].includes(active) ? undefined : active, modelsOnly: active === 'models', lang, source, query, origin, topicGroup: group, topic, openness, publication, paperKind, company, days: Number(days), now }).filter((item) => !securityOnly || /security|cyber|vulnerab|hack|breach|보안|해킹|취약점|침해/i.test(`${item.title} ${item.excerpt ?? ''}`)),
-    [items, active, lang, source, query, origin, group, topic, openness, publication, paperKind, company, days, now, securityOnly]);
-  useEffect(() => setVisibleCount(24), [active, lang, source, query, origin, topic, openness, publication, paperKind, company, days, securityOnly]);
+  const shown = useMemo(() => filterNews(items, { category: ['전체', 'models'].includes(active) ? undefined : active, modelsOnly: active === 'models', lang, source, query, origin, interest, topicGroup: group, topic, openness, publication, paperKind, company, days: Number(days), now }).filter((item) => !securityOnly || /security|cyber|vulnerab|hack|breach|보안|해킹|취약점|침해/i.test(`${item.title} ${item.excerpt ?? ''}`)),
+    [items, active, lang, source, query, origin, interest, group, topic, openness, publication, paperKind, company, days, now, securityOnly]);
+  useEffect(() => setVisibleCount(24), [active, lang, source, query, origin, interest, topic, openness, publication, paperKind, company, days, securityOnly]);
   const changeCategory = (category: string) => { setActive(category); setTopic(''); setOpenness(''); setPublication(''); setPaperKind(''); setCompany(''); };
-  const clear = () => { changeCategory('전체'); setLang(''); setSource(''); setQuery(''); setOrigin(''); setCompany(''); setSecurityOnly(false); setDays(String(NEWS_DEFAULT_DAYS)); };
+  const clear = () => { changeCategory('전체'); setInterest(''); setInterestChanged(false); setLang(''); setSource(''); setQuery(''); setOrigin(''); setCompany(''); setSecurityOnly(false); setDays(String(NEWS_DEFAULT_DAYS)); };
   const selectStyle = 'min-w-0 rounded-lg border border-stone-300 bg-white px-3 py-2 dark:border-stone-600 dark:bg-stone-900';
 
   return (
@@ -52,7 +55,7 @@ export default function Updates() {
       <a className="results-skip" href="#reading-results">결과 바로 보기</a>
       <aside className="reading-sidebar" aria-label="소식 탐색">
       <p className="reading-label">관심 있는 소식 찾기</p>
-      <MobileFilter summary={`${active === '전체' ? '전체 분야' : active === 'models' ? '모델 소식' : t('category.' + active)} · ${origin === 'domestic' ? '국내 출처' : '전체 출처'} · 최근 ${days}일${[lang, source, query, topic, openness, publication, paperKind, company].filter(Boolean).length ? ` · 추가 조건 ${[lang, source, query, topic, openness, publication, paperKind, company].filter(Boolean).length}개` : ''}`}>
+      <MobileFilter summary={`${active === '전체' ? '전체 분야' : active === 'models' ? '모델 소식' : t('category.' + active)} · ${interest ? interestLabels[interest] : '전체 AI 관심 분야'} · ${origin === 'domestic' ? '국내 출처' : '전체 출처'} · 최근 ${days}일${[lang, source, query, topic, openness, publication, paperKind, company].filter(Boolean).length ? ` · 추가 조건 ${[lang, source, query, topic, openness, publication, paperKind, company].filter(Boolean).length}개` : ''}`}>
       <nav aria-label="소식 분야" className="mb-5 flex flex-wrap gap-2 text-sm">
         {categories.map((c) => (
           <button
@@ -69,6 +72,9 @@ export default function Updates() {
           </button>
         ))}
       </nav>
+      <fieldset className="news-interests"><legend>AI 관심 분야</legend><p>소식 분류와 함께 선택해 보세요. 원문 표현에 따라 분류하므로 일부 자료는 빠질 수 있습니다.</p><div className="news-interest-options">
+        {[['', '전체'], ...Object.entries(interestLabels)].map(([value, label]) => <button key={value} type="button" aria-pressed={interest === value} onClick={() => { if (interest !== value) { setInterestChanged(true); setInterest(value); } }}>{label}</button>)}
+      </div></fieldset>
 
       <section aria-label="소식 탐색 조건" className="mb-5 rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
         <p className="mb-3 text-xs text-stone-500 dark:text-stone-400">기본 최근 7일 · 일반 소식 30일, 모델 소식 90일, 논문 180일 보관. 기간을 바꾸면 이전 자료도 검색할 수 있습니다.</p>
@@ -127,9 +133,9 @@ export default function Updates() {
         <p className="text-sm text-stone-500 dark:text-stone-400">{t('updates.empty')}</p>
       )}
 
-      <div className="news-list mt-4 grid gap-4">
-        {shown.slice(0, visibleCount).map((it) => (
-          <NewsCard key={it.id} item={it} />
+      <div key={interest} className={`news-list mt-4 grid gap-4${interestChanged ? ' news-list-interest-change' : ''}`}>
+        {shown.slice(0, visibleCount).map((it, index) => (
+          <div key={it.id} className="news-interest-result" style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}><NewsCard item={it} showInterests /></div>
         ))}
       </div>
       <AutoLoadMore visible={visibleCount} total={shown.length} label="소식" onLoad={() => setVisibleCount((count) => count + 24)} />
