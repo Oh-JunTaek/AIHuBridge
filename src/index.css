@@ -801,3 +801,13 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .funded-training-card-copy { position:relative; z-index:1; display:grid; flex:1; min-width:0; gap:.32rem; }.funded-training-list strong { font-size:.85rem; line-height:1.5; word-break:keep-all; }.funded-training-list small { color:#607d92; font-size:.7rem; }.funded-training-list a:hover strong { text-decoration:underline; text-underline-offset:3px; }
 .funded-training-card-source { display:flex; flex:none; align-items:center; gap:.42rem; color:#7897ad; font-size:.75rem; font-weight:700; white-space:nowrap; }.funded-training-source-mark { width:1.5rem; height:1.5rem; border:1px solid #bdd7e8; border-radius:50%; background:linear-gradient(135deg,#dceefa,#f6fafc); box-shadow:inset 0 0 0 5px #ffffffa8; }.funded-training-card > .wayfinding-icon { flex:none; }.funded-training-examples > p { margin-top:.65rem; }
 @media(max-width:760px) { .funded-training-header { align-items:start; flex-direction:column; }.funded-training-list small { line-height:1.5; }.funded-training-list .funded-training-card { gap:.65rem; padding:.9rem; }.funded-training-card-source { font-size:.68rem; }.funded-training-source-mark { width:1.1rem; height:1.1rem; box-shadow:inset 0 0 0 3px #ffffffa8; } }
+
+/* 도구별 설명은 기존 상세 대화상자와 같은 동작을 사용한다. */
+.tool-detail-dialog { max-width: 620px; }
+.tool-detail-dialog::backdrop { background: #19364c85; backdrop-filter: blur(4px); }
+.tool-detail-section { margin: 1rem 0; padding: 1rem 1.15rem; border: 1px solid #dceaf1; border-radius: 14px; background: #f7fbfd; }
+.tool-detail-section h3 { color: #214d70; font-size: .88rem; font-weight: 700; }
+.tool-detail-section p { margin-top: .5rem; color: #48657c; font-size: .88rem; line-height: 1.7; }
+.tool-detail-related { background: #fffaf1; border-color: #f0e2c9; }
+.tool-detail-related a { display: inline-block; margin-top: .75rem; color: #1d5e91; font-size: .84rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.tool-detail-note { margin: 1.1rem 0; color: #63798a; font-size: .78rem; line-height: 1.7; }

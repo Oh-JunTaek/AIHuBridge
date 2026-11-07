@@ -1,11 +1,19 @@
 import { useMemo, useState } from 'react';
 import { aiTools, type ToolKind } from '../data/ai-tools';
+import { Link } from 'react-router-dom';
+import { useAnimatedDialog } from '../components/useAnimatedDialog';
+import { ExternalLinkIcon } from '../components/icons';
+import { ToolSkillIcon } from '../components/ToolSkillIcon';
+import { toolDetails } from '../data/ai-tool-details';
 
 const kinds: ToolKind[] = ['학습·자료', '논문·검색', '번역·글쓰기', '디자인', '코딩', '음성·회의', '시각화'];
 
 export default function AiTools() {
   const [kind, setKind] = useState<ToolKind | ''>('');
   const [query, setQuery] = useState('');
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected = aiTools.find((item) => item.id === selectedId);
+  const { ref: dialog, requestClose } = useAnimatedDialog(Boolean(selected));
   const shown = useMemo(() => {
     const words = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
     return aiTools.filter((item) => (!kind || item.kinds.includes(kind)) && words.every((word) => `${item.name} ${item.provider} ${item.description} ${item.example} ${item.role} ${item.skills.join(' ')} ${item.kinds.join(' ')}`.toLocaleLowerCase().includes(word)));
@@ -21,15 +29,24 @@ export default function AiTools() {
       </aside>
       <section id="tools-results" className="reading-results" aria-label="AI 도구 목록"><div className="results-heading"><div><span>가볍게 시작하는 AI</span><h2>필요할 때 꺼내 쓰는 도구</h2></div><p role="status">{shown.length}개의 도구</p></div>
         <div className="grid gap-4 md:grid-cols-2">{shown.map((tool) => <article key={tool.id} className="flex flex-col rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-          <div className="flex flex-wrap items-start justify-between gap-2"><div className="flex items-center gap-2">{tool.id === 'elevenlabs' && <img src={`${import.meta.env.BASE_URL}brand/elevenlabs-symbol.svg`} alt="" className="h-12 w-12 shrink-0 rounded-xl border border-stone-100 bg-white" />}<div><p className="text-xs font-semibold text-blue-700">{tool.provider}</p><h3 className="mt-1 text-lg font-bold text-stone-900">{tool.name}</h3></div></div><span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800">{tool.role}</span></div>
+          <div className="flex flex-wrap items-start justify-between gap-2"><div><p className="text-xs font-semibold text-blue-700">{tool.provider}</p><h3 aria-label={tool.name} className="mt-1 text-lg font-bold text-stone-900"><a href={tool.url} target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} 공식 도구 열기 (새 탭)`} className="inline-flex items-center gap-1.5 rounded-sm underline-offset-4 hover:text-blue-700 hover:underline focus-visible:outline-2 focus-visible:outline-blue-700">{tool.name}<ExternalLinkIcon aria-hidden="true" className="h-4 w-4" /></a></h3></div><span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800">{tool.role}</span></div>
           <p className="mt-3 text-sm leading-6 text-stone-700">{tool.description}</p>
           <div className="mt-4 rounded-xl border border-sky-100 bg-sky-50/70 px-4 py-3"><p className="text-xs font-bold text-blue-800">이렇게 활용해요</p><p className="mt-1 text-sm leading-6 text-stone-700">{tool.example}</p></div>
-          <div className="mt-4 flex flex-wrap gap-2" aria-label="주요 기능">{tool.skills.map((skill) => <span key={skill} className="inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-medium text-stone-700"><span aria-hidden="true" className="flex h-4 w-4 items-center justify-center rounded-full bg-blue-100 text-[10px] font-bold text-blue-700">✦</span><span>{skill}</span></span>)}</div>
+          <div className="mt-4 flex flex-wrap gap-2" aria-label="주요 기능">{tool.skills.map((skill) => <span key={skill} className="inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-medium text-stone-700"><ToolSkillIcon skill={skill} /><span>{skill}</span></span>)}</div>
           <p className="mt-4 text-xs leading-5 text-stone-600">{tool.limits} {tool.account}</p>
-          <div className="mt-auto pt-4 text-sm"><a className="font-semibold text-blue-800 underline" href={tool.url} target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} 활용해보기 (새 탭)`}>활용해보기 <span aria-hidden="true">↗</span></a></div>
+          <div className="mt-auto pt-4"><button type="button" onClick={() => setSelectedId(tool.id)} aria-label={`${tool.name} 상세 활용 안내`} className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-blue-800 underline underline-offset-4"><span aria-hidden="true" className="flex h-5 w-5 items-center justify-center rounded-full border border-blue-300 text-xs">?</span> 상세 활용 안내</button></div>
         </article>)}</div>
         {!shown.length && <p className="qualification-empty">조건에 맞는 도구가 없습니다. 검색어나 분야를 바꿔보세요.</p>}
       </section>
     </div>
+    <dialog ref={dialog} className="qualification-dialog tool-detail-dialog" aria-labelledby="tool-detail-title" onClose={() => setSelectedId(null)} onCancel={(event) => { event.preventDefault(); requestClose(); }} onClick={(event) => { if (event.target === event.currentTarget) requestClose(); }}>
+      {selected && <div className="qualification-dialog-inner"><div className="qualification-dialog-heading"><div><span>{selected.provider} · {selected.role}</span><h2 id="tool-detail-title">{selected.name}</h2></div><button type="button" className="qualification-close" aria-label="상세 활용 안내 닫기" onClick={requestClose}>×</button></div>
+        <p className="qualification-dialog-intro">{toolDetails[selected.id].description}</p>
+        <section className="tool-detail-section"><h3>이렇게 시작해 보세요</h3><p>{toolDetails[selected.id].steps}</p></section>
+        <section className="tool-detail-section tool-detail-related"><h3>함께 활용해요</h3><p>{toolDetails[selected.id].related}</p><Link to={toolDetails[selected.id].path} onClick={requestClose}>{toolDetails[selected.id].linkLabel} <span aria-hidden="true">→</span></Link></section>
+        <p className="tool-detail-note">{selected.limits} {selected.account} AI 결과는 원문과 비교하고, 입력할 자료의 개인정보와 이용 권한을 확인해 주세요.</p>
+        <a className="qualification-official" href={selected.url} target="_blank" rel="noopener noreferrer">{selected.name} 열기 (새 탭) <ExternalLinkIcon aria-hidden="true" className="h-4 w-4" /></a>
+      </div>}
+    </dialog>
   </div>;
 }
