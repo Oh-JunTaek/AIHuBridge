@@ -1,6 +1,6 @@
 {
-  "fetchedAt": "2026-11-07T01:24:08.950Z",
-  "total": 927,
+  "fetchedAt": "2026-11-08T00:57:28.061Z",
+  "total": 1059,
   "status": "success",
   "sourceResults": [
     {
@@ -10,7 +10,7 @@
       "retained": 35,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "huggingface",
@@ -19,7 +19,7 @@
       "retained": 15,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "deepmind",
@@ -28,7 +28,7 @@
       "retained": 3,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "mistral",
@@ -37,7 +37,7 @@
       "retained": 0,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "github",
@@ -46,52 +46,88 @@
       "retained": 0,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "techcrunch",
       "status": "success",
       "count": 8,
-      "retained": 71,
+      "retained": 74,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "arxiv",
       "status": "success",
       "count": 24,
-      "retained": 168,
+      "retained": 192,
       "rejected": 0,
-      "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "mode": "recent-atom",
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "koreagnews",
       "status": "success",
       "count": 20,
-      "retained": 211,
+      "retained": 231,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
+    },
+    {
+      "id": "model-release-ko",
+      "status": "success",
+      "count": 20,
+      "retained": 0,
+      "rejected": 65,
+      "mode": "rss",
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
+    },
+    {
+      "id": "model-release-en",
+      "status": "success",
+      "count": 17,
+      "retained": 0,
+      "rejected": 57,
+      "mode": "rss",
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
+    },
+    {
+      "id": "koreagnews-local",
+      "status": "success",
+      "count": 20,
+      "retained": 0,
+      "rejected": 35,
+      "mode": "rss",
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "geeknews",
       "status": "success",
-      "count": 9,
-      "retained": 110,
-      "rejected": 11,
+      "count": 7,
+      "retained": 119,
+      "rejected": 13,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "aitimes",
       "status": "success",
       "count": 20,
-      "retained": 155,
+      "retained": 174,
       "rejected": 0,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
+    },
+    {
+      "id": "kakao-tech",
+      "status": "success",
+      "count": 4,
+      "retained": 0,
+      "rejected": 8,
+      "mode": "rss",
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     },
     {
       "id": "msit",
@@ -100,7 +136,7 @@
       "retained": 5,
       "rejected": 36,
       "mode": "rss",
-      "lastSuccessAt": "2026-11-07T01:24:08.950Z"
+      "lastSuccessAt": "2026-11-08T00:57:28.061Z"
     }
   ],
   "unavailableSources": [],
@@ -110,16 +146,20 @@
     "deepmind": 19,
     "mistral": 6,
     "github": 5,
-    "techcrunch": 79,
-    "arxiv": 192,
-    "koreagnews": 231,
-    "geeknews": 119,
-    "aitimes": 175,
+    "techcrunch": 82,
+    "arxiv": 216,
+    "koreagnews": 251,
+    "model-release-ko": 20,
+    "model-release-en": 17,
+    "koreagnews-local": 18,
+    "geeknews": 126,
+    "aitimes": 194,
+    "kakao-tech": 4,
     "msit": 19
   },
   "summaryTiers": {
-    "rule": 338,
-    "excerpt": 589
+    "rule": 365,
+    "excerpt": 694
   },
   "summaryMethod": "rss-extract"
 }

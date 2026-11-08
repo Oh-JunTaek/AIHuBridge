@@ -1,5 +1,943 @@
 [
   {
+    "id": "7dfc4c3466bf",
+    "title": "\"사막에 지어야 할지도\"…데이터센터 전략 다시 짜는 美 AI 기업들 - 지디넷코리아",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5VcFlOWm1Oak00bUV5ZEpjdlhUSGJqTFZKVjVidG5GV29lZXJrT1Jad0NwNEhrU2F3ZVVrQVNWSG01cjZIRElZVXRhZlhUSVI0bEtNWG9R?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:54:32.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "887bd7fd8ce9",
+    "title": "오픈AI, '이미지 2.6' 프롬프트 가이드 공개…\"바꿀 것과 유지할 것 구분하라\"",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217140",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-08T00:51:29.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "714f42f812e8",
+    "title": "[AI 오피스] \"내가 안 쓴 답장이 거래처로 갔다\"… 자율 이메일 에이전트 확산 주의보 - 코인리더스",
+    "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE05am9JNHZFemVVbHFPcmYxSXZ3X0tVNXl2bFlaUUs4UWk2Sk52dzdJcUp4alNPenItVW5KWks0bXhsVTBfaDBHNEt3?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:38:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "63a9906b93bf",
+    "title": "카카오뱅크 AI 이모지 퀴즈 정답 (11월 8일) - 위키트리",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5hZGJIem9CalRpU3RqbTc0QXpfZ25kc3dUVnBPUnp3LVJkN2ZyTHBFT1lTTmdwUnhsU1VXbXU3bUkzeW96WWE1Sk1neHRLdzZhcTgtMFBR?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-08T00:38:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "f9a028593b04",
+    "title": "재미한국학교 워싱턴지협의회, AI 활용 수업자료 제작 연수회 개최 - Manna 24",
+    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNdXpSNXRxeWVSWE04cnpLVkMxQVlaTTBGNEpNWW9uOFpkcTFVaEpLcnVvcFRRMkZjU3VEVGRBYWFKbE5KTDJMQVg3OHZtd2FhSmlCdDYtY3dOM1FESGk2LWhNbjhCS1Jka0NQTm1URVJlQWQ5dXlzSDhRdzZKb3JPY1hpNl80b3BYNTlVNFhJbm5nNktJWjZ4cTVTXzFvM19oZ0xMeDFNSkRfQQ?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:37:12.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "c0bf2a4b5edf",
+    "title": "강남구 중년, 생성형 AI 유튜브 제작법 무료로 배운다 - 뉴시스",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NWTJ6S1gyQXZ4bVAyRE55c3FaMUQ3ZWktRks5T3NpY1NRd1dYQ2tfQWNjMTRaaDFOTzdjR0ZvbVNLUkk3SVd6U1ZPRzlXMGhPOFl3cUZXUjV4eEJjcTBmWQ?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:34:28.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "6e2d5aaf938a",
+    "title": "경기도교육청, 학생·교원 참여 ‘수학 한마당’ 개최…AI 시대 수업 방향 모색 - 베타뉴스",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBPOHItbFlxb2JScEFlbUh5NTBlT25ycU1XUHBDUFVQemNDNkJ3QmRLX1JJZ1FnUFRuTHhGdTdGVzRzV01jRlRyNWpLRFdCN3gyempJUURoY2JfRFItLVBCWEstVkM?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:33:28.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "a8ebe9576542",
+    "title": "[기고] AI가 모든 것을 대신하는 시대, 우리가 잃지 말아야 할 인간의 기본 - 아산뉴스",
+    "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxONThjX2xudmp6TlJ2WFNiWnhTV1BTazA0RVRaWS1adDNRMlg3YUVEMnRsU2hoTm1HOUZQSGNyckZXa1BLRXF1ZWRIOEoyUUFUQ3hNM2dXRFdsVlFyLU0yMVJpX3NzeVd5VW9aaXVKbkJqcE1Gb09ZYVo3R3RaUnRzc29EVmIwQQ?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:33:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "5350301a0f24",
+    "title": "[AI 위클리] 말투로 보이스피싱 잡고 공부하라 전화까지…AI의 진화 - 연합뉴스",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPYmIwYUE2LXJtNXF6aF9fNjZqaFV1S0xBMEk3WnYtazBPYUNWazVHRU9RWVYzSHRpaGJwZzRBR2dnclFqOEtWWGM1eS1lUzZ5dHlLeFEtM2lYN0RoODltV2hsajJDM0ZFRjg1eDdqNm91TFU0VjhJWHlBZWJ5Tmxpa3p6eXRzeEpaWndQUmllMA?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:30:01.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "a40cc4748214",
+    "title": "[삼성중공업 AI 데이터센터 바다에 띄운다①] “우리는 바다로 간다”…부유식 데이터센터 시장 선점 ‘총력’ - ER 이코노믹리뷰",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBoQUJBTHRQdkhqTFQ0UnAwVTFiQThDTy1VSV8yTUdBZUc5MkZJWVB6THIyZnR4RGFEdTViTXkza2lJRjgxQ2gydWdNS3BTNHZPQmh3bUh2UXY5RWF6VWxtOFB4aHRWRjh4RnlRTA?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-08T00:30:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "c518c5e51629",
+    "title": "OECD 기업과 세대 가르는 AI 격차, 디지털 전환 혜택 편중 부른다 - https://www.2news.co.kr/",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA1NHFocmU3dXotQzJoRlA5dFV6MmpiT1NCdVU3SW1FdVgyMUEtNkZwUlpqM1pnLWUtWnZRZHBMdXRuS2ZCeGNoSjNpRWZScUxRaUJ6UlpjMkEyYXI3M0tsaURVeTBSTFV2?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:23:22.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "b46c30b9878b",
+    "title": "경복대 AI-DX GAIA, 남양주시와 ‘2026 한국전자전’ 공동 참가 - 에너지경제신문",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1TWHZwZkxZRVBiSG16czZndkladW4tUGg2SC1sVXNSYXcyNG5obGJSZV9Iam92T2VKVlg4NWNzOWhkdm5YVVQ4aWE3WThNOUE0QWhTZlJYR3A2b1E?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:20:11.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ce572f11a53e",
+    "title": "무안공항 운항 중단에 수익 82% 감소…위탁인력 줄어도 용역비 3억 증가",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217110",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-08T00:20:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "9859afd3cfbd",
+    "title": "Monday 리뷰: 사람과 에이전트를 위한 AI 업무 플랫폼 - quasa.io",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxON1RocG91enlfWjRfYVZ6QWNENlktQ0JZM3RKa2otRm85VzZSNUV5TXc2b3BTZGpPWFp1MGFBMWxxam9IWUd0ZllwTVZpUk9Ya1RyTEhZOWdUY3EzeTRwWjZoSWd3b0FOWUVCWVlMTnBmTmRLb2F6bGxwZEZlcXRJY2RGRm5Rb05oNDJPLUxMRXJiZw?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:19:41.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "486078c21434",
+    "title": "경주시 단석도서관, 어린이·청소년 대상 AI 실감 체험 프로그램 운영 - CBN뉴스",
+    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNkM4cmFFZ18wMnZyTHg2NFVEMnJkeTlVMlVsMkNkSjQyaG1zRFFGdG9lLVRHMmJVUWhpTFdQTC1RZU8tRGphLTlmWnJESXdDRXNYWkJvaUpkd25WRFlBVC1DQks2eS13NEhFZVR5OTZ1R2FHQUROTWxfOWxTcWVRMg?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:17:33.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "294d696ce2e4",
+    "title": "국방데이터·GPU 공동 활용…함정 AI 기술, 민간 조선·MRO까지 확산 - 해사신문",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBGN3VQaWRaN2FYRWQ0WGVsVmlORUNJTGYxbFdrRFF0RkQ5enJoSTNZRjBrc1NSZ0RfMUx4cTJOaXZrUVI2MXNFaEJTYmVYLTViaGNobDdEUUNHVlpJVEF1enl2WTZxbHgzTW4w?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:16:51.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "14dd2cae8f07",
+    "title": "소프트뱅크·ABB, 54억달러 로봇 인수 살리려 중국 사업부 분리 검토",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217137",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-08T00:14:31.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "67043d9ce42f",
+    "title": "Maestro Labs 리뷰: 이메일과 회의를 위한 AI 어시스턴트 - quasa.io",
+    "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOc3AzTE1iR3FDalZGTkFUWWZtWHd2WklHTEoxcHExTkJLckFEeXFIbnZfbldUNUxRbDY2Q0JxcTh1MTRrOTh2ZHNvclpBQkU4OVVPOGRQNVBXU2stY21feWlwVlNja1ZEZU8zdkZlbFBQUnFiSThfcUVsVVlnaUFnNmprMGdJczdZR2N5SVNkLUU?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:12:31.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "595cdf0546dd",
+    "title": "말레이시아, 데이터센터용 태양광 500MW·ESS 1GWh 개발…21년 전력 공급",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217083",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-08T00:10:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "721255a36419",
+    "title": "콜롬비아 태양광 상업운전 용량 2.59GW…3분기 신규 발전용량 87% 차지",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217079",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-08T00:05:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "940549fb8a83",
+    "title": "Vibiz 리뷰: 비즈니스 구축부터 출시까지 해내는 노코드 AI - quasa.io",
+    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNdGxGWktibG16R3Q3N1ZpRjRRWlNHVGxOWllDelladXlZQW56RkZBOC1wNEQ2MmZWVF81eUNIOUZkQndpbU5pQjJvS25JMGl5Sk5GVzEzVWRoR0Q1MzZOR0FYNzJnUnM4c21RNlcxNjFpYi1uTjQxa3hSVWdWTW13X0JBNlZrYmdHOXRMUDd4cjhJRXZkWlZJ?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:04:04.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "c710f4985812",
+    "title": "TSMC, '3D D램' 개발설 사실상 부인…상용화도 먼 길",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217136",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-08T00:03:39.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "bcb0b0fa9078",
+    "title": "[2026 로보월드] 토트, 피지컬 AI로 비정형 작업까지 자동화 범위 넓힌다 - 산업일보",
+    "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1TRWllS0Roa0RLcXFMalBQOVlyUHpSbG9wdHdfNkcwZWtQcXp3RVd0LUZTUjZUengwNUR5emViQmN1R2ll?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:03:27.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "b6d328c324e9",
+    "title": "웹에서 AI가 일으키는 온갖 부작용에 어떻게 대처하고 계신가요? - GeekNews",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOdUgwMDVvZW5xYXNabmZXOXBDX0VVbF82RTBoYUt4YXMyRFFYN29MLVMyNWNUVkQ0X2tVSGEwVmk5eHk5dVc3YVlkWloxV2JlRm1GWU5UWjU5N0pOak92ZTF0eDYwQkViaTJCZTN3QVMteXRlNTZNT0xKU0E4R05JaFlqdVV2S0M5Vm0tcjYwY2I3Zw?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:02:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "7aef435b300f",
+    "title": "웹에서 AI가 일으키는 온갖 부작용에 어떻게 대처하고 계신가요?",
+    "url": "https://news.hada.io/topic?id=36781",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-08T00:02:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "a559408d1e3c",
+    "title": "\"없어서 못 파는 AI 부품\"…증설 나선 삼성전기, LG이노텍은 왜 기다리나 - MTN 머니투데이방송",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9YM1FSMGFhOEhqbjQzRVNMcG9JUV9NRG9Bcy16SFM3cWV6Y2dfcmg0QWh0YzJNVlBSclNKSG5QdVNyQkZxbkJNQXFFRkt4d3ZueVVjelN3QWhiU0taMWFv?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:01:30.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "1b68ed0d3a75",
+    "title": "코스피 폭락 진정될까…외국인 수급·AI 불안에 촉각 [주간증시] - 에너지경제신문",
+    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE42dU5OZmtwZE1ndXRtUk14MmN1RTN2OURiUDZSM1RmQmZobkp2cGZjLVE2aFVMcmwtMmR3akRKWk1ScDlITzFOR0ppSi04Y2I2T2U5Q2NnbmdLSXBYZ0xOeGlLdw?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ee065d6e61cd",
+    "title": "(주간증시전망) 'AI 공포' 덮친 코스피…반등 시도에도 약세 전망 - 뉴스토마토",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBmd0RERkxwejVpVlZ5cnFBdnRjNVRYY2k2aWF6dTIzQ3RSbGJ0c0J4Z3Z6ZkFaNWVvZkFaZkdCdXBET2VUb2JOQUpXbS1rcjY5YUJIeGtkTFNxTENHb0Uzaw?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "f97523ad8307",
+    "title": "[이번주 환율] 美 중간선거 후폭풍에 환율 1360원대 터치…AI 투자심리가 변수 - 오피니언뉴스",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE81SlBCdWd2WWxNX096MmI1Y3Bid1FNdVJjRUlscHBIWm9pSTB0NW5GeEFlMWZYeXNRbGRZOVg3YkZGRVpMSWtKUHlyT2wxYmx6OUJNNDF1b0lfVU1SVkFJTnVWdW1KMU0wNDVQa2tWRkYwdw?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
+    "publishedAt": "2026-11-08T00:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "e3050104afef",
+    "title": "챗GPT 국내 월간 이용자 1,876만 명 돌파…AI 앱 시장 독주 체제 강화 - 한국강사신문",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5iWWVaUnNQWk40SGpSemo5VDBLd3FIend2NkQyRkRnNzN5VktOejZBY090d0Vad05QS1hQT2lfTERBbTVCT3E2eHNJbFJwV05ZRzJUVlZ4RlV3OTVBLUNCTkh4TzNxYzAtRUpoZ0xpWDY?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T23:55:28.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "GPT"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "1f2623d54486",
+    "title": "FT \"미 정보당국, 젠슨 황 CEO와 중국 스파이 의심 인물 연인 관계로 판단\"",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217135",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T23:52:25.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "6d771b66bd9d",
+    "title": "MaxxBench - “DeepSWE 점수는 좋네요. 그런데 진짜인가요?”",
+    "url": "https://news.hada.io/topic?id=36780",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-07T23:34:44.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "dae50adb4420",
+    "title": "국내 AI 데이터센터 추진…정부 지원에 차질 없어 : 경제 - 재경일보",
+    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1JNkNfcGk3Yl91SEw2c0x3cS04ZVZrZnc3cEN5WVdKeUdYclRIM3dUZmI0NHhMamtEbF9SOEdCajJCd2V3bDAxeFBRTQ?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T23:19:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "95510ed47606",
+    "title": "미국발 AI 데이터센터 불안…국내 업계 \"사업 추진 문제없어\" - 매일경제 마켓",
+    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5uNEhGQWkxYzdOYndxWWI5MUxEd19oZXJ6SzZMZlY3REpvX0RzRmtxZlY1eXNreDBOZGFtVkljQ1g4LTJDc3dvWlBMdHRtR3NfU2c?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T23:13:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "95432afdef3a",
+    "title": "유럽서 AI데이터센터 건설 반대 여론…국내 기업 돌파구 찾을까 - 글로벌이코노믹",
+    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE84M0F6WjdKRTZ6SXBQNGlmemZqUkdlNTBiYlZfeVltdDhMMkh2aGFNNm5KcUNnV1RtblBiOS1od3VfLTlFbmQ1OGFkS0VQVk1naFFWaGZUT3ZIcXhzTmZSYjBIUlZ4NEFNbXdIcG92aS0wbU5YVGxrV2dFRFZYYXc?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T23:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "75dce3e6449a",
+    "title": "K-팝·K-뷰티 이어 이번엔 ‘K-에듀’… 한국 수학 강의, AI 번역 타고 세계로 - www.ppss.kr",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1zVFVRNjlpVTJ2VzhiSExNSEZBQk9KTkRKc0ZJYklqRThmMG1fRW4yMGVmS0ZjZXkwOVQwUk9NcmRFaTBvWHFZQTVmT2hCSzZXalVJMFlHekd0Mk5ZdHV1ZUVVaWY?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T23:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "8b1b0f322349",
+    "title": "미국 민주당의 AI 규제 강화 가능성, 한국 반도체 수출에 직격탄 될까? - 공감신문",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBFTjBoVjFXRFhVd2FyQ1hiTUxCUDhMaHhIQUVzbjBZb1Fmc0RfZzVoc3BsZEkxeGVOc0Q2Znd3STV1eDJoSTlDNkxEYTZPY01rWTd1YnhsNzB1ZVF2V2RmRW9na2dJam9u?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T22:32:34.000Z",
+    "category": "정책/규제",
+    "lang": "ko",
+    "tags": [
+      "규제"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "757379c07d11",
+    "title": "After the midterms, things are looking rocky for Elon Musk and data centers",
+    "url": "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/",
+    "source": "TechCrunch AI",
+    "sourceId": "techcrunch",
+    "publishedAt": "2026-11-07T22:07:22.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "On Equity, we unpacked what the midterms mean for the tech industry.",
+    "summary": "On Equity, we unpacked what the midterms mean for the tech industry.",
+    "readMinutes": 1
+  },
+  {
+    "id": "364ed6a4d49b",
+    "title": "10달러짜리 4G USB 동글로 홈 서버 돌리기",
+    "url": "https://news.hada.io/topic?id=36776",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-07T21:48:55.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "4e392e0aaa87",
+    "title": "Megaspeed exec was recruited to spy on Nvidia CEO, according to US intelligence memo",
+    "url": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/",
+    "source": "TechCrunch AI",
+    "sourceId": "techcrunch",
+    "publishedAt": "2026-11-07T21:17:08.000Z",
+    "category": "정책/규제",
+    "lang": "en",
+    "tags": [
+      "NVIDIA"
+    ],
+    "excerpt": "A memo circulated earlier this year reportedly claimed that China’s Ministry of State Security recruited a female technology executive to spy on Nvidia's CEO.",
+    "summary": "A memo circulated earlier this year reportedly claimed that China’s Ministry of State Security recruited a female technology executive to spy on Nvidia's CEO.",
+    "readMinutes": 1
+  },
+  {
+    "id": "6b30d28a8bb2",
+    "title": "미국 AI 인프라 다급한데 송전망 건설 '주민 반대' 리스크, 한국 전력기기 업체에 새 변수 - 비즈니스포스트",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9tS1dwWEdtY1pmZE5kNzRZSmR0VzNmc05GMER2WHZFYVBIdkh3QklEOTl0VUF2S0sxeXhoUHRsX1dVMUZENDhLRFJsNUE4eGIwSUd0YldEWDQwVUs1NE56Wi1uRjlGXzR4QThIRnJ0SlNUb2s?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T21:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "b602679acd99",
+    "title": "에이전트 메모리 설계 - 무엇을 기억하고, 잘못된 기억은 어떻게 고칠까",
+    "url": "https://news.hada.io/topic?id=36775",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-07T20:51:20.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "1b3d50523c08",
+    "title": "Microsoft Research의 AI Frontiers 그룹이 막을 내림",
+    "url": "https://news.hada.io/topic?id=36772",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-07T20:42:20.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "Microsoft"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ba70e4568b01",
+    "title": "젠틀몬스터, 삼성·구글 AI 안경 11월 12일 예약 판매…12월 출시 - 이데일리",
+    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQTXV4dWdKUHFSYmMxRGpsMjYtSmpheXhpUEpwYzM0S1h5RmNXeVc5YXpTb19SQmw0RUZsLVE0S1B0QkZOZ2dPZmZwaTBYUUVlYXdLbmU3NDk1WUgzdmYzTmJfeVBYbTZKN1dWQWxBT05zTDcwVHZRSDNVUmhRYVZlNw?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T20:41:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "34e5e08d9c8f",
+    "title": "대학 도서관에 몰려드는 AI 봇, 공공 접근권을 위협하다",
+    "url": "https://news.hada.io/topic?id=36771",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-07T19:33:14.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "1ada0dd1d160",
+    "title": "美 의회 선거 흔들린 AI 데이터센터 증설…월가 기술주 폭락에 한국 메모리 촉각 - 글로벌이코노믹",
+    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOM2hhY1NxejRZbzU4ZGVIZW1PMERwQ0JIc1E2M2tNSXhXSmZIR3E4MVBWTGsxeHc2NmgtNUNVZGJFdXpRRUxzLW9QSWhMcENyT3pja3cwZnVId0tZb2dselBKTVJva0JLLXdqNkpjTlQ0Y3NVWmlrUGtaWmxUM3R1TFFzd3MyWVBy?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T18:20:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "663ab96da803",
+    "title": "Chomsky와 통계적 학습의 두 문화(2011)",
+    "url": "https://news.hada.io/topic?id=36767",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-07T17:46:45.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "05ec3c88d8b2",
+    "title": "이재용의 ‘뉴삼성’ 방정식은 AI [비즈앤피플] - 부산일보",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBDRC15b3AxRjJLaDdjeDlFSXV5ZzMwR2NmRFhva0tqZWtMRkc5alN4UmRya0ZkbDlHTEluTUpwUjNlRE04YWFwSjJnZ3FSbldIVl9aUktMUVdabXl0cmhLZklKN05WMEp1Uzdkd3lTMHlrXy1n?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T15:08:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "7726cb9dd911",
+    "title": "덕성여대·서울여대·성신여대, 네이버와 AI 교육 협력 - 포인트데일리",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5PUTNxWGpKc1Z0U1hKRkt1LUJTM3JNYm8tZkdrS1RXQ2JIdDFuU0RleGlzOWhFZE02YVAtZXpTUUJEZ3N2TEQzczM3UjVGTVJ6TlMxbjdFVnU5TldYNWt0VDlrU1AzS1FXSTRGWFRUWFrSAXRBVV95cUxPeU9Ua09CLUwzNmcyMEdpY2NOZzZSUnVxS0V0UW1wTDZpR2l5UXBzcWNUc0pDVGZMZS1SX0RQOW1nLXZwY3ZLRDc0a2FhVkxFMFBJZ1BPYmFsaDZCaTVKOXBkVk9tX0JLU1lPTU9XYmVLVDdGYw?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T14:05:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "332eabab430e",
+    "title": "한국산업인력공단,톡톡 튀는 인공지능(AI) 아이디어, 산업현장의 미래를 바꾸다! - 엔디엔뉴스",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBxVjdVZndvWTV5TzNaTGZ3azluY2RXdjQ0UkhoTVhDMVpnUC1DbTcwOUprV2I4WC14M1ZYS2pqbzVUazhVdE9LUXlJdm9LTnZtMFkzZndjbmxJZjlSb19pbG52VEM1cnE2b001TkNn0gFyQVVfeXFMTS1kcWYtdXBXYXdIWm0wbHZXaENCREhKUE42NE9TeGtvZDB2RVR2eEJiblJIaG9TWmZIRElzMkZSalZ6OURuQkg1MDlwQXZlWjdtVE4tUEJMWF9NalhIMXVlNW1YSTBWc3JLTlVDRWU2dkZ3?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T13:17:52.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "0d1466ed3d9d",
+    "title": "피지컬 AI·휴머노이드 산업화 방안 논의…한국농식품벤처투자협회 AURA 컨퍼런스 성료 - 아시아투데이",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9OZEthdzVqb3pRWlZVLWliNU1GQ0M1akFUcUZBcVpWNkNQRlNOUkZpb2xFUTFaUWpmSW44X0hFem9MYzBJU1lqWUlZMzhWVzdGd0hkdE1oLUpSZG4ya0dfdHg5X2hiN1hlOTNaUWln?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T12:59:25.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "d2058cdbf864",
+    "title": "한국, 과체중 관리 및 치료 지원 AI 앱 출시. - Vietnam.vn",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOdlBEZ2ROeF9yYkRiTEcyQU5aM0NxeDU4T3I3VXlmaTlFOTlBazdUVm9wOFJSNHJlRTRQdGFiNm1jTkwzcV9BaXdZb2hSSFVGaExnN2ZmQ25IQ2dXMlRSYWRqUnM2d1ZSaVZBcjlKZ1FEdnV2eHdhZjZrVVpteGlRZnZacWdTRTQ1VDY5TWdjYw?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T11:07:18.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "c47cec337576",
+    "title": "오픈AI, '클로드 코드' 성공 주역 캣 우 영입…핵심 제품 총괄 맡아",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217134",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T10:05:17.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "5ebd3a136451",
+    "title": "삼성전자·SK하이닉스 주가 13~19% 폭락…미국 민주당 AI 규제 놓고 충돌, 반도체 호황 끝나나 - 톱스타뉴스",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9MUmR1bWhZaTQxQ1BnNDZIdmpOZy1JOUlHVzlyNGQwRkJqd01rXzhQSkxPSjJRLXowWnBrRy1uY1VBbmJNTWNqd25rMWZRa3hjY0pFUXhSc2hpZThBaExKSzBjWXZXQU9wWjFiMng4b0F2UQ?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T09:34:35.000Z",
+    "category": "정책/규제",
+    "lang": "ko",
+    "tags": [
+      "규제"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "e7a0c8764f9b",
+    "title": "삼성 첫 AI 안경 출시 임박…젠틀몬스터·워비파커, 12일 예약 시작 - AI타임스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBBUXNjMGNQb20xdEtNZ2hkcFU1Y1c4UGxaN3gtdHB5NzY5N05HeWcyNWZkaEczOW9qWU5keGZqSzBic3RsZ1dITlg4Y0thZUJZYjhZNDVkc1Y3WUlLZWtoQmRQandKR0kwVVE?oc=5",
+    "source": "Google 뉴스 한국 AI 검색",
+    "sourceId": "koreagnews-local",
+    "publishedAt": "2026-11-07T09:14:54.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "150f95ef73a3",
+    "title": "삼성 첫 AI 안경 출시 임박…젠틀몬스터·워비파커, 12일 예약 시작",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217133",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T09:14:54.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "f3c3500de24f",
+    "title": "씽킹 머신스, 성능 대폭 높인 '잉클링 2' 공개…중국 오픈 모델에 도전",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217132",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T08:45:42.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "45c934c18ecc",
+    "title": "바이두, 딥시크 앞선 '어니 5.5' 베이스 모델 공개…한국·유럽 사용 제한",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217131",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T08:08:12.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "322c905689eb",
+    "title": "미 중간선거 후폭풍…민주당, 빅테크 대대적 조사·AI 규제 추진",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217130",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T07:43:57.000Z",
+    "category": "정책/규제",
+    "lang": "ko",
+    "tags": [
+      "규제"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "9abedb59a01c",
+    "title": "메타, AI로 맞춤형 앱 만드는 '뮤즈 스페이스' 출시",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217128",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T06:39:27.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "123ab16f20e9",
+    "title": "[AI 이슈트렌드] 강호동 구속영장 1위…미 중간선거·바이낸스 해킹 뒤이어",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217129",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T06:08:35.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "97c1f959c5c2",
+    "title": "유럽 16개국서 데이터센터 반대 공동 행동…MS 건설 현장 난입",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217126",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T01:57:42.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "58c05ef6c7ea",
+    "title": "[내면 지도 그리기] 41 Inner Mapping: 나를 찾는 지도",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217125",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T01:44:58.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ce80de3e8c50",
+    "title": "오픈AI, 기업가치 1.25조달러에 110억달러 유치…투자 목표는 하향",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217117",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T01:44:21.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ec2480d446f6",
+    "title": "Crusoe sells troubled Wyoming data center project to Google",
+    "url": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
+    "source": "TechCrunch AI",
+    "sourceId": "techcrunch",
+    "publishedAt": "2026-11-07T01:40:28.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [
+      "Google"
+    ],
+    "excerpt": "The deal highlights the challenges of developing massive AI data centers.",
+    "summary": "The deal highlights the challenges of developing massive AI data centers.",
+    "readMinutes": 1
+  },
+  {
+    "id": "c9e0bb6139fa",
+    "title": "TSMC, 엔비디아 요청에 3D D램 검토…삼성·SK하이닉스와 경쟁하나",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217123",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T01:19:37.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "66068931e8b3",
     "title": "aT·한전 주니어보드, AI 활용 업무혁신 방안 논의 - BBS불교방송",
     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE00S0dHWmJSZ0tZZnRuRXZ6Q0lta0tzZjE4UGlmaFlKYlM2OGRJaGswNXg2dnpBUU5pWGNiOGZwUUZPN2lzM2VLVzFDeEhuNU1fVXBEeXpCeThfT202dk1rcmp6NW5PcEw0dkFF?oc=5",
@@ -28,11 +966,11 @@
     "readMinutes": 1
   },
   {
-    "id": "30ef09eee826",
-    "title": "오픈AI CFO \"중간선거 결과와 관계없이 데이터센터 투자 계속할 것\" - AI타임스",
-    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1pZmZWcVk3RXd6SFlLR090cDc0Mks4anFtbXVManpJd0xBY0pZbVhXdlJJOUdwU1pRWU94d1pZWkMxb1N3UlBGV2NFNjVkbVZEUEFDTWdWdWgycGI4MUR5cFVjc0RNbGFoY1E?oc=5",
-    "source": "Google 뉴스 AI (한국)",
-    "sourceId": "koreagnews",
+    "id": "c5f38a77fbb8",
+    "title": "오픈AI CFO \"중간선거 결과와 관계없이 데이터센터 투자 계속할 것\"",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217119",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
     "publishedAt": "2026-11-07T01:03:29.000Z",
     "category": "언론",
     "lang": "ko",
@@ -42,11 +980,11 @@
     "readMinutes": 1
   },
   {
-    "id": "c5f38a77fbb8",
-    "title": "오픈AI CFO \"중간선거 결과와 관계없이 데이터센터 투자 계속할 것\"",
-    "url": "https://www.aitimes.com/news/articleView.html?idxno=217119",
-    "source": "AI타임스",
-    "sourceId": "aitimes",
+    "id": "30ef09eee826",
+    "title": "오픈AI CFO \"중간선거 결과와 관계없이 데이터센터 투자 계속할 것\" - AI타임스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1pZmZWcVk3RXd6SFlLR090cDc0Mks4anFtbXVManpJd0xBY0pZbVhXdlJJOUdwU1pRWU94d1pZWkMxb1N3UlBGV2NFNjVkbVZEUEFDTWdWdWgycGI4MUR5cFVjc0RNbGFoY1E?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
     "publishedAt": "2026-11-07T01:03:29.000Z",
     "category": "언론",
     "lang": "ko",
@@ -84,12 +1022,40 @@
     "readMinutes": 1
   },
   {
+    "id": "989cc5259d98",
+    "title": "[AI카툰] Bob, Senior IT guy - 밥, 결혼정보회사에서 알바",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217124",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-07T01:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "9d705cd1768a",
     "title": "테슬라, 판매 부진 사이버트럭 접고 로보택시 역량 집중",
     "url": "https://www.aitimes.com/news/articleView.html?idxno=217118",
     "source": "AI타임스",
     "sourceId": "aitimes",
     "publishedAt": "2026-11-07T00:57:09.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "36375003ec7b",
+    "title": "예진, 한국어 특화 8B AI 모델 공개…사전학습부터 독자 개발 - AI타임스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE51US14TVBVclhjMVVwdGJtaW9QQnJycDR2VG9ZYXlVajBUaXJJeDQwbUdzMmNTSXA0S2tmSFlUV3Y0VHhHZTh2RXJXT3hXTmNfNEVBRlNfSE9DSXQxbjFjWEpBNE5EdzlrOHc?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-07T00:55:00.000Z",
     "category": "언론",
     "lang": "ko",
     "tags": [],
@@ -452,6 +1418,20 @@
     "readMinutes": 1
   },
   {
+    "id": "6ccb3c7e19e3",
+    "title": "카카오, AI 에이전트 판단·선택 돕는 멀티모달 모델 공개 - 글로벌이코노믹",
+    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9iQS1WcjVFcnBMb0tRVTQzUlBnaUJ4VmtKS0tzcTNOY0lwQkJpUlJoRGNsWEVNVkw0Y3J2ZnR2LWg1TDVrMkV6THpNaHJjak9LRVBEM0pNaHRTc2ZuRG5tWkFEd3JQbXV2emR0S1VubGl5bXVlRzhNSkdsbjM3R0U?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T23:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "b19a52adc818",
     "title": "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation",
     "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
@@ -505,6 +1485,20 @@
     "tags": [
       "안전"
     ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "2f98c8a7bac2",
+    "title": "[굿모닝! AI 리포트] 오픈AI, 사이버보안 특화 AI 모델 선봬…딥시크, '슈퍼 에이전트' 공개 - 굿모닝경제",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE16UkhDRk9zNklZejJQWTRWdTFaV1hwenBmem4xWDBtOU9CZjBfT1o2OXJqNFlUaGkyQVdKUU5nX1JYMmd4cEtCZS1INkhvOElFdFVWUkdDQUZzTXN3TnFZNTlNcF9HdWxwVE9Rag?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T21:30:00.000Z",
+    "category": "정책/규제",
+    "lang": "ko",
+    "tags": [],
     "excerpt": "",
     "summary": null,
     "readMinutes": 1
@@ -668,6 +1662,38 @@
     "readMinutes": 1
   },
   {
+    "id": "3aa8c562414b",
+    "title": "OpenAI introduces GPT-6 Cyber model - The Paypers",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNMmQxd3lnc0stYkh1dERtcHltR2xtWFIzc0t6TER0SDdPNTZXOS1HUDVtS2FGMzRLZTA4Nlo4ZFJXUk1NbkRwbVBMYzA0U0pxRGh1ZjV5dXBZbnVMQlRGNDJ0U2JyRzZiZWpRTkh6UjJ2eUc0LWc4VHNaTDd5eHVHQzYtTFdjRFBpc0V1eUpyVTBseDNHQk4zbjRHcnVPSVpsbjJZVXZNTVVWcnc?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-06T12:17:50.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [
+      "GPT"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "5873b1094af4",
+    "title": "OpenAI Introduces GPT-6 Cyber: What It Can Do - en.ain.ua",
+    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1JY1FUbi1QNl82em4tN2hyR1FjdVRaM3oxc21HYzQ5LWlUXy1qOXNVZm81ZDdJUmluZHQyWWhjdGp0VHFhcUpIZF9nYjhXTWxxY3FtZEp2emtzZ3UtQTg2eFFMdEphRFM5RklfdGppN05qSnFaX0tLVko3ekNSOGM?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-06T08:50:00.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [
+      "GPT"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "812ca5bb4e5f",
     "title": "구글 출신 연구진, 65B 모델로 8배 큰 AI 코딩 성능 추월…개발비도 10분의 1",
     "url": "https://www.aitimes.com/news/articleView.html?idxno=217107",
@@ -678,6 +1704,23 @@
     "lang": "ko",
     "tags": [
       "연구"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "796cd2817050",
+    "title": "\"GPT 5.2급 성능\"…루닛, 의료 AI 모델 '러닝유닛 2.0' 허깅페이스에 오픈소스 공개 - IT타임스",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE85em1na2VkSmIzSmdkUTh1MGxxWWs5NXl0UG5wOGJYRDJWQkE0N21XejFEcy1EeDlrXzQ0NW1JXzlFRVlqcWN6bno2UmVXb1VrNk9nWDFHenRCOW1HVUdNZ09pdmR0VDJi?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T08:27:37.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "GPT",
+      "오픈소스"
     ],
     "excerpt": "",
     "summary": null,
@@ -810,12 +1853,40 @@
     "readMinutes": 1
   },
   {
+    "id": "1d6e7f574f1d",
+    "title": "카카오, AI 에이전트 의사결정 돕는 멀티모달 모델 공개 - BBS불교방송",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1xQU93N3VNejB3dzBjdXV5SU5rejhoeU55WGdEcGd0STdSRXkxaVAwRzB5Z0x6b2tKYVZqSE5BRk0wUUtXYVo3WHROTWVCdS1XQVV0MFNQQ25raExYa0hZcGl2WndXaGM1Sjk4?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T07:05:19.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "4c6ea686e4bd",
     "title": "애질리티, 미국 휴머노이드 기업 최초 나스닥 상장…수익성은 과제",
     "url": "https://www.aitimes.com/news/articleView.html?idxno=217098",
     "source": "AI타임스",
     "sourceId": "aitimes",
     "publishedAt": "2026-11-06T06:57:11.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "9fa321984a1b",
+    "title": "카카오, AI 에이전트 의사결정 모델 ‘카나나-2-v-디사이드’ 공개 - 테크월드",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5oQkhfaFBHakpBWDEzRVRpS0lxMDJlenczaFQtUHZ1MG5mbTk3MmNmdWMtM0cyOWp6RnRUXzNaME03TXAtamRxWTBTcmVFR3JUdVpMcFNmMlUxQV9tMW5vTDVTVTY2dGgx?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T06:50:00.000Z",
     "category": "언론",
     "lang": "ko",
     "tags": [],
@@ -838,6 +1909,20 @@
     "readMinutes": 1
   },
   {
+    "id": "216b1cd73634",
+    "title": "Thinking Machines introduces powerful Inkling 2 Small AI model - Awaz The Voice",
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQeExtZm5KUHlrM3NvTUx5WUVGVC1PV3VlUUo5VkVyekVlQ1dRT2lEX216UXhRVGtQWWVMcUpQd1J1X05YaTFna3NpSXFfYWlXY1RvNzBQeFFITlk4N3loaWZEUW5GWktmY1pwaEk4dTJELVgzcGhFYUhyR1VaVnVFQWpTVjlndWtQc3dsNXJ0WVBJbTFsNjA4Ql8xdmFNaDdsclRfMkozcThqLUN1eUE3OGhSNA?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-06T06:40:33.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "af6e9dcd22b2",
     "title": "팔란티어, 신발 제조사 창신과 맞손…AI로 신발 제조 공정 혁신",
     "url": "https://www.aitimes.com/news/articleView.html?idxno=217101",
@@ -847,6 +1932,96 @@
     "category": "언론",
     "lang": "ko",
     "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "51eefbed27d8",
+    "title": "카카오, 문장 대신 ‘점수’로 답하는 AI 에이전트용 판단 모델 오픈소스 공개 - 바이라인네트워크",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5ISFVsVklPUlFMYU9UN2pwa29oQlpjWnlrNjkwVzlzdi01aGdsS2I5bjVJZlRTZmwwMlpKWHk1ODdKS01xczYxQnFoVm1JNVF2WUFacQ?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T06:29:37.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "오픈소스"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "682b0c8b812c",
+    "title": "Cadence introduces Maestro AI Model Portfolio to boost chip and system design workflows - Newswav",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNVWlEWlc4MUpOcURYODNiMHlUR0RIWWtVWW5RWTR6WElyWXdmdFB0eElUWWRIa1lEblZ1SWo3V0JlUnRsQWk3MHdseEs1Tm50OC1Zc1ZHOElfY2JsUGZyZDZyaTlVcHJVSElDclhKZk85ZjdQTVU1S2FCSXhLTEctSm9lRkJFYVdVSDBlaG05N0k5UkhvUXZ1Q25HZlZ3aTJTSVN6OHh3S2lYWDRLa3RNYjRENWhVOVU?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-06T06:19:45.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "b41174690f88",
+    "title": "Qwen 4 Release Date: What We Know So Far - Fello AI",
+    "url": "https://news.google.com/rss/articles/CBMiQEFVX3lxTFBfTjduVmhuVzQ2N1p5Z0RvMHJOWVBMbkk4ZnBRQ3lLdnlmZnpXajZ0UV9RakZtdllEN1BsaC1OTXo?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-06T06:08:16.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "aa5dc291bec2",
+    "title": "카카오, 멀티모달 모델 카나나-2-v-디사이드 공개…AI 에이전트 판단·선택 돕는다 - 아주경제",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9saXFqWDczSGx6U1BRZWhPSnlmWWNTUTF3SzFreUd4aFBLelZRa285RS1nYzNqdFRwNUlGNFRwNXFjM0xZUGJ5WDFZbVoxZ0k1bGwyNWpack9UZ9IBWEFVX3lxTFA4a3ZhcDNHWnZiVlU1STl5UGJkMzBCYjdlU3pZWGluQ0pxMWFlX1cxZmc1YmVybXBCSktOWkI4S0M3NVJuQUF0bXpzUExpNmtocWRLUjJxay0?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T06:01:46.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ee924a0e4f7a",
+    "title": "AI 판단 돕는다…카카오, '카나나 디사이드' 오픈소스 공개 - 지디넷코리아",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE96WTZ5ZlhwQy0tTUkwSGVOdHhNUk9VdS1nWFRhRTJ3ZzVqMV9uTENlY3ZKbmZCbFRoeUpfWXpJYkZ6bzhna2RTMUpuZ09QNTVyNmMtZW1B?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T05:48:44.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "오픈소스"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "34df9e2000dd",
+    "title": "카카오, AI 판단 돕는 '카나나-2-v-디사이드' 오픈소스 공개 - 금융소비자뉴스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9lekZOeUxGUU5kcXB2RVNuQVRRZlgwSldRem1ZaS1SRnhVcTdqa2ZuYzFKRmMxeXNJbnVLdFM1Wjl1ckM5Rjd5b0VzRlNyWnctZUhYb0FxWG5lTGQ3R1h6dzd3RDV3cXotcUE?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T05:25:39.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "오픈소스"
+    ],
     "excerpt": "",
     "summary": null,
     "readMinutes": 1
@@ -1290,6 +2465,99 @@
     ]
   },
   {
+    "id": "1abd5f782219",
+    "title": "카카오, GPT-6 루나보다 43배 빠른 AI 판단 모델 공개…오픈소스로 배포 - 우리경제신문",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE91SnRrenc5SFlyZ2MtOGFWcE4wQmw0YlY4akpkd0FVMURRZk9sUUk2bmtVTXpmenVBZVdvLThSR2pMUC14VFFtN2xqVXpWbnExY29vMXpDWS0?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T04:47:20.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "GPT",
+      "오픈소스"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "9381d1a009cc",
+    "title": "카카오, 글·이미지로 판단하는 AI 모델 공개 - 디일렉",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9aZ0JvYkhYMkRnNldfZ2dIbHJ4U0llX3RFb2w2QWwzSXdkeldER2dtV0FpOEpQcDMtMTJXandNM0E0aWZBMHY3YnB3QncwV29EbTFWRUotQnhuZUtCajl1RUhaRFl4UQ?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T04:36:53.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "15949198280f",
+    "title": "[더테크 픽] 카카오, AI 판단 속도 43배 높였다…멀티모달 모델 오픈소스 공개 - 더테크",
+    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9CTXhkbWlIWlRxSTRicGlNQ25OY2I2WURURHRKd3p6dzEwTFJLcWVJVmpCMGh0aGY4b01wNHVvTXg3dGdjMEh2VUQzdjNGSHZEOEluQ3dUUGd0Y1pHaXh2dHgxWQ?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T04:29:23.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "오픈소스"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "5104a99e8168",
+    "title": "카카오, 의사결정 모델 ‘카나나-2-v-디사이드’ 공개 - AI타임스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE14eF9Uc001SWRTOGlPUFI4bU1RS0Z5X3RmbGY1SGY4QUNuMHhtQ1dZcmtzUmpuX2h4eFFucTRjVVo0NHhtVm5jT2tIUkt0TkxnRVBfdk40SVI5RkNnUlVzNUhwb05sNlhHQkE?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T04:10:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "6b2bd3736868",
+    "title": "공격자보다 먼저 보안 허점 찾는다…오픈AI, 'GPT-6 사이버' 공개 - 지디넷코리아",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1pUHhjOHU3ZmtiX0h3X1YtUzFqejJOaC1BWGFxYVNmRzVINGF6cElXdGluYjVJQVJxc3JoMG1xMmF2UEtLSXpNNDVwUThNanpORGNLZGRn?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T03:03:26.000Z",
+    "category": "정책/규제",
+    "lang": "ko",
+    "tags": [
+      "GPT"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "16dcd9e66858",
+    "title": "오픈AI, 사이버보안 특화 AI 모델 ‘GPT-6 사이버' 공개 - 헬로티",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9ZOEJTRlBPMjhvbHJXdVNjb1BiYTlDUXl2TE13dHZOZjlsUERFNjBnQ2VWZENrTGExeVg2Y29mVDcwc29BTV94RnJyR2hFOWdjUDNtNS1DNFI2VFdJdnRB?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T02:24:29.000Z",
+    "category": "정책/규제",
+    "lang": "ko",
+    "tags": [
+      "GPT"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "e5fe9fe31fc2",
     "title": "오픈AI, 사이버보안 특화 모델 ‘GPT-6 사이버’ 공개 - 바이라인네트워크",
     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1ZNk5kaUgwQUZfYWg2LXpOcGZ0bGREZ3dkYnJ5TmpEUjBCNHlMMVdRMkF6Ny03Z0RXWGppbUlWdVpXMUwyX3ZFYlBUVlVKdw?oc=5",
@@ -1297,6 +2565,22 @@
     "sourceId": "koreagnews",
     "publishedAt": "2026-11-06T01:47:25.000Z",
     "category": "정책/규제",
+    "lang": "ko",
+    "tags": [
+      "GPT"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ae3265d74d1f",
+    "title": "카카오, AI 판단 특화 모델 공개···GPT-6 대비 43배 빠른 응답 - 현대경제신문",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9zVzUzWmMtMHhGSHJlTFQxNFl1b1NWWmxsNkwwRGJvazEwNUJ3eEFWWVdwUFZNUzROck91YmprQWladzkwSVIyLUd0V0lkRzZmVFB1RFU1Q1prV0UzcDRKQjlMbklHUVXSAWtBVV95cUxNbTB4SWZST2pldFZWYzUyRVprZ3F0U1lXd0hlaTByUDdzREcwbFl2anBGX1dLLUFBQkJja3BuWkFFU0dMSC1XVGgzVkJKLU41QUd5bUNYaFBTRjA1eTZ5LWRoa3VDblFtMmJ1Yw?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T01:46:03.000Z",
+    "category": "언론",
     "lang": "ko",
     "tags": [
       "GPT"
@@ -1548,6 +2832,22 @@
     "readMinutes": 1
   },
   {
+    "id": "3a6663be58fb",
+    "title": "카카오, AI 에이전트 판단 돕는 멀티모달 모델 오픈소스 공개 - 한국면세뉴스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9tSmFSWEgzTjBERGtRMFpQZXlzN1RETDVERHJLRlNvRHkxYUJEelNtbFpRTndTUW5kcHFwbmZzbGRXLTdlWEdVRU5HRWdPcldNVFVPZlJEMTJRbnA2YV8zSk5TMWkzOGlGdHc?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T01:24:49.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "오픈소스"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "21bb786ee606",
     "title": "미래에셋그룹 조직개편·임원인사…AI·디지털 전문가 전진 배치 - 매일신문",
     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE51ZThZY05uNThELVpYUklaQkt5cmFTcFdCV2FLWWI1dWwycTZsaEY1SW04OFpWVThuZ3ZqSm5haTRhUzVpOHZ5Y1ZZazBQVER6dkJITHQzUVRZZ3VrYXV1NkVn?oc=5",
@@ -1571,6 +2871,36 @@
     "category": "언론",
     "lang": "ko",
     "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "a4ba9fce20cc",
+    "title": "문장 대신 확률·점수로 답한다… 카카오, 에이전트 맞춤형 AI 모델 공개 - 아시아타임즈",
+    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBva0VBMHkxUEpCTElVU19TUlkyaG9JUEtLeEhOVlRRaFRQQXdwbk1Vb0tVUnRndUtwRnRaRm44QkxUZEx6d05sbXZKTWVWb185TEkwdndWR1VoamktRXc?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T01:13:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "1db891a68056",
+    "title": "카카오, AI 의사결정 특화 모델 '카나나' 오픈소스 공개 - 뉴스핌",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1mSEtwQlprS01NakVmVldhMXE5aFhNTGNiWlprcU1kbHBfVXgxVDBmRE5SX2c2bFhuQ2F3eWFnTWhWVm5Pd1VNTTl6bXlleFczSTliaWo3cU50M0d5?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-06T01:12:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "오픈소스"
+    ],
     "excerpt": "",
     "summary": null,
     "readMinutes": 1
@@ -1810,6 +3140,217 @@
     "readMinutes": 1
   },
   {
+    "id": "39dc88843c6e",
+    "title": "User Embeddings are Superpositions of Interpretable Behavioral Modes",
+    "url": "https://arxiv.org/abs/2611.08487v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:59:42.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "User embeddings are central components of modern recommendation, personalization, and behavioral modeling systems. Though these embeddings can compactly encode rich behavioral information, they are inherently dense and opaque, limiting interpretability. To address this gap, we argue that user embeddings can be understood as sparse superpositions of interpretable behavioral modes. This structure is directly predicted by generative models of user behavior for linear embeddings ",
+    "summary": "User embeddings are central components of modern recommendation, personalization, and behavioral modeling systems. Though these embeddings can compactly encode rich behavioral information, they are inherently dense and opaque, limiting inte",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "3de0008d9aab",
+    "title": "Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI",
+    "url": "https://arxiv.org/abs/2611.08486v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:59:33.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis. Generative AI offers new ways to realize these choices, raising questions about explanatory clarity and purposeful visual expression. We examine these questions through a visual retrospective of 371 motivation and framework figures from 200 papers. The corpus comprises a quota-based main sample of 160 papers spanning four temporal periods and a separate purposive st",
+    "summary": "Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis. Generative AI offers new ways to realize these choices, raising questions about explanatory clarity and purposeful visual expres",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "113ca84b140a",
+    "title": "Where and Why is Grounded Reasoning Useful?",
+    "url": "https://arxiv.org/abs/2611.08485v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:59:32.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Grounded reasoning, where a model outputs text coordinates of relevant locations in chain-of-thought reasoning, is a common strategy for solving complex visual reasoning problems. However, the benefits and limitations of grounded reasoning are understudied. We study where and why grounded reasoning is most useful. To do so, we introduce a chain-of-thought analysis method to measure how much a model uses its outputted grounding in its thinking trace and perform a detailed abla",
+    "summary": "Grounded reasoning, where a model outputs text coordinates of relevant locations in chain-of-thought reasoning, is a common strategy for solving complex visual reasoning problems. However, the benefits and limitations of grounded reasoning ",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "e68c75837c28",
+    "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
+    "url": "https://arxiv.org/abs/2611.08483v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:59:29.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining high-scoring methods. However, the process is often slow because the LLM generates a long textual chain of thought for each round and must repeat this generation many times to maintain population diversity. We present SwarmEvolve, a framework in which hundreds of low-cost agents per round work in swarms, reason in latent",
+    "summary": "LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining high-scoring methods. However, the process is often slow because the LLM generates",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.AI",
+      "cs.NE"
+    ]
+  },
+  {
+    "id": "625d8dd613a6",
+    "title": "Scientist World: Grow a Research World for AI-Scientists",
+    "url": "https://arxiv.org/abs/2611.08478v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:58:17.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "AI-Scientists arrived, but a world for them to grow in did not. Human scientists take theirs for granted $-$ centuries of open problems and shared ideas, waiting in the scientific literature. To AI-Scientists, that world is readable but not runnable, so we build Scientist World for them: every research paper becomes an executable environment. Our autonomous pipeline extracts each paper's open-ended research question and reproduces its proposed method as the baseline; an AI-Sc",
+    "summary": "AI-Scientists arrived, but a world for them to grow in did not. Human scientists take theirs for granted $-$ centuries of open problems and shared ideas, waiting in the scientific literature.",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "64423ebb3635",
+    "title": "EgoGeneralist: Unifying Egocentric Action-Video Tasks through Video-Native Modeling",
+    "url": "https://arxiv.org/abs/2611.08477v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:58:13.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Modern video models possess strong visual priors, yet do not natively represent human action in metric 3D space. We present EgoGeneralist, which adapts pretrained video generators to unify action-conditioned egocentric video generation, pose estimation, and joint action-video generation. Our role-adaptive action renderer provides video-native representations for multidirectional action-video learning, making metric motion usable as both a spatial control signal and a recovera",
+    "summary": "Modern video models possess strong visual priors, yet do not natively represent human action in metric 3D space. We present EgoGeneralist, which adapts pretrained video generators to unify action-conditioned egocentric video generation, pos",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "c545377ef80e",
+    "title": "XStack: A Benchmark for ML Repo Migration",
+    "url": "https://arxiv.org/abs/2611.08472v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:55:54.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "ML code should run where researchers choose, not where it was first written. Today, machine learning code mainly lives in two ecosystems, PyTorch on NVIDIA GPUs and JAX on Google TPUs. Migrating repositories between them means building and testing across frameworks and hardware. This migration is (1) a practical need, since it unlocks different hardware for researchers, and (2) a natural benchmark: it involves different frameworks and hardware, covers whole repositories, and ",
+    "summary": "ML code should run where researchers choose, not where it was first written. Today, machine learning code mainly lives in two ecosystems, PyTorch on NVIDIA GPUs and JAX on Google TPUs.",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "50aa0e3f26fe",
+    "title": "Same Behavior, Different Mechanism: What Finite Experiments Can Certify About Integrated Information",
+    "url": "https://arxiv.org/abs/2611.08469v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:55:31.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Interpretability, AI auditing and assessments of machine consciousness increasingly rest on mechanism-level quantities: functionals of a system's causal transition law that describe how it computes, not what it outputs. Experiments see that law only through finite, partial and noisy interventions. We ask when such a quantity is identifiable from an experiment's access, continuous in the mechanism and certifiable from finite data, and answer exactly for a deliberately demandin",
+    "summary": "Interpretability, AI auditing and assessments of machine consciousness increasingly rest on mechanism-level quantities: functionals of a system's causal transition law that describe how it computes, not what it outputs. Experiments see that",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "9aae8329808f",
+    "title": "Towards interpreting any residual stream direction by scaling activation inversion",
+    "url": "https://arxiv.org/abs/2611.08465v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:54:40.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "To interpret a direction in a language model's residual stream, we can look for text that strongly activates it. But when such text is found by scanning a corpus, it is limited to what that corpus contains. We develop Maximally-Activating Example Metamodels (MAEMs), language models which map residual stream directions from a subject model to text exemplars that strongly activate those directions. Our objective is to maximise the cosine similarity of a supplied residual stream",
+    "summary": "To interpret a direction in a language model's residual stream, we can look for text that strongly activates it. But when such text is found by scanning a corpus, it is limited to what that corpus contains.",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "459f32dcf918",
+    "title": "Adversarial Training with Large Step Sizes: Implicit Bias, Optimization, and Sharpness",
+    "url": "https://arxiv.org/abs/2611.08457v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:48:50.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Adversarial Training (AT) is an important method for improving model robustness. We study the dynamics of deterministic Gradient Descent (GD) in AT. Most existing works in this direction focus on the small or vanishing step sizes regime, where GD resembles a continuous-time flow. However, such step sizes can make training inefficient and are rarely used in practice. In this paper, we study the AT dynamics of GD with large constant step sizes. We first study GD in adversarial ",
+    "summary": "Adversarial Training (AT) is an important method for improving model robustness. We study the dynamics of deterministic Gradient Descent (GD) in AT.",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "c7e02e653bc2",
+    "title": "ReproBridge: Building Reproducibility into ML Research Artifacts",
+    "url": "https://arxiv.org/abs/2611.08452v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:45:36.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Reproducing machine learning experiments requires reconstructing procedures from information scattered across papers, released code, and supporting artifacts. For coding agents, reproduction success can therefore depend on their ability to fill in missing details, rather than on the released artifacts alone. We ask whether preserving recovered procedures and decisions improves subsequent independent reproduction. We define a standardized artifact design comprising a refined c",
+    "summary": "Reproducing machine learning experiments requires reconstructing procedures from information scattered across papers, released code, and supporting artifacts. For coding agents, reproduction success can therefore depend on their ability to ",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "5c0b273d1271",
+    "title": "VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding",
+    "url": "https://arxiv.org/abs/2611.08449v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:44:43.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Models for physical AI tasks, such as robotics and autonomous driving, need not reason solely in language. They can use visual plans--points, bounding boxes, and trajectories--to represent spatial goals and anticipate motion. However, autoregressive vision-language models generate these plans one coordinate token at a time, making richer predictions increasingly costly. We introduce VFlash, a method for fast, accurate visual planning through Flash Primitive Decoding. VFlash e",
+    "summary": "Models for physical AI tasks, such as robotics and autonomous driving, need not reason solely in language. They can use visual plans--points, bounding boxes, and trajectories--to represent spatial goals and anticipate motion.",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.RO",
+      "cs.CV"
+    ]
+  },
+  {
     "id": "b84179bf2225",
     "title": "MCP Explained - AI 앱과 도구를 연결하는 Model Context Protocol의 작동 방식",
     "url": "https://news.hada.io/topic?id=36665",
@@ -1836,6 +3377,188 @@
     "excerpt": "",
     "summary": null,
     "readMinutes": 1
+  },
+  {
+    "id": "344d52d71c2e",
+    "title": "Edge-Assisted Crowdsensing for Explainable Cyclist Safety Perception",
+    "url": "https://arxiv.org/abs/2611.08441v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:33:58.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic. Neither crash statistics nor multi-model detection pipelines scale to continuous monitoring of perceived safety along a route. We present an edge-assisted crowdsensing system: handlebar cameras supply street-level frames, a vision-language model (VLM) turns each frame into structured traffic attributes through a single prompt, and an explainabl",
+    "summary": "Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic. Neither crash statistics nor multi-model detection pipelines scale to continuous monitoring of perceived s",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.CV",
+      "eess.IV"
+    ]
+  },
+  {
+    "id": "8a04b51fc04b",
+    "title": "Label-Wording Augmentation in a Typed-Decision Encoder: Gains on Unfamiliar Words, Not on Abbreviations or Codes",
+    "url": "https://arxiv.org/abs/2611.08439v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:31:24.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Typed-decision models score options that the caller supplies at request time, so their accuracy depends on label wording that the model's developer does not control. We compare two releases of a 307M-parameter multilingual cross-encoder, Ru-Jev, trained on thirteen Russian-language tasks; the later release adds an augmentation that presents labels in several surface forms. Holding questions fixed and varying only how eighteen routing labels are worded, we evaluate ten label v",
+    "summary": "Typed-decision models score options that the caller supplies at request time, so their accuracy depends on label wording that the model's developer does not control. We compare two releases of a 307M-parameter multilingual cross-encoder, Ru",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "2f9567d4f464",
+    "title": "Understanding AI from the Inside: The State of Mechanistic Interpretability for AI Safety",
+    "url": "https://arxiv.org/abs/2611.08438v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:30:54.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Neural networks are likely to be among the most consequential artefacts in human history. As these systems become more capable and autonomous, their potential to cause societal harm also grows, making AI safety one of the defining challenges of our time. Yet we continue to build increasingly powerful systems without fully understanding how they work, how they will behave in unfamiliar situations, or how to reliably control them. Mechanistic interpretability offers a path towa",
+    "summary": "Neural networks are likely to be among the most consequential artefacts in human history. As these systems become more capable and autonomous, their potential to cause societal harm also grows, making AI safety one of the defining challenge",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "476dc066bc8f",
+    "title": "SM4RT: Cascaded Feed-forward Model for 4D Reconstruction",
+    "url": "https://arxiv.org/abs/2611.08436v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:28:38.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "We introduce SM4RT, a multi-task cascade feed-forward model for dynamic scene reconstruction from RGB videos. While existing feed-forward approaches typically address geometry reconstruction and motion estimation separately--and often predict motions in a single coordinate frame that must account for camera movement--SM4RT solves these tasks sequentially by first reconstructing 3D geometry and then bootstrapping motion estimation from the predicted structure. By expressing ea",
+    "summary": "We introduce SM4RT, a multi-task cascade feed-forward model for dynamic scene reconstruction from RGB videos. While existing feed-forward approaches typically address geometry reconstruction and motion estimation separately--and often predi",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "e64f34e3e3f2",
+    "title": "MedGraph: Maintaining Patient State with Graph Memory for Long-Term Medical Dialogue",
+    "url": "https://arxiv.org/abs/2611.08433v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:27:20.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "LLM-based medical assistants that follow a patient across visits need a memory that keeps the patient's clinical state correct as it changes. We examine the errors of five memory systems on longitudinal medical dialogue and find three recurring causes: the retrieved evidence gives an outdated state, includes another person's health facts, or lacks a safety fact the answer depends on. We present MedGraph, a graph memory built for these three cases. Construction extracts dated ",
+    "summary": "LLM-based medical assistants that follow a patient across visits need a memory that keeps the patient's clinical state correct as it changes. We examine the errors of five memory systems on longitudinal medical dialogue and find three recur",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "659792604f2d",
+    "title": "The Power of Meta Access in the Software of the Future --- Demonstrated on LLM Chat UIs and Chat AI",
+    "url": "https://arxiv.org/abs/2611.08428v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:22:24.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [
+      "Meta"
+    ],
+    "excerpt": "Chat remains the default surface for many large language model (LLM) tasks, even as agentic tools such as OpenCode excel at coding and automation. Yet the model sees the current dialogue but not the workspace around it. We explore meta access---giving the assistant a structured, permissioned view of the interface itself and propose a ladder of levels: feature tutoring; metadata, settings, and preference access; retrieval over summaries and messages, confirmed mutation, and fu",
+    "summary": "Chat remains the default surface for many large language model (LLM) tasks, even as agentic tools such as OpenCode excel at coding and automation. Yet the model sees the current dialogue but not the workspace around it.",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "099bd49063f7",
+    "title": "Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing",
+    "url": "https://arxiv.org/abs/2611.08425v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:21:07.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Vision-Language-Action models (VLAs) enable general-purpose embodied intelligence, but their performance is brittle under distribution shift, where unanticipated failures can damage equipment or endanger people. Deploying VLAs in real-world systems therefore requires a runtime monitor that is timely, calibrated, and informative while being efficient enough to run on the edge. Existing methods fail to fulfill these requirements. We present VLA-Tug, a lightweight probe over the",
+    "summary": "Vision-Language-Action models (VLAs) enable general-purpose embodied intelligence, but their performance is brittle under distribution shift, where unanticipated failures can damage equipment or endanger people. Deploying VLAs in real-world",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.RO",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "f3b411487e8b",
+    "title": "Benchmarks as Software: Terminal-Bench and the Case for Continuous Benchmarks",
+    "url": "https://arxiv.org/abs/2611.08417v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:18:39.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Coding agents are among the most economically consequential deployments of LLMs to date, making reliable evaluation increasingly important. Yet even benchmarks that are carefully validated at release can become stale. As models improve, they can discover valid solutions that existing verifiers reject, while changes to evaluation infrastructure can invalidate assumptions embedded in tasks and tests. We call the resulting accumulation of defects benchmark maintenance debt: a gr",
+    "summary": "Coding agents are among the most economically consequential deployments of LLMs to date, making reliable evaluation increasingly important. Yet even benchmarks that are carefully validated at release can become stale.",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "5bf6fcd0dfcf",
+    "title": "T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models",
+    "url": "https://arxiv.org/abs/2611.08413v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:17:29.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while allowing irrelevant background content to distract action prediction under distribution shift. We argue that these issues stem from two complementary forms of redundancy: many visual tokens are spatially irrelevant, while attention over the remain",
+    "summary": "Vision-Language-Action (VLA) models enable end-to-end robot control, but inference is increasingly expensive. Each decision processes hundreds of visual tokens, often across multiple cameras, leading to substantial computation while allowin",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.RO",
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "c3a0bff22293",
+    "title": "Social Humanoid: Socially Responsive Human-Humanoid Interaction",
+    "url": "https://arxiv.org/abs/2611.08407v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:14:06.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Humanoid robots are typically trained as solitary agents, leaving them unable to coordinate physically with human partners who naturally anticipate and adjust to one another. To bridge this gap, we present Social Humanoid, a hierarchical system that generates and executes socially responsive whole-body motion on a 29-DoF Unitree G1 conditioned on a human partner's motion. Its high-level policy performs flexible sequence modeling of human and humanoid motion through a shared t",
+    "summary": "Humanoid robots are typically trained as solitary agents, leaving them unable to coordinate physically with human partners who naturally anticipate and adjust to one another. To bridge this gap, we present Social Humanoid, a hierarchical sy",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.RO",
+      "cs.CV",
+      "cs.LG"
+    ]
   },
   {
     "id": "4b9dedb4b0d5",
@@ -1884,6 +3607,26 @@
     "readMinutes": 1
   },
   {
+    "id": "b202297b529d",
+    "title": "FedReason: Large Language Models as Weight-Space Meta-Aggregators for Heterogeneous Federated Learning",
+    "url": "https://arxiv.org/abs/2611.08383v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T18:00:58.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [
+      "Meta"
+    ],
+    "excerpt": "Federated learning servers combine client models with a fixed aggregation rule, and each rule in common use is designed for one kind of heterogeneity. We study whether a large language model (LLM) that inspects the client models can choose the rule itself, without any training on the server. In FedReason, the LLM is called every ten rounds. It analyses the weights by running code in a restricted server-side sandbox, sees only the printed results, may score a few candidates on",
+    "summary": "Federated learning servers combine client models with a fixed aggregation rule, and each rule in common use is designed for one kind of heterogeneity. We study whether a large language model (LLM) that inspects the client models can choose ",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CR",
+      "cs.AI"
+    ]
+  },
+  {
     "id": "b86f7c45dcb3",
     "title": "Claude can now analyze your spending with its new Personal Finance tool",
     "url": "https://techcrunch.com/2026/11/05/claude-can-now-analyze-your-spending-with-its-new-personal-finance-tool/",
@@ -1897,6 +3640,39 @@
     ],
     "excerpt": "With Personal Finance in Claude, users can connect their bank and card accounts through Plaid and ask questions about their finances.",
     "summary": "With Personal Finance in Claude, users can connect their bank and card accounts through Plaid and ask questions about their finances.",
+    "readMinutes": 1
+  },
+  {
+    "id": "ce0de58b61f8",
+    "title": "MOMASPLAT: Dynamic Novel-View Demonstration Augmentation for Mobile Manipulation",
+    "url": "https://arxiv.org/abs/2611.08372v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-05T17:50:35.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Visuomotor policies trained through imitation learning are highly sensitive to changes in camera viewpoint. This is particularly problematic for mobile manipulation (MoMa), where robots rarely execute manipulation from the exact same base pose used during demonstration collection due to navigation uncertainty, localization drift, and environmental constraints. Recent approaches use novel-view synthesis (NVS) to augment demonstrations with unseen viewpoints, but they assume st",
+    "summary": "Visuomotor policies trained through imitation learning are highly sensitive to changes in camera viewpoint. This is particularly problematic for mobile manipulation (MoMa), where robots rarely execute manipulation from the exact same base p",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.RO",
+      "cs.AI",
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "076d2eb2800a",
+    "title": "NEAR Protocol Introduces Delta League, an Open AI Model - Coinfomania",
+    "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxON0Q0UVFhLXp6SWhLQXdaMlM4TTBtbnZSc3dpaHk4Vi1IZWFUREJWUk9fSEdlQUhLT3JZaFZlRnZxbGpuMldSUW9Hdkpza3UxVXFReWFDbWxLSXBZM2JpOXFUM3ZzTTJJUHZCdEx3Mzh3OEItNzR0Ym43SzhXTTVUOXFCa1lqdw?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-05T17:11:49.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
     "readMinutes": 1
   },
   {
@@ -1969,6 +3745,22 @@
     "tags": [],
     "excerpt": "The deal is expected to support the development of DBX Agent Cloud, a new storage platform aimed at developers building AI models and agents.",
     "summary": "The deal is expected to support the development of DBX Agent Cloud, a new storage platform aimed at developers building AI models and agents.",
+    "readMinutes": 1
+  },
+  {
+    "id": "52663831996b",
+    "title": "AI 에이전트를 위한 멀티모달 의사결정 모델 ‘Kanana-2-v-decide’ 오픈소스 공개",
+    "url": "https://tech.kakao.com/posts/846",
+    "source": "카카오 기술 블로그",
+    "sourceId": "kakao-tech",
+    "publishedAt": "2026-11-05T15:00:00.000Z",
+    "category": "업계/제품",
+    "lang": "ko",
+    "tags": [
+      "오픈소스"
+    ],
+    "excerpt": "",
+    "summary": null,
     "readMinutes": 1
   },
   {
@@ -2242,6 +4034,20 @@
     "publishedAt": "2026-11-05T07:00:20.000Z",
     "category": "언론",
     "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "b5f7696df820",
+    "title": "SourceX Introduces Its AI Data Licensing Model for Businesses - Benzinga",
+    "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOFZqQUVnejBXMFlVaFkzMTRyN0hqVElBSmV1MDlWNnhzWXd3Tk5DMVBwX1NISHd2SE5ZaWpNY1FnSmlQT2ZTZGI0TWpIUFJnekxaNkZCY2RtNVhoUmRZajN3SlJDQlhMTXlfRGhteFpwMTZIXzVKTGF6aUV1dERPWnlNME5nZHpJZ1VFa3JsaWUzbW9ESFpkNzFNa2x3TFNp?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-05T07:00:12.000Z",
+    "category": "언론",
+    "lang": "en",
     "tags": [],
     "excerpt": "",
     "summary": null,
@@ -2704,6 +4510,20 @@
     ]
   },
   {
+    "id": "3d7245813040",
+    "title": "China's Tencent has announced its high-performance AI model 'Hy4' and promised to release it as an open model. - GIGAZINE",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1OVkx3Um8zSTF6cEZyT25YTHpJWEtSRXNuS2RTSGJjbUNmVTczR0c0NlZJUDFWREl4WkI3cXpwYzhWbTdtdGVROGNMNTBnV3NEVVh0Si1RSkhWMk93M01zNUJjM2o?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-05T03:29:00.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "25fa4dd18ec7",
     "title": "Setting a new standard for responsible AI infrastructure",
     "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
@@ -3158,6 +4978,20 @@
     "readMinutes": 1
   },
   {
+    "id": "587e8a8ae05d",
+    "title": "Tencent Launches Hy4, Joining the Ranks of the World’s Leading Open-Source AI Models - Tencent",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNUnNab2ZSaWM1UUQ1NUFFVEgxZzc3ZWkyWDBzQmM5ZVdSNk9xY1FCa3VUYmE1ZHFUUnoyM3ZuNHpfeWk1UUlySXlaODZUemxWU2JrS0FqTmxUUld2Ry0zNHJ3cWM3cmN0SFo4clc0OVVuSG1XTnR5dkx5UmZ2b1FxZEI2TE1UUFZXb3dmandpY2dCTEhUZGlzLWxFWmxRMnF5aDJQUUhiUVpXOG8?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-04T23:03:54.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "7aa63af445bd",
     "title": "AI PACs spent millions trying to shape Congress — here’s how they fared",
     "url": "https://techcrunch.com/2026/11/04/ai-pacs-spent-millions-trying-to-shape-congress-heres-how-they-fared/",
@@ -3379,6 +5213,20 @@
     "readMinutes": 1
   },
   {
+    "id": "3a1e8fb86167",
+    "title": "Tencent releases Hy4, a powerful frontier AI model introducing visual understanding and computer use - SiliconANGLE",
+    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNY3Nxbndub1pERHliZ2JQbGR4WkxTTnlYMG5LWU9TZzVpaGxzRl9nSHlWSm1vYUJ4U1dmRzBybDFuTVB5QUtWVS1kSlo1eF9vN2NCZzBaZEJBQjJHTWdjVFNKcWJXaTJUQWlHZUJ2Z0xFWndEOTZsTlczTXdJR2EzMHBha09JVVNiZTFyY0gyMjAwdW9zd214WnprTExrTTJ2cmdOUko3OG10WUdDQTVMT3pGQzgxSDNSN1A1RThKVmdYMWk3OVMybA?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-04T16:05:00.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "d80be490ca9c",
     "title": "과기정통부, 자율형 인공지능 이용 환경에서 철통 인증을 적용할 수 있는 안내서 발간",
     "url": "https://www.msit.go.kr/bbs/view.do?bbsSeqNo=94&nttSeqNo=3187929&sCode=user",
@@ -3407,6 +5255,20 @@
     "readMinutes": 1
   },
   {
+    "id": "084e2d7883cc",
+    "title": "XPeng Introduces GroundingPI, an Open-Source Visual Perception Model for Physical AI - AI Insider",
+    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOYWtJbEMyZk84Nm10aEtxODZkRmZ6TV9KZTBiYnNwSENoai1MZ3QzNkZOSHI0TVduOHNqYUFPbUtxdTVjTmZnejJTNTJhSWhIN09MLXN0TzhqSzlxc3NXTG4yc3RlVGttOExVVHpkWlNkOUJoYU5tLXd1MGFZS1lWWExyNFFlS3lqaW9CNHYzQkt4dFp0QzdPN0ZvWjEtbkRPWVJwVWJad3FVVjhXQzFGb1k0T20tM09yR1JUNlFB?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-04T12:54:25.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "7a10f92c49e1",
     "title": "[기고] AI시대, 변화하는 대학교육 - 경인일보",
     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9XWjFVTmQ3el9INmRXaWI4U1pXdmJQUXlTNGpyVm5XaDhFd19kWWhYR25KVlZQT0FGWXppaUI1YXA5cEJRd0pzVG9Ld0R1eFlxOEE?oc=5",
@@ -3415,6 +5277,20 @@
     "publishedAt": "2026-11-04T11:32:22.000Z",
     "category": "언론",
     "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "0802c2a1149b",
+    "title": "Jefferies reiterates Tencent stock rating on AI model release By Investing.com - Investing.com India",
+    "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNdDZlZHV2NmpTajdnN2VrWkxxVDhaUVJpTlZVVE1ZOG85Y3BxcnZyVXVUS3QtcGhzLWRjMkFPN0ZqMDZPVDdJc1B1ZUhMQ3N1WWZWNW9nN1lPOFZVWm5fMmlnRmtCMk41VHQtSUUzckhIV2FhTFlIb1lWbmdPZ2VWY3NHV0VHV2tvandDYVpQdTlBZVh1RWFmT0xuZThVWVhxOVpkV0Q4WVZTcVNsXzBFRno1Sy1qX1hUU0ZRYU5JZw?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-04T11:26:38.000Z",
+    "category": "언론",
+    "lang": "en",
     "tags": [],
     "excerpt": "",
     "summary": null,
@@ -3443,6 +5319,20 @@
     "publishedAt": "2026-11-04T11:09:00.000Z",
     "category": "언론",
     "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "a4e29f1cf231",
+    "title": "Tencent Introduces Hy4 AI Model With Cybersecurity Training Restrictions to Reduce Hacking Risks - CXO Digitalpulse",
+    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOSmNlcWxVNW5FZEh5ZzgxT1lOSXhJcGVvNjV1LWhHNy1NZWJaMVpTMTExanR2VmtOdVdtbUJFUUN0enczdVVIeVJqM3N1WU1CUlZ4eW1yb2dwdXVpV29zNGFLMUlDNndzb25wS1AyRGhqNnEzX1V3TVJnS2xKVTZQS1hJUlEtdlE2QUV4UkptNUtwN21kSEtrc0FNN2tHM3RjUHR4X0Z2aERDNjl2ZTVLMEwyWGFjODFuOFpnSXI3ZFJkbldneFdfRw?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-11-04T11:03:45.000Z",
+    "category": "정책/규제",
+    "lang": "en",
     "tags": [],
     "excerpt": "",
     "summary": null,
@@ -13141,6 +15031,20 @@
     "readMinutes": 1
   },
   {
+    "id": "b4f3207a2bd6",
+    "title": "팀이 신뢰할 수 있는 AI 분석 환경 만들기: 추천팀의 컨텍스트 설계",
+    "url": "https://tech.kakao.com/posts/844",
+    "source": "카카오 기술 블로그",
+    "sourceId": "kakao-tech",
+    "publishedAt": "2026-10-27T15:00:00.000Z",
+    "category": "업계/제품",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "85ac4ac1de7c",
     "title": "인공지능으로 이룬 공공혁신, 국민이 누리는 변화 「2026 공공기관 인공지능 혁신 성과대회」 개최",
     "url": "https://www.msit.go.kr/bbs/view.do?bbsSeqNo=94&nttSeqNo=3187898&sCode=user",
@@ -13553,6 +15457,20 @@
     "readMinutes": 1
   },
   {
+    "id": "5c5a1a59f2ed",
+    "title": "카카오 AI 돛 Summit 26 다시보기 공개 — AI 인프라부터 서비스 적용, 개발과 창업까지",
+    "url": "https://tech.kakao.com/posts/842",
+    "source": "카카오 기술 블로그",
+    "sourceId": "kakao-tech",
+    "publishedAt": "2026-10-21T15:00:00.000Z",
+    "category": "업계/제품",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "c2ed162a1577",
     "title": "Granite Speech 5.0: Transcribe, Translate, and Attribute more Accurately and Faster",
     "url": "https://huggingface.co/blog/ibm-granite/granite-speech-5",
@@ -13595,6 +15513,20 @@
     "excerpt": "Three Java Champions share how they use GitHub Copilot to solve problems, accelerate development, and keep humans responsible for the results. The post How 3 Java Champions are using GitHub Copilot for increased productivity appeared first on The GitHub Blog.",
     "summary": "Three Java Champions share how they use GitHub Copilot to solve problems, accelerate development, and keep humans responsible for the results. The post How 3 Java Champions are using GitHub Copilot for increased productivity appeared first ",
     "readMinutes": 2
+  },
+  {
+    "id": "0c558893870a",
+    "title": "글로벌 최고 수준의 자체 비전 인코더, Kanana-2-vision-encoder 개발기",
+    "url": "https://tech.kakao.com/posts/840",
+    "source": "카카오 기술 블로그",
+    "sourceId": "kakao-tech",
+    "publishedAt": "2026-10-20T15:00:00.000Z",
+    "category": "업계/제품",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
   },
   {
     "id": "cb0bf0e1617e",
@@ -14013,6 +15945,20 @@
     "readMinutes": 1
   },
   {
+    "id": "fc89193f6857",
+    "title": "NASA, IBM Launch AI Foundation Model for Lunar Science - NASA Science (.gov)",
+    "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNaFlWQjYwaUlKUDJBcXY5dnVhMFBab2pnUGFpRVVrdU42b2NuaDhzUms2RDRsakc3RS0tSUpUV3prTWNRTUtqWnJrZUl1YXJLTFZGcVpBb0lLMlJKa2U1Yml0clEzT3hHdkVoM0lwMU9BU2ozcTRYeG80dlBRR18ycElfYXNUeFFQZFByb2ZiVkgtWkU?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-09-10T07:00:00.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "2b0379511ea0",
     "title": "Introducing WeatherNext 3, our most advanced and accurate global weather AI model",
     "url": "https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/",
@@ -14043,6 +15989,37 @@
     "readMinutes": 1
   },
   {
+    "id": "2133d117f80e",
+    "title": "Uncovering the Trump administration’s secret rules for AI model release - Protect Democracy",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNMENTR290by00UjVSdEFHMFhhZV9fMkJNM3ZVSDI3UFNLV015dVE0OXllb1MzZF9PcjcwWWpqT0QyTElPeGd6WmdIWEZrT0M4OS1vUE5ZT3VpNC1WMnUwZEdVOU04dnUzTmpOQmxoNnlaZFluNHdEaGZ5R1NQRjVXTURJT0dUUFNSbFZNVkJNSkZGZkN5MEIxMW9POXZsOHIzOGhabEFEODQ?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-09-02T07:00:00.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "8b9d6213d2f5",
+    "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber - blog.google",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPam1wVmhCUF9BYU11WDFMS1ZOSmlIQUpiTlF6a1RLQlpQZ0R0Y3M5M0hoTExZN0t5Q0FwbTZ5c3B3T2pzWFdZTnp1ZWVfdi1QZmdQeHlHcEFYUFhvbWw4TEdJamNqT3pYZnM3VGU1ckRYVXJWTzRyeXIzb21XT0NscnBqUXZzRW1HcS1lT05IODJOWGp2eC02bDd0ejRIRXRYTXMtbQ?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-09-02T07:00:00.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [
+      "Gemini",
+      "Google"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "20b040f8e58f",
     "title": "Introducing agentic video understanding with Gemini",
     "url": "https://deepmind.google/blog/introducing-agentic-video-in-gemini/",
@@ -14054,6 +16031,20 @@
     "tags": [
       "Gemini"
     ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ccd0a3329fa5",
+    "title": "OpenAI says Astra AI model is its first that crosses 'Critical' cybersecurity capability - CNBC",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9tRnVRNXpxZ0NmUjZibXQ2Y183dWI5dHlJcWhETElkdDB4cjhIUFNUaVlHYzlBZFRtMkhXcEM1aXdWeTZ5Z2xRbDh6YmlNN3h0N2VjenJILW5Ydm95aUliY0NEVkxSUldQWHBLVGUzVdIBdEFVX3lxTE92bmN2a3h0MGVUWGQ2SFZ3clE5emhJTGMxT3NpU0NFMWZGSVJaTXVidHI4YnIwZUNnQ2J1aDNNcFpUSkZybjczQ3VwN09zTGJYdU5LLWFBcGU3UEVrVjZGNzFTQm94S2liRUN1Q081SG1peVRo?oc=5",
+    "source": "Google 뉴스 모델 출시 (영어)",
+    "sourceId": "model-release-en",
+    "publishedAt": "2026-09-01T07:00:00.000Z",
+    "category": "정책/규제",
+    "lang": "en",
+    "tags": [],
     "excerpt": "",
     "summary": null,
     "readMinutes": 1
