@@ -52,3 +52,20 @@ test('정상 목록의 중복 URL은 제거하고 제외 건수 기록', async (
   assert.equal(result.source.received, 2);
   assert.equal(result.source.rejected, 1);
 });
+
+test('Google 후보도 확인된 국내 현장 또는 온라인만 즉시 수집하고 이전 온라인 상태를 재노출하지 않는다', async () => {
+  const old = normalizeGoogleEvent('1', item, now);
+  const changed = { ...item, audience_type: 'IN_PERSON', venue_details: { venue_city: 'Cairo' } };
+  assert.equal(normalizeGoogleEvent('1', changed, now), null);
+  assert.equal(normalizeGoogleEvent('2', { ...item, audience_type: 'IN_PERSON', venue_details: { venue_city: '서울' } }, now)?.isOnline, false);
+  assert.equal(normalizeGoogleEvent('3', { ...item, audience_type: 'IN_PERSON', venue_details: {}, chapter_latitude: 37.56, chapter_longitude: 126.97 }, now), null);
+  const result = await collectGoogleEvents([old], now, async () => JSON.stringify({ 1: changed }));
+  assert.equal(result.events.length, 0);
+});
+
+test('공식 데이터가 하이브리드를 명시하면 해외 행사도 온라인 참여 가능으로 수집한다', () => {
+  const hybrid = normalizeGoogleEvent('hybrid', { ...item, audience_type: 'HYBRID', venue_details: { venue_city: 'Cairo' } }, now);
+  assert.equal(hybrid?.isOnline, true);
+  assert.equal(hybrid?.attendanceMode, 'hybrid');
+  assert.equal(isCalendarEvent(hybrid), true);
+});

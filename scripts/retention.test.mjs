@@ -132,7 +132,7 @@ test('정상 행사 목록에서 사라지거나 출처가 실패해도 보관 �
 });
 
 test('RSS의 별도 취소 공지도 같은 링크 기존 일정에 반영하며 샘플 날짜를 만들지 않음', async () => {
-  const old = rssItemToEvent(source, { title: 'AI 워크숍 모집', link: 'https://example.org/event', contentSnippet: '신청 마감: 2026.11.01\n행사 일시: 2026.11.10 14:00' }, now);
+  const old = rssItemToEvent(source, { title: 'AI 워크숍 모집', link: 'https://example.org/event', contentSnippet: '신청 마감: 2026.11.01\n행사 일시: 2026.11.10 14:00\n진행 방식: 온라인' }, now);
   const result = await collectCalendar([source], async () => ({ items: [{ title: '[취소] AI 워크숍', link: old.url }] }), [old], now);
   assert.equal(result.events[0].status, 'cancelled');
   assert.equal(result.events[0].scheduleUnknown, true);

@@ -9,6 +9,7 @@ test('국내에서 참석 가능한 근거가 있는 행사만 허용한다', ()
   assert.equal(isAccessibleFromKorea({ ...event, isOnline: true }), true);
   assert.equal(isAccessibleFromKorea({ ...event, isOnline: null }), false);
   assert.equal(isAccessibleFromKorea({ ...event, location: '서울', isOnline: false }), true);
+  assert.equal(isAccessibleFromKorea({ ...event, location: '서울특별시 강남구', isOnline: false }), true);
   assert.equal(isAccessibleFromKorea({ ...event, location: '서울', isOnline: null }), false);
   assert.equal(isAccessibleFromKorea({ ...event, host: 'NVIDIA Korea', location: null, isOnline: null }), false);
   assert.equal(isAccessibleFromKorea({ ...event, host: 'GDG Seoul, South Korea', location: null, territory: 'domestic', territoryBasis: 'community-location', isOnline: false }), false);

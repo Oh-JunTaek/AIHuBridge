@@ -102,6 +102,7 @@ export interface CalendarEvent {
 
   // 분포
   isOnline: boolean | null;
+  attendanceMode?: 'hybrid';         // 제공처가 온라인·현장 병행을 명시한 경우
   location: string | null;          // 미확인 시 null
   feeType: 'free' | 'paid' | 'unknown';
   feeAmount: number | null;         // 유료 시 금액 (KRW)

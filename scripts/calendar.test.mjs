@@ -23,6 +23,7 @@ test('명시적 마감일과 행사일을 구분하고 날짜만 있으면 한�
 test('게시일만 있는 공고와 연도 없는 마감일은 제외', () => {
   assert.equal(rssItemToEvent(source, item('참가자를 모집합니다'), now), null);
   assert.equal(rssItemToEvent(source, item('신청 마감: 11.20'), now), null);
+  assert.equal(rssItemToEvent(source, item('신청 일시: 2026.11.20\n진행 방식: 온라인'), now), null);
 });
 test('신청 마감 후에도 개최 전 행사는 유지하고 마감 상태로 변경', () => {
   const result = event();
@@ -69,7 +70,7 @@ test('마감까지 24시간 미만이어도 한국시간 날짜 차이로 D-day 
   assert.equal(deadlineLabel(null, now), null);
 });
 test('출처 실패 시 검증된 미마감 데이터만 보존', async () => {
-  const old = event();
+  const old = { ...event(), isOnline: true };
   const result = await collectCalendar([source], async () => { throw new Error('검사용 연결 실패'); }, [old, { ...old, id: 'expired', applicationEnd: '2026-10-24T00:00:00.000Z' }], now);
   assert.equal(result.events.length, 1);
   assert.equal(result.events[0].fetchedAt, old.fetchedAt);
@@ -85,4 +86,31 @@ test('스크립트 URL·배열이 아닌 RSS 응답 거부', async () => {
   assert.equal(rssItemToEvent(source, { ...item(), link: 'javascript:alert(1)' }, now), null);
   const result = await collectCalendar([source], async () => ({ items: '잘못된 응답' }), [], now);
   assert.equal(result.sources[0].status, 'error');
+});
+
+test('수집 단계에서 명시된 국내 현장·온라인 일정만 수용하고 개최일만 있으면 시각을 추정하지 않는다', async () => {
+  const records = [
+    { ...item('행사 일시: 2026.11.22\n진행 방식: 온라인'), link: 'https://example.org/online' },
+    { ...item('행사 일시: 2026.11.22 14:00\n진행 방식: 오프라인\n장소: 서울 코엑스'), link: 'https://example.org/seoul' },
+    { ...item('행사 일시: 2026.11.22\n진행 방식: 오프라인\n장소: Cairo'), link: 'https://example.org/cairo' },
+    { ...item('행사 일시: 2026.11.22\n장소: 온라인 신청 후 안내'), link: 'https://example.org/application' },
+    { ...item('행사 일시: 2026.11.22\n진행 방식: 온라인\n한국에서 접속 불가'), link: 'https://example.org/restricted' },
+    { ...item('행사 일시: 2026.11.22\n진행 방식: 온라인 또는 오프라인'), link: 'https://example.org/ambiguous' },
+  ];
+  const result = await collectCalendar([source], async () => ({ items: records }), [], now);
+  assert.deepEqual(new Set(result.events.map((value) => value.url)), new Set(['https://example.org/online', 'https://example.org/seoul']));
+  const online = result.events.find((value) => value.url.endsWith('/online'));
+  assert.equal(online.eventDate, '2026-11-22');
+  assert.equal(online.eventStart, null);
+  assert.equal(online.applicationEnd, null);
+  assert.equal(result.events.find((value) => value.url.endsWith('/seoul')).location, '서울 코엑스');
+});
+
+test('이전 온라인 공고가 해외 현장으로 변경되면 과거 온라인 상태를 재사용하지 않는다', async () => {
+  const old = rssItemToEvent(source, item('행사 일시: 2026.11.22\n진행 방식: 온라인'), now);
+  const updated = item('행사 일시: 2026.11.22\n진행 방식: 오프라인\n장소: Cairo');
+  const result = await collectCalendar([source], async () => ({ items: [updated] }), [old], now);
+  assert.equal(result.events.length, 0);
+  const failure = await collectCalendar([source], async () => { throw new Error('장애'); }, [old], now);
+  assert.equal(failure.events.length, 1);
 });

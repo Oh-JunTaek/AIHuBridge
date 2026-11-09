@@ -100,6 +100,7 @@ test('캘린더 전체 기간에도 국내 참여 근거가 없는 행사는 표
     event('unknown', '방식 미확인 행사', { location: null, region: null, host: 'NVIDIA Korea', isOnline: null }),
     event('community', '국내 커뮤니티 장소 미확인', { location: null, region: null, territory: 'domestic', territoryBasis: 'community-location', isOnline: false }),
     event('online', '참여 가능한 온라인 행사', { location: 'Cairo', region: 'Cairo', isOnline: true }),
+    event('hybrid', '온라인 병행 행사', { location: 'Cairo', region: 'Cairo', isOnline: true, attendanceMode: 'hybrid' }),
     event('limited', '온라인 행사 US residents only', { location: null, region: null, isOnline: true }),
   ];
   await page.route('**/data/calendar.json', (route) => route.fulfill({ json: items }));
@@ -108,6 +109,7 @@ test('캘린더 전체 기간에도 국내 참여 근거가 없는 행사는 표
   if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: /탐색 조건/ }).click();
   await page.getByRole('button', { name: '전체 기간', exact: true }).click();
   await expect(page.getByRole('heading', { name: '참여 가능한 온라인 행사' })).toBeVisible();
+  await expect(page.getByRole('article').filter({ has: page.getByRole('heading', { name: '온라인 병행 행사' }) }).getByText('진행 방식: 온라인·현장 병행', { exact: false })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
   for (const title of ['해외 현장 행사', '방식 미확인 행사', '국내 커뮤니티 장소 미확인', '온라인 행사 US residents only']) await expect(page.getByRole('heading', { name: title })).toHaveCount(0);
   await expect(page.getByRole('button', { name: '해외', exact: true })).toHaveCount(0);

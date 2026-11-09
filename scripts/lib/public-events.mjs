@@ -2,6 +2,7 @@ import { isWebUrl, retainedEvents } from '../../src/lib/calendar-rules.mjs';
 import { noticeStatus, observeNotice, mergeCalendarHistory } from './calendar-history.mjs';
 import { readPublicText } from './rss.mjs';
 import { communityRegion } from './community-region.mjs';
+import { isAccessibleFromKorea } from '../../src/lib/calendar-audience.mjs';
 
 export const googleEventsSource = {
   id: 'google-developer-events', name: 'Google 개발자 커뮤니티',
@@ -40,7 +41,8 @@ export function normalizeGoogleEvent(id, item, now = Date.now()) {
     host: typeof item.chapter_name === 'string' && item.chapter_name.trim() ? item.chapter_name.trim() : googleEventsSource.name,
     type, category: 'general', applicationStart: null, applicationEnd: null,
     eventStart: null, eventEnd: null, eventDate: item.start_date, eventEndDate: item.end_date || null,
-    isOnline: item.audience_type === 'VIRTUAL' ? true : item.audience_type === 'IN_PERSON' ? false : null,
+    isOnline: ['VIRTUAL', 'HYBRID'].includes(item.audience_type) ? true : item.audience_type === 'IN_PERSON' ? false : null,
+    ...(item.audience_type === 'HYBRID' ? { attendanceMode: 'hybrid' } : {}),
     location, region: location, feeType: 'unknown', feeAmount: null,
     territory: communityRegion(item.chapter_latitude, item.chapter_longitude), territoryBasis: 'community-location',
     url: url.href, status: noticeStatus(title) || 'announced', confirmedAt: null, publishedAt: null,
@@ -49,7 +51,7 @@ export function normalizeGoogleEvent(id, item, now = Date.now()) {
     sourceUrl: googleEventsSource.sourceUrl, lang: 'unknown',
     topics: tags.split(',').map((tag) => tag.trim()).filter(Boolean).slice(0, 8),
   };
-  return retainedEvents([event], now)[0] ?? null;
+  return isAccessibleFromKorea(event) ? retainedEvents([event], now)[0] ?? null : null;
 }
 
 export async function collectGoogleEvents(previous = [], now = Date.now(), read = readPublicText) {
@@ -67,13 +69,14 @@ export async function collectGoogleEvents(previous = [], now = Date.now(), read 
       if (!event && old && noticeStatus(item.event_title)) {
         event = { ...old, title: item.event_title, scheduleUnknown: true, fetchedAt: new Date(now).toISOString() };
       }
-      return event ? observeNotice(event, old, now) : null;
+      return event && isAccessibleFromKorea(event) ? observeNotice(event, old, now) : null;
     }).filter(Boolean), now);
-    const old = previous.filter((event) => event.sourceId === googleEventsSource.id);
+    const seenIds = new Set(entries.map(([id]) => `gdg-${id}`));
+    const old = previous.filter((event) => event.sourceId === googleEventsSource.id && isAccessibleFromKorea(event) && !seenIds.has(event.id));
     const events = mergeCalendarHistory(fresh, old, now);
     return { events, source: { id: googleEventsSource.id, status: 'success', received: entries.length, accepted: fresh.length, retained: events.length - fresh.length, rejected: entries.length - fresh.length } };
   } catch (error) {
-    const events = retainedEvents(previous.filter((event) => event.sourceId === googleEventsSource.id), now);
+    const events = retainedEvents(previous.filter((event) => event.sourceId === googleEventsSource.id && isAccessibleFromKorea(event)), now);
     return { events, source: { id: googleEventsSource.id, status: 'error', retained: events.length, error: String(error.message || error) } };
   }
 }
