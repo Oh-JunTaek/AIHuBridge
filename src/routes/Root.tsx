@@ -1,10 +1,17 @@
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SiteNavigation } from '../components/SiteNavigation';
 
 export default function Root() {
   const { pathname } = useLocation();
   const main = useRef<HTMLElement>(null);
+  const [showTop, setShowTop] = useState(false);
+  useEffect(() => {
+    const update = () => setShowTop(window.scrollY > 400);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, []);
   useEffect(() => {
     const container = main.current;
     if (!container || !window.matchMedia('(max-width: 760px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
@@ -44,7 +51,7 @@ export default function Root() {
         <div key={pathname} className="page-entry"><Outlet /></div>
       </main>
 
-      <button type="button" className="back-to-top" aria-label="페이지 맨 위로 이동" onClick={() => { document.getElementById('main-content')?.focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }}>
+      <button type="button" className="back-to-top" hidden={!showTop} aria-label="페이지 맨 위로 이동" onClick={() => { document.getElementById('main-content')?.focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }}>
         <span aria-hidden="true">TOP</span>
       </button>
       <footer className="mt-16 border-t border-stone-200 dark:border-stone-700 py-4 text-center text-xs text-stone-400 dark:text-stone-500">

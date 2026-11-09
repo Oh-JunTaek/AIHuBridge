@@ -77,6 +77,17 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   }
 });
 
+test('맨 위로 이동 버튼은 스크롤 후 나타나고 본문 시작으로 이동한다', async ({ page }) => {
+  await page.goto('learning');
+  const top = page.getByRole('button', { name: '페이지 맨 위로 이동' });
+  await expect(top).toBeHidden();
+  await page.getByRole('link', { name: '개인정보 처리방침' }).scrollIntoViewIfNeeded();
+  await expect(top).toBeVisible();
+  await top.click();
+  await expect(page.locator('#main-content')).toBeFocused();
+  await expect(top).toBeHidden();
+});
+
 test('캘린더 유형과 지역 선택 및 행사 상세가 함께 동작한다', async ({ page }, testInfo) => {
   await page.clock.setFixedTime(new Date('2026-11-09T11:30:00Z'));
   await page.route('**/data/calendar.json', (route) => route.fulfill({ json: [] }));
