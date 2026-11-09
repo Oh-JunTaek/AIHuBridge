@@ -34,3 +34,24 @@ export function matchesRegion(event, query) {
   return normalize(`${event.host} ${event.location ?? ''} ${event.region ?? ''}`).includes(normalize(query.trim()));
 }
 
+// 실제 행사 장소만 사용하며 주최 커뮤니티 위치로 개최지를 추정하지 않는다.
+export function matchesCalendarRegion(event, region) {
+  if (region === 'all') return true;
+  if (region === 'online') return event.isOnline === true;
+  const location = (event.location ?? '').trim().toLowerCase();
+  const patterns = {
+    seoul: /^(서울|seoul)(?:$|[\s,\-]|특별시)/i,
+    gyeonggi: /^(경기|gyeonggi|수원|suwon|성남|seongnam|판교|pangyo|시흥|siheung|용인|yongin|고양|goyang)(?:$|[\s,\-]|도|시|구)/i,
+    busan: /^(부산|busan)(?:$|[\s,\-]|광역시)/i,
+    incheon: /^(인천|incheon)(?:$|[\s,\-]|광역시)/i,
+    daegu: /^(대구|daegu)(?:$|[\s,\-]|광역시)/i,
+    daejeon: /^(대전|daejeon)(?:$|[\s,\-]|광역시)/i,
+    gwangju: /^(광주|gwangju)(?:$|[\s,\-]|광역시)/i,
+    ulsan: /^(울산|ulsan)(?:$|[\s,\-]|광역시)/i,
+    sejong: /^(세종|sejong)(?:$|[\s,\-]|특별자치시)/i,
+  };
+  // 단독 광주는 경기 광주시와 광주광역시를 구별할 수 없다.
+  if (region === 'gwangju' && /^(광주|gwangju)(?:$|[\s,\-])/i.test(location)) return false;
+  return Boolean(patterns[region]?.test(location));
+}
+

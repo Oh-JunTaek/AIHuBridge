@@ -69,7 +69,7 @@ export function CalendarMonth({ events, month, today, selectedDay, onMonthChange
           );
         })}
       </div>
-      <footer className="space-y-2 border-t border-stone-100 px-4 py-3 text-xs text-stone-500 dark:border-stone-800"><div className="flex flex-wrap gap-x-3 gap-y-2">{Object.entries(eventTypeLabels).map(([type, label]) => <span key={type}><span aria-hidden="true" className={`mr-1 inline-block rounded px-1 font-semibold ${badgeColors[type as keyof typeof badgeColors]}`}>{label.slice(0, 1)}</span>{label}</span>)}</div><p>같은 유형은 뱃지 하나로 묶고 추가 건수를 +숫자로 표시합니다. !는 취소·연기 포함입니다. 날짜를 선택해 상세 일정을 확인하세요.</p></footer>
+      <footer className="border-t border-stone-100 px-4 py-3 text-xs text-stone-500 dark:border-stone-800">같은 유형은 뱃지 하나로 묶고 추가 건수를 +숫자로 표시합니다. !는 취소·연기 포함입니다. 날짜를 선택해 상세 일정을 확인하세요.</footer>
     </section>
   );
 }

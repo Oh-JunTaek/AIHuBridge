@@ -77,18 +77,28 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   }
 });
 
-test('수동 확인한 국내 행사와 한영 지역 검색이 기본 달력에 반영된다', async ({ page }, testInfo) => {
+test('캘린더 유형과 지역 선택 및 행사 상세가 함께 동작한다', async ({ page }, testInfo) => {
   await page.clock.setFixedTime(new Date('2026-11-09T11:30:00Z'));
   await page.route('**/data/calendar.json', (route) => route.fulfill({ json: [] }));
   await page.route('**/data/calendar-meta.json', (route) => route.fulfill({ json: { fetchedAt: '2026-11-09T11:00:00Z', status: 'success' } }));
   await page.goto('calendar');
   if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: /탐색 조건/ }).click();
-  await page.getByLabel('지역 검색').fill('Seoul');
-  await expect(page.getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'NVIDIA AI Day Seoul 2026' })).toBeVisible();
-  await page.getByLabel('지역 검색').fill('서울');
-  await expect(page.getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
-  await expect(page.getByText('항목 수동 확인', { exact: false }).first()).toBeVisible();
+  await page.getByLabel('지역', { exact: true }).selectOption('seoul');
+  const intel = page.getByRole('button', { name: /Intel AI Summit Seoul 2026/ });
+  await expect(intel).toBeVisible();
+  await expect(page.getByRole('button', { name: /NVIDIA AI Day Seoul 2026/ })).toBeVisible();
+  await intel.click();
+  const dialog = page.getByRole('dialog', { name: '행사 상세 정보' });
+  await expect(dialog.getByText('항목 수동 확인', { exact: false })).toBeVisible();
+  await expect(dialog.getByText('참가 비용:', { exact: false })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(dialog).not.toBeVisible();
+  await expect(intel).toBeFocused();
+  await page.getByRole('button', { name: '해커톤', exact: true }).click();
+  await expect(page.getByRole('button', { name: '해커톤', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(intel).toHaveCount(0);
+  await page.getByRole('button', { name: '목록 보기' }).click();
+  await expect(page.getByRole('button', { name: '해커톤', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('캘린더 전체 기간에도 국내 참여 근거가 없는 행사는 표시하지 않는다', async ({ page }, testInfo) => {
@@ -108,10 +118,16 @@ test('캘린더 전체 기간에도 국내 참여 근거가 없는 행사는 표
   await page.goto('calendar');
   if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: /탐색 조건/ }).click();
   await page.getByRole('button', { name: '전체 기간', exact: true }).click();
-  await expect(page.getByRole('heading', { name: '참여 가능한 온라인 행사' })).toBeVisible();
-  await expect(page.getByRole('article').filter({ has: page.getByRole('heading', { name: '온라인 병행 행사' }) }).getByText('진행 방식: 온라인·현장 병행', { exact: false })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
-  for (const title of ['해외 현장 행사', '방식 미확인 행사', '국내 커뮤니티 장소 미확인', '온라인 행사 US residents only']) await expect(page.getByRole('heading', { name: title })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /참여 가능한 온라인 행사/ })).toBeVisible();
+  await page.getByRole('button', { name: /온라인 병행 행사/ }).click();
+  await expect(page.getByRole('dialog').getByText('진행 방식: 온라인·현장 병행', { exact: false })).toBeVisible();
+  await page.getByRole('button', { name: '행사 상세 닫기' }).click();
+  await expect(page.getByRole('button', { name: /Intel AI Summit Seoul 2026/ })).toBeVisible();
+  await page.getByLabel('지역', { exact: true }).selectOption('online');
+  await expect(page.getByRole('button', { name: /참여 가능한 온라인 행사/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /온라인 병행 행사/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Intel AI Summit Seoul 2026/ })).toHaveCount(0);
+  for (const title of ['해외 현장 행사', '방식 미확인 행사', '국내 커뮤니티 장소 미확인', '온라인 행사 US residents only']) await expect(page.getByRole('button', { name: title })).toHaveCount(0);
   await expect(page.getByRole('button', { name: '해외', exact: true })).toHaveCount(0);
 });
 

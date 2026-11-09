@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { eventTerritory, isAccessibleFromKorea, matchesRegion } from '../src/lib/calendar-audience.mjs';
+import { eventTerritory, isAccessibleFromKorea, matchesRegion, matchesCalendarRegion } from '../src/lib/calendar-audience.mjs';
 import { communityRegion } from './lib/community-region.mjs';
 const event = { host: 'GDG on Campus Example - London, United Kingdom', location: 'London', isOnline: false };
 
@@ -32,6 +32,18 @@ test('지역 검색은 서울·Seoul 등 한영 도시명을 같은 지역으로
   assert.equal(matchesRegion({ ...event, location: 'Busan' }, '부산'), true);
   assert.equal(matchesRegion(event, '서울'), false);
   assert.equal(matchesRegion(event, ''), true);
+});
+
+test('선택 지역은 실제 개최지로 판단하며 온라인은 지역과 관계없이 찾는다', () => {
+  assert.equal(matchesCalendarRegion({ ...event, location: 'Seoul' }, 'seoul'), true);
+  assert.equal(matchesCalendarRegion({ ...event, location: '경기도 성남시' }, 'gyeonggi'), true);
+  assert.equal(matchesCalendarRegion({ ...event, location: 'Pangyo' }, 'gyeonggi'), true);
+  assert.equal(matchesCalendarRegion({ ...event, location: '경기도 광주시' }, 'gwangju'), false);
+  assert.equal(matchesCalendarRegion({ ...event, location: '광주' }, 'gwangju'), false);
+  assert.equal(matchesCalendarRegion({ ...event, location: '광주광역시' }, 'gwangju'), true);
+  assert.equal(matchesCalendarRegion({ ...event, host: 'Seoul', location: null }, 'seoul'), false);
+  assert.equal(matchesCalendarRegion({ ...event, isOnline: true }, 'online'), true);
+  assert.equal(matchesCalendarRegion(event, 'online'), false);
 });
 
 test('공개 커뮤니티 위치의 대한민국 경계와 해외·미확인을 구분', () => {
