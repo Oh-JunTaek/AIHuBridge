@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useCalendarStore } from '../lib/calendar';
 import { visibleEvents, registrationMatches } from '../lib/calendar-rules.mjs';
 import { koreaDate, periodEvents } from '../lib/calendar-view.mjs';
-import { matchesAudience } from '../lib/calendar-audience.mjs';
+import { matchesAudience, matchesRegion } from '../lib/calendar-audience.mjs';
 import { CalendarMonth } from '../components/CalendarMonth';
 import { CalendarEventCard, eventTypeLabels } from '../components/CalendarEventCard';
 
@@ -41,7 +41,7 @@ export default function Calendar() {
     && (fee === 'all' || event.feeType === fee)
     && registrationMatches(event, registration, now)
     && (event.title + ' ' + event.host + ' ' + (event.topics ?? []).join(' ')).toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())
-    && (event.host + ' ' + (event.location ?? '') + ' ' + (event.region ?? '')).toLocaleLowerCase().includes(region.trim().toLocaleLowerCase()));
+    && matchesRegion(event, region));
   const monthEvents = periodEvents(filtered, month);
   const shown = periodEvents(filtered, month, selectedDay, scope === 'all');
   const stale = !meta || now - Date.parse(meta.fetchedAt) > 36 * 3600000;

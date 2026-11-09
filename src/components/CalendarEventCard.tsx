@@ -24,7 +24,7 @@ export function CalendarEventCard({ event, now }: { event: CalendarEvent; now: n
               <p>진행 방식: {event.isOnline === null ? '미확인' : event.isOnline ? '온라인' : '오프라인'}{event.location ? ' · ' + event.location : ''}</p>
               <p>참가 비용: {event.feeType === 'unknown' ? '미확인' : event.feeType === 'free' ? '무료' : event.feeAmount === null ? '유료 (금액 미확인)' : event.feeAmount.toLocaleString('ko-KR') + '원'}</p>
               <p className="text-xs">일정 근거: {event.dateEvidence}</p>
-              <p className="text-xs">항목 마지막 수집: {format(event.fetchedAt)} · 원문에서 변경 여부 확인</p>
+              <p className="text-xs">{event.verification === 'manual' ? '항목 수동 확인' : '항목 마지막 수집'}: {format(event.fetchedAt)} · 원문에서 변경 여부 확인</p>
               {event.topics && event.topics.length > 0 && <p className="text-xs">주제: {event.topics.join(' · ')}</p>}
               <p className="text-xs">{event.verification === 'manual' && event.confirmedAt ? '내용 확인: ' + format(event.confirmedAt) : event.verification === 'public-event' ? '공개 커뮤니티 일정 · 신청 가능 여부는 원문 확인' : 'RSS 공고에 명시된 일정 · 수동 확인 전'}</p>
             </div>

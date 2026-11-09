@@ -76,6 +76,20 @@ test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   }
 });
 
+test('수동 확인한 국내 행사와 한영 지역 검색이 기본 달력에 반영된다', async ({ page }, testInfo) => {
+  await page.clock.setFixedTime(new Date('2026-11-09T11:30:00Z'));
+  await page.route('**/data/calendar.json', (route) => route.fulfill({ json: [] }));
+  await page.route('**/data/calendar-meta.json', (route) => route.fulfill({ json: { fetchedAt: '2026-11-09T11:00:00Z', status: 'success' } }));
+  await page.goto('calendar');
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: /탐색 조건/ }).click();
+  await page.getByLabel('지역 검색').fill('Seoul');
+  await expect(page.getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'NVIDIA AI Day Seoul 2026' })).toBeVisible();
+  await page.getByLabel('지역 검색').fill('서울');
+  await expect(page.getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
+  await expect(page.getByText('항목 수동 확인', { exact: false }).first()).toBeVisible();
+});
+
 test('모델 소식은 신규 모델 발표만 보여준다', async ({ page }, testInfo) => {
   await page.clock.setFixedTime(new Date('2026-11-08T00:00:00Z'));
   const base = { source: 'AI타임스', sourceId: 'aitimes', category: '언론', lang: 'ko', publishedAt: '2026-11-07T00:00:00Z', excerpt: '', summary: null, tags: [], readMinutes: 1 };

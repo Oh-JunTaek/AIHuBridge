@@ -26,3 +26,9 @@ export function matchesAudience(event, audience = 'domestic') {
   return territory === audience;
 }
 
+const cityAliases = [['서울', 'seoul'], ['부산', 'busan'], ['인천', 'incheon'], ['대구', 'daegu'], ['대전', 'daejeon'], ['광주', 'gwangju'], ['울산', 'ulsan'], ['세종', 'sejong'], ['수원', 'suwon'], ['성남', 'seongnam'], ['판교', 'pangyo'], ['용인', 'yongin'], ['고양', 'goyang'], ['제주', 'jeju']];
+export function matchesRegion(event, query) {
+  const normalize = (value) => cityAliases.reduce((text, [ko, en]) => text.replaceAll(ko, en), value.toLocaleLowerCase());
+  return normalize(`${event.host} ${event.location ?? ''} ${event.region ?? ''}`).includes(normalize(query.trim()));
+}
+

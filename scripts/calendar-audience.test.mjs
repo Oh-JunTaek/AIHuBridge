@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { eventTerritory, matchesAudience } from '../src/lib/calendar-audience.mjs';
+import { eventTerritory, matchesAudience, matchesRegion } from '../src/lib/calendar-audience.mjs';
 import { communityRegion } from './lib/community-region.mjs';
 const event = { host: 'GDG on Campus Example - London, United Kingdom', location: 'London', isOnline: false };
 
@@ -27,6 +27,14 @@ test('전체·해외 필터는 선택 기준대로 동작', () => {
   assert.equal(matchesAudience(event, 'overseas'), true);
   assert.equal(matchesAudience(event, 'all'), true);
   assert.equal(matchesAudience({ ...event, location: '부산' }, 'overseas'), false);
+});
+
+test('지역 검색은 서울·Seoul 등 한영 도시명을 같은 지역으로 검색한다', () => {
+  assert.equal(matchesRegion({ ...event, location: 'Seoul' }, '서울'), true);
+  assert.equal(matchesRegion({ ...event, location: '서울 강남구' }, 'seoul'), true);
+  assert.equal(matchesRegion({ ...event, location: 'Busan' }, '부산'), true);
+  assert.equal(matchesRegion(event, '서울'), false);
+  assert.equal(matchesRegion(event, ''), true);
 });
 
 test('공개 커뮤니티 위치의 대한민국 경계와 해외·미확인을 구분', () => {

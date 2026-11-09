@@ -24,7 +24,7 @@ export function isCalendarEvent(event) {
     && ['rss-explicit', 'manual', 'public-event'].includes(event.verification)
     && (event.timezone === 'Asia/Seoul' || (event.verification === 'public-event' && event.timezone === null))
     && optionalDate(event.applicationEnd)
-    && (event.applicationEnd !== null || validDate(event.eventStart) || (event.verification === 'public-event' && validDay(event.eventDate)))
+    && (event.applicationEnd !== null || validDate(event.eventStart) || (['public-event', 'manual'].includes(event.verification) && validDay(event.eventDate)))
     && (event.scheduleUnknown !== true || ['cancelled', 'postponed'].includes(event.status))
     && (event.eventDate === undefined || validDay(event.eventDate))
     && (event.eventEndDate === undefined || event.eventEndDate === null || (validDay(event.eventEndDate) && event.eventEndDate >= event.eventDate))
@@ -58,7 +58,7 @@ export function eventStatus(event, now = Date.now()) {
 export function eventBoundary(event) {
   if (event.scheduleUnknown && event.noticeObservedAt) return Date.parse(event.noticeObservedAt);
   if (event.eventEnd) return Date.parse(event.eventEnd);
-  if (event.eventDate) return Date.parse(`${event.eventEndDate || event.eventDate}T00:00:00-12:00`) + DAY;
+  if (event.eventDate) return Date.parse(`${event.eventEndDate || event.eventDate}T00:00:00${event.timezone === 'Asia/Seoul' ? '+09:00' : '-12:00'}`) + DAY;
   if (event.eventStart) {
     const day = new Date(Date.parse(event.eventStart) + 9 * 3600000).toISOString().slice(0, 10);
     return Date.parse(`${day}T00:00:00+09:00`) + DAY;

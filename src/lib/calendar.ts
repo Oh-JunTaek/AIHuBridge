@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { CalendarEvent } from '../types';
 import { deadlineLabel, isCalendarEvent, retainedEvents } from './calendar-rules.mjs';
+import { curatedCalendarEvents } from '../data/curated-calendar.mjs';
 
 interface CalendarMeta {
   fetchedAt: string;
@@ -31,7 +32,7 @@ export const useCalendarStore = create<CalendarState>((set) => ({
           return value && typeof value.fetchedAt === 'string' && Number.isFinite(Date.parse(value.fetchedAt))
             && ['success', 'partial', 'cleaned'].includes(value.status) ? value as CalendarMeta : null;
         }).catch(() => null);
-      set({ events: retainedEvents(data), meta, status: 'idle' });
+      set({ events: retainedEvents([...data, ...curatedCalendarEvents]), meta, status: 'idle' });
     } catch (error) {
       console.error('[허브릿지] 행사 정보를 불러오지 못했습니다', error);
       set({ status: 'error' });
