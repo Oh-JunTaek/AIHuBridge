@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useCalendarStore } from '../lib/calendar';
 import { visibleEvents, registrationMatches } from '../lib/calendar-rules.mjs';
 import { koreaDate, periodEvents } from '../lib/calendar-view.mjs';
-import { matchesAudience, matchesRegion } from '../lib/calendar-audience.mjs';
+import { matchesRegion } from '../lib/calendar-audience.mjs';
 import { CalendarMonth } from '../components/CalendarMonth';
 import { CalendarEventCard, eventTypeLabels } from '../components/CalendarEventCard';
 
@@ -15,7 +15,6 @@ export default function Calendar() {
   const { events, meta, status, loadEvents } = useCalendarStore();
   const [now, setNow] = useState(Date.now);
   const [type, setType] = useState('all');
-  const [audience, setAudience] = useState('domestic');
   const [mode, setMode] = useState('all');
   const [fee, setFee] = useState('all');
   const [registration, setRegistration] = useState('all');
@@ -27,7 +26,7 @@ export default function Calendar() {
   const [scope, setScope] = useState<'month' | 'all'>('month');
   const [view, setView] = useState<'calendar' | 'list'>('calendar');
   const [visibleCount, setVisibleCount] = useState(24);
-  useEffect(() => setVisibleCount(24), [audience, type, mode, fee, registration, search, region, month, selectedDay, scope, includePast]);
+  useEffect(() => setVisibleCount(24), [type, mode, fee, registration, search, region, month, selectedDay, scope, includePast]);
   useEffect(() => {
     void loadEvents();
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -35,7 +34,7 @@ export default function Calendar() {
   }, [loadEvents]);
 
   const available = visibleEvents(events, now, includePast);
-  const audienceEvents = available.filter((event) => matchesAudience(event, audience));
+  const audienceEvents = available;
   const filtered = audienceEvents.filter((event) => (type === 'all' || event.type === type)
     && (mode === 'all' || (mode === 'online' ? event.isOnline === true : mode === 'offline' ? event.isOnline === false : event.isOnline === null))
     && (fee === 'all' || event.feeType === fee)
@@ -49,7 +48,7 @@ export default function Calendar() {
     if (!/^\d{4}-\d{2}$/.test(value)) return;
     setMonth(value); setSelectedDay(null); setScope('month');
   };
-  const reset = () => { setAudience('domestic'); setType('all'); setMode('all'); setFee('all'); setRegistration('all'); setIncludePast(false); setSearch(''); setRegion(''); setSelectedDay(null); };
+  const reset = () => { setType('all'); setMode('all'); setFee('all'); setRegistration('all'); setIncludePast(false); setSearch(''); setRegion(''); setSelectedDay(null); };
 
   return (
     <div className="space-page space-plaza space-calendar mx-auto max-w-6xl px-4 py-6 text-stone-700 dark:text-stone-200">
@@ -66,33 +65,33 @@ export default function Calendar() {
       <div className="calendar-quick-links"><a href="#calendar-results">{selectedDay ? `${selectedDay} 일정 보기` : '선택 월 일정 보기'}</a><a href="#calendar-controls">일정 조건 보기</a></div>
       </div>
       <div id="calendar-controls" className="calendar-controls">
-      <MobileFilter summary={`${({domestic:'국내·온라인', overseas:'해외', unknown:'지역 미확인', all:'전체'} as Record<string, string>)[audience]} · ${[type !== 'all', mode !== 'all', fee !== 'all', registration !== 'all', includePast, !!search, !!region].filter(Boolean).length ? `추가 조건 ${[type !== 'all', mode !== 'all', fee !== 'all', registration !== 'all', includePast, !!search, !!region].filter(Boolean).length}개` : '전체 조건'}`}>
+      <MobileFilter summary={`국내 현장·온라인 · ${[type !== 'all', mode !== 'all', fee !== 'all', registration !== 'all', includePast, !!search, !!region].filter(Boolean).length ? `추가 조건 ${[type !== 'all', mode !== 'all', fee !== 'all', registration !== 'all', includePast, !!search, !!region].filter(Boolean).length}개` : '전체 조건'}`}>
       <section aria-label="일정 범위" className="mb-5">
-        <div className="flex flex-wrap gap-2">{[{id:'domestic',label:'국내·온라인'}, {id:'overseas',label:'해외'}, {id:'unknown',label:'지역 미확인'}, {id:'all',label:'전체'}].map((option) => <button key={option.id} type="button" aria-pressed={audience === option.id} onClick={() => { setAudience(option.id); setSelectedDay(null); }} className={`rounded-full px-4 py-2 text-sm font-semibold ${audience === option.id ? 'bg-blue-600 text-white' : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300'}`}>{option.label}</button>)}</div>
-        <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">국내·온라인은 국내 행사와 전 세계 온라인 행사를 함께 보여줍니다. 해외 오프라인·미확인 방식은 기본 화면에서 제외합니다. 지역은 공개 개최 도시·주최 커뮤니티 위치 기준이며 실제 장소·접속 조건은 원문을 확인하세요.</p>
-        {status === 'idle' && audienceEvents.length > 0 && !audienceEvents.some((event) => event.applicationEnd) && <p className="mt-2 text-xs text-stone-600">선택한 범위에 확인된 신청 마감일이 없습니다. 행사 일정과 신청 가능 여부는 원문에서 확인하세요.</p>}
-        {status === 'idle' && audienceEvents.length > 0 && audienceEvents.every((event) => event.feeType === 'unknown') && <p className="mt-1 text-xs text-stone-600">선택한 범위의 참가 비용은 모두 미확인입니다.</p>}
+        <p className="text-sm font-semibold text-stone-700">국내 현장·온라인 일정</p>
+        <p className="mt-2 text-xs text-stone-500">국내 개최 장소와 현장 참여가 명시됐거나 온라인 참여가 명시된 행사만 보여줍니다. 해외 온라인 행사의 국가별 접속·참가 자격과 신청 상태는 원문에서 확인하세요.</p>
+        {status === 'idle' && audienceEvents.length > 0 && !audienceEvents.some((event) => event.applicationEnd) && <p className="mt-2 text-xs text-stone-600">확인된 신청 마감일이 없습니다. 행사 일정과 신청 가능 여부는 원문에서 확인하세요.</p>}
+        {status === 'idle' && audienceEvents.length > 0 && audienceEvents.every((event) => event.feeType === 'unknown') && <p className="mt-1 text-xs text-stone-600">참가 비용은 모두 미확인입니다.</p>}
       </section>
 
       <div className="mb-6 grid grid-cols-3 gap-3">
-        {[{ label: '선택 범위 일정', value: audienceEvents.length, color: 'text-blue-600 dark:text-blue-300' }, { label: '온라인 일정', value: audienceEvents.filter((event) => event.isOnline === true).length, color: 'text-violet-600 dark:text-violet-300' }, { label: '선택 월 검색 결과', value: monthEvents.length, color: 'text-sky-600 dark:text-sky-300' }].map((stat) => <div key={stat.label} className="rounded-2xl border border-stone-200 bg-white px-3 py-4 shadow-sm dark:border-stone-700 dark:bg-stone-900 sm:px-5"><p className="text-xs text-stone-500">{stat.label}</p><p className={'mt-1 text-2xl font-bold ' + stat.color}>{stat.value}<span className="ml-1 text-xs font-normal text-stone-400">건</span></p></div>)}
+        {[{ label: '국내·온라인 일정', value: audienceEvents.length, color: 'text-blue-600 dark:text-blue-300' }, { label: '온라인 일정', value: audienceEvents.filter((event) => event.isOnline === true).length, color: 'text-violet-600 dark:text-violet-300' }, { label: '선택 월 검색 결과', value: monthEvents.length, color: 'text-sky-600 dark:text-sky-300' }].map((stat) => <div key={stat.label} className="rounded-2xl border border-stone-200 bg-white px-3 py-4 shadow-sm dark:border-stone-700 dark:bg-stone-900 sm:px-5"><p className="text-xs text-stone-500">{stat.label}</p><p className={'mt-1 text-2xl font-bold ' + stat.color}>{stat.value}<span className="ml-1 text-xs font-normal text-stone-400">건</span></p></div>)}
       </div>
 
       <section aria-label="일정 필터" className="mb-6 rounded-2xl border border-stone-200 bg-stone-50 p-4 dark:border-stone-700 dark:bg-stone-900/50 sm:p-5">
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           <label className="text-xs text-stone-500">행사 유형<select value={type} onChange={(event) => setType(event.target.value)} className={control}><option value="all">전체 유형</option>{Object.entries(eventTypeLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
-          <label className="text-xs text-stone-500">진행 방식<select value={mode} onChange={(event) => setMode(event.target.value)} className={control}><option value="all">전체 방식</option><option value="online">온라인</option><option value="offline">오프라인</option><option value="unknown">미확인·혼합</option></select></label>
+          <label className="text-xs text-stone-500">진행 방식<select value={mode} onChange={(event) => setMode(event.target.value)} className={control}><option value="all">전체 방식</option><option value="online">온라인</option><option value="offline">국내 현장</option></select></label>
           <label className="text-xs text-stone-500">참가 비용<select value={fee} onChange={(event) => setFee(event.target.value)} className={control}><option value="all">전체 비용</option><option value="free">무료로 확인됨</option><option value="paid">유료로 확인됨</option><option value="unknown">비용 미확인</option></select></label>
           <label className="text-xs text-stone-500">신청·행사 상태<select value={registration} onChange={(event) => setRegistration(event.target.value)} className={control}><option value="all">전체 상태</option><option value="open">신청 마감 전 · 마감일 확인</option><option value="closed">신청 마감</option><option value="cancelled">취소</option><option value="postponed">연기</option><option value="known">신청 마감일 확인됨</option><option value="unknown">신청 마감일 미확인</option></select></label>
         </div>
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <label className="text-xs text-stone-500">행사·기관·주제 검색<input type="search" placeholder="예: Gemini, 해커톤" value={search} onChange={(event) => setSearch(event.target.value)} className={control} /></label>
-          <label className="text-xs text-stone-500">지역 검색<input type="search" placeholder="예: Seoul, 서울, London" value={region} onChange={(event) => setRegion(event.target.value)} className={control} /></label>
+          <label className="text-xs text-stone-500">지역 검색<input type="search" placeholder="예: 서울, 부산, Seoul" value={region} onChange={(event) => setRegion(event.target.value)} className={control} /></label>
           <label className="text-xs text-stone-500">조회 월<input type="month" min="2000-01" max="2100-12" value={month} onChange={(event) => changeMonth(event.target.value)} className={control} /></label>
         </div>
         <label className="mt-4 flex items-center gap-2 text-sm"><input type="checkbox" checked={includePast} onChange={(event) => { setIncludePast(event.target.checked); setSelectedDay(null); }} />지난 행사·공고 포함 (30일 보관)</label>
         <p className="mt-2 text-xs text-stone-500">신청 마감 후에도 개최 전 행사는 유지합니다. 취소·연기는 기본 달력에도 표시하며 참가 가능 여부는 원문을 확인하세요. 지난 자료는 조회 월 또는 전체 기간을 바꿔 찾을 수 있습니다.</p>
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2"><p className="text-xs text-stone-500">공개 목록 {available.length}건 · 조건에 맞는 일정 {filtered.length}건</p><button type="button" onClick={reset} className="text-xs font-semibold text-blue-600 underline dark:text-blue-300">조건 초기화</button></div>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2"><p className="text-xs text-stone-500">참여 방식 확인 {available.length}건 · 조건에 맞는 일정 {filtered.length}건</p><button type="button" onClick={reset} className="text-xs font-semibold text-blue-600 underline dark:text-blue-300">조건 초기화</button></div>
       </section>
 
       </MobileFilter>
@@ -112,7 +111,7 @@ export default function Calendar() {
         <div className="grid gap-4 lg:grid-cols-2">{shown.slice(0, visibleCount).map((event) => <CalendarEventCard key={event.id} event={event} now={now} />)}</div>
       <AutoLoadMore visible={visibleCount} total={shown.length} label="일정" onLoad={() => setVisibleCount((count) => count + 24)} />
       </section>
-      <p className="mt-6 text-xs leading-relaxed text-stone-500">해외 행사에서 날짜만 제공되면 현지 날짜로 표시하며 시각·시간대를 추정하지 않습니다. 신청 마감 미확인은 모집 중을 뜻하지 않습니다. 원문에서 참가 조건과 변경 사항을 확인하세요.</p>
+      <p className="mt-6 text-xs leading-relaxed text-stone-500">온라인 행사에서 날짜만 제공되면 원문의 현지 날짜로 표시하며 시각·시간대를 추정하지 않습니다. 신청 마감 미확인은 모집 중을 뜻하지 않습니다. 원문에서 참가 조건과 변경 사항을 확인하세요.</p>
     </div>
   );
 }

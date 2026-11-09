@@ -43,6 +43,8 @@ AI 자격증 목록은 `src/data/qualifications.ts`에 시험별 주관기관 �
 | 카카오 공식 기술 블로그 | https://tech.kakao.com/blog/feed/ | 모집 표현·일정 근거가 명시된 AI 공고의 제목·마감·링크 | 일반 글·회고 제외, 설명문 전재 없음 |
 | Google 개발자 커뮤니티 공개 행사 지도 | https://developers.google.com/community/GDG_DevFest_Events.json | AI 주제 행사명·주최 커뮤니티명·현지 날짜·도시·진행 방식·원문 링크·주제·파생 지역 | 마감일·요금·시각 추정 금지, RSVP·연락처·좌표·사진·설명문 저장·표시 금지 |
 
+국내 현장 또는 온라인 참여가 명시된 행사만 최종 수집·표시한다. Google의 커뮤니티 좌표는 행사 실제 장소의 근거가 아니며, 장소 없이 국내 주최만 확인된 오프라인 행사는 제외한다. 온라인으로 명시돼도 국가별 참가 제한과 실제 접속은 원문 확인이 필요하다.
+
 Google 출처는 [공식 행사 페이지](https://developers.google.com/events)의 공개 지도 설정이 연결하는 JSON입니다. [robots.txt](https://developers.google.com/robots.txt)에서 해당 경로의 제한이 없음을 확인했습니다. 표제와 일정 등 최소 메타데이터만 사용하며, 카드에서 원문과 일정 제공처를 링크합니다. 일반 [문서 이용 정책](https://developers.google.com/terms/site-policies)은 개별 페이지의 이용허락 표시를 전제로 하므로 행사 데이터 전체에 임의로 CC BY 표시를 붙이지 않습니다.
 
 ## 검토 후 제외

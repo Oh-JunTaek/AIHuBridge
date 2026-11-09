@@ -6,6 +6,7 @@ import { certifications } from '../src/data/certifications.ts';
 import { selectCertifications } from '../src/lib/cert-rules.mjs';
 import { journeys } from '../src/data/journeys.ts';
 import { selectJourneyResources } from '../src/lib/journey-rules.mjs';
+import { curatedCalendarEvents } from '../src/data/curated-calendar.mjs';
 
 test('학습 여정의 자료와 자격증은 실제 원본을 참조한다', () => {
   expect(new Set(journeys.map((journey) => journey.id)).size).toBe(journeys.length);
@@ -88,6 +89,28 @@ test('수동 확인한 국내 행사와 한영 지역 검색이 기본 달력에
   await page.getByLabel('지역 검색').fill('서울');
   await expect(page.getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
   await expect(page.getByText('항목 수동 확인', { exact: false }).first()).toBeVisible();
+});
+
+test('캘린더 전체 기간에도 국내 참여 근거가 없는 행사는 표시하지 않는다', async ({ page }, testInfo) => {
+  await page.clock.setFixedTime(new Date('2026-11-09T11:30:00Z'));
+  const base = curatedCalendarEvents[0];
+  const event = (id, title, patch) => ({ ...base, id, title, url: `https://example.org/${id}`, ...patch });
+  const items = [
+    event('egypt', '해외 현장 행사', { location: 'Cairo', region: 'Cairo', isOnline: false }),
+    event('unknown', '방식 미확인 행사', { location: null, region: null, host: 'NVIDIA Korea', isOnline: null }),
+    event('community', '국내 커뮤니티 장소 미확인', { location: null, region: null, territory: 'domestic', territoryBasis: 'community-location', isOnline: false }),
+    event('online', '참여 가능한 온라인 행사', { location: 'Cairo', region: 'Cairo', isOnline: true }),
+    event('limited', '온라인 행사 US residents only', { location: null, region: null, isOnline: true }),
+  ];
+  await page.route('**/data/calendar.json', (route) => route.fulfill({ json: items }));
+  await page.route('**/data/calendar-meta.json', (route) => route.fulfill({ json: { fetchedAt: '2026-11-09T11:00:00Z', status: 'success' } }));
+  await page.goto('calendar');
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: /탐색 조건/ }).click();
+  await page.getByRole('button', { name: '전체 기간', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '참여 가능한 온라인 행사' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
+  for (const title of ['해외 현장 행사', '방식 미확인 행사', '국내 커뮤니티 장소 미확인', '온라인 행사 US residents only']) await expect(page.getByRole('heading', { name: title })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: '해외', exact: true })).toHaveCount(0);
 });
 
 test('모델 소식은 신규 모델 발표만 보여준다', async ({ page }, testInfo) => {

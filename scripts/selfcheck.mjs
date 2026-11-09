@@ -12,6 +12,8 @@
  */
 import { readFileSync } from 'node:fs';
 import { isCalendarEvent, visibleEvents } from '../src/lib/calendar-rules.mjs';
+import { isAccessibleFromKorea } from '../src/lib/calendar-audience.mjs';
+import { curatedCalendarEvents } from '../src/data/curated-calendar.mjs';
 import { isNewsArray } from '../src/lib/news-data.mjs';
 import { newsSources } from '../src/lib/news-sources.mjs';
 import { isCertification } from '../src/lib/cert-rules.mjs';
@@ -102,7 +104,7 @@ try {
     && new Set(events.map((event) => event.url)).size === events.length);
   check('행사 메타 일치', meta.schemaVersion === 2 && meta.total === events.length
     && Number.isFinite(Date.parse(meta.fetchedAt)) && ['success', 'partial', 'cleaned'].includes(meta.status));
-  console.log(`현재 기본 조회 대상 AI 일정: ${visibleEvents(events).length}건`);
+  console.log(`현재 국내·온라인 조회 대상 AI 일정: ${visibleEvents([...events, ...curatedCalendarEvents].filter(isAccessibleFromKorea)).length}건`);
 } catch (error) {
   check('행사 데이터 검사', false, error.message);
 }

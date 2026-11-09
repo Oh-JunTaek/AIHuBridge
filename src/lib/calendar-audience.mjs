@@ -18,12 +18,14 @@ export function eventTerritory(event) {
   return 'unknown';
 }
 
-export function matchesAudience(event, audience = 'domestic') {
-  if (audience === 'all') return true;
-  const territory = eventTerritory(event);
-  // 국내 이용자를 위한 기본 화면에는 지역과 무관하게 온라인으로 확인된 행사도 포함한다.
-  if (audience === 'domestic') return territory === 'domestic' || event.isOnline === true;
-  return territory === audience;
+// 개최 장소와 참여 방식의 근거만 사용한다. 주최자·커뮤니티 좌표로 행사장을 추정하지 않는다.
+export function isAccessibleFromKorea(event) {
+  const text = `${event.title ?? ''} ${event.dateEvidence ?? ''} ${(event.topics ?? []).join(' ')}`;
+  if (/\b(?:US|USA|United States|UK)[\s-]+(?:residents?[\s-]+)?only\b|한국(?:에서|인)?\s*(?:참가|참여|접속)\s*(?:불가|제한)/i.test(text)) return false;
+  if (event.isOnline === true) return true;
+  if (event.isOnline !== false) return false;
+  const venue = (event.location ?? '').trim();
+  return koreanCities.test(venue) || koreanCountries.has(venue.toLowerCase());
 }
 
 const cityAliases = [['서울', 'seoul'], ['부산', 'busan'], ['인천', 'incheon'], ['대구', 'daegu'], ['대전', 'daejeon'], ['광주', 'gwangju'], ['울산', 'ulsan'], ['세종', 'sejong'], ['수원', 'suwon'], ['성남', 'seongnam'], ['판교', 'pangyo'], ['용인', 'yongin'], ['고양', 'goyang'], ['제주', 'jeju']];
