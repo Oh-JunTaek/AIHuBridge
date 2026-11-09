@@ -317,6 +317,18 @@
 .calendar-detail-dialog::backdrop { backdrop-filter: blur(4px); }
 .calendar-dialog-inner { padding: clamp(1rem, 3vw, 1.5rem); }
 .calendar-dialog-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .7rem; color: #537997; font-size: .8rem; font-weight: 700; }
+.calendar-day-preview h2 { color: #173b60; font-size: 1.3rem; font-weight: 750; }
+.calendar-day-preview > p { margin: .35rem 0 1rem; color: #58738a; font-size: .8rem; }
+.calendar-day-list { display: grid; gap: .6rem; }
+.calendar-day-list button { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .35rem .75rem; width: 100%; padding: .9rem; border: 1px solid #d5e5ef; border-radius: 13px; background: #f7fbff; text-align: left; }
+.calendar-day-list button:hover { border-color: #8cb6d2; background: #eef7fd; }
+.calendar-day-list button:focus-visible, .calendar-preview-back:focus-visible { outline: 3px solid #659ac0; outline-offset: 2px; }
+.calendar-day-list button > span:first-child { grid-row: span 2; padding: .3rem .5rem; border-radius: 7px; color: #245a85; background: #e4f0fa; font-size: .72rem; font-weight: 700; }
+.calendar-day-list strong { min-width: 0; overflow-wrap: anywhere; font-size: .9rem; }
+.calendar-day-list small { grid-column: 2; color: #607b91; font-size: .72rem; line-height: 1.45; }
+.calendar-day-list button > span:last-child { grid-column: 3; grid-row: 1 / 3; color: #356b91; }
+.calendar-day-empty { padding: 1.5rem; border: 1px dashed #cbdde9; border-radius: 12px; text-align: center; }
+.calendar-preview-back { margin: 0 0 .9rem; color: #245e8b; font-size: .8rem; font-weight: 700; }
 @media (max-width: 600px) { .calendar-event-row button { flex-wrap: wrap; gap: .5rem; } .calendar-event-main { flex: 1 1 calc(100% - 6rem); } .calendar-event-status { margin-left: auto; } }
 @media (prefers-reduced-motion: reduce) { .calendar-type-filter button, .calendar-event-row button { transition: none; } .calendar-type-filter button:active, .calendar-event-row button:active { transform: none; } }
 .calendar-board > section { box-shadow: 0 18px 50px #315b7c1c; }
@@ -692,11 +704,9 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 /* 분야 태그 위치는 유지하고 설명과 심볼을 같은 줄의 별도 공간에 둔다. */
 .qualification-card-middle { display:flex; align-items:center; gap:1rem; margin-top:.65rem; }
 .qualification-card-middle .qualification-description { flex:1; min-width:0; margin-top:0; }
-.qualification-emblem { position:relative; flex:none; width:4.3rem; height:2.6rem; margin-right:18%; opacity:.38; pointer-events:none; }
-.qualification-emblem i { position:absolute; width:1.65rem; height:1.65rem; border:1px solid #78a8c4; border-radius:.35rem; transform:rotate(45deg); }
-.qualification-emblem i:nth-child(1) { left:.35rem; top:.5rem; }.qualification-emblem i:nth-child(2) { left:1.1rem; top:.5rem; background:#deedf6; }.qualification-emblem i:nth-child(3) { left:1.85rem; top:.5rem; }
+.qualification-field-icon { flex: none; width: 2.3rem; height: 2.3rem; margin-right: 18%; color: #6d9cba; opacity: .8; }
 @media (max-width: 480px) {
-  .qualification-emblem { width:3.9rem; margin-right:0; }
+  .qualification-field-icon { margin-right:0; }
 }
 
 /* 기업 상표를 사용하지 않는 자체 소식 전시 그림 */
@@ -825,6 +835,15 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 @media(max-width:760px) { .funded-training-header { align-items:start; flex-direction:column; }.funded-training-list small { line-height:1.5; }.funded-training-list .funded-training-card { gap:.65rem; padding:.9rem; }.funded-training-card-source { font-size:.68rem; }.funded-training-source-mark { width:1.1rem; height:1.1rem; box-shadow:inset 0 0 0 3px #ffffffa8; } }
 
 /* 도구별 설명은 기존 상세 대화상자와 같은 동작을 사용한다. */
+.tool-use-trigger { display: block; width: 100%; padding: .75rem 1rem; border: 1px solid #d7eaf8; border-radius: 12px; background: #f1f8fd; text-align: left; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.tool-use-trigger:hover, .tool-use-trigger:focus-visible { transform: scale(1.015); border-color: #8cbbe0; box-shadow: 0 6px 18px #326e9b1b; }
+.tool-use-trigger:focus-visible { outline: 3px solid #659ac0; outline-offset: 3px; }
+.tool-use-heading { display: flex; align-items: center; justify-content: space-between; color: #174e93; font-size: .75rem; font-weight: 700; }
+.tool-use-arrow { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border: 1px solid #bed9ed; border-radius: 50%; background: #fff; font-size: .95rem; transition: transform .18s ease; }
+.tool-use-trigger:hover .tool-use-arrow, .tool-use-trigger:focus-visible .tool-use-arrow { transform: scale(1.1); }
+.tool-use-example { display: block; margin-top: .25rem; color: #314b66; font-size: .875rem; line-height: 1.6; }
+.tool-use-hint { display: block; margin-top: .35rem; color: #356b91; font-size: .7rem; font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .tool-use-trigger, .tool-use-arrow { transition: none; } .tool-use-trigger:hover, .tool-use-trigger:focus-visible, .tool-use-trigger:hover .tool-use-arrow, .tool-use-trigger:focus-visible .tool-use-arrow { transform: none; } }
 .tool-detail-dialog { max-width: 620px; }
 .tool-detail-dialog::backdrop { background: #19364c85; backdrop-filter: blur(4px); }
 .tool-detail-section { margin: 1rem 0; padding: 1rem 1.15rem; border: 1px solid #dceaf1; border-radius: 14px; background: #f7fbfd; }

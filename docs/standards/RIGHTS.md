@@ -14,6 +14,8 @@
 
 KSTQB는 [자격 보유자용 로고](https://www.kstqb.org/board_skin/board_view.asp?bbs_code=1&etc=&idx=250&key=0&page=1&word=)와 [인증 교육기관의 로고 사용](https://www.kstqb.org/about/about3.asp)을 별도로 안내한다. 자격 안내 카드의 KSTQB 기관 로고 사용 조건은 확인되지 않아 적용하지 않았다. 위 제한을 모든 식별 목적 사용에 대한 법적 결론으로 확대하지 않는다.
 
+2026-11-09 재검토: [ASTQB의 ISTQB 인증 로고 안내](https://astqb.org/certified-logo-and-communication-guidelines/)는 자격 보유자의 인증 로고 사용을 다루며, 일반 ISTQB 기관 로고의 자격 소개 카드 사용 허가와 구분한다. [ISTQB 파트너 안내](https://istqb.org/partner-program/)의 파트너 로고도 승인된 파트너에 관한 것이다. [AWS 자격 정책](https://aws.amazon.com/certification/policies/general-policies/) 역시 인증 마크 사용을 자격 보유자에 한정한다. 이번 조사에서 자격 소개 카드에 복제 가능한 기관별 로고 사용 근거는 확인하지 못했다. 표시하는 분야별 선 그림은 프로젝트 자체 제작 아이콘이며 기관·자격 로고가 아니다. 타사 로고는 해당 용도의 근거 확인 후 적용한다.
+
 AWS는 [상표 지침](https://aws.amazon.com/trademark-guidelines/)에서 제3자의 사실 설명을 텍스트로 안내하고 로고는 별도로 제한한다. Microsoft의 [콘텐츠 사용 안내](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions)는 보도용 이미지를 언론·산업 분석가의 편집 목적으로 구분하고 로고는 상표 지침을 따르게 한다. Google도 [브랜드 사용 지침](https://about.google/brand-resource-center/guidance/)에서 사용 맥락을 구분한다. AWS·Microsoft·Google Cloud·ISC2·NVIDIA의 로고는 자격 목록 카드에서의 허용 여부를 확인한 뒤 적용한다.
 
 외부 본문·영상·교안·이미지의 포괄적인 재배포 허가를 주장하지 않는다. 기존 공고·출처에 별도 이용허락 표시가 있으면 그 조건을 확인한다. 이 작업은 모든 외부 의존성의 라이선스를 전수 감사하거나 외부 저작물의 권리 관계를 확정한 것이 아니다.

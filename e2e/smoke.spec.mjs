@@ -112,6 +112,32 @@ test('캘린더 유형과 지역 선택 및 행사 상세가 함께 동작한다
   await expect(page.getByRole('button', { name: '해커톤', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('달력 날짜를 누르면 조건에 맞는 일정과 빈 결과를 즉시 보여준다', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-11-09T11:30:00Z'));
+  await page.route('**/data/calendar.json', (route) => route.fulfill({ json: [] }));
+  await page.route('**/data/calendar-meta.json', (route) => route.fulfill({ json: { fetchedAt: '2026-11-09T11:00:00Z', status: 'success' } }));
+  await page.goto('calendar');
+  await page.getByRole('button', { name: '컨퍼런스', exact: true }).click();
+  const date = page.getByRole('button', { name: /2026-11-12 목요일, 일정/ });
+  await date.click();
+  let dialog = page.getByRole('dialog', { name: '선택 날짜 일정' });
+  await expect(dialog.getByRole('heading', { name: '2026-11-12 일정' })).toBeVisible();
+  await dialog.getByRole('button', { name: /Intel AI Summit Seoul 2026/ }).click();
+  await expect(page.getByRole('dialog', { name: '행사 상세 정보' }).getByRole('heading', { name: 'Intel AI Summit Seoul 2026' })).toBeVisible();
+  await page.getByRole('button', { name: '날짜 일정으로 돌아가기' }).click();
+  dialog = page.getByRole('dialog', { name: '선택 날짜 일정' });
+  await expect(dialog.getByRole('button', { name: /Intel AI Summit Seoul 2026/ })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(dialog).not.toBeVisible();
+  await expect(date).toBeFocused();
+  await date.click();
+  await expect(dialog).toBeVisible();
+  await page.getByRole('button', { name: '날짜 일정 닫기' }).click();
+  await expect(dialog).not.toBeVisible();
+  await page.getByRole('button', { name: /2026-11-02 월요일, 일정 0건/ }).click();
+  await expect(dialog.getByText('이 날짜와 조건에 맞는 일정이 없습니다.')).toBeVisible();
+});
+
 test('캘린더 전체 기간에도 국내 참여 근거가 없는 행사는 표시하지 않는다', async ({ page }, testInfo) => {
   await page.clock.setFixedTime(new Date('2026-11-09T11:30:00Z'));
   const base = curatedCalendarEvents[0];
@@ -322,7 +348,7 @@ test('개인정보 문의 안내와 이미지 대체 텍스트를 제공한다',
     expect(await page.locator('img:not([alt])').count()).toBe(0);
   }
   await page.goto('qualifications');
-  await expect(page.locator('.qualification-emblem').first()).toHaveAttribute('aria-hidden', 'true');
+  await expect(page.locator('.qualification-field-icon').first()).toHaveAttribute('aria-hidden', 'true');
   await expect(page.locator('.qualification-card img')).toHaveCount(0);
 });
 
@@ -423,6 +449,8 @@ test('AI 도구함은 분야와 검색을 조합하고 활용 링크를 제공�
   await expect(page.getByRole('heading', { name: 'Perplexity', exact: true })).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Consensus 공식 도구 열기 (새 탭)' })).toHaveAttribute('href', /consensus\.app/);
   const detailButton = page.getByRole('button', { name: 'Consensus 상세 활용 안내' });
+  await expect(detailButton.getByText('이렇게 활용해요')).toBeVisible();
+  await expect(detailButton.getByText('자세히 보기')).toBeVisible();
   await detailButton.click();
   const dialog = page.getByRole('dialog', { name: 'Consensus' });
   await expect(dialog.getByText('함께 활용해요')).toBeVisible();

@@ -52,7 +52,7 @@ export function CalendarMonth({ events, month, today, selectedDay, onMonthChange
           const selected = date === selectedDay;
           return (
             <button type="button" key={date} aria-label={`${date} ${weekdays[index % 7]}요일, 일정 ${eventCount}건`} aria-pressed={selected} aria-current={date === today ? 'date' : undefined}
-              onClick={() => { if (!inMonth) onMonthChange(date.slice(0, 7)); onDayChange(selected ? null : date); }}
+              onClick={() => { if (!inMonth) onMonthChange(date.slice(0, 7)); onDayChange(date); }}
               className={`flex min-w-0 flex-col items-stretch justify-start border-b border-r border-stone-100 p-1.5 text-left transition focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-blue-600 dark:border-stone-800 sm:p-2 ${selected ? 'bg-blue-50 ring-2 ring-inset ring-blue-500 dark:bg-blue-950/50' : inMonth ? 'bg-white hover:bg-sky-50 dark:bg-stone-900 dark:hover:bg-stone-800' : 'bg-stone-50 text-stone-400 dark:bg-stone-950'} min-h-20 sm:min-h-24`}>
               <span className="mb-1 flex items-center justify-between gap-1">
                 <span className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold ${date === today ? 'bg-blue-600 text-white' : !inMonth ? 'text-stone-400' : index % 7 === 0 ? 'text-rose-500' : index % 7 === 6 ? 'text-blue-600' : 'text-stone-700 dark:text-stone-200'}`}>{day}</span>

@@ -24,7 +24,8 @@ export default function Calendar() {
   const [search, setSearch] = useState('');
   const [region, setRegion] = useState('all');
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
-  const { ref: dialog, requestClose } = useAnimatedDialog(!!selectedEvent);
+  const [dayPreview, setDayPreview] = useState(false);
+  const { ref: dialog, requestClose } = useAnimatedDialog(!!selectedEvent || dayPreview);
   const [month, setMonth] = useState(() => koreaDate().slice(0, 7));
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const [scope, setScope] = useState<'month' | 'all'>('month');
@@ -67,7 +68,7 @@ export default function Calendar() {
       <div className="calendar-type-filter" role="group" aria-label="행사 유형 선택">
         {[['all', '전체'], ...Object.entries(eventTypeLabels)].map(([key, label]) => <button key={key} type="button" aria-pressed={type === key} onClick={() => setType(key)}>{label}</button>)}
       </div>
-      {view === 'calendar' && <CalendarMonth events={filtered} month={month} today={koreaDate(now)} selectedDay={selectedDay} onMonthChange={changeMonth} onDayChange={(day) => { setSelectedDay(day); setScope('month'); }} />}
+      {view === 'calendar' && <CalendarMonth events={filtered} month={month} today={koreaDate(now)} selectedDay={selectedDay} onMonthChange={changeMonth} onDayChange={(day) => { setSelectedDay(day); setScope('month'); if (day) setDayPreview(true); }} />}
       <div className="calendar-quick-links"><a href="#calendar-results">{selectedDay ? `${selectedDay} 일정 보기` : '선택 월 일정 보기'}</a><a href="#calendar-controls">일정 조건 보기</a></div>
       </div>
       <div id="calendar-controls" className="calendar-controls">
@@ -115,8 +116,10 @@ export default function Calendar() {
       <AutoLoadMore visible={visibleCount} total={shown.length} label="일정" onLoad={() => setVisibleCount((count) => count + 24)} />
       </section>
       <p className="mt-6 text-xs leading-relaxed text-stone-500">온라인 행사에서 날짜만 제공되면 원문의 현지 날짜로 표시하며 시각·시간대를 추정하지 않습니다. 신청 마감 미확인은 모집 중을 뜻하지 않습니다. 원문에서 참가 조건과 변경 사항을 확인하세요.</p>
-      <dialog ref={dialog} className="qualification-dialog calendar-detail-dialog" aria-label="행사 상세 정보" onClose={() => setSelectedEvent(null)} onCancel={(event) => { event.preventDefault(); requestClose(); }} onClick={(event) => { if (event.target === event.currentTarget) requestClose(); }}>
-        {selectedEvent && <div className="calendar-dialog-inner"><div className="calendar-dialog-top"><span>AI 일정 상세</span><button type="button" className="qualification-close" aria-label="행사 상세 닫기" onClick={requestClose}>×</button></div><CalendarEventCard event={selectedEvent} now={now} /></div>}
+      <dialog ref={dialog} className="qualification-dialog calendar-detail-dialog" aria-label={selectedEvent ? '행사 상세 정보' : '선택 날짜 일정'} onClose={() => { setSelectedEvent(null); setDayPreview(false); }} onCancel={(event) => { event.preventDefault(); requestClose(); }} onClick={(event) => { if (event.target === event.currentTarget) requestClose(); }}>
+        <div className="calendar-dialog-inner"><div className="calendar-dialog-top"><span>{selectedEvent ? 'AI 일정 상세' : '선택한 날짜의 AI 일정'}</span><button type="button" className="qualification-close" aria-label={selectedEvent ? '행사 상세 닫기' : '날짜 일정 닫기'} onClick={requestClose}>×</button></div>
+          {selectedEvent ? <>{dayPreview && <button type="button" className="calendar-preview-back" onClick={() => setSelectedEvent(null)}>← 날짜 일정으로 돌아가기</button>}<CalendarEventCard event={selectedEvent} now={now} /></> : dayPreview && <section className="calendar-day-preview"><h2>{selectedDay} 일정</h2><p role="status">{shown.length}건 · 선택한 행사 유형과 조건을 반영합니다</p>{shown.length ? <div className="calendar-day-list">{shown.map((event) => <button type="button" key={event.id} onClick={() => setSelectedEvent(event)}><span>{eventTypeLabels[event.type]}</span><strong>{event.title}</strong><small>{event.host} · {eventStatusLabel(event, now)}</small><span aria-hidden="true">→</span></button>)}</div> : <p className="calendar-day-empty">이 날짜와 조건에 맞는 일정이 없습니다.</p>}</section>}
+        </div>
       </dialog>
     </div>
   );
