@@ -38,7 +38,7 @@ test('무료 영상 청강과 무료 수료증 필터를 구분', () => {
 });
 test('수료증 발급 확인은 비용 확인과 별개이며 시험이나 미발급과 모순되지 않는다', () => {
   const verified = certifications.filter((item) => item.completionCertificateVerified === true);
-  assert.deepEqual(verified.map((item) => item.id).sort(), ['coursera-ai-for-everyone', 'coursera-software-testing', 'dlai-prompting', 'google-ai-essentials', 'hf-agents']);
+  assert.deepEqual(verified.map((item) => item.id).sort(), ['boost-ai-basics', 'boost-ai-linear-algebra', 'boost-data-science', 'boost-ml-python', 'boost-python-everybody', 'boost-pytorch-theory', 'coursera-ai-for-everyone', 'coursera-software-testing', 'dlai-prompting', 'google-ai-essentials', 'hf-agents']);
   assert.ok(verified.every(isCertification));
   assert.equal(isCertification({ ...verified[0], credentialFee: { status: 'unknown', note: '미확인' } }), true);
   assert.equal(isCertification({ ...verified[0], credentialFee: { status: 'not-offered', note: '미발급' } }), false);
