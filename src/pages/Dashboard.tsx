@@ -29,6 +29,7 @@ export default function Dashboard() {
           <Link to="/careers"><span>채용관</span><PassageMark /></Link>
           <Link to="/path"><span>추천 커리큘럼</span><PassageMark /></Link>
           <Link to="/resources"><span>학습 자료실</span><PassageMark /></Link>
+          <Link to="/tools"><span>AI 도구함</span><PassageMark /></Link>
           <Link to="/certs"><span>수료증 취득 강의</span><PassageMark /></Link>
           <Link to="/qualifications"><span>자격증 도전</span><PassageMark /></Link>
         </aside>

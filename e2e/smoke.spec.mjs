@@ -512,12 +512,19 @@ test('수료 과정 카드에는 학습 내용을 먼저 보여주고 비용 조
 test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async ({ page }) => {
   await page.goto('');
   const carousel = page.getByRole('region', { name: '전시 공간 목록' });
-  await expect(carousel.getByRole('link')).toHaveCount(11);
+  await expect(carousel.getByRole('link')).toHaveCount(12);
+  await expect(carousel.getByRole('link', { name: /AI 도구함/ })).toHaveAttribute('href', /\/tools$/);
   await carousel.focus();
   await page.keyboard.press('ArrowRight');
   await expect(carousel.locator('.is-centered h3')).toHaveText('AI 캘린더');
   await page.keyboard.press('ArrowLeft');
   await expect(carousel.locator('.is-centered h3')).toHaveText('AI 소식');
+});
+
+test('대시보드에서 AI 도구함으로 이동할 수 있다', async ({ page }) => {
+  await page.goto('dashboard');
+  await page.getByRole('complementary', { name: '대시보드 빠른 이동' }).getByRole('link', { name: 'AI 도구함' }).click();
+  await expect(page.getByRole('heading', { name: 'AI 도구함', exact: true })).toBeVisible();
 });
 
 test('직무에서 학습 자료와 자격 상세로 연결하고 채용행사 출처를 안내한다', async ({ page }, testInfo) => {

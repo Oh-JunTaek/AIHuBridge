@@ -12,6 +12,7 @@ const exhibits = [
   { to: '/social', title: '기업 SNS', description: 'AI 기업과 관계자의 소식을 살펴보세요.', style: 'social' },
   { to: '/path', title: '추천 커리큘럼', description: '기초부터 이어지는 학습 경로를 만나보세요.', style: 'learning' },
   { to: '/resources', title: '학습 자료실', description: '강의와 실습, 프로젝트를 찾아보세요.', style: 'resources' },
+  { to: '/tools', title: 'AI 도구함', description: '배움과 작업에 도움이 되는 AI 도구를 만나보세요.', style: 'resources' },
   { to: '/certs', title: '수료증 취득 강의', description: '수료증을 받을 수 있는 교육과정을 만나보세요.', style: 'completion' },
   { to: '/qualifications', title: '자격증 도전', description: '컴퓨터 활용부터 AI까지 자격시험을 찾아보세요.', style: 'qualifications' },
   { to: '/careers', title: '채용관', description: '관심 있는 직무와 채용 기회를 찾아보세요.', style: 'career' },
