@@ -64,6 +64,17 @@ test('기업 SNS는 최근 7일의 Bluesky와 Mastodon 게시물만 표시한다
   await expect(page.getByText(/Mozilla.ai · 기업 공식 · Mastodon/)).toBeVisible();
 });
 
+test('기업 SNS는 빈 계정과 조회 실패를 구분해 보여준다', async ({ page }) => {
+  await page.route('https://public.api.bsky.app/**', (route) => route.request().url().includes('7xblllgnpqtiotu62pic747n') ? route.fulfill({ status: 503 }) : route.fulfill({ json: { feed: [] }, headers: { 'access-control-allow-origin': '*' } }));
+  await page.route('https://mastodon.social/api/v1/accounts/**', (route) => route.fulfill({ json: [], headers: { 'access-control-allow-origin': '*' } }));
+  await page.goto('social');
+  await expect(page.getByRole('alert')).toContainText('@anthropic.com');
+  await page.getByText(/계정별 조회 상태/).click();
+  await expect(page.getByText('@anthropic.com · 조회 실패')).toBeVisible();
+  await expect(page.getByText('@hf.co · 최근 7일 표시 가능 0건')).toBeVisible();
+  await expect(page.getByText(/외부 채널 바로가기 \(게시물 자동 수집 없음\)/)).toBeVisible();
+});
+
 test('홈과 주요 공간을 직접 열 수 있다', async ({ page }) => {
   const routes = [
     ['', 'AI의 세계로'], ['dashboard', 'AI 소식 한눈에'], ['updates', 'AI 소식'],

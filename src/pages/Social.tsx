@@ -6,6 +6,8 @@ import type { SocialPost } from '../lib/social-feed.mjs';
 export default function Social() {
   const [posts, setPosts] = useState<SocialPost[]>([]);
   const [failures, setFailures] = useState<string[]>([]);
+  const [checks, setChecks] = useState<{ label: string; failed: boolean; count: number }[]>([]);
+  const [checkedAt, setCheckedAt] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(0);
   const [company, setCompany] = useState('');
@@ -16,7 +18,7 @@ export default function Social() {
   const sentinel = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const abort = new AbortController();
-    setLoading(true); setPosts([]); setFailures([]);
+    setLoading(true); setPosts([]); setFailures([]); setChecks([]); setCheckedAt(null);
     const feeds = socialSources.map(async (source) => {
       const url = new URL('https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed');
       url.searchParams.set('actor', source.actor); url.searchParams.set('limit', '100');
@@ -51,6 +53,8 @@ export default function Social() {
       if (abort.signal.aborted) return;
       setPosts(recentSocialPosts(results.flatMap((result) => result.status === 'fulfilled' ? result.value : [])).sort((a, b) => b.date.localeCompare(a.date)));
       setFailures(results.flatMap((result, i) => result.status === 'rejected' ? [labels[i]] : []));
+      setChecks(results.map((result, i) => ({ label: labels[i], failed: result.status === 'rejected', count: result.status === 'fulfilled' ? recentSocialPosts(result.value).length : 0 })));
+      setCheckedAt(Date.now());
       setLoading(false);
     });
     return () => abort.abort();
@@ -78,7 +82,8 @@ export default function Social() {
       <div className="social-filter-grid"><label>기업<select value={company} onChange={(e) => setCompany(e.target.value)}><option value="">전체 기업</option>{[...new Set([...socialSources, ...mastodonSources].map((item) => item.company))].map((name) => <option key={name}>{name}</option>)}</select></label><label>계정 유형<select value={channel} onChange={(e) => setChannel(e.target.value)}><option value="">전체 유형</option><option>기업 공식</option><option>관계자 개인</option></select></label><label>게시 기간<select value={days} onChange={(e) => setDays(e.target.value)}><option value="1">최근 24시간</option><option value="3">최근 3일</option><option value="7">최근 7일</option></select></label><label>키워드·작성자 검색<input type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="기업·제품·작성자·내용" /></label></div>
       <p className="social-note">페이지를 열면 브라우저가 Bluesky와 Mastodon에 직접 요청합니다. 최근 7일 이내 게시물만 보여주며 저장하지 않습니다. 이미지·첨부 자료는 원문에서 확인하세요.</p>
       <p className="social-note">대상 계정: {socialSources.map((source, index) => <span key={source.id}>{index > 0 && ' · '}<a className="underline" href={`https://bsky.app/profile/${encodeURIComponent(source.actor)}`} target="_blank" rel="noopener noreferrer">{source.company} @{source.handle} ({source.channel})</a></span>)}{mastodonSources.map((source) => <span key={source.id}> · <a className="underline" href={source.profile} target="_blank" rel="noopener noreferrer">{source.company} @{source.handle} ({source.channel})</a></span>)}. 관계자 개인 의견은 회사의 공식 입장이 아닙니다.</p>
-      <p className="social-note">다른 공식 채널 바로가기: <a className="underline" href="https://www.youtube.com/@OpenAI" target="_blank" rel="noopener noreferrer">OpenAI YouTube</a> · <a className="underline" href="https://x.com/OpenAI" target="_blank" rel="noopener noreferrer">OpenAI X</a> · 게시물은 각 채널에서 확인하세요.</p>
+      <p className="social-note">외부 채널 바로가기 (게시물 자동 수집 없음): <a className="underline" href="https://www.youtube.com/@OpenAI" target="_blank" rel="noopener noreferrer">OpenAI YouTube</a> · <a className="underline" href="https://x.com/OpenAI" target="_blank" rel="noopener noreferrer">OpenAI X</a></p>
+      {!loading && checkedAt !== null && <details className="social-note"><summary className="cursor-pointer font-semibold">계정별 조회 상태 · {new Date(checkedAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', dateStyle: 'short', timeStyle: 'short' })} 확인</summary><ul className="mt-2 space-y-1">{checks.map((check) => <li key={check.label}>{check.label} · {check.failed ? '조회 실패' : `최근 7일 표시 가능 ${check.count}건`}</li>)}</ul><p className="mt-2">각 계정에서 가져온 최근 게시물 범위의 결과입니다. 표시 조건에 맞지 않는 게시물은 제외됩니다.</p></details>}
       <div className="qualification-filter-footer"><p role="status">{loading ? '게시물을 불러오는 중…' : `${shown.length}개 표시`}</p><button type="button" onClick={() => setRefresh((n) => n + 1)}>새로고침</button></div>
     </section>
     <section className="qualification-results" aria-label="SNS 게시물 목록">
