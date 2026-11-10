@@ -5,6 +5,7 @@ import { readRss } from './lib/rss.mjs';
 import { collectCalendar, sources } from './lib/calendar-collector.mjs';
 import { writeJson } from './lib/data-files.mjs';
 import { collectGoogleEvents } from './lib/public-events.mjs';
+import { collectCoexEvents } from './lib/coex-events.mjs';
 import { selectPublishableEvents } from './lib/calendar-eligibility.mjs';
 
 const output = fileURLToPath(new URL('../public/data/', import.meta.url));
@@ -14,14 +15,16 @@ async function main() {
   const result = await collectCalendar(sources, readRss, old);
   const publicEvents = await collectGoogleEvents(old);
   result.sources.push(publicEvents.source);
-  result.events = selectPublishableEvents([...result.events, ...publicEvents.events]);
+  const coexEvents = await collectCoexEvents(old);
+  result.sources.push(coexEvents.source);
+  result.events = selectPublishableEvents([...result.events, ...publicEvents.events, ...coexEvents.events]);
   // 전부 실패하면 파일을 갱신하지 않고 실패로 보고한다. 샘플로 대체하지 않는다.
   if (result.sources.every((source) => source.status === 'error')) {
     console.table(result.sources);
     throw new Error('행사 출처 전체 수집 실패: 기존 정상 데이터를 유지합니다');
   }
   const meta = { schemaVersion: 2, fetchedAt: new Date().toISOString(), total: result.events.length,
-    status: result.sources.some((source) => source.status === 'error') ? 'partial' : 'success',
+    status: result.sources.some((source) => source.status !== 'success') ? 'partial' : 'success',
     sources: result.sources, policy: '국내 현장 또는 온라인 참여가 확인된 일정만 표시하고 지난 행사·공고는 30일 보관' };
   writeJson(resolve(output, 'calendar.json'), result.events);
   writeJson(resolve(output, 'calendar-meta.json'), meta);
