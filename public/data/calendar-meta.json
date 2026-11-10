@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-11-09T01:18:00.089Z",
-  "total": 511,
+  "fetchedAt": "2026-11-10T03:53:13.285Z",
+  "total": 161,
   "status": "success",
   "sources": [
     {
@@ -13,13 +13,37 @@
       "rejected": 12
     },
     {
+      "id": "naver-d2",
+      "status": "success",
+      "received": 20,
+      "accepted": 0,
+      "retained": 0,
+      "rejected": 20
+    },
+    {
+      "id": "aws-korea",
+      "status": "success",
+      "received": 10,
+      "accepted": 0,
+      "retained": 0,
+      "rejected": 10
+    },
+    {
+      "id": "microsoft-korea",
+      "status": "success",
+      "received": 10,
+      "accepted": 0,
+      "retained": 0,
+      "rejected": 10
+    },
+    {
       "id": "google-developer-events",
       "status": "success",
-      "received": 961,
-      "accepted": 511,
-      "retained": 0,
-      "rejected": 450
+      "received": 887,
+      "accepted": 131,
+      "retained": 30,
+      "rejected": 756
     }
   ],
-  "policy": "명시적 일정 근거를 보존하며 지난 행사·공고는 30일 보관, 취소·연기는 원문 상태 표시"
+  "policy": "국내 현장 또는 온라인 참여가 확인된 일정만 표시하고 지난 행사·공고는 30일 보관"
 }
