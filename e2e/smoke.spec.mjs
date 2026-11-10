@@ -209,6 +209,18 @@ test('같은 모델 발표 후보를 묶되 필터에 맞는 원문은 모두 �
   await expect(page.locator('details.news-related')).toHaveCount(0);
 });
 
+test('논문 카드에서 피드 머리말을 숨기고 원문 초록 발췌를 보여준다', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-11-10T00:00:00Z'));
+  const article = { id: 'paper-one', title: 'Image research', url: 'https://arxiv.org/abs/2611.12345', source: 'arXiv AI 논문', sourceId: 'arxiv', category: '연구/논문', lang: 'en', publishedAt: '2026-11-09T00:00:00Z', excerpt: 'arXiv:2611.12345v1 Announce Type: new Abstract: This paper studies image recognition.', summary: 'arXiv:2611.12345v1 Announce Type: new Abstract: This paper studies image recognition.', tags: [], readMinutes: 1 };
+  await page.route('**/data/news.json', (route) => route.fulfill({ json: [article] }));
+  await page.route('**/data/meta.json', (route) => route.fulfill({ json: { total: 1, fetchedAt: '2026-11-09T23:00:00Z' } }));
+  await page.goto('updates');
+  const card = page.locator('article').filter({ hasText: 'Image research' });
+  await expect(card.getByText('This paper studies image recognition.', { exact: false })).toBeVisible();
+  await expect(card.getByText(/Announce Type/)).toHaveCount(0);
+  await expect(card.getByRole('link', { name: /Image research/ })).toHaveAttribute('href', article.url);
+});
+
 test('AI 관심 분야는 소식 분류와 조합되고 겹치는 분야에서 각각 표시된다', async ({ page }, testInfo) => {
   await page.clock.setFixedTime(new Date('2026-11-08T00:00:00Z'));
   await page.emulateMedia({ reducedMotion: 'no-preference' });
