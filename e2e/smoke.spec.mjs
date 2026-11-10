@@ -499,6 +499,16 @@ test('AI 도구함은 분야와 검색을 조합하고 활용 링크를 제공�
   await expect(page.getByRole('article')).toHaveCount(1);
 });
 
+test('수료 과정 카드에는 학습 내용을 먼저 보여주고 비용 조건은 상세에 유지한다', async ({ page }) => {
+  await page.goto('certs');
+  const course = page.getByRole('button', { name: /Google AI Essentials/ });
+  await expect(course).toContainText('AI 도구와 프롬프트');
+  await course.click();
+  const dialog = page.getByRole('dialog', { name: 'Google AI Essentials' });
+  await expect(dialog.getByText(/수료증·평가 비용/)).toBeVisible();
+  await expect(dialog.getByText(/유료 과정 완료 시 수료증 제공/)).toBeVisible();
+});
+
 test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async ({ page }) => {
   await page.goto('');
   const carousel = page.getByRole('region', { name: '전시 공간 목록' });

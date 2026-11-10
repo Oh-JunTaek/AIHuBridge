@@ -8,7 +8,7 @@ export type LearningResource = { id: string; name: string; provider: string; kin
 const existing: LearningResource[] = certifications.filter((item) => isEducationAvailable(item)).map((item) => ({
   id: item.id, name: item.name, provider: item.provider,
   kinds: item.type === 'micro' ? ['역량 평가'] : item.id === 'hf-agents' ? ['강의', '실습', '프로젝트'] : item.id === 'boost-ml-coders' ? ['강의', '실습'] : ['강의'],
-  description: item.note || item.requirements,
+  description: item.description || item.note || item.requirements,
   language: item.language === 'ko' ? '한국어' : item.language === 'both' ? '한국어·영어' : item.language === 'en' ? '영어' : '언어 미확인',
   cost: item.learningFee.note, url: item.url, checked: item.verifiedAt,
 }));

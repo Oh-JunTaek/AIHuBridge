@@ -58,6 +58,7 @@ export interface Certification {
   difficulty: '초급' | '중급' | '고급';
   url: string;
   verifiedAt: string; // YYYY-MM-DD
+  description?: string; // 공식 과정의 학습 내용
   note?: string;
 }
 

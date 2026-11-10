@@ -230,6 +230,7 @@ export const certifications: Certification[] = [
   {
     "id": "dlai-prompting",
     "completionCertificateVerified": true,
+    "description": "AI 검색과 글쓰기, 이미지·웹 제작에 필요한 프롬프트 활용법을 배웁니다.",
     "name": "AI Prompting for Everyone (Andrew Ng)",
     "provider": "DeepLearning.AI",
     "type": "course",
@@ -326,6 +327,7 @@ export const certifications: Certification[] = [
   {
     "id": "hf-agents",
     "completionCertificateVerified": true,
+    "description": "AI 에이전트의 도구·행동 원리를 배우고 직접 에이전트를 만들어 봅니다.",
     "name": "Hugging Face Agents Course",
     "provider": "Hugging Face",
     "type": "course",
@@ -374,6 +376,7 @@ export const certifications: Certification[] = [
   {
     "id": "google-ai-essentials",
     "completionCertificateVerified": true,
+    "description": "AI 도구와 프롬프트를 활용해 업무 아이디어와 결과물을 만드는 기초를 배웁니다.",
     "name": "Google AI Essentials",
     "provider": "Google",
     "type": "course",
@@ -399,6 +402,7 @@ export const certifications: Certification[] = [
   {
     "id": "coursera-ai-for-everyone",
     "completionCertificateVerified": true,
+    "description": "AI의 주요 개념과 활용 가능성, 조직의 AI 도입과 윤리 문제를 살펴봅니다.",
     "name": "AI For Everyone (Andrew Ng)",
     "provider": "Coursera / DeepLearning.AI",
     "type": "course",

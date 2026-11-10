@@ -9,7 +9,7 @@ export function CertCard({ c, onOpen }: { c: Certification; onOpen: () => void }
   return <button type="button" className="learning-list-card" onClick={onOpen}>
     <span className="learning-list-main">
       <span className="learning-list-heading"><strong>{c.name}</strong><span className="learning-list-tag">수료 과정</span></span>
-      <span className="learning-list-description">{c.note || c.requirements}</span>
+      <span className="learning-list-description">{c.description || c.note || c.requirements}</span>
       <span className="learning-list-meta">{c.provider} · {c.difficulty} · {languageLabel(c)}</span>
     </span>
     <LearningVisual kind="certificate" />
