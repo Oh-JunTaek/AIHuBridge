@@ -13,6 +13,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "boost-ai-basics",
+    "completionCertificateVerified": true,
     "name": "모두를 위한 인공지능 기초",
     "provider": "네이버 커넥트재단 · 부스트코스",
     "type": "course",
@@ -37,6 +38,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "boost-python-everybody",
+    "completionCertificateVerified": true,
     "name": "모두를 위한 프로그래밍 : 파이썬",
     "provider": "네이버 커넥트재단 · 부스트코스",
     "type": "course",
@@ -61,6 +63,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "boost-ai-linear-algebra",
+    "completionCertificateVerified": true,
     "name": "인공지능을 위한 선형대수",
     "provider": "네이버 커넥트재단 · 부스트코스",
     "type": "course",
@@ -85,6 +88,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "boost-data-science",
+    "completionCertificateVerified": true,
     "name": "파이썬으로 시작하는 데이터 사이언스",
     "provider": "네이버 커넥트재단 · 부스트코스",
     "type": "course",
@@ -109,6 +113,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "boost-ml-python",
+    "completionCertificateVerified": true,
     "name": "머신러닝을 위한 파이썬",
     "provider": "네이버 커넥트재단 · 부스트코스",
     "type": "course",
@@ -133,6 +138,7 @@ export const certifications: Certification[] = [
   },
   {
     "id": "boost-pytorch-theory",
+    "completionCertificateVerified": true,
     "name": "파이토치로 만드는 딥러닝 이론",
     "provider": "네이버 커넥트재단 · 부스트코스",
     "type": "course",

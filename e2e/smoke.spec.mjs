@@ -531,6 +531,16 @@ test('수료 과정 카드에는 학습 내용을 먼저 보여주고 비용 조
   await expect(dialog.getByText(/유료 과정 완료 시 수료증 제공/)).toBeVisible();
 });
 
+test('부스트코스 수료 안내가 확인된 강의는 목록에 나오고 발급 비용은 미확인으로 표시한다', async ({ page }) => {
+  await page.goto('certs');
+  const course = page.getByRole('button', { name: /모두를 위한 인공지능 기초/ });
+  await expect(course).toBeVisible();
+  await course.click();
+  const dialog = page.getByRole('dialog', { name: '모두를 위한 인공지능 기초' });
+  await expect(dialog).toContainText('수료증·평가 비용 · 미확인');
+  await expect(dialog).toContainText('별도 발급 요금·세부 수료 기준은 확인하지 못했습니다');
+});
+
 test('캐러셀은 복제 링크를 숨기고 키보드로 이동한다', async ({ page }) => {
   await page.goto('');
   const carousel = page.getByRole('region', { name: '전시 공간 목록' });
