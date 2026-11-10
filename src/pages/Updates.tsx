@@ -74,6 +74,9 @@ export default function Updates() {
           </button>
         ))}
       </nav>
+      <div className="news-origin-filter"><span>출처 지역</span><div role="group" aria-label="출처 지역">
+        {[{value:'',label:'전체 출처'}, {value:'domestic',label:'국내 출처'}].map((option) => <button type="button" key={option.value} aria-pressed={origin === option.value} onClick={() => setOrigin(option.value)}>{option.label}</button>)}
+      </div></div>
       <fieldset className="news-interests"><legend>AI 관심 분야</legend><p>소식 분류와 함께 선택해 보세요. 원문 표현에 따라 분류하므로 일부 자료는 빠질 수 있습니다.</p><div className="news-interest-options">
         {[['', '전체'], ...Object.entries(interestLabels)].map(([value, label]) => <button key={value} type="button" aria-pressed={interest === value} onClick={() => { if (interest !== value) { setInterestChanged(true); setInterest(value); } }}>{label}</button>)}
       </div></fieldset>
@@ -88,10 +91,7 @@ export default function Updates() {
           </label>
         </div>
         <details className="news-advanced-filters mt-4">
-          <summary>상세 조건{[lang, source, origin, topic, openness, publication, paperKind, company, securityOnly].filter(Boolean).length > 0 && ` · ${[lang, source, origin, topic, openness, publication, paperKind, company, securityOnly].filter(Boolean).length}개 적용`}</summary>
-          <div role="group" aria-label="출처 지역" className="mb-4 mt-4 flex gap-2 text-sm">
-            {[{value:'',label:'전체 출처'}, {value:'domestic',label:'국내 출처'}].map((option) => <button type="button" key={option.value} aria-pressed={origin === option.value} onClick={() => setOrigin(option.value)} className={`rounded-lg px-4 py-2 ${origin === option.value ? 'bg-blue-900 text-white' : 'bg-stone-100 dark:bg-stone-800'}`}>{option.label}</button>)}
-          </div>
+          <summary>상세 조건{[lang, source, topic, openness, publication, paperKind, company, securityOnly].filter(Boolean).length > 0 && ` · ${[lang, source, topic, openness, publication, paperKind, company, securityOnly].filter(Boolean).length}개 적용`}</summary>
           <button type="button" className="security-toggle" aria-pressed={securityOnly} onClick={() => setSecurityOnly(!securityOnly)}>보안 관련 소식</button>
           <div className="grid gap-3 sm:grid-cols-2">
           <label className="grid gap-1 text-sm">자료 언어

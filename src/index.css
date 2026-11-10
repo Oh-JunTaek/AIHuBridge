@@ -854,6 +854,8 @@ a:hover .wayfinding-icon, a:focus-visible .wayfinding-icon, button:hover .wayfin
 .tool-detail-note { margin: 1.1rem 0; color: #63798a; font-size: .78rem; line-height: 1.7; }
 
 /* 상위 소식 분류와 독립적으로 조합하는 관심 분야 필터 */
+.news-origin-filter { margin-bottom: 1.2rem; }
+.news-origin-filter > span { display: block; margin-bottom: .5rem; color: #214d70; font-size: .85rem; font-weight: 750; }
 .news-interests { margin: 0 0 1.25rem; padding: 1rem 0 0; border: 0; border-top: 1px solid #d4e4ee; }
 .news-interests legend { padding: 0 .25rem 0 0; color: #214d70; font-size: .85rem; font-weight: 750; }
 .news-interests > p { margin: 0 0 .65rem; color: #627c90; font-size: .75rem; line-height: 1.5; }

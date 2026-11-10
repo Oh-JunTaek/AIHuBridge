@@ -456,6 +456,17 @@ test('소식의 상세 필터가 열리고 조건을 적용할 수 있다', asyn
   await expect(page.getByText(/상세 조건 · 1개 적용/)).toBeVisible();
 });
 
+test('소식 출처 지역을 상세 조건을 열지 않고 선택한다', async ({ page }, testInfo) => {
+  await page.goto('updates');
+  if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
+  const origin = page.getByRole('group', { name: '출처 지역' });
+  await expect(origin.getByRole('button', { name: '국내 출처' })).toBeVisible();
+  await origin.getByRole('button', { name: '국내 출처' }).click();
+  await expect(origin.getByRole('button', { name: '국내 출처' })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '조건 초기화' }).click();
+  await expect(origin.getByRole('button', { name: '전체 출처' })).toHaveAttribute('aria-pressed', 'true');
+});
+
 test('학습 자료 검색과 수료 강의 공식 링크를 유지한다', async ({ page }, testInfo) => {
   await page.goto('resources');
   if (testInfo.project.name === 'mobile') await page.getByText('탐색 조건', { exact: false }).first().click();
