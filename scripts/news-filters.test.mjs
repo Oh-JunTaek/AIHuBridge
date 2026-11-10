@@ -105,6 +105,8 @@ test('모델 출시 근거가 있는 제목만 선별하고 유형별 필터와 
     'OpenAI cancels release of AI model GPT-6.1',
     'Anthropic considers releasing new AI model',
     'Qwen 4: Confirmed Facts, Latest Teaser and Release Status',
+    'Qwen 4 Release Date: What We Know So Far',
+    'GPT-6 Cyber, 리눅스 취약점 948건 악용 입증…신규 고위험 결함 81건 발견',
     'AI Cloud Expands with New Qwen 3.8 Model Launch',
     'Tencent shares jump after AI model launch',
     '신규 AI 모델 출시 예정',

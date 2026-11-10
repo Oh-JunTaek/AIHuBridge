@@ -9,6 +9,7 @@ import { useT } from '../lib/i18n';
 import { topicGroups, opennessLabels, publicationLabels, paperKinds, companies } from '../lib/news-facets.mjs';
 import { NEWS_DEFAULT_DAYS } from '../lib/content-retention.mjs';
 import { interestLabels } from '../lib/news-interests.mjs';
+import { groupNews } from '../lib/news-groups.mjs';
 
 export default function Updates() {
   const { result, loading, reload, now } = useNews();
@@ -36,6 +37,7 @@ export default function Updates() {
 
   const shown = useMemo(() => filterNews(items, { category: ['전체', 'models'].includes(active) ? undefined : active, modelsOnly: active === 'models', lang, source, query, origin, interest, topicGroup: group, topic, openness, publication, paperKind, company, days: Number(days), now }).filter((item) => !securityOnly || /security|cyber|vulnerab|hack|breach|보안|해킹|취약점|침해/i.test(`${item.title} ${item.excerpt ?? ''}`)),
     [items, active, lang, source, query, origin, interest, group, topic, openness, publication, paperKind, company, days, now, securityOnly]);
+  const grouped = useMemo(() => groupNews(shown), [shown]);
   useEffect(() => setVisibleCount(24), [active, lang, source, query, origin, interest, topic, openness, publication, paperKind, company, days, securityOnly]);
   const changeCategory = (category: string) => { setActive(category); setTopic(''); setOpenness(''); setPublication(''); setPaperKind(''); setCompany(''); };
   const clear = () => { changeCategory('전체'); setInterest(''); setInterestChanged(false); setLang(''); setSource(''); setQuery(''); setOrigin(''); setCompany(''); setSecurityOnly(false); setDays(String(NEWS_DEFAULT_DAYS)); };
@@ -116,7 +118,7 @@ export default function Updates() {
         </fieldset>}
         </details>
         <div className="mt-3 flex items-center justify-between gap-3 text-sm">
-          <p role="status">검색 결과 {shown.length}건 / 전체 {items.length}건</p>
+          <p role="status">검색 결과 {shown.length}건 / 전체 {items.length}건{grouped.length < shown.length && ` · ${grouped.length}개 묶음`}</p>
           <button type="button" onClick={clear}
             className="rounded-lg px-3 py-2 text-amber-700 hover:bg-amber-50 dark:text-amber-300 dark:hover:bg-stone-800">조건 초기화</button>
         </div>
@@ -134,11 +136,11 @@ export default function Updates() {
       )}
 
       <div key={interest} className={`news-list mt-4 grid gap-4${interestChanged ? ' news-list-interest-change' : ''}`}>
-        {shown.slice(0, visibleCount).map((it, index) => (
-          <div key={it.id} className="news-interest-result" style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}><NewsCard item={it} showInterests /></div>
+        {grouped.slice(0, visibleCount).map(({ primary, related }, index) => (
+          <div key={primary.id} className="news-interest-result" style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}><NewsCard item={primary} showInterests />{related.length > 0 && <details className="news-related"><summary>관련 보도 후보 {related.length}건 더 보기</summary><p>모델 이름과 발표 표현이 비슷한 자료입니다. 같은 발표인지 원문을 확인하세요.</p><div>{related.map((item) => <NewsCard key={item.id} item={item} showInterests />)}</div></details>}</div>
         ))}
       </div>
-      <AutoLoadMore visible={visibleCount} total={shown.length} label="소식" onLoad={() => setVisibleCount((count) => count + 24)} />
+      <AutoLoadMore visible={visibleCount} total={grouped.length} label="소식 묶음" onLoad={() => setVisibleCount((count) => count + 24)} />
 
       </section>
       </div>

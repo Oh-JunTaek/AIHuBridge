@@ -43,9 +43,9 @@ const patterns = {
 export function isModelRelease(item) {
   const title = (item.title ?? '').replace(/\s+-\s+[^-]+$/, '');
   const target = /(?:\b(?:AI|LLM|language|reasoning|decision|classification|audio|speech|voice|music|image|video|vision|multimodal|coding|robotics|world|embedding|forecast(?:ing)?)\b[\s\w-]{0,35}\bmodels?\b)|(?:\bmodels?\b[\s\w-]{0,20}\b(?:AI|language|reasoning|audio|speech|image|video|multimodal)\b)|(?:인공지능|생성형|언어|추론|판단|분류|음성|오디오|음악|이미지|영상|동영상|멀티모달|코딩|로봇|월드|임베딩|예측|시계열|AI)\s*(?:생성|인식|판단|분류|기반|거대|대형|신규|새로운|신형|차세대|AI|\s)*\s*모델|\b(?:GPT[- ]?\d[\w.-]*|Claude\s+\d[\w. -]*|Gemini\s+\d[\w. -]*|Llama\s*\d[\w. -]*|Qwen\s*\d[\w. -]*|Gemma\s*\d[\w. -]*|Veo\s*\d[\w. -]*|Sora\s*\d[\w. -]*|FLUX[. -]?\d[\w. -]*|HyperCLOVA[\w -]*|Kanana[\w -]*)\b|하이퍼클로바|카나나/i.test(title);
-  const launched = /\b(?:introduc(?:e|es|ing)|launch(?:es|ed|ing)?|releas(?:e|es|ed|ing)|announc(?:e|es|ed|ing)|unveil(?:s|ed|ing)?|debut(?:s|ed)?|new|first)\b|출시|공개|발표|선보|선봬|내놨|내놓|첫\s*(?:AI|인공지능|모델)|새로운|신규|신형|차세대/i.test(title);
+  const launched = /\b(?:introduc(?:e|es|ing)|launch(?:es|ed|ing)?|releas(?:e|es|ed|ing)|announc(?:e|es|ed|ing)|unveil(?:s|ed|ing)?|debut(?:s|ed)?)\b|출시|공개|발표|선보|선봬|내놨|내놓/i.test(title);
   const excluded = /business model|pricing model|\b(?:teaser|release status|cloud expands?|now available|added to|integrat(?:es|ed|ion))\b|\b(?:cancell?\w*|scraps?|shelv\w*|postpon\w*|plans? to|consider\w*|rumou?rs?|reportedly|expected to|ahead of|shares? (?:jump|rise|fall))\b|출시\s*(?:예정|전망|취소|연기)|공개\s*(?:예정|전망|취소|연기)|출시를?\s*(?:검토|예고|취소|연기)|논문.{0,20}발표|(?:으로|로)\s*만든.{0,20}기능|(?:new|launch(?:es|ed)?|introduc(?:e|es|ing))\s+(?:a\s+)?(?:feature|app|service|tool)\b|수익\s*모델|사업\s*모델|비즈니스\s*모델|활용법|사용법|사용\s*후기|비교|요금|가격|비용|benchmark|벤치마크|평가|how to|tutorial|review|versus|\bvs\.?\b|available (?:on|in|via)\b|\bAPI\s+(?:access|pricing)\b/i.test(title);
-  return target && launched && !excluded;
+  return target && launched && !excluded && !/출시일|발표일|release\s+date|what (?:we know|to expect)|출시\s*(?:시기|전망|예상)|공개\s*(?:시기|전망|예상)/i.test(title);
 }
 const kinds = { survey: /\bsurvey\b|systematic review|서베이|문헌\s*고찰/i, benchmark: /benchmark|evaluation|벤치마크|평가/i, dataset: /dataset|data set|데이터셋/i, method: /we (?:introduce|propose|present)|framework|novel|제안|새로운\s*방법/i };
 

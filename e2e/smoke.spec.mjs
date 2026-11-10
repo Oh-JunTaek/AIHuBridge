@@ -188,6 +188,27 @@ test('모델 소식은 신규 모델 발표만 보여준다', async ({ page }, t
   await expect(page.getByText('AI 창업의 수익 모델은 숙제')).toHaveCount(0);
 });
 
+test('같은 모델 발표 후보를 묶되 필터에 맞는 원문은 모두 볼 수 있다', async ({ page }, testInfo) => {
+  await page.clock.setFixedTime(new Date('2026-11-10T00:00:00Z'));
+  const base = { source: 'AI타임스', sourceId: 'aitimes', category: '언론', lang: 'ko', publishedAt: '2026-11-09T00:00:00Z', excerpt: '', summary: null, tags: [], readMinutes: 1 };
+  const items = [
+    { ...base, id: 'a', url: 'https://example.org/a', title: 'LG K-엑사원 2.5 API 무료개방 - 연합뉴스' },
+    { ...base, id: 'b', url: 'https://example.org/b', title: 'LG K-엑사원 2.5 API 무료 개방 - 서울경제TV' },
+    { ...base, id: 'c', url: 'https://example.org/c', title: 'LG K-엑사원 2.6 API 무료 개방' },
+  ];
+  await page.route('**/data/news.json', (route) => route.fulfill({ json: items }));
+  await page.route('**/data/meta.json', (route) => route.fulfill({ json: { total: 3, fetchedAt: '2026-11-09T23:00:00Z' } }));
+  await page.goto('updates');
+  const related = page.locator('details.news-related');
+  await expect(related).toHaveCount(1);
+  await related.locator('summary').click();
+  await expect(related.getByRole('link', { name: /서울경제TV/ })).toHaveAttribute('href', 'https://example.org/b');
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: /탐색 조건/ }).click();
+  await page.getByLabel('검색어').fill('서울경제TV');
+  await expect(page.getByRole('link', { name: /서울경제TV/ })).toBeVisible();
+  await expect(page.locator('details.news-related')).toHaveCount(0);
+});
+
 test('AI 관심 분야는 소식 분류와 조합되고 겹치는 분야에서 각각 표시된다', async ({ page }, testInfo) => {
   await page.clock.setFixedTime(new Date('2026-11-08T00:00:00Z'));
   await page.emulateMedia({ reducedMotion: 'no-preference' });
