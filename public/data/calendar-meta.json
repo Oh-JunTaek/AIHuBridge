@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-11-14T01:54:33.707Z",
+  "fetchedAt": "2026-11-15T01:26:20.411Z",
   "total": 162,
   "status": "success",
   "sources": [
@@ -47,9 +47,9 @@
     {
       "id": "coex-events",
       "status": "success",
-      "received": 5,
-      "accepted": 1,
-      "retained": 0
+      "received": 4,
+      "accepted": 0,
+      "retained": 1
     }
   ],
   "policy": "국내 현장 또는 온라인 참여가 확인된 일정만 표시하고 지난 행사·공고는 30일 보관"
