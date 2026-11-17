@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-11-16T01:29:21.955Z",
-  "total": 162,
+  "fetchedAt": "2026-11-17T04:15:01.171Z",
+  "total": 187,
   "status": "success",
   "sources": [
     {
@@ -39,10 +39,10 @@
     {
       "id": "google-developer-events",
       "status": "success",
-      "received": 887,
-      "accepted": 131,
-      "retained": 30,
-      "rejected": 756
+      "received": 871,
+      "accepted": 125,
+      "retained": 61,
+      "rejected": 746
     },
     {
       "id": "coex-events",
