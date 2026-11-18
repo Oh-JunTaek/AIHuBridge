@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-11-17T04:15:01.171Z",
+  "fetchedAt": "2026-11-18T03:13:07.565Z",
   "total": 187,
   "status": "success",
   "sources": [
@@ -47,7 +47,7 @@
     {
       "id": "coex-events",
       "status": "success",
-      "received": 4,
+      "received": 5,
       "accepted": 0,
       "retained": 1
     }
