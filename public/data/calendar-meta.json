@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-11-19T02:53:03.286Z",
+  "fetchedAt": "2026-11-20T02:44:56.568Z",
   "total": 187,
-  "status": "success",
+  "status": "partial",
   "sources": [
     {
       "id": "kakao",
@@ -14,11 +14,9 @@
     },
     {
       "id": "naver-d2",
-      "status": "success",
-      "received": 20,
-      "accepted": 0,
+      "status": "error",
       "retained": 0,
-      "rejected": 20
+      "error": "공개 자료 요청 실패: HTTP 404"
     },
     {
       "id": "aws-korea",
