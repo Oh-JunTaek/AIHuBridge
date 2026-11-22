@@ -1,5 +1,219 @@
 [
   {
+    "id": "99b1b61d6e40",
+    "title": "Astra 6.2와 Sol 6.2, SimpleBench에서 부진",
+    "url": "https://news.hada.io/topic?id=37602",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-22T01:32:10.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "5dfff82d0cb3",
+    "title": "UI SDK - AI 에이전트가 UI의 기본 동작을 조합해 컴포넌트를 만드는 라이브러리",
+    "url": "https://news.hada.io/topic?id=37600",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-22T00:30:02.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "03fca9cfc3f4",
+    "title": "챗GPT·클로드, 모바일 앱 나란히 개편…AI 에이전트 기능 전면에",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217654",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-22T00:09:35.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "GPT"
+    ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "83ae64bf4f80",
+    "title": "LGU+ 조직개편...\"AI 사업 성과 창출 가속\"",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217651",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-22T00:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "7289e21f33e2",
+    "title": "Signal restricts mobile screenshots as it confronts ‘existential threat’ of AI surveillance",
+    "url": "https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/",
+    "source": "TechCrunch AI",
+    "sourceId": "techcrunch",
+    "publishedAt": "2026-11-21T21:37:10.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Signal is limiting users' ability to take screenshots in both its Android and iOS apps.",
+    "summary": "Signal is limiting users' ability to take screenshots in both its Android and iOS apps.",
+    "readMinutes": 1
+  },
+  {
+    "id": "8ed913cfa76c",
+    "title": "A tale of two Nvidias",
+    "url": "https://techcrunch.com/2026/11/21/a-tale-of-two-nvidias/",
+    "source": "TechCrunch AI",
+    "sourceId": "techcrunch",
+    "publishedAt": "2026-11-21T21:07:42.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [
+      "NVIDIA"
+    ],
+    "excerpt": "We got two very different pictures of Nvidia — the company’s latest earnings report vs. the tech executives loudly calling for Jensen Huang’s return.",
+    "summary": "We got two very different pictures of Nvidia — the company’s latest earnings report vs. the tech executives loudly calling for Jensen Huang’s return.",
+    "readMinutes": 1
+  },
+  {
+    "id": "0c56a2d824bd",
+    "title": "손정의, SK하이닉스 1조달러 인수 검토…월가에 자금 조달 타진",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217653",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-21T20:59:45.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "e3d1372efeda",
+    "title": "Show GN: AriadneNSD - 알고리즘을 NS 차트로 그리는 구조 편집기",
+    "url": "https://news.hada.io/topic?id=37589",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-21T17:56:31.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "d15566b2aef3",
+    "title": "Here are the top AI agents that can live in your text messages",
+    "url": "https://techcrunch.com/2026/11/21/all-the-ai-agents-that-can-live-in-your-text-messages/",
+    "source": "TechCrunch AI",
+    "sourceId": "techcrunch",
+    "publishedAt": "2026-11-21T17:00:00.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "We created a list of the most notable AI agents that can live in your text messages, from general assistants to agents designed for families, travel, and work.",
+    "summary": "We created a list of the most notable AI agents that can live in your text messages, from general assistants to agents designed for families, travel, and work.",
+    "readMinutes": 1
+  },
+  {
+    "id": "53e893a48ca0",
+    "title": "Is selling an AI version of your face to this microdrama startup the future of Hollywood?",
+    "url": "https://techcrunch.com/2026/11/21/is-selling-an-ai-version-of-your-face-to-this-microdrama-startup-the-future-of-hollywood/",
+    "source": "TechCrunch AI",
+    "sourceId": "techcrunch",
+    "publishedAt": "2026-11-21T16:00:00.000Z",
+    "category": "언론",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "An actor has licensed his face to a microdrama startup — in a trend that's already popular in China. Experts question the long-term consequences if this becomes a trend in Hollywood, too.",
+    "summary": "An actor has licensed his face to a microdrama startup — in a trend that's already popular in China. Experts question the long-term consequences if this becomes a trend in Hollywood, too.",
+    "readMinutes": 1
+  },
+  {
+    "id": "32dc01a50c15",
+    "title": "추론 칩을 바이브 코딩하기",
+    "url": "https://news.hada.io/topic?id=37581",
+    "source": "긱뉴스",
+    "sourceId": "geeknews",
+    "publishedAt": "2026-11-21T14:38:47.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "026dba0dfeb6",
+    "title": "머스크의 우주 데이터센터, 첫 금융 장벽…채권단 \"GPU 반입 제한\"",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217650",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-21T09:55:59.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "ca9ca5e0f6aa",
+    "title": "AI 작업 능력, 6개월 만에 16시간→40시간…\"판단력 여전히 한계\"",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217649",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-21T09:20:47.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "04fd4e621ea3",
+    "title": "구글, 제미나이 앱에 GIF 생성 기능 출시…오픈AI 이어 도입",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217648",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-21T07:39:48.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "66621d2c4f20",
+    "title": "\"젠슨 황, 20여년 전부터 직원들에게 폭언·위협\"…불만 제기 이어져",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217644",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
+    "publishedAt": "2026-11-21T02:51:51.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
     "id": "e09b64e6f8f2",
     "title": "유튜브, 미 교육청들과 '중독 소송' 4조원 합의 추진",
     "url": "https://www.aitimes.com/news/articleView.html?idxno=217647",
@@ -154,11 +368,11 @@
     "readMinutes": 1
   },
   {
-    "id": "e8ea27a62ac9",
-    "title": "스페이스X, '커서'의 중국 AI 모델 퇴출 검토 - AI타임스",
-    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE82eC1jeV9falAyWFRWb2ZXaWtWLUF1YjlpN1NFQjVuSFpNVzFWTW1wMVlXMlIwOGNfVFdRR1NPbHA4NTVTWDJoSzJSMnJPTElCTjFjbldzVWhOanVUV25uNkVSaEhSNUVHa3c?oc=5",
-    "source": "Google 뉴스 AI (한국)",
-    "sourceId": "koreagnews",
+    "id": "704f8c31faf8",
+    "title": "스페이스X, '커서'의 중국 AI 모델 퇴출 검토",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217643",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
     "publishedAt": "2026-11-21T02:01:27.000Z",
     "category": "언론",
     "lang": "ko",
@@ -168,11 +382,11 @@
     "readMinutes": 1
   },
   {
-    "id": "704f8c31faf8",
-    "title": "스페이스X, '커서'의 중국 AI 모델 퇴출 검토",
-    "url": "https://www.aitimes.com/news/articleView.html?idxno=217643",
-    "source": "AI타임스",
-    "sourceId": "aitimes",
+    "id": "e8ea27a62ac9",
+    "title": "스페이스X, '커서'의 중국 AI 모델 퇴출 검토 - AI타임스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE82eC1jeV9falAyWFRWb2ZXaWtWLUF1YjlpN1NFQjVuSFpNVzFWTW1wMVlXMlIwOGNfVFdRR1NPbHA4NTVTWDJoSzJSMnJPTElCTjFjbldzVWhOanVUV25uNkVSaEhSNUVHa3c?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
     "publishedAt": "2026-11-21T02:01:27.000Z",
     "category": "언론",
     "lang": "ko",
@@ -282,11 +496,11 @@
     "readMinutes": 1
   },
   {
-    "id": "25a588b8cc38",
-    "title": "트럼프·시진핑, 군사 AI에 인간 통제 합의…주요 군사작전까지 적용 - AI타임스",
-    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9OMG1QNnR4YWRDTHlpdkxSZTdIeVZHQ2ttRXhyTGE0bGNLX3lwdGZZRjR6azAzZVNrT05hSHZCY3RpUFR0MDJBSkRUMmR4STNRVFhpN0Q0R0JidnZjdmVtdzdzNW8xOU9LSkE?oc=5",
-    "source": "Google 뉴스 AI (한국)",
-    "sourceId": "koreagnews",
+    "id": "cb7d09a3e358",
+    "title": "트럼프·시진핑, 군사 AI에 인간 통제 합의…주요 군사작전까지 적용",
+    "url": "https://www.aitimes.com/news/articleView.html?idxno=217640",
+    "source": "AI타임스",
+    "sourceId": "aitimes",
     "publishedAt": "2026-11-21T01:42:02.000Z",
     "category": "언론",
     "lang": "ko",
@@ -296,11 +510,11 @@
     "readMinutes": 1
   },
   {
-    "id": "cb7d09a3e358",
-    "title": "트럼프·시진핑, 군사 AI에 인간 통제 합의…주요 군사작전까지 적용",
-    "url": "https://www.aitimes.com/news/articleView.html?idxno=217640",
-    "source": "AI타임스",
-    "sourceId": "aitimes",
+    "id": "25a588b8cc38",
+    "title": "트럼프·시진핑, 군사 AI에 인간 통제 합의…주요 군사작전까지 적용 - AI타임스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9OMG1QNnR4YWRDTHlpdkxSZTdIeVZHQ2ttRXhyTGE0bGNLX3lwdGZZRjR6azAzZVNrT05hSHZCY3RpUFR0MDJBSkRUMmR4STNRVFhpN0Q0R0JidnZjdmVtdzdzNW8xOU9LSkE?oc=5",
+    "source": "Google 뉴스 AI (한국)",
+    "sourceId": "koreagnews",
     "publishedAt": "2026-11-21T01:42:02.000Z",
     "category": "언론",
     "lang": "ko",
@@ -2489,6 +2703,335 @@
     "readMinutes": 1
   },
   {
+    "id": "35ac5c77774e",
+    "title": "Posterior Matching Distillation",
+    "url": "https://arxiv.org/abs/2611.26629v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:59:57.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Diffusion distillation accelerates image and video generation by compressing a pretrained teacher's iterative sampling process into a few network evaluations. Distribution-based methods achieve this by matching the student's output distribution to the teacher's. This matching is often driven by reverse-KL objectives, whose mode-seeking bias favors dominant teacher modes at the expense of diversity across samples. We introduce Posterior Matching Distillation (PMD), a new membe",
+    "summary": "Diffusion distillation accelerates image and video generation by compressing a pretrained teacher's iterative sampling process into a few network evaluations. Distribution-based methods achieve this by matching the student's output distribu",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "c9e4efdf2f9a",
+    "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+    "url": "https://arxiv.org/abs/2611.26627v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:59:53.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations. To isolate how much of these gains an input-independent shift explains, we probe each RL-tuned model wit",
+    "summary": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects a",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.CV",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "b130bc63cdc5",
+    "title": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+    "url": "https://arxiv.org/abs/2611.26624v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:59:34.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Recent AI agents can generate playable games, but these games are not necessarily engaging. Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning. We propose PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery. Starting from an initial game, PlayCraft alternates between playing and crafting. In the playing stage, a player agent watches",
+    "summary": "Recent AI agents can generate playable games, but these games are not necessarily engaging. Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning.",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.AI",
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "7c100c8e4b36",
+    "title": "TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming",
+    "url": "https://arxiv.org/abs/2611.26619v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:58:31.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency. We present TideCache, a serving system on CPU--GPU superchips with three components for allocating GPU memory among caches and managing their residency across GPU and host memory. The Transparent Cache Pool redistributes physical pages among cache components behind f",
+    "summary": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency.",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.DC",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "649bdecb4b3b",
+    "title": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent Action Learning",
+    "url": "https://arxiv.org/abs/2611.26617v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:58:14.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch. We ask whether a pretrained video generator can instead provide the prior for both inverse and forward dynamics. We introduce O$^{2}$LaF, built on a simple principle: one prior, two dynamics. We initialize both models from the same pretrained video DiT and ",
+    "summary": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch.",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG",
+      "cs.RO"
+    ]
+  },
+  {
+    "id": "d318f17cb453",
+    "title": "ScaleWorld: High-Resolution World Generation through Shared Prediction and Refinement",
+    "url": "https://arxiv.org/abs/2611.26615v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:58:04.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "High-resolution generation enables video world models to render fine-grained scene structures and textures, but directly generating high-resolution video incurs substantial computational and memory costs. We present ScaleWorld, a causal video model that unifies low-resolution world prediction and high-resolution refinement within a single shared backbone. By refining its own predictions, ScaleWorld produces high-resolution world videos without requiring a separate refinement ",
+    "summary": "High-resolution generation enables video world models to render fine-grained scene structures and textures, but directly generating high-resolution video incurs substantial computational and memory costs. We present ScaleWorld, a causal vid",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "9350205b9d32",
+    "title": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
+    "url": "https://arxiv.org/abs/2611.26613v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:57:25.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail. In this paper, we present a systematic action-level analysis of frontier agents on direct robot control across 12 manipulation benchmarks. We introduce Agent",
+    "summary": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-lev",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.RO",
+      "cs.CL",
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "25d889ab7f62",
+    "title": "Bio-PM-Guided Synthetic IMU Generation",
+    "url": "https://arxiv.org/abs/2611.26607v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:56:25.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Collecting and labeling inertial measurement unit (IMU) data for human activity recognition (HAR) is expensive, and models trained on one group of subjects often fail to generalize to unseen individuals. Even with balanced data, classifiers struggle to distinguish dynamically similar activity classes and benefit from targeted augmentation. We explore whether synthetic IMU data generated in the representation space of a pretrained biosignal encoder, Bio-PM \\cite{b1}, can serve",
+    "summary": "Collecting and labeling inertial measurement unit (IMU) data for human activity recognition (HAR) is expensive, and models trained on one group of subjects often fail to generalize to unseen individuals. Even with balanced data, classifiers",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "6100a45d0080",
+    "title": "SoK: Assessing the Evolution of LLM Capability in Software Vulnerability Research",
+    "url": "https://arxiv.org/abs/2611.26601v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:54:19.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "LLM-based agents are becoming increasingly capable at discovering, validating and patching vulnerabilities in real software, and vendors and researchers report that this is already changing how vulnerabilities are found and fixed. These claims, however, are scattered across papers, vendor reports and disclosures and are rarely comparable. We introduce a framework that rates these capabilities on an autonomy scale modeled on the levels of driving automation, and qualifies each",
+    "summary": "LLM-based agents are becoming increasingly capable at discovering, validating and patching vulnerabilities in real software, and vendors and researchers report that this is already changing how vulnerabilities are found and fixed. These cla",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CR",
+      "cs.AI",
+      "cs.SE"
+    ]
+  },
+  {
+    "id": "a4a89f4fb4fa",
+    "title": "Active Feature Acquisition by Distilling an Oracle Teacher",
+    "url": "https://arxiv.org/abs/2611.26598v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:52:57.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Acquiring every feature of an instance is often costly: a measurement can carry a monetary price, a time delay, or a privacy cost. Active Feature Acquisition (AFA) addresses this by learning a policy that decides, per instance, which features to acquire under a budget. Existing AFA methods train this policy by optimizing a self-constructed utility target rather than distilling an explicit teacher. We construct this teacher explicitly. At training time the label and the unobse",
+    "summary": "Acquiring every feature of an instance is often costly: a measurement can carry a monetary price, a time delay, or a privacy cost. Active Feature Acquisition (AFA) addresses this by learning a policy that decides, per instance, which featur",
+    "readMinutes": 2,
+    "paperCategories": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "c806354f3a7f",
+    "title": "PGX: Physically Grounded Execution for Long-Horizon Humanoid Loco-Manipulation",
+    "url": "https://arxiv.org/abs/2611.26596v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:52:18.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Robotic vision-language-action (VLA) models can execute diverse individual manipulation skills, yet they still struggle with long-horizon loco-manipulation tasks, where temporal structure, skills, and precision are tightly coupled within a monolithic model. We propose Physically Grounded Execution (PGX), a framework that offloads temporal and precision control to two classical training-free components, allowing the VLA to focus on stage-specific skill dynamics. PGX decomposes",
+    "summary": "Robotic vision-language-action (VLA) models can execute diverse individual manipulation skills, yet they still struggle with long-horizon loco-manipulation tasks, where temporal structure, skills, and precision are tightly coupled within a ",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.RO",
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "f5b3d940312d",
+    "title": "Realized versus Population Reliability: Anytime-Valid Self-Consistency Certification under Correlated Reasoning",
+    "url": "https://arxiv.org/abs/2611.26592v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:47:51.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Self-consistency certification treats repeated sampling from a language model as sequential evidence accumulation and stops when an anytime-valid e-process crosses a threshold, guaranteeing finite-sample Type I error control by Ville's inequality. Prior constructions assume sampled rollouts are conditionally independent. We show this assumption fails in practice: reasoning streams are positively correlated through shared reasoning prefixes or across-prompt heterogeneity, chan",
+    "summary": "Self-consistency certification treats repeated sampling from a language model as sequential evidence accumulation and stops when an anytime-valid e-process crosses a threshold, guaranteeing finite-sample Type I error control by Ville's ineq",
+    "readMinutes": 3,
+    "paperCategories": [
+      "stat.ME",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "00830eab26e1",
+    "title": "Probing the \"Conscious\" Mind: Selective Access and Global Workspace in Vision-Language Models",
+    "url": "https://arxiv.org/abs/2611.26590v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:46:50.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Vision-language models (VLMs) integrate visual and textual information, but their outputs do not reveal internal concept representations. Global workspace theory (GWT) proposes that information is selected from parallel brain processes, integrated in a shared workspace, and made available to specialised processes. We introduce the Multimodal Concept Lens (MC-Lens), a multimodal Jacobian lens, to study these functions in VLM concept processing. Its vision encoder and language ",
+    "summary": "Vision-language models (VLMs) integrate visual and textual information, but their outputs do not reveal internal concept representations. Global workspace theory (GWT) proposes that information is selected from parallel brain processes, int",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.AI",
+      "cs.CV",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "7726583e7814",
+    "title": "Verify the Verifier: Specification-Grounded LLM Cross-Checking for Bugs That Escape UVM Scoreboards",
+    "url": "https://arxiv.org/abs/2611.26588v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:45:54.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "A passing UVM regression shows the design agrees with the reference model on what the scoreboard checks, not that it meets the specification. Bugs that pass every test yet violate the specification, termed scoreboard escapes, survive mature testbenches. We present Verify the Verifier, to our knowledge the first framework whose LLM-based Anomaly Cross-Checker examines a passing regression's traces against the specification. Of 564 bugs inserted into four OpenTitan IPs, 68 are ",
+    "summary": "A passing UVM regression shows the design agrees with the reference model on what the scoreboard checks, not that it meets the specification. Bugs that pass every test yet violate the specification, termed scoreboard escapes, survive mature",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.SE",
+      "cs.AI",
+      "cs.AR"
+    ]
+  },
+  {
+    "id": "a95a8860f8eb",
+    "title": "ProtoDiffusion: Token-per-Layer Generative Modeling of Multi-Layer Images",
+    "url": "https://arxiv.org/abs/2611.26586v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:45:31.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Graphic designs are ordered compositions of RGBA layers whose separation enables selection, movement, and reuse. Existing layered models represent each layer with a full-canvas or region-sized spatial latent grid, so representation size grows with the cumulative spatial extent of the layers. We present ProtoDiffusion, a latent-diffusion framework built on ProtoVAE, a multi-layer variational autoencoder that encodes a design into one shared spatial prototype and one candidate ",
+    "summary": "Graphic designs are ordered compositions of RGBA layers whose separation enables selection, movement, and reuse. Existing layered models represent each layer with a full-canvas or region-sized spatial latent grid, so representation size gro",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "8301a2de3883",
+    "title": "Represented but misread: Post-training changes how language models read out what they represent",
+    "url": "https://arxiv.org/abs/2611.26584v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:43:56.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Does post-training change what a language model represents, or how this representation is read out into an answer? We compared linear probes with the models' own answers, analyzed with signal detection theory, in six open-weight base models and their post-trained versions. For judgments of whether German texts were written by a human or an AI, probes and word n-gram classifiers separated the classes well, but the answers did not and often ordered the texts inversely. Post-tra",
+    "summary": "Does post-training change what a language model represents, or how this representation is read out into an answer? We compared linear probes with the models' own answers, analyzed with signal detection theory, in six open-weight base models",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "c75a18ddf258",
+    "title": "Text-Aware, Vision-Blind: How Multimodal Image Editing Systems Handle Unsafe Inputs",
+    "url": "https://arxiv.org/abs/2611.26569v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:36:19.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Multimodal image generation systems have made rapid progress and increasingly emphasize content safety. However, their safety mechanisms tend to rely on a single modality and lack joint consideration of both visual content and text prompts, particularly in instruction-guided image editing, where the uploaded image may itself carry risk. We thus introduce EditSafetyBench, a benchmark that measures system-level safety awareness of advanced image editing systems, containing 5,94",
+    "summary": "Multimodal image generation systems have made rapid progress and increasingly emphasize content safety. However, their safety mechanisms tend to rely on a single modality and lack joint consideration of both visual content and text prompts,",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CR",
+      "cs.CV",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "b84b00e31c21",
+    "title": "GEOHunter: Mapping a Generative Engine Optimization Network in the Wild",
+    "url": "https://arxiv.org/abs/2611.26564v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:33:42.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Generative engines synthesize retrieved web pages into answers, recommendations, and rankings. Generative engine optimization (GEO) services sell visibility in these answers by publishing promotional articles on user-generated-content (UGC) platforms for paying clients. Such promotion raises concerns in medical and financial domains, where misleading advice can cause harm. To study the severity of this problem, we measure one such paid-content operation across three major Chi",
+    "summary": "Generative engines synthesize retrieved web pages into answers, recommendations, and rankings. Generative engine optimization (GEO) services sell visibility in these answers by publishing promotional articles on user-generated-content (UGC)",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CR",
+      "cs.AI",
+      "cs.SI"
+    ]
+  },
+  {
     "id": "488bdcc677a6",
     "title": "생존과 사회 재건에 필요한 모든 것",
     "url": "https://news.hada.io/topic?id=37479",
@@ -2501,6 +3044,42 @@
     "excerpt": "",
     "summary": null,
     "readMinutes": 1
+  },
+  {
+    "id": "99d5b538040d",
+    "title": "MM-SystemOneBias: Evaluating Bias in Multimodal Jev-Style System One Decision Models",
+    "url": "https://arxiv.org/abs/2611.26557v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:25:41.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "When multimodal decision models determine actions, moderation outcomes, or quality judgments, their reliability depends on preserving semantic decisions across presentation changes, ignoring irrelevant additions, and distinguishing information consistent with task evidence from information that conflicts with it. Existing evaluations study decision-interface biases and multimodal model behavior in separate settings, leaving no common protocol to compare multimodal decision mo",
+    "summary": "When multimodal decision models determine actions, moderation outcomes, or quality judgments, their reliability depends on preserving semantic decisions across presentation changes, ignoring irrelevant additions, and distinguishing informat",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.AI"
+    ]
+  },
+  {
+    "id": "b319fb99b669",
+    "title": "Cost-Aware Agentic Feature Optimization System for Fleet-Scale Ranking Models",
+    "url": "https://arxiv.org/abs/2611.26531v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:12:04.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Large Web platforms operate large fleets of ranking models, each selecting features from a shared pool of tens of thousands. We present an end-to-end agentic system that optimizes features across the fleet under resource constraints shared across models and those set per model, such as feature pipeline cost and serving throughput (QPS), respectively. In this system, LLM agents propose hypotheses, and deterministic tools execute experiments and verify them. For each model, an ",
+    "summary": "Large Web platforms operate large fleets of ranking models, each selecting features from a shared pool of tens of thousands. We present an end-to-end agentic system that optimizes features across the fleet under resource constraints shared ",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.IR",
+      "cs.AI",
+      "cs.LG"
+    ]
   },
   {
     "id": "3a850c903b02",
@@ -2518,6 +3097,76 @@
     "excerpt": "Google's latest update to Gemini brings an AI agent to the Mac that can organize files, fill out forms, and tackle multistep workflows.",
     "summary": "Google's latest update to Gemini brings an AI agent to the Mac that can organize files, fill out forms, and tackle multistep workflows.",
     "readMinutes": 1
+  },
+  {
+    "id": "13f871a6dedf",
+    "title": "The Window Lever: Longer Observation Windows Outweigh the Observed Effects of Data, Capacity, and Architecture in Customer Behavior Forecasting",
+    "url": "https://arxiv.org/abs/2611.26521v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T18:00:11.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "In our experiments on long-horizon customer-behavior forecasting, a longer observation window outweighed the observed effects of more data, more capacity and newer architectures. The window is the weeks of history a model sees before the week it forecasts from. Going from an 8- to a 16-week window adds a raw +0.070 to 0.107 log-space $R^2$ in every family at 1M. Matched test cohorts, which score the same customer-weeks at every window, show this raw comparison understates the",
+    "summary": "In our experiments on long-horizon customer-behavior forecasting, a longer observation window outweighed the observed effects of more data, more capacity and newer architectures. The window is the weeks of history a model sees before the we",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.LG",
+      "cs.IR"
+    ]
+  },
+  {
+    "id": "568f45ddb718",
+    "title": "Simple Private Noisy SGD is Minimax-Optimal under Population Strong Convexity",
+    "url": "https://arxiv.org/abs/2611.26515v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T17:58:51.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Stochastic gradient descent (SGD) is at the center of modern machine learning and is known to be statistically minimax-optimal in many regression settings, e.g., for convex Generalized Linear Models (GLMs). Yet, it is unknown whether its simplest differentially private Noisy SGD counterpart fulfills similar favorable guarantees even on strongly convex losses. We resolve this question affirmatively. We upper bound the parameter estimation error for a single pass of Noisy SGD w",
+    "summary": "Stochastic gradient descent (SGD) is at the center of modern machine learning and is known to be statistically minimax-optimal in many regression settings, e.g., for convex Generalized Linear Models (GLMs). Yet, it is unknown whether its si",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  {
+    "id": "6567e01d0dac",
+    "title": "AutoMaster: Autonomous Post-Training by Making the Same Model a Better Teacher",
+    "url": "https://arxiv.org/abs/2611.26510v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T17:57:59.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Task success alone does not specify which behaviors post-training should reinforce. Even successful teacher trajectories can contain unsupported assumptions, unproductive repetition, or superficial verification. We propose Skill-FT (Skill-Guided Fine-Tuning), which uses natural-language skills to suppress undesirable habits and elicit underrepresented effective behaviors during teacher rollouts, then fine-tunes a target model on the resulting trajectories. We introduce AutoMa",
+    "summary": "Task success alone does not specify which behaviors post-training should reinforce. Even successful teacher trajectories can contain unsupported assumptions, unproductive repetition, or superficial verification.",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "dfeebe724a3c",
+    "title": "Multimodal Error Detection in Chest X-ray Reports: A Large Language Model Reading Image Evidence",
+    "url": "https://arxiv.org/abs/2611.26492v1",
+    "source": "arXiv AI 논문",
+    "sourceId": "arxiv",
+    "publishedAt": "2026-11-19T17:46:42.000Z",
+    "category": "연구/논문",
+    "lang": "en",
+    "tags": [],
+    "excerpt": "Rad-Linter checks chest X-ray reports against image-derived evidence to flag potential errors for review. A pretrained image classifier supplies scores for nine pathologies, and a 1.5B-parameter language model, fine-tuned with LoRA on 1,816 examples, checks their consistency with the report. We compare it with a keyword-and-negation rule baseline given the same reports and scores. Evaluation uses controlled report-score pairings from OpenI, with consistency labels derived fro",
+    "summary": "Rad-Linter checks chest X-ray reports against image-derived evidence to flag potential errors for review. A pretrained image classifier supplies scores for nine pathologies, and a 1.5B-parameter language model, fine-tuned with LoRA on 1,816",
+    "readMinutes": 3,
+    "paperCategories": [
+      "cs.CL"
+    ]
   },
   {
     "id": "ee20d352f0da",
@@ -2579,6 +3228,20 @@
       "Gemini",
       "Google"
     ],
+    "excerpt": "",
+    "summary": null,
+    "readMinutes": 1
+  },
+  {
+    "id": "fe06193eec3a",
+    "title": "우리 사회의 인공지능을 생각하고 토론하는 축제의 장, ｢AI 인사이트 페스티벌 시상식｣ 개최",
+    "url": "https://www.msit.go.kr/bbs/view.do?bbsSeqNo=94&nttSeqNo=3187987&sCode=user",
+    "source": "과학기술정보통신부 보도자료",
+    "sourceId": "msit",
+    "publishedAt": "2026-11-19T15:00:00.000Z",
+    "category": "정책/규제",
+    "lang": "ko",
+    "tags": [],
     "excerpt": "",
     "summary": null,
     "readMinutes": 1
@@ -6864,22 +7527,6 @@
     "readMinutes": 1
   },
   {
-    "id": "16b0a1eb4449",
-    "title": "오픈AI 'GPT-6.2' 출시 직후 일부 혹평…알트먼 \"사용성 개선 필요\" - AI타임스",
-    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9JbTZTQUp1amg4c1piaTMyN2RsN29xazNuRjNTNXBWeTVwVUE1YTl2WlBUMTk2NW5ZWkZiWnlManNaanVwcVU1dlc5b0k0TTdRX0ZMQXQ5M3Biem1Za3VZZHJLOWNzZV9WYnc?oc=5",
-    "source": "Google 뉴스 모델 출시 (한국어)",
-    "sourceId": "model-release-ko",
-    "publishedAt": "2026-11-17T08:00:00.000Z",
-    "category": "언론",
-    "lang": "ko",
-    "tags": [
-      "GPT"
-    ],
-    "excerpt": "",
-    "summary": null,
-    "readMinutes": 1
-  },
-  {
     "id": "3047d7657748",
     "title": "Introducing ChatGPT for Sales",
     "url": "https://openai.com/index/introducing-chatgpt-for-sales",
@@ -6893,6 +7540,22 @@
     ],
     "excerpt": "Explore the new Sales plugin and 30+ new and expanded partner plugins in ChatGPT to research prospects, prepare pitches, update your CRM, and move deals forward.",
     "summary": "Explore the new Sales plugin and 30+ new and expanded partner plugins in ChatGPT to research prospects, prepare pitches, update your CRM, and move deals forward.",
+    "readMinutes": 1
+  },
+  {
+    "id": "16b0a1eb4449",
+    "title": "오픈AI 'GPT-6.2' 출시 직후 일부 혹평…알트먼 \"사용성 개선 필요\" - AI타임스",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9JbTZTQUp1amg4c1piaTMyN2RsN29xazNuRjNTNXBWeTVwVUE1YTl2WlBUMTk2NW5ZWkZiWnlManNaanVwcVU1dlc5b0k0TTdRX0ZMQXQ5M3Biem1Za3VZZHJLOWNzZV9WYnc?oc=5",
+    "source": "Google 뉴스 모델 출시 (한국어)",
+    "sourceId": "model-release-ko",
+    "publishedAt": "2026-11-17T08:00:00.000Z",
+    "category": "언론",
+    "lang": "ko",
+    "tags": [
+      "GPT"
+    ],
+    "excerpt": "",
+    "summary": null,
     "readMinutes": 1
   },
   {
@@ -35860,20 +36523,6 @@
     "readMinutes": 1
   },
   {
-    "id": "1a543055a02f",
-    "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
-    "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
-    "source": "OpenAI 공식 발표",
-    "sourceId": "openai",
-    "publishedAt": "2026-10-23T00:00:00.000Z",
-    "category": "정책/규제",
-    "lang": "en",
-    "tags": [],
-    "excerpt": "OpenAI and Poland’s NASK are partnering on AI safety, security, and technical research to strengthen safeguards and support a more resilient digital ecosystem.",
-    "summary": "OpenAI and Poland’s NASK are partnering on AI safety, security, and technical research to strengthen safeguards and support a more resilient digital ecosystem.",
-    "readMinutes": 1
-  },
-  {
     "id": "2b3f616d26d3",
     "title": "Does Your Model Run on AWS Trainium? Look It Up",
     "url": "https://huggingface.co/blog/torch-neuronx-model-support",
@@ -35887,90 +36536,6 @@
     ],
     "excerpt": "",
     "summary": null,
-    "readMinutes": 1
-  },
-  {
-    "id": "51888f116f5b",
-    "title": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
-    "url": "https://huggingface.co/blog/microsoft/thinkingbox-training",
-    "source": "Hugging Face",
-    "sourceId": "huggingface",
-    "publishedAt": "2026-10-22T22:24:34.000Z",
-    "category": "오픈소스",
-    "lang": "en",
-    "tags": [],
-    "excerpt": "",
-    "summary": null,
-    "readMinutes": 1
-  },
-  {
-    "id": "891b7e0bbf66",
-    "title": "Build more responsive apps with the Decisions API",
-    "url": "https://openai.com/index/decisions-api",
-    "source": "OpenAI 공식 발표",
-    "sourceId": "openai",
-    "publishedAt": "2026-10-22T19:00:00.000Z",
-    "category": "업계/제품",
-    "lang": "en",
-    "tags": [],
-    "excerpt": "Fast, focused, low-cost decisions for any application.",
-    "summary": "Fast, focused, low-cost decisions for any application.",
-    "readMinutes": 1
-  },
-  {
-    "id": "cebeb01510b5",
-    "title": "아이들의 상상력이 인공지능을 만나는 첫 경험! 「전 국민 인공지능 경진대회」, 인공지능 창작대회 본선 개최",
-    "url": "https://www.msit.go.kr/bbs/view.do?bbsSeqNo=94&nttSeqNo=3187884&sCode=user",
-    "source": "과학기술정보통신부 보도자료",
-    "sourceId": "msit",
-    "publishedAt": "2026-10-22T15:00:00.000Z",
-    "category": "정책/규제",
-    "lang": "ko",
-    "tags": [],
-    "excerpt": "",
-    "summary": null,
-    "readMinutes": 1
-  },
-  {
-    "id": "301925b8adfc",
-    "title": "Beyond tree cover: mapping the world’s forest types",
-    "url": "https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/",
-    "source": "Google DeepMind 공식 발표",
-    "sourceId": "deepmind",
-    "publishedAt": "2026-10-22T14:30:24.000Z",
-    "category": "업계/제품",
-    "lang": "en",
-    "tags": [],
-    "excerpt": "A global map categorizing every 10-meter patch of land on Earth into distinct forest types.",
-    "summary": "A global map categorizing every 10-meter patch of land on Earth into distinct forest types.",
-    "readMinutes": 1
-  },
-  {
-    "id": "0e5fad3ca5f8",
-    "title": "Ensemble forecasting with IBM Granite time-series models",
-    "url": "https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1",
-    "source": "Hugging Face",
-    "sourceId": "huggingface",
-    "publishedAt": "2026-10-22T07:51:31.000Z",
-    "category": "오픈소스",
-    "lang": "en",
-    "tags": [],
-    "excerpt": "",
-    "summary": null,
-    "readMinutes": 1
-  },
-  {
-    "id": "6400feb68147",
-    "title": "What FDE means at OpenAI",
-    "url": "https://openai.com/index/forward-deployed-engineering-means",
-    "source": "OpenAI 공식 발표",
-    "sourceId": "openai",
-    "publishedAt": "2026-10-22T06:00:00.000Z",
-    "category": "업계/제품",
-    "lang": "en",
-    "tags": [],
-    "excerpt": "What forward deployed engineering means at OpenAI",
-    "summary": "What forward deployed engineering means at OpenAI",
     "readMinutes": 1
   },
   {
