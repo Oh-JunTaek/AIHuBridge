@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-11-23T02:04:43.435Z",
-  "total": 187,
-  "status": "partial",
+  "fetchedAt": "2026-11-24T05:40:30.996Z",
+  "total": 188,
+  "status": "success",
   "sources": [
     {
       "id": "kakao",
@@ -14,9 +14,11 @@
     },
     {
       "id": "naver-d2",
-      "status": "error",
+      "status": "success",
+      "received": 20,
+      "accepted": 0,
       "retained": 0,
-      "error": "공개 자료 요청 실패: HTTP 404"
+      "rejected": 20
     },
     {
       "id": "aws-korea",
@@ -45,8 +47,8 @@
     {
       "id": "coex-events",
       "status": "success",
-      "received": 3,
-      "accepted": 0,
+      "received": 4,
+      "accepted": 1,
       "retained": 1
     }
   ],
