@@ -18,9 +18,11 @@
 
 - [Microsoft SC-900](https://learn.microsoft.com/ko-kr/credentials/certifications/security-compliance-and-identity-fundamentals/) 및 [ISC2 CC](https://www.isc2.org/certifications/cc), [ISC2 비용 및 언어 안내](https://www.isc2.org/frequently-asked-questions)를 확인했다. 국내 시험장 예약과 조건은 접수처에서 재확인한다. [AI 보안 기초](https://learn.microsoft.com/ko-kr/training/paths/ai-security-fundamentals/)와 [보안 학습](https://learn.microsoft.com/ko-kr/training/topics/sci)은 공식 링크로 연결한다. 소식의 보안 필터는 기존 자료의 제목·발췌 키워드 탐색이며 별도 보안 뉴스 수집이 아니다.
 
-## 기업 SNS 및 학습 자료 (2026-11-01)
+## 기업 SNS 및 공식 미디어 (2026-11-24, c930a7e)
 
-- 기업 SNS는 [Bluesky 공개 API](https://docs.bsky.app/docs/api/app-bsky-feed-get-author-feed)와 [Mastodon 공개 계정 API](https://docs.joinmastodon.org/methods/accounts/#statuses)를 브라우저에서 직접 조회한다. Bluesky 계정별 최신 100건, Mastodon 최신 40건 중 원문 게시 시각 기준 최근 7일만 메모리에 유지하며 원문 링크·작성자·시각과 짧은 내용만 표시한다. 서버·브라우저 저장소에 보관하지 않고 화면이 열린 동안에도 오래된 글을 주기적으로 제거한다. 삭제된 글은 다음 조회에서 사라지며 삭제·정정 요청은 공개 문의 이메일로 접수 후 `suppressedPostUris`에 반영한다. API 실패는 계정별로 표시한다.
+- **AI 선도 대기업 메인 소통구(X)**: OpenAI(@OpenAI, @sama), Anthropic(@AnthropicAI), xAI/Grok(@xai, @elonmusk), Google(@GoogleDeepMind), NVIDIA(@nvidia)의 공식 X 채널을 서비스 상단 허브로 제공한다. X의 비인가 스크래핑 차단 정책을 존중하여 비공식 크롤링을 수행하지 않고 공식 프로필 다이렉트 링크를 제공한다.
+- **공식 YouTube 미디어 피드 (최근 7일)**: OpenAI, Anthropic, Google DeepMind, Google for Developers, NVIDIA, NVIDIA Developer 공식 유튜브 채널의 공개 XML 피드(`https://www.youtube.com/feeds/videos.xml?channel_id=...`)를 일일 서버 수집 파이프라인(`scripts/fetch-social.mjs`)으로 수집하여 브라우저 CORS 문제를 해결하고 `public/data/social.json`에 정적 보관한다. 발행 시각 기준 최근 7일 이내 영상만 엄격히 유지하며, 7일이 지난 자료는 자동 제외한다.
+- 기업 SNS는 [Bluesky 공개 API](https://docs.bsky.app/docs/api/app-bsky-feed-get-author-feed)와 [Mastodon 공개 계정 API](https://docs.joinmastodon.org/methods/accounts/#statuses)도 병행 지원한다. 원문 게시 시각 기준 최근 7일만 유지한다.
 - Mastodon의 [Mozilla.ai 공식 계정](https://mastodon.social/@MozillaAI)은 [기업 홈페이지](https://www.mozilla.ai/)의 직접 링크 및 공개 API 계정 ID·CORS를 2026-11-01 확인했다. 공개 원문만 처리하고 재게시·답글·민감/경고 글은 제외한다. HTML은 텍스트로만 바꾸어 표시하며 원문 링크를 제공한다. 게시물 삭제·수정은 다음 조회에 반영한다. [OpenAI 공식 채널 안내](https://help.openai.com/en/articles/11725090-verifying-communications-from-openai)에 근거한 X·YouTube는 직접 링크만 제공하고 자동 수집하지 않는다.
 - 계정: [Anthropic 공식](https://bsky.app/profile/anthropic.com), [Hugging Face 공식](https://bsky.app/profile/hf.co), [Thomas Wolf 개인](https://bsky.app/profile/thomwolf.bsky.social). Thomas Wolf의 소속과 계정은 [Hugging Face 프로필](https://huggingface.co/thomwolf)에서도 확인했다. 관계자의 개인 의견은 회사의 공식 입장으로 취급하지 않는다. 민감 라벨과 운영자 차단 목록을 존중하며 발표·예고·추측 자체는 제외하지 않는다.
 - [Bluesky 개발자 지침](https://bsky.network/docs/developer-guidelines/)의 공개 연락처·삭제 요청 대응에 따라 사용자 제공 문의 주소를 표시한다. 요청 제한과 각 계정의 상태는 변경될 수 있다. 이 연동은 자동 저장·일일 수집에 참여하지 않는다.
