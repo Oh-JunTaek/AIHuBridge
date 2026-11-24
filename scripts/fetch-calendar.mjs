@@ -6,6 +6,7 @@ import { collectCalendar, sources } from './lib/calendar-collector.mjs';
 import { writeJson } from './lib/data-files.mjs';
 import { collectGoogleEvents } from './lib/public-events.mjs';
 import { collectCoexEvents } from './lib/coex-events.mjs';
+import { collectEventUsEvents } from './lib/eventus-events.mjs';
 import { selectPublishableEvents } from './lib/calendar-eligibility.mjs';
 
 const output = fileURLToPath(new URL('../public/data/', import.meta.url));
@@ -17,7 +18,9 @@ async function main() {
   result.sources.push(publicEvents.source);
   const coexEvents = await collectCoexEvents(old);
   result.sources.push(coexEvents.source);
-  result.events = selectPublishableEvents([...result.events, ...publicEvents.events, ...coexEvents.events]);
+  const eventusEvents = await collectEventUsEvents(old);
+  result.sources.push(eventusEvents.source);
+  result.events = selectPublishableEvents([...result.events, ...publicEvents.events, ...coexEvents.events, ...eventusEvents.events]);
   // 전부 실패하면 파일을 갱신하지 않고 실패로 보고한다. 샘플로 대체하지 않는다.
   if (result.sources.every((source) => source.status === 'error')) {
     console.table(result.sources);

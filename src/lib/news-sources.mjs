@@ -14,5 +14,6 @@ export const newsSources = [
   { id: 'geeknews', name: '긱뉴스', url: 'https://news.hada.io/rss/news', category: '언론', lang: 'ko', origin: 'domestic', kind: 'community', aiOnly: true, titleOnly: true, limit: 20 },
   { id: 'aitimes', name: 'AI타임스', url: 'https://cdn.aitimes.com/rss/gn_rss_allArticle.xml', category: '언론', lang: 'ko', origin: 'domestic', kind: 'media', titleOnly: true, limit: 20 },
   { id: 'kakao-tech', name: '카카오 기술 블로그', url: 'https://tech.kakao.com/blog/feed/', category: '업계/제품', lang: 'ko', origin: 'domestic', kind: 'developer', aiOnly: true, titleOnly: true, limit: 20 },
+  { id: 'naver-d2', name: 'NAVER D2', url: 'https://d2.naver.com/d2.atom', category: '업계/제품', lang: 'ko', origin: 'domestic', kind: 'developer', aiOnly: true, titleOnly: true, limit: 20 },
   { id: 'msit', name: '과학기술정보통신부 보도자료', url: 'https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=94', category: '정책/규제', lang: 'ko', origin: 'domestic', kind: 'government', aiOnly: true, titleOnly: true, limit: 20 },
 ];
