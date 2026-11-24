@@ -1,0 +1,872 @@
+[
+  {
+    "id": "yt-aAbtjH0-oQQ",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Why Transparency Matters for AI Security — Red Hat CTO Chris Wright joins the NVIDIA AI Podcast at GTC Berlin to explain why open source is the foundation for secure AI agents. From Linux in th",
+    "date": "2026-11-24T11:00:17.000Z",
+    "url": "https://www.youtube.com/watch?v=aAbtjH0-oQQ",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/aAbtjH0-oQQ/hqdefault.jpg"
+  },
+  {
+    "id": "yt-asUuxCqj0GE",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Waiting for a better price on that gift? Use ChatGPT. — Try it yourself 👉 Check the price of this item every day and let me know when it drops. Include the old price, new price, and a link to the offer.",
+    "date": "2026-11-24T01:36:38.000Z",
+    "url": "https://www.youtube.com/shorts/asUuxCqj0GE",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/asUuxCqj0GE/hqdefault.jpg"
+  },
+  {
+    "id": "yt-oF2xi9BaHco",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Tomorrow on the NVIDIA AI Podcast. — If an AI buys your plane ticket, it shouldn’t come back with a new car. Red Hat’s Chris Wright explains why AI agents need clear limits.",
+    "date": "2026-11-23T22:03:46.000Z",
+    "url": "https://www.youtube.com/shorts/oF2xi9BaHco",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/oF2xi9BaHco/hqdefault.jpg"
+  },
+  {
+    "id": "yt-ClfOWvsj164",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "NVIDIA and Together AI: Faster, More Cost-Efficient AI Inference For Every Workload — A new GPU generation doesn’t mean every workload needs to move. Together AI’s engineers explain how they match workloads to NVIDIA Hopper and Blackwel",
+    "date": "2026-11-23T21:26:12.000Z",
+    "url": "https://www.youtube.com/shorts/ClfOWvsj164",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/ClfOWvsj164/hqdefault.jpg"
+  },
+  {
+    "id": "yt-NCMnH_Uxby8",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "NVIDIA and Together AI: Faster, More Cost-Efficient AI Inference For Every Workload — Get smarter, faster, and cost-efficient AI inference. See how Together AI combines NVIDIA CUDA with its inference software and matches workloads to NV",
+    "date": "2026-11-23T21:09:04.000Z",
+    "url": "https://www.youtube.com/watch?v=NCMnH_Uxby8",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/NCMnH_Uxby8/hqdefault.jpg"
+  },
+  {
+    "id": "yt-w-ltt0Np2cY",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Investigating Linux Vulnerabilities with GPT-6 Cyber — AI can help security teams move faster from finding vulnerabilities to getting fixes into the software people rely on. In one run, GPT-6 Cyber helped ",
+    "date": "2026-11-23T20:03:11.000Z",
+    "url": "https://www.youtube.com/shorts/w-ltt0Np2cY",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/w-ltt0Np2cY/hqdefault.jpg"
+  },
+  {
+    "id": "yt-MpsO8Ds8uyo",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Investigating Linux Vulnerabilities with GPT-6 Cyber — AI can help security teams move faster from finding vulnerabilities to getting fixes into the software people rely on. In one run, GPT-6 Cyber helped ",
+    "date": "2026-11-23T20:02:15.000Z",
+    "url": "https://www.youtube.com/watch?v=MpsO8Ds8uyo",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/MpsO8Ds8uyo/hqdefault.jpg"
+  },
+  {
+    "id": "yt-fpQcDQJQLhg",
+    "company": "Google",
+    "channel": "기업 공식",
+    "products": [
+      "Gemini",
+      "Antigravity",
+      "Android"
+    ],
+    "author": "Google for Developers",
+    "handle": "Google",
+    "repost": false,
+    "text": "Google Antigravity in action: Building an offline wildlife field guide — Creative technologist and hardware builder Arden Schager demonstrates how he built GemmaDex - a pocket-sized, 100% offline wildlife and plant field gu",
+    "date": "2026-11-23T20:00:28.000Z",
+    "url": "https://www.youtube.com/watch?v=fpQcDQJQLhg",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/fpQcDQJQLhg/hqdefault.jpg"
+  },
+  {
+    "id": "yt-2b4QUm0tuVc",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Unwrap new possibilities this holiday season. 🎁 — From immersive gaming to creative projects and building your first robot, NVIDIA technologies offer something for the gamers, creators, and makers on ",
+    "date": "2026-11-23T19:03:04.000Z",
+    "url": "https://www.youtube.com/shorts/2b4QUm0tuVc",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/2b4QUm0tuVc/hqdefault.jpg"
+  },
+  {
+    "id": "yt-gAmjBqXNoFI",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "How Franklin Templeton uses AI for investment research | OpenAI — “Just delivering data is not enough.” Franklin Templeton’s Katrina Dudley explains how OpenAI is helping the firm connect information from compliance,",
+    "date": "2026-11-23T15:23:23.000Z",
+    "url": "https://www.youtube.com/shorts/gAmjBqXNoFI",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/gAmjBqXNoFI/hqdefault.jpg"
+  },
+  {
+    "id": "yt-PXKvR8ta22Q",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "How Franklin Templeton uses AI for investment research | OpenAI — “Just delivering data is not enough.” Franklin Templeton’s Katrina Dudley explains how OpenAI is helping the firm connect information from compliance,",
+    "date": "2026-11-23T15:21:09.000Z",
+    "url": "https://www.youtube.com/watch?v=PXKvR8ta22Q",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i1.ytimg.com/vi/PXKvR8ta22Q/hqdefault.jpg"
+  },
+  {
+    "id": "yt-mX7wHNnsghs",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "How to claim your business in ChatGPT with Shopify — Claim your business in ChatGPT by connecting your Shopify store. This demo shows how to start in Business Hub or the Shopify App Store, then connect y",
+    "date": "2026-11-20T20:48:27.000Z",
+    "url": "https://www.youtube.com/watch?v=mX7wHNnsghs",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/mX7wHNnsghs/hqdefault.jpg"
+  },
+  {
+    "id": "yt-WN-JK-hMAyg",
+    "company": "Google",
+    "channel": "기업 공식",
+    "products": [
+      "Gemini",
+      "Antigravity",
+      "Android"
+    ],
+    "author": "Google for Developers",
+    "handle": "Google",
+    "repost": false,
+    "text": "Google Antigravity and Gemini 4: Creating an interactive MIDI mapped 3D world — Tune in to learn how creative technologist Tiago Aragona orchestrates modular 3D modeling, custom synthesizer design, and MIDI mapping into an interac",
+    "date": "2026-11-20T20:00:04.000Z",
+    "url": "https://www.youtube.com/watch?v=WN-JK-hMAyg",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/WN-JK-hMAyg/hqdefault.jpg"
+  },
+  {
+    "id": "yt-mlRW_y1RO-Y",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Scaling Energy Efficient AI Factories With NVIDIA DSX — NVIDIA DSX brings together computing, power, and cooling to help AI factories make the most of available energy. Hear perspectives from Nscale CTO Dav",
+    "date": "2026-11-20T19:11:15.000Z",
+    "url": "https://www.youtube.com/watch?v=mlRW_y1RO-Y",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/mlRW_y1RO-Y/hqdefault.jpg"
+  },
+  {
+    "id": "yt-X19Q12hmRjY",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "An underrated way to use ChatGPT: Finding a doctor — Your yearly checkups start with finding the right doctor. Magan Chin shares how she uses ChatGPT to find highly rated doctors nearby. Tip by 💡: Insta",
+    "date": "2026-11-20T17:22:23.000Z",
+    "url": "https://www.youtube.com/shorts/X19Q12hmRjY",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i1.ytimg.com/vi/X19Q12hmRjY/hqdefault.jpg"
+  },
+  {
+    "id": "yt-WGvsk0LIveU",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "3 Tips to Save Money With ChatGPT — ChatGPT can help you find ways to save, whether you’re shopping for a desk chair or wondering what you’re still paying for after a free trial ends. Le",
+    "date": "2026-11-20T16:00:17.000Z",
+    "url": "https://www.youtube.com/watch?v=WGvsk0LIveU",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/WGvsk0LIveU/hqdefault.jpg"
+  },
+  {
+    "id": "yt-c5or9gzM6Zg",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Build Training-Ready Datasets in Two Prompts Featuring Encord and Voxel51 | Cosmos Labs — Build diverse, training-ready datasets for physical AI with just two prompts using NVIDIA Cosmos Data Factory skills and blueprints. See how one promp",
+    "date": "2026-11-20T08:37:11.000Z",
+    "url": "https://www.youtube.com/watch?v=c5or9gzM6Zg",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/c5or9gzM6Zg/hqdefault.jpg"
+  },
+  {
+    "id": "yt-09igP-kQXtw",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "From Human Demonstrations to Robot Training Data With RLWRLD and Reactor | Cosmos Labs — How do you turn a video of someone working into training data a robot can learn from? Join NVIDIA, RLWRLD, and Reactor to explore a pipeline that conn",
+    "date": "2026-11-20T06:32:10.000Z",
+    "url": "https://www.youtube.com/watch?v=09igP-kQXtw",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i1.ytimg.com/vi/09igP-kQXtw/hqdefault.jpg"
+  },
+  {
+    "id": "yt-OSHSopaYjTw",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Create and Share a Dashboard in ChatGPT — Turn your analysis into a dashboard your team can use. Building on the fictional Acme sales example, this walkthrough brings quarterly metrics and cus",
+    "date": "2026-11-20T06:07:50.000Z",
+    "url": "https://www.youtube.com/watch?v=OSHSopaYjTw",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/OSHSopaYjTw/hqdefault.jpg"
+  },
+  {
+    "id": "yt-JEgTn37Sk50",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Ask Questions About Your Data in ChatGPT — Prepare for a sales meeting by asking ChatGPT what changed in your data and which customers need attention. Using sample data from the fictional compa",
+    "date": "2026-11-20T06:05:59.000Z",
+    "url": "https://www.youtube.com/watch?v=JEgTn37Sk50",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/JEgTn37Sk50/hqdefault.jpg"
+  },
+  {
+    "id": "yt-oJIuz3AFfEQ",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Connect Your Team’s Data to ChatGPT — Connect the data tools your team already uses to ChatGPT. This walkthrough is for workspace admins: enable the Data plugin, choose how teammates can i",
+    "date": "2026-11-20T06:02:57.000Z",
+    "url": "https://www.youtube.com/watch?v=oJIuz3AFfEQ",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/oJIuz3AFfEQ/hqdefault.jpg"
+  },
+  {
+    "id": "yt-KrlfehIapEA",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Meet the Data Agent in ChatGPT — Get started with the Data plugin in ChatGPT. Take a quick tour of how to ask questions about your data, create visualizations, build dashboards, and s",
+    "date": "2026-11-20T05:35:32.000Z",
+    "url": "https://www.youtube.com/watch?v=KrlfehIapEA",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/KrlfehIapEA/hqdefault.jpg"
+  },
+  {
+    "id": "yt-3_fayTbZrW8",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Create and Share a Report in ChatGPT Space — Give your team a report they can read, discuss, and work on together. In this walkthrough, turn the fictional Acme sales analysis into a Page in Space",
+    "date": "2026-11-20T05:32:52.000Z",
+    "url": "https://www.youtube.com/watch?v=3_fayTbZrW8",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/3_fayTbZrW8/hqdefault.jpg"
+  },
+  {
+    "id": "yt-KknD438RZGM",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "This or That: Robotics Edition — #Robotics #ThisOrThat #Research",
+    "date": "2026-11-20T04:18:50.000Z",
+    "url": "https://www.youtube.com/shorts/KknD438RZGM",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/KknD438RZGM/hqdefault.jpg"
+  },
+  {
+    "id": "yt-3cmv7AAQHH0",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Introducing NVIDIA Alpamayo 2 Edge: Real-Time Reasoning in the Vehicle — NVIDIA Alpamayo 2 Edge is a compact 2-billion-parameter reasoning Vision-Language-Action model designed for real-time, in-vehicle deployment on NVIDIA",
+    "date": "2026-11-19T23:00:33.000Z",
+    "url": "https://www.youtube.com/watch?v=3cmv7AAQHH0",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/3cmv7AAQHH0/hqdefault.jpg"
+  },
+  {
+    "id": "yt-sof3vW4mHTs",
+    "company": "Anthropic",
+    "channel": "기업 공식",
+    "products": [
+      "Claude"
+    ],
+    "author": "Anthropic 공식",
+    "handle": "Anthropic",
+    "repost": false,
+    "text": "The making of Anthropic — Anthropic’s co-founders on why they started the company, what they’ve learned, and the work still ahead. Told by Dario Amodei, Daniela Amodei, Tom Bro",
+    "date": "2026-11-19T21:03:23.000Z",
+    "url": "https://www.youtube.com/watch?v=sof3vW4mHTs",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/sof3vW4mHTs/hqdefault.jpg"
+  },
+  {
+    "id": "yt-79lv9HPXbEY",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "How to Fine-Tune Models Beyond Cosmos With NVIDIA Cosmos Framework — NVIDIA Cosmos Framework now supports fine-tuning models beyond the Cosmos family. In this tutorial, learn how to fine-tune Qwen3-VL for robot video qu",
+    "date": "2026-11-19T20:46:32.000Z",
+    "url": "https://www.youtube.com/watch?v=79lv9HPXbEY",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/79lv9HPXbEY/hqdefault.jpg"
+  },
+  {
+    "id": "yt-Hgv4wjYXHKw",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "AI is more than a better way to search. — Over a drink with NVIDIA’s Chris Alexiuk, Langdock Co-CEO Judith Dada shared why AI’s biggest impact may be felt in better services, better products, ",
+    "date": "2026-11-19T20:15:21.000Z",
+    "url": "https://www.youtube.com/shorts/Hgv4wjYXHKw",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i1.ytimg.com/vi/Hgv4wjYXHKw/hqdefault.jpg"
+  },
+  {
+    "id": "yt-N5YwZjN4_oI",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Europe’s AI Future With Judith Dada | Pub Conversations — What does Europe need to get right about AI? Langdock Co-CEO Judith Dada joins NVIDIA’s Chris Alexiuk to talk about Europe’s AI future, from building ",
+    "date": "2026-11-19T20:00:07.000Z",
+    "url": "https://www.youtube.com/watch?v=N5YwZjN4_oI",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/N5YwZjN4_oI/hqdefault.jpg"
+  },
+  {
+    "id": "yt-FORdPIWOH5k",
+    "company": "Google",
+    "channel": "기업 공식",
+    "products": [
+      "Gemini",
+      "AlphaFold",
+      "Genie"
+    ],
+    "author": "Google DeepMind",
+    "handle": "Google",
+    "repost": false,
+    "text": "Is Gemini our path to AGI? — Seven years after their last conversation at Google DeepMind’s London office, Professor Hannah Fry reunites with Koray Kavukcuoglu, SVP at Google Deep",
+    "date": "2026-11-19T19:58:06.000Z",
+    "url": "https://www.youtube.com/watch?v=FORdPIWOH5k",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/FORdPIWOH5k/hqdefault.jpg"
+  },
+  {
+    "id": "yt-xkSVuGruhgE",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Think childproofing, but for AI. — Hugging Face co-founder Thomas Wolf explains why AI assistants need limits on what they can access and do. Listen to the NVIDIA AI Podcast with Servic",
+    "date": "2026-11-19T17:00:13.000Z",
+    "url": "https://www.youtube.com/shorts/xkSVuGruhgE",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i1.ytimg.com/vi/xkSVuGruhgE/hqdefault.jpg"
+  },
+  {
+    "id": "yt-JDsFHmq9hlA",
+    "company": "Anthropic",
+    "channel": "기업 공식",
+    "products": [
+      "Claude"
+    ],
+    "author": "Anthropic 공식",
+    "handle": "Anthropic",
+    "repost": false,
+    "text": "What we make of this moment, will make this moment. — What we* make of this moment, will make this moment. *a food bank in Texas, a PhD student in Tokyo with a floating fish robot, a first-time builder ma",
+    "date": "2026-11-19T15:02:49.000Z",
+    "url": "https://www.youtube.com/watch?v=JDsFHmq9hlA",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/JDsFHmq9hlA/hqdefault.jpg"
+  },
+  {
+    "id": "yt-ikNf7eW8CHk",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Meet Brian and Beast, the dots at work at Holiday Extras — David Lee, Director of Innovation &amp; Growth at Holiday Extras, calls his dot, Brian, on his morning commute. They talk through the meetings ahead, ",
+    "date": "2026-11-19T11:38:57.000Z",
+    "url": "https://www.youtube.com/watch?v=ikNf7eW8CHk",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/ikNf7eW8CHk/hqdefault.jpg"
+  },
+  {
+    "id": "yt-AhmCKHNqhB8",
+    "company": "OpenAI",
+    "channel": "기업 공식",
+    "products": [
+      "ChatGPT",
+      "GPT",
+      "Sora"
+    ],
+    "author": "OpenAI 공식",
+    "handle": "OpenAI",
+    "repost": false,
+    "text": "Introducing ChatGPT for Accounting — ChatGPT for Accounting helps take the busywork out of your month-end close. Watch how ChatGPT finds completed jobs in your email and drafts QuickBooks",
+    "date": "2026-11-18T21:01:26.000Z",
+    "url": "https://www.youtube.com/watch?v=AhmCKHNqhB8",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/AhmCKHNqhB8/hqdefault.jpg"
+  },
+  {
+    "id": "yt-f2bpv9mFUeE",
+    "company": "Google",
+    "channel": "기업 공식",
+    "products": [
+      "Gemini",
+      "Antigravity",
+      "Android"
+    ],
+    "author": "Google for Developers",
+    "handle": "Google",
+    "repost": false,
+    "text": "Google Antigravity and Gemini 4: Building a custom groovebox on a $40 macro pad — Watch music producer, DJ, and pianist Arlander Taylor transform a generic $40 16-key, 3-knob gaming macro pad into a custom groovebox and polyrhythmic",
+    "date": "2026-11-18T20:00:24.000Z",
+    "url": "https://www.youtube.com/watch?v=f2bpv9mFUeE",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/f2bpv9mFUeE/hqdefault.jpg"
+  },
+  {
+    "id": "yt-2Y3e3RYNjFk",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "AI is getting better at figuring out how software works. Even when the code is hidden. — So what does that mean for security? Hugging Face and ServiceNow get into it on the NVIDIA AI Podcast.",
+    "date": "2026-11-18T20:00:13.000Z",
+    "url": "https://www.youtube.com/shorts/2Y3e3RYNjFk",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/2Y3e3RYNjFk/hqdefault.jpg"
+  },
+  {
+    "id": "yt-D47jNWtzPsI",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "How to Build Training-Ready Datasets with NVIDIA Cosmos Data Factory Skills — See how a coding agent uses NVIDIA Cosmos Data Factory blueprints and skills to turn a single image into a training-ready dataset for physical AI. Fol",
+    "date": "2026-11-18T19:23:14.000Z",
+    "url": "https://www.youtube.com/watch?v=D47jNWtzPsI",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i1.ytimg.com/vi/D47jNWtzPsI/hqdefault.jpg"
+  },
+  {
+    "id": "yt-uJG53ligJt4",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "NVIDIA SC26 Special Address — Scientific computing is entering the era of agentic AI. Bringing simulation, AI, and agents together gives researchers new ways to tackle complex prob",
+    "date": "2026-11-18T18:36:18.000Z",
+    "url": "https://www.youtube.com/watch?v=uJG53ligJt4",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/uJG53ligJt4/hqdefault.jpg"
+  },
+  {
+    "id": "yt-pVc6KkjeCfU",
+    "company": "Google",
+    "channel": "기업 공식",
+    "products": [
+      "Gemini",
+      "AlphaFold",
+      "Genie"
+    ],
+    "author": "Google DeepMind",
+    "handle": "Google",
+    "repost": false,
+    "text": "Behind the scenes with Genie 4 — Go behind the scenes of our recent Genie 4 film as we explore our most realistic and interactive world model yet. Instead of generating static video, ",
+    "date": "2026-11-18T18:12:24.000Z",
+    "url": "https://www.youtube.com/watch?v=pVc6KkjeCfU",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i1.ytimg.com/vi/pVc6KkjeCfU/hqdefault.jpg"
+  },
+  {
+    "id": "yt-EDp4IoAUsXY",
+    "company": "Google",
+    "channel": "기업 공식",
+    "products": [
+      "Gemini",
+      "AlphaFold",
+      "Genie"
+    ],
+    "author": "Google DeepMind",
+    "handle": "Google",
+    "repost": false,
+    "text": "Introducing the new Project Genie, powered by Genie 4 — Step inside your imagination with Project Genie, now powered by Google DeepMind’s most realistic and interactive world model yet, Genie 4. Project Gen",
+    "date": "2026-11-18T18:12:21.000Z",
+    "url": "https://www.youtube.com/watch?v=EDp4IoAUsXY",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/EDp4IoAUsXY/hqdefault.jpg"
+  },
+  {
+    "id": "yt-c0gdviC_OeI",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Accelerate Visual AI Agents on NVIDIA Jetson with VSS 3.3 and Cosmos — Building visual AI agents at the edge means bringing together video understanding, application services, and device-specific configuration. In this ha",
+    "date": "2026-11-18T17:59:02.000Z",
+    "url": "https://www.youtube.com/watch?v=c0gdviC_OeI",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/c0gdviC_OeI/hqdefault.jpg"
+  },
+  {
+    "id": "yt-gn_LIY2D2Ag",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "The AI Podcast is back. — The AI Podcast is back. Hugging Face’s Thomas Wolf and ServiceNow’s Amanda Grady join us to discuss why building in the open matters for AI safety. Be",
+    "date": "2026-11-18T14:41:35.000Z",
+    "url": "https://www.youtube.com/shorts/gn_LIY2D2Ag",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i4.ytimg.com/vi/gn_LIY2D2Ag/hqdefault.jpg"
+  },
+  {
+    "id": "yt-y9AALMeAeGI",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "Blackwell",
+      "GeForce",
+      "CUDA"
+    ],
+    "author": "NVIDIA 공식",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Can Open Source Make AI Agents Safer? — Hugging Face co-founder Thomas Wolf and ServiceNow’s Amanda Grady, SVP of AI Platform Security, join the NVIDIA AI Podcast to explain how to keep AI a",
+    "date": "2026-11-18T11:00:32.000Z",
+    "url": "https://www.youtube.com/watch?v=y9AALMeAeGI",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/y9AALMeAeGI/hqdefault.jpg"
+  },
+  {
+    "id": "yt-HXMbNl5KgeA",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Beyond Transcription: Nemotron 3.5 Transcribe | Nemotron Labs — Nemotron 3.5 Transcribe is here: an open-weight, promptable 30B mixture-of-experts model (about 4B active parameters) that brings transcription in 40 ",
+    "date": "2026-11-18T06:57:41.000Z",
+    "url": "https://www.youtube.com/watch?v=HXMbNl5KgeA",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i1.ytimg.com/vi/HXMbNl5KgeA/hqdefault.jpg"
+  },
+  {
+    "id": "yt-2AssDCQ_128",
+    "company": "NVIDIA",
+    "channel": "기업 공식",
+    "products": [
+      "NIM",
+      "Omniverse",
+      "NeMo"
+    ],
+    "author": "NVIDIA Developer",
+    "handle": "NVIDIA",
+    "repost": false,
+    "text": "Build Physical AI Applications with Open Models on NVIDIA Jetson | Jetson Holiday Stream — Learn how to build Physical AI applications with open models on NVIDIA Jetson. In this livestream, community developers demonstrate their projects and",
+    "date": "2026-11-17T21:19:15.000Z",
+    "url": "https://www.youtube.com/watch?v=2AssDCQ_128",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i3.ytimg.com/vi/2AssDCQ_128/hqdefault.jpg"
+  },
+  {
+    "id": "yt-aRIFzzr_Mi0",
+    "company": "Google",
+    "channel": "기업 공식",
+    "products": [
+      "Gemini",
+      "Antigravity",
+      "Android"
+    ],
+    "author": "Google for Developers",
+    "handle": "Google",
+    "repost": false,
+    "text": "EmbeddingGemma 2: How natively multimodal embeddings work — Learn how EmbeddingGemma 2, Google's open, lightweight multimodal embedding model, maps text, code, images, video, and audio into a single, unified em",
+    "date": "2026-11-17T17:00:29.000Z",
+    "url": "https://www.youtube.com/watch?v=aRIFzzr_Mi0",
+    "platform": "YouTube",
+    "mediaType": "video",
+    "thumbnail": "https://i2.ytimg.com/vi/aRIFzzr_Mi0/hqdefault.jpg"
+  }
+]

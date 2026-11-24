@@ -17,6 +17,17 @@ export const mastodonSources = [
   { id:'mozilla-ai', company:'Mozilla.ai', accountId:'111910184138509793', actor:'MozillaAI', handle:'MozillaAI@mastodon.social', channel:'기업 공식', products:['Mozilla.ai'], origin:'https://mastodon.social', profile:'https://mastodon.social/@MozillaAI' },
 ];
 
+// 각 AI 선도 대기업의 실제 메인 텍스트/공지 소통 창구 (X/Twitter)
+export const majorChannels = [
+  { id: 'elonmusk', company: 'xAI / Grok', name: 'Elon Musk', handle: 'elonmusk', platform: 'X', url: 'https://x.com/elonmusk', role: 'xAI 창립자', note: 'Grok 및 xAI 최신 모델 실시간 발표 메인 창구' },
+  { id: 'xai', company: 'xAI / Grok', name: 'xAI 공식', handle: 'xai', platform: 'X', url: 'https://x.com/xai', role: '기업 공식', note: 'Grok 정식 릴리즈 및 엔지니어링 공지' },
+  { id: 'openai-x', company: 'OpenAI', name: 'OpenAI 공식', handle: 'OpenAI', platform: 'X', url: 'https://x.com/OpenAI', role: '기업 공식', note: '신규 모델 및 서비스 업데이트' },
+  { id: 'sama', company: 'OpenAI', name: 'Sam Altman', handle: 'sama', platform: 'X', url: 'https://x.com/sama', role: 'CEO 개인', note: 'OpenAI 로드맵 및 비전 소통' },
+  { id: 'anthropic-x', company: 'Anthropic', name: 'Anthropic 공식', handle: 'AnthropicAI', platform: 'X', url: 'https://x.com/AnthropicAI', role: '기업 공식', note: 'Claude 모델 및 안전성 연구 발표' },
+  { id: 'deepmind-x', company: 'Google', name: 'Google DeepMind', handle: 'GoogleDeepMind', platform: 'X', url: 'https://x.com/GoogleDeepMind', role: '기업 공식', note: 'Gemini 및 선행 AI 연구 발표' },
+  { id: 'nvidia-x', company: 'NVIDIA', name: 'NVIDIA AI', handle: 'NVIDIAAI', platform: 'X', url: 'https://x.com/NVIDIAAI', role: '기업 공식', note: '가속 컴퓨팅 및 기업용 AI 솔루션' },
+];
+
 export function parseMastodonFeed(payload, source, toText) {
   if (!Array.isArray(payload)) throw new Error('게시물 응답 형식 오류');
   return payload.flatMap((post) => {

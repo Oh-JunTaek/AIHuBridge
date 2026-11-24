@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "fetchedAt": "2026-11-24T13:28:05.351Z",
+  "total": 46,
+  "status": "success",
+  "sources": [
+    {
+      "id": "openai-yt",
+      "status": "success",
+      "received": 15,
+      "company": "OpenAI"
+    },
+    {
+      "id": "anthropic-yt",
+      "status": "success",
+      "received": 2,
+      "company": "Anthropic"
+    },
+    {
+      "id": "google-deepmind-yt",
+      "status": "success",
+      "received": 3,
+      "company": "Google"
+    },
+    {
+      "id": "google-dev-yt",
+      "status": "success",
+      "received": 4,
+      "company": "Google"
+    },
+    {
+      "id": "nvidia-yt",
+      "status": "success",
+      "received": 10,
+      "company": "NVIDIA"
+    },
+    {
+      "id": "nvidia-dev-yt",
+      "status": "success",
+      "received": 12,
+      "company": "NVIDIA"
+    }
+  ],
+  "policy": "AI 선도 대기업 공식 미디어 및 소셜 채널의 최근 7일 게시물"
+}
