@@ -45,6 +45,7 @@ AI 자격증 목록은 `src/data/qualifications.ts`에 시험별 주관기관 �
 | AWS 한국 블로그 | https://aws.amazon.com/ko/blogs/korea/feed/ | 동일 기준의 공식 AI 행사 공고 | 실제 피드에 공고가 없으면 0건, 설명문 전재 없음 |
 | Microsoft 한국 소식 | https://news.microsoft.com/source/asia/feed/?lang=ko | 동일 기준의 공식 AI 행사 공고 | 실제 피드에 공고가 없으면 0건, 설명문 전재 없음 |
 | Google 개발자 커뮤니티 공개 행사 지도 | https://developers.google.com/community/GDG_DevFest_Events.json | AI 주제 행사명·주최 커뮤니티명·현지 날짜·도시·진행 방식·원문 링크·주제·파생 지역 | 마감일·요금·시각 추정 금지, RSVP·연락처·좌표·사진·설명문 저장·표시 금지 |
+| 이벤터스 (Event-us) | https://api.event-us.kr/api/v1/engine/search | 국내 현장(상세 지역/장소)·온라인·하이브리드 AI 행사 일정 및 유·무료 금액 (2026-11-24, e0edfc1) | query 'AI' 공개 검색, 설명문 전재 없음 |
 
 국내 현장 또는 온라인 참여가 명시된 행사만 각 출처 후보 단계와 최종 수집·표시에서 허용한다. RSS 공고는 명시적인 진행 방식·개최 장소·날짜만 분석한다. Google이 HYBRID로 명시한 일정은 온라인·현장 병행으로 저장한다. Google의 커뮤니티 좌표는 행사 실제 장소의 근거가 아니며, 장소 없이 국내 주최만 확인된 오프라인 행사는 제외한다. 온라인으로 명시돼도 국가별 참가 제한과 실제 접속은 원문 확인이 필요하다.
 
@@ -110,6 +111,8 @@ Google 출처는 [공식 행사 페이지](https://developers.google.com/events)
 | Google 뉴스 한국어 | news-sources.mjs의 기존 한국어 AI RSS 검색 주소 | 20건, 제목·날짜·링크 |
 | 긱뉴스 | https://news.hada.io/rss/news | 20건, AI 관련 제목·날짜·링크만 |
 | AI타임스 | https://cdn.aitimes.com/rss/gn_rss_allArticle.xml | 20건, 제목·날짜·링크만 |
+| 카카오 기술 블로그 | https://tech.kakao.com/blog/feed/ | 20건, AI 관련 제목·날짜·링크만 |
+| NAVER D2 | https://d2.naver.com/d2.atom | 20건, AI 관련 제목·날짜·링크만 (2026-11-24, e0edfc1) |
 | 과학기술정보통신부 보도자료 | https://www.msit.go.kr/user/rss/rss.do?bbsSeqNo=94 | 20건, AI 관련 제목·날짜·링크만 |
 
 긱뉴스 RSS는 [공식 홈페이지](https://news.hada.io/)의 RSS 링크와 [이용약관](https://news.hada.io/terms)을 확인했습니다. AI타임스는 [공식 홈페이지](https://www.aitimes.com/) HTML의 rel=alternate가 연결한 RSS입니다. 신규 국내 두 출처의 설명·본문은 재게시하지 않으며 RSS 제공을 전문 재사용 허가로 간주하지 않습니다. 국내 구분은 한국·한국어 편집 출처 기준이며 기사 사건의 발생 국가를 판별한 결과가 아닙니다.
