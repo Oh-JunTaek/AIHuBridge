@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-11-24T05:40:30.996Z",
-  "total": 188,
+  "fetchedAt": "2026-11-25T04:39:59.006Z",
+  "total": 215,
   "status": "success",
   "sources": [
     {
@@ -47,9 +47,16 @@
     {
       "id": "coex-events",
       "status": "success",
-      "received": 4,
+      "received": 5,
       "accepted": 1,
       "retained": 1
+    },
+    {
+      "id": "eventus-events",
+      "status": "success",
+      "received": 40,
+      "accepted": 27,
+      "retained": 0
     }
   ],
   "policy": "국내 현장 또는 온라인 참여가 확인된 일정만 표시하고 지난 행사·공고는 30일 보관"
