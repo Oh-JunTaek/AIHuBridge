@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-11-27T03:51:52.788Z",
-  "total": 218,
+  "fetchedAt": "2026-11-28T03:38:19.178Z",
+  "total": 216,
   "status": "success",
   "sources": [
     {
@@ -41,7 +41,7 @@
       "status": "success",
       "received": 871,
       "accepted": 125,
-      "retained": 61,
+      "retained": 58,
       "rejected": 746
     },
     {
@@ -55,8 +55,8 @@
       "id": "eventus-events",
       "status": "success",
       "received": 40,
-      "accepted": 26,
-      "retained": 4
+      "accepted": 25,
+      "retained": 6
     }
   ],
   "policy": "국내 현장 또는 온라인 참여가 확인된 일정만 표시하고 지난 행사·공고는 30일 보관"
